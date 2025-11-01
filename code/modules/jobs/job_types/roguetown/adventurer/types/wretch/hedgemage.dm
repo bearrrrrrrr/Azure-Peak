@@ -15,7 +15,7 @@
 		STATKEY_WIL = 1,
 		STATKEY_SPD = 1
 	)
-	subclass_spellpoints = 27 // Unlike Rogue Mage, who gets 6 but DExpert, this one don't have DExpert but have more spell points than anyone but the CM. 
+	subclass_spellpoints = 27 // Unlike Rogue Mage, who gets 6 but DExpert, this one don't have DExpert but have more spell points than anyone but the CM.
 	subclass_skills = list(
 		/datum/skill/combat/polearms = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
@@ -45,9 +45,9 @@
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backr = /obj/item/rogueweapon/woodstaff/ruby
 	backpack_contents = list(
-		/obj/item/spellbook_unfinished/pre_arcyne = 1, 
+		/obj/item/spellbook_unfinished/pre_arcyne = 1,
 		/obj/item/roguegem/amethyst = 1,
-		/obj/item/storage/belt/rogue/pouch/coins/poor = 1, 
+		/obj/item/storage/belt/rogue/pouch/coins/poor = 1,
 		/obj/item/flashlight/flare/torch/lantern/prelit = 1,
 		/obj/item/rope/chain = 1,
 		/obj/item/chalk = 1,
@@ -56,6 +56,19 @@
 		/obj/item/reagent_containers/glass/bottle/alchemical/healthpot = 1,	//Small health vial
 	)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
+
+	var/weapons = list("Greater Fireball","Sundering Lightning","+6 Extra Spellpoints")
+	if(H.mind)
+		var/weapon_choice = input(H, "Choose your Capstone", "TO ASCEND GREATYR HEIGHTS") as anything in weapons
+		H.set_blindness(0)
+		switch(weapon_choice)
+			if("Greater Fireball")
+					H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireball/greater)
+			if("Sundering Lightning")
+					H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/sundering_lightning)
+			if("+6 Extra Spellpoints")
+					H.mind?.adjust_spellpoints(6)
+
 	if(H.age == AGE_OLD)
 		H.adjust_skillrank_up_to(/datum/skill/magic/arcane, SKILL_LEVEL_MASTER, TRUE)
 		H.mind?.adjust_spellpoints(6)

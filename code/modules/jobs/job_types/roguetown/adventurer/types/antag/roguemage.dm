@@ -11,13 +11,13 @@
 	subclass_stats = list(
 		STATKEY_INT = 3,
 		STATKEY_WIL = 3,
-		STATKEY_PER = 2, // Adv mage get 2 perception so whatever. It is useful for aiming body parts but have no direct synergy with spells. 
+		STATKEY_PER = 2, // Adv mage get 2 perception so whatever. It is useful for aiming body parts but have no direct synergy with spells.
 		STATKEY_LCK = 2,
 		STATKEY_SPD = 1,
 		STATKEY_CON = 1,
 	)
 	subclass_skills = list(
-		/datum/skill/combat/polearms = SKILL_LEVEL_JOURNEYMAN, // Jman Polearms, for better parrying without making them bandit level 
+		/datum/skill/combat/polearms = SKILL_LEVEL_JOURNEYMAN, // Jman Polearms, for better parrying without making them bandit level
 		/datum/skill/combat/axes = SKILL_LEVEL_APPRENTICE, // They get apprentice in a wide spread of weapons for synergy with conjuration, especially if they take virtues
 		/datum/skill/combat/maces = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/swords = SKILL_LEVEL_APPRENTICE,
@@ -60,6 +60,19 @@
 	neck = /obj/item/clothing/neck/roguetown/coif
 	head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 	id = /obj/item/mattcoin
+
+	var/weapons = list("Greater Fireball","Sundering Lightning","+6 Extra Spellpoints")
+	if(H.mind)
+		var/weapon_choice = input(H, "Transaction of Power", "FREEDOM OF MAGYCKA") as anything in weapons
+		H.set_blindness(0)
+		switch(weapon_choice)
+			if("Greater Fireball")
+					H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireball/greater)
+			if("Sundering Lightning")
+					H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/sundering_lightning)
+			if("+6 Extra Spellpoints")
+					H.mind?.adjust_spellpoints(6)
+
 
 	r_hand = /obj/item/rogueweapon/woodstaff/diamond
 	if(H.age == AGE_OLD)
