@@ -6,7 +6,7 @@
 	outfit = /datum/outfit/job/roguetown/bandit/roguemage
 	category_tags = list(CTAG_BANDIT)
 	cmode_music = 'sound/music/cmode/antag/combat_thewall.ogg'
-	subclass_spellpoints = 21
+	subclass_spellpoints = 19
 	traits_applied = list(TRAIT_MAGEARMOR, TRAIT_ARCYNE_T3, TRAIT_DODGEEXPERT, TRAIT_ALCHEMY_EXPERT)
 	subclass_stats = list(
 		STATKEY_INT = 3,
@@ -67,11 +67,11 @@
 		H.set_blindness(0)
 		switch(weapon_choice)
 			if("Greater Fireball")
-					H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireball/greater)
+				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireball/greater)
 			if("Sundering Lightning")
-					H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/sundering_lightning)
+				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/sundering_lightning)
 			if("+6 Extra Spellpoints")
-					H.mind?.adjust_spellpoints(6)
+				H.mind?.adjust_spellpoints(6)
 
 
 	r_hand = /obj/item/rogueweapon/woodstaff/diamond
