@@ -53,6 +53,7 @@
 	always_votable = TRUE
 	follower_modifier = LOWER_FOLLOWER_MODIFIER
 	color_theme = "#FFD700"
+	forced_event_type = /datum/round_event_control/astrata_grandeur
 
 	influence_sets = list(
 	"Set 1" = list(
@@ -368,6 +369,7 @@
 	weight = 4
 	always_votable = TRUE
 	color_theme = "#664422"
+	forced_event_type = /datum/round_event_control/dendor_fertility
 
 	tag_multipliers = list(
 		TAG_NATURE = 1.5,

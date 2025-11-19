@@ -764,6 +764,32 @@ SUBSYSTEM_DEF(gamemode)
 		send_to_playing_players(span_notice("<b>Storyteller is [current_storyteller.name]!</b>"))
 		send_to_playing_players(span_notice("[current_storyteller.welcome_text]"))
 
+	apply_storyteller_forced_event()
+
+/datum/controller/subsystem/gamemode/proc/apply_storyteller_forced_event()
+	if(!current_storyteller?.forced_event_type)
+		return
+
+	if(!ispath(current_storyteller.forced_event_type))
+		return
+
+	var/datum/round_event_control/forced_event = locate(current_storyteller.forced_event_type) in control
+	if(!forced_event)
+		forced_event = new current_storyteller.forced_event_type
+		if(!forced_event.valid_for_map())
+			qdel(forced_event)
+			return
+
+	if(!forced_event?.track)
+		return
+
+	if(forced_next_events[forced_event.track])
+		return
+
+	forced_next_events[forced_event.track] = forced_event
+	event_track_points[forced_event.track] = max(event_track_points[forced_event.track], point_thresholds[forced_event.track])
+	message_admins("[current_storyteller.name] is forcing event [forced_event.name] on track [forced_event.track].")
+
 /// Panel containing information, variables and controls about the gamemode and scheduled event
 /datum/controller/subsystem/gamemode/proc/admin_panel(mob/user)
 	update_crew_infos()
