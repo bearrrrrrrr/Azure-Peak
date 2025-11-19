@@ -17,6 +17,8 @@
 	var/event_repetition_multiplier = 0.6
 	///if the event is forced regardless
 	var/forced = FALSE
+	/// Optional event control typepath this storyteller should force when selected.
+	var/forced_event_type
 	/// Multipliers for starting points.
 	var/list/starting_point_multipliers = list(
 		EVENT_TRACK_MUNDANE = 1,
