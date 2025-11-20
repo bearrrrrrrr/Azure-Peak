@@ -34,7 +34,6 @@
 	weight = 6
 	always_votable = TRUE
 	color_theme = "#80ced8"
-	forced_event_type = /datum/round_event_control/antagonist/migrant_wave/bandits
 
 	//Has no influence, your actions will not impact him his spawn rates. Cus he's asleep.
 	//Tl;dr - higher event spawn rates to keep stuff interesting, no god intervention, no antags. (Raids and omens will still happen at normal rate.)
@@ -543,6 +542,7 @@
 	weight = 4
 	always_votable = TRUE
 	color_theme = "#8B4513"
+	forced_event_type = /datum/round_event_control/antagonist/migrant_wave/bandits
 
 	tag_multipliers = list(
 		TAG_TRADE = 1.4,
