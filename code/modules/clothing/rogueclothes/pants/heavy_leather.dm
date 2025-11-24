@@ -24,7 +24,9 @@
 	being less protective than full trousers."
 	icon_state = "rogueshorts"
 	item_state = "rogueshorts"
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	armor = ARMOR_LEATHER
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	max_integrity = ARMOR_INT_LEG_LEATHER
 	salvage_result = /obj/item/natural/hide/cured
 	salvage_amount = 1
 
