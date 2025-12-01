@@ -201,7 +201,7 @@
 		hitpush = FALSE
 		skipcatch = TRUE
 		blocked = TRUE
-	
+
 	//Thrown item deflection -- this RETURNS if successful!
 	var/obj/item/W = get_active_held_item()
 	if(!blocked && I && cmode)
@@ -337,7 +337,7 @@
 		if(!affecting)
 			affecting = get_bodypart(BODY_ZONE_CHEST)
 		var/ap = (M.d_type == "blunt") ? BLUNT_DEFAULT_PENFACTOR : M.armor_penetration
-		var/armor = run_armor_check(affecting, M.d_type, armor_penetration = ap, damage = damage)
+		var/armor = run_armor_check(get_armor_zone_for_bodypart(affecting, dam_zone), M.d_type, armor_penetration = ap, damage = damage)
 		next_attack_msg.Cut()
 
 		var/nodmg = FALSE
@@ -770,7 +770,7 @@
 		if(arm_clothes)
 			torn_items |= arm_clothes
 
-	//LEGS & FEET//
+        //LEGS & FEET//
 	if(!def_zone || def_zone == BODY_ZONE_L_LEG || def_zone == BODY_ZONE_R_LEG)
 		var/obj/item/clothing/leg_clothes = null
 		if(shoes)
@@ -807,6 +807,11 @@
 						protection = val
 						used = C
 	return used
+
+/mob/living/carbon/human/proc/get_armor_zone_for_bodypart(obj/item/bodypart/affecting, def_zone)
+	if(affecting?.body_zone == BODY_ZONE_TAUR && def_zone && def_zone in affecting.subtargets)
+		return def_zone
+	return affecting
 
 /mob/living/carbon/human/on_fire_stack(seconds_per_tick, datum/status_effect/fire_handler/fire_stacks/fire_handler)
 	//SEND_SIGNAL(src, COMSIG_HUMAN_BURNING)
