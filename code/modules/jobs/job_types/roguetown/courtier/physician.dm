@@ -75,6 +75,7 @@
 	pants = /obj/item/clothing/under/roguetown/trou/leather/mourning
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	saiga_shoes = /obj/item/clothing/shoes/roguetown/horseshoes
+	snek_shoes = /obj/item/clothing/shoes/roguetown/snek_shoes/leather
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/storage/belt/rogue/surgery_bag/full/physician
 	beltr = /obj/item/storage/keyring/physician

@@ -25,6 +25,7 @@
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/jester
 	saiga_shoes = /obj/item/clothing/shoes/roguetown/horseshoes/gold
+	snek_shoes = /obj/item/clothing/shoes/roguetown/snek_shoes/leather
 	pants = /obj/item/clothing/under/roguetown/tights
 	armor = /obj/item/clothing/suit/roguetown/shirt/jester
 	belt = /obj/item/storage/belt/rogue/leather

@@ -68,6 +68,7 @@
 		armor = /obj/item/clothing/suit/roguetown/shirt/tunic/silktunic
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	saiga_shoes = /obj/item/clothing/shoes/roguetown/horseshoes/gold
+	snek_shoes = /obj/item/clothing/shoes/roguetown/snek_shoes/leather
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold/steward
 	beltr = /obj/item/storage/keyring/steward
 	beltl = /obj/item/storage/belt/rogue/pouch/merchant/coins

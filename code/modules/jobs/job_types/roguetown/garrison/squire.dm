@@ -32,6 +32,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
 	saiga_shoes = /obj/item/clothing/shoes/roguetown/horseshoes
+	snek_shoes = /obj/item/clothing/shoes/roguetown/snek_shoes/iron
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/keyring/squire
 	cloak = /obj/item/clothing/cloak/tabard/stabard/surcoat/guard

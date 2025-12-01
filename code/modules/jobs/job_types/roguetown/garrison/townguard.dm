@@ -46,6 +46,7 @@
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	saiga_shoes = /obj/item/clothing/shoes/roguetown/horseshoes
+	snek_shoes = /obj/item/clothing/shoes/roguetown/snek_shoes/iron
 	belt = /obj/item/storage/belt/rogue/leather/black
 	wrists = /obj/item/clothing/wrists/roguetown/bracers		//Would seperate to leather bracers for archer for dodge but - funnily, armor class doesn't exist on bracers.
 	backr = /obj/item/storage/backpack/rogue/satchel/black

@@ -107,6 +107,7 @@
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	saiga_shoes = /obj/item/clothing/shoes/roguetown/horseshoes
+	snek_shoes = /obj/item/clothing/shoes/roguetown/snek_shoes/leather
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltr = /obj/item/storage/keyring/mage
 	beltl = /obj/item/storage/magebag/associate

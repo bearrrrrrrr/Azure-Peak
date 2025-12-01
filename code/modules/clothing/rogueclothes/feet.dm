@@ -535,11 +535,48 @@
 	smeltresult = /obj/item/ingot/silver
 
 /obj/item/clothing/shoes/roguetown/horseshoes/gold
-	name = "gold horseshoes"
-	desc = "A pair of opulent golden horseshoes nailed onto thick leather soles. These are ready to be attached to some hooves."
-	icon_state = "gold_horseshoes"
-	item_state = "gold_horseshoes"
-	max_integrity = ARMOR_INT_LEG_LEATHER
-	sewrepair = FALSE
-	armor = ARMOR_PLATE_BAD // these are awful!
-	smeltresult = /obj/item/ingot/gold
+        name = "gold horseshoes"
+        desc = "A pair of opulent golden horseshoes nailed onto thick leather soles. These are ready to be attached to some hooves." 
+        icon_state = "gold_horseshoes"
+        item_state = "gold_horseshoes"
+        max_integrity = ARMOR_INT_LEG_LEATHER
+        sewrepair = FALSE
+        armor = ARMOR_PLATE_BAD // these are awful!
+        smeltresult = /obj/item/ingot/gold
+
+// lamia tail coverings
+/obj/item/clothing/shoes/roguetown/snek_shoes
+        name = "iron lamia bands"
+        desc = "Segmented iron bands fitted to clasp along a lamia's tail for extra protection."
+        mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x32/saiga.dmi'
+        icon_state = "iron_horseshoes"
+        item_state = "iron_horseshoes"
+        clothing_flags = TAUR_COMPATIBLE
+        max_integrity = ARMOR_INT_LEG_IRON_PLATE
+        sewrepair = FALSE
+        armor = ARMOR_PLATE
+        smeltresult = /obj/item/ingot/iron
+
+/obj/item/clothing/shoes/roguetown/snek_shoes/build_worn_icon(default_layer, default_icon_file, isinhands, femaleuniform, override_state, female, customi, sleeveindex, boobed_overlay, icon/clip_mask)
+        var/mutable_appearance/image = ..()
+        image.pixel_x = -16
+        image.pixel_y = -1
+        return image
+
+/obj/item/clothing/shoes/roguetown/snek_shoes/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning)
+        var/mob/living/equipped_to_mob = equipper || M
+        var/obj/item/bodypart/taur/taur = equipped_to_mob.get_taur_tail()
+        if(!istype(taur, /obj/item/bodypart/taur/lamia))
+                if(!disable_warning)
+                        to_chat(M, span_warning("These tail bands can only be equipped by lamia."))
+                return FALSE
+        return ..()
+
+/obj/item/clothing/shoes/roguetown/snek_shoes/leather
+        name = "leather lamia wraps"
+        desc = "Leather bands sized to hug a lamia's tail without hindering movement."
+        icon_state = "iron_horseshoes"
+        item_state = "iron_horseshoes"
+        max_integrity = ARMOR_INT_LEG_LEATHER
+        sewrepair = TRUE
+        armor = ARMOR_LEATHER

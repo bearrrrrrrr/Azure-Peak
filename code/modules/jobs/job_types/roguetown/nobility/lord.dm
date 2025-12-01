@@ -96,6 +96,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 		shoes = /obj/item/clothing/shoes/roguetown/boots
 	saiga_shoes = /obj/item/clothing/shoes/roguetown/horseshoes/gold
+	snek_shoes = /obj/item/clothing/shoes/roguetown/snek_shoes/leather
 	if(H.wear_mask)
 		if(istype(H.wear_mask, /obj/item/clothing/mask/rogue/eyepatch))
 			qdel(H.wear_mask)

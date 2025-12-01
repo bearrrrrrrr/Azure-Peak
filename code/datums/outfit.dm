@@ -38,6 +38,9 @@
 	/// Type path of item that goes in the shoes slot if the mob is a saiga taur
 	var/saiga_shoes = null
 
+	/// Type path of item that goes in the shoes slot if the mob is a lamia taur
+	var/snek_shoes = null
+
 	/// Type path of item to go in head slot
 	var/head = null
 
@@ -194,6 +197,10 @@
 		var/obj/item/bodypart/taur/taur = H.get_taur_tail()
 		if(istype(taur, /obj/item/bodypart/taur/horse))
 			H.equip_to_slot_or_del(new saiga_shoes(H), SLOT_SHOES, TRUE)
+	if(snek_shoes)
+		var/obj/item/bodypart/taur/lamia/lamia_tail = H.get_taur_tail()
+		if(istype(lamia_tail))
+			H.equip_to_slot_or_del(new snek_shoes(H), SLOT_SHOES, TRUE)
 	if(shoes)
 		H.equip_to_slot_or_del(new shoes(H),SLOT_SHOES, TRUE)
 	if(head)

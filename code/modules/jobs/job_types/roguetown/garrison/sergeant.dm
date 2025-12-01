@@ -51,6 +51,7 @@
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
 	saiga_shoes = /obj/item/clothing/shoes/roguetown/horseshoes
+	snek_shoes = /obj/item/clothing/shoes/roguetown/snek_shoes/iron
 	belt = /obj/item/storage/belt/rogue/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	gloves = /obj/item/clothing/gloves/roguetown/plate/iron

@@ -40,6 +40,7 @@
 	back = null
 	shoes = null
 	saiga_shoes = /obj/item/clothing/shoes/roguetown/horseshoes
+	snek_shoes = /obj/item/clothing/shoes/roguetown/snek_shoes/iron
 	box = null
 	/// List of patrons we are allowed to use
 	var/list/allowed_patrons

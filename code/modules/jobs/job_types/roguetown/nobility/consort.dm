@@ -59,7 +59,8 @@
 		beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 		backr = /obj/item/storage/backpack/rogue/satchel
 		id = /obj/item/clothing/ring/silver
-	saiga_shoes = /obj/item/clothing/shoes/roguetown/horseshoes/gold
+		saiga_shoes = /obj/item/clothing/shoes/roguetown/horseshoes/gold
+		snek_shoes = /obj/item/clothing/shoes/roguetown/snek_shoes/leather
 	H.adjust_skillrank(/datum/skill/misc/stealing, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
