@@ -61,5 +61,7 @@
 			qdel(src)
 			return BULLET_ACT_BLOCK
 		playsound(get_turf(target), 'sound/combat/hits/blunt/shovel_hit2.ogg', 100) //CLANG
+		if(istype(M, /mob/living/carbon))
+			apply_arcane_mark(M)
 	else
 		return
