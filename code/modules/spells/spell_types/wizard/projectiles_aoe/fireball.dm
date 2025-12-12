@@ -52,6 +52,6 @@
 		var/mark_stacks = consume_arcane_mark_stacks(M)
 		if(mark_stacks)
 			M.apply_damage((mark_stacks*15), BURN) //hey fuck you dude
-		if(mark_stacks = 3)
-			to_chat(L, "<span class='userdanger'>SCALDING HELLFIRE; TRYPTICH-MARKE DETONATION!</span>")
+		if(mark_stacks == 3)
+			to_chat(M, "<span class='userdanger'>SCALDING HELLFIRE; TRYPTICH-MARKE DETONATION!</span>")
 		M.adjust_fire_stacks(2)

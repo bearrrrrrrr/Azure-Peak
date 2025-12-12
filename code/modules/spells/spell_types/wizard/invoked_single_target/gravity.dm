@@ -1,6 +1,6 @@
 /obj/effect/proc_holder/spell/invoked/gravity // to do: get scroll icon
 	name = "Gravity"
-	desc = "Weighten space around someone, crushing them and knocking them to the floor. Stronger opponents will resist and be off-balanced."
+	desc = "Weighten space around someone, crushing them and knocking them to the floor. Stronger opponents will resist and be off-balanced. Consumes <b>Arcane Marks</b> to slightly increase knockdown time and damage."
 	cost = 3
 	overlay_state = "hierophant"
 	xp_gain = TRUE
@@ -50,22 +50,21 @@
 				playsound(get_turf(L), 'sound/magic/magic_nulled.ogg', 100)
 				return TRUE
 
-			var/mark_stacks = consume_arcane_mark_stacks(M)
+			var/mark_stacks = consume_arcane_mark_stacks(L)
 			extra_time = (mark_stacks*4)
 			if(L.STASTR <= 15)
 				L.adjustBruteLoss(60+(extra_time))
 				L.Knockdown(5+(extra_time))
-				if(mark_stacks = 3)
+				if(mark_stacks == 3)
 					to_chat(L, "<span class='userdanger'>GRAVITAS COLLAPSE; TRYPTICH-MARKE DETONATION!</span>")
 				else
-					to_chat(L, "<span class='userdanger'>You're magically weighed down, losing your footing!</span>")
+					to_chat(L, "<span class='userdanger'>I'm magically weighed down, losing my footing!</span>")
 			else
 				L.OffBalance(10+(extra_time))
 				L.adjustBruteLoss(15)
-				to_chat(L, "<span class='userdanger'>You're magically weighed down, and your strength resist!</span>")
-
-
+				to_chat(L, "<span class='userdanger'>I'm magically weighed down, but my strength resist!</span>")
 	return TRUE
+
 /obj/effect/temp_visual/gravity
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "hierophant_squares"

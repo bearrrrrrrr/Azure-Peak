@@ -153,10 +153,15 @@
 	update_alert() */
 
 /datum/status_effect/debuff/arcanemark/refresh(mob/living/new_owner)
+
 	.=..()
 	stacks++
 	if(stacks > max_stacks) //*scream
 		stacks--
+	else if(stacks == max_stacks)
+		var/mob/living/target = owner
+		if(target)
+			target.visible_message(span_warning("[target]'s arcane marks flare as a finishing spell draws near!"), span_userdanger("MARKED."))
 	update_alert()
 	return
 
