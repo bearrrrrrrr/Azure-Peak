@@ -134,7 +134,7 @@
 /datum/status_effect/debuff/arcanemark
 	id = "arcanemark"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/arcanemark
-	duration = 200 SECONDS //20 sec
+	duration = 15 SECONDS //15 sec - combo spells are on an 8-10 sec cd so if you miss two you drop your combo. seems fair?
 	status_type = STATUS_EFFECT_REFRESH
 	var/stacks = 1
 	var/max_stacks = 3
