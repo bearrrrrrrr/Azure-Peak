@@ -101,3 +101,51 @@
 	var/mob/living/target = owner
 	target.update_vision_cone()
 	target.remove_movespeed_modifier(MOVESPEED_ID_LIGHTNINGSTRUCK, TRUE)
+
+
+
+
+
+// arcane marks plus helper procs
+// did my best to make this require minimal snowflake procs and accidentally created another snowflake proc. oops :3
+
+/proc/apply_arcane_mark(mob/living/target) //this is on a seperate proc bc multiple spells can do this
+	if(!istype(target, /mob/living/carbon)) //idk if this gonna work on simplemobs so im not even gonna try lol. u already do silly dmg to em man
+		return
+	target.apply_status_effect(/datum/status_effect/buff/arcanemark)
+
+/proc/consume_arcane_mark_stacks(mob/living/target)
+	if(!istype(target, /mob/living/carbon))
+		return
+	var/datum/status_effect/debuff/arcanemark/mark = target.has_status_effect(/datum/status_effect/debuff/arcanemark)
+	if(!mark)
+		return 0 //OH GOD IS THIS RIGHT IS THIS CORRECT???
+	var/stack_count = mark.stacks
+	target.remove_status_effect(/datum/status_effect/debuff/arcanemark)
+	return stack_count
+
+
+
+/atom/movable/screen/alert/status_effect/buff/arcanemark
+	name = "Arcane Mark"
+	desc = "Ethereal potential-death sirensongs myne soul. Finisher spells shalt consume the stacked marks and deal extra damage."
+	icon_state = "debuff"
+
+/datum/status_effect/buff/arcanemark
+	id = "arcanemark"
+	alert_type = /atom/moveable/screen/alert/status_effect/buff/arcane
+	duration = 200 SECONDS //20 sec
+	status_type = STATUS_EFFECT_REFRESH
+	var/stacks = 1
+	var/max_stacks = 3
+
+/datum/status_effect/buff/arcanemark/on_apply()
+	effectedstats = list(STAKEY_LCK = -stacks) //this may be too much?
+	.=..()
+	update_alert()
+
+/datum/status_effect/buff/arcanemark/refresh(mob/living/new_owner)
+	.=..()
+	var/target_stacks = min(max_stacks, stacks + 1)
+	if((target_stacks > stacks) && target)
+		stacks + 1
