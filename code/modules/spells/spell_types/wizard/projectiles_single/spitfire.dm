@@ -75,3 +75,5 @@
 			return BULLET_ACT_BLOCK
 		M.adjust_fire_stacks(1)
 		M.ignite_mob()
+		if(istype(M, /mob/living/carbon))
+			apply_arcane_mark(M)

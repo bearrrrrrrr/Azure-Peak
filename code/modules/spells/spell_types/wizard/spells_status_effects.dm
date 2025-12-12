@@ -162,6 +162,7 @@
 		var/mob/living/target = owner
 		if(target)
 			target.visible_message(span_warning("[target]'s arcane marks flare as a finishing spell draws near!"), span_userdanger("MARKED."))
+			playsound(get_turf(target), 'sound/magic/mark_max.ogg', 100)
 	update_alert()
 	return
 
