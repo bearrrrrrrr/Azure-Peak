@@ -140,17 +140,9 @@
 	var/max_stacks = 3
 
 /datum/status_effect/debuff/arcanemark/on_apply()
-	effectedstats = list(STAKEY_LCK = -stacks) //this may be too much?
+	effectedstats = list(STATKEY_LCK = -stacks) //this may be too much?
 	.=..()
 	update_alert()
-
-/*
-/datum/status_effect/buff/arcanemark/refresh(mob/living/new_owner)
-	.=..()
-	var/target_stacks = min(max_stacks, stacks + 1)
-	if(target_stacks > stacks)
-		change_stack_count(target_stacks)
-	update_alert() */
 
 /datum/status_effect/debuff/arcanemark/refresh(mob/living/new_owner)
 
