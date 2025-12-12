@@ -1,6 +1,6 @@
 /obj/effect/proc_holder/spell/invoked/projectile/fireball
 	name = "Fireball"
-	desc = "Shoot out a ball of fire that emits a light explosion on impact, setting the target alight. Consumes arcane marks for extra damage."
+	desc = "Shoot out a ball of fire that emits a light explosion on impact, setting the target alight. Consumes <b>Arcane Marks</b> for extra damage."
 	clothes_req = FALSE
 	range = 8
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue
@@ -52,4 +52,6 @@
 		var/mark_stacks = consume_arcane_mark_stacks(M)
 		if(mark_stacks)
 			M.apply_damage((mark_stacks*15), BURN) //hey fuck you dude
+		if(mark_stacks = 3)
+			to_chat(L, "<span class='userdanger'>SCALDING HELLFIRE; TRYPTICH-MARKE DETONATION!</span>")
 		M.adjust_fire_stacks(2)
