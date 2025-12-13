@@ -19,7 +19,7 @@
 	releasedrain = 20 // Same stamina cost as Arcyne bolt
 	chargedrain = 0
 	chargetime = 0
-	recharge_time = 10 SECONDS // Slightly longer recharge than Arcyne Bolt so not spammable
+	recharge_time = 8 SECONDS //2x longer recharge than Arcyne Bolt so not spammable
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
