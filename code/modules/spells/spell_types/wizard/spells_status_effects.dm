@@ -151,6 +151,11 @@
 	.=..()
 	update_alert()
 
+/datum/status_effect/debuff/arcanemark/on_remove()
+	.=..()
+	target.remove_filter(ARCANEMARK_FILTER) //if anything runtimes, it's because of this. oops! lol!
+
+
 /datum/status_effect/debuff/arcanemark/refresh(mob/living/new_owner)
 
 	.=..()
