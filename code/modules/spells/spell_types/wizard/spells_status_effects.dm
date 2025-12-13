@@ -176,3 +176,5 @@
 		return
 	linked_alert.name = "Arcane Mark ([stacks])"
 	linked_alert.desc = "Ethereal potential-death sirensongs myne soul. Finisher spells shalt consume the stacked marks and deal extra damage."
+
+#undefine ARCANEMARK_FILTER "mark_glow"
