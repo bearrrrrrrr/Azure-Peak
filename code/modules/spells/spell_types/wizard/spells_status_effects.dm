@@ -109,6 +109,10 @@
 // arcane marks plus helper procs
 // did my best to make this require minimal snowflake procs and accidentally created another snowflake proc. oops :3
 
+
+// aura
+#define ARCANEMARK_FILTER "mark_glow"
+
 /proc/apply_arcane_mark(mob/living/target) //this is on a seperate proc bc multiple spells can do this
 	if(!istype(target, /mob/living/carbon)) //idk if this gonna work on simplemobs so im not even gonna try lol. u already do silly dmg to em man
 		return
@@ -122,6 +126,8 @@
 		return 0 //OH GOD IS THIS RIGHT IS THIS CORRECT???
 	var/stack_count = mark.stacks
 	target.remove_status_effect(/datum/status_effect/debuff/arcanemark)
+	if(stack_count >= 3)
+		target.remove_filter(ARCANEMARK_FILTER) //if anything runtimes, it's because of this. oops! lol!
 	return stack_count
 
 
@@ -136,6 +142,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/arcanemark
 	duration = 15 SECONDS //15 sec - combo spells are on an 8-10 sec cd so if you miss two you drop your combo. seems fair?
 	status_type = STATUS_EFFECT_REFRESH
+	var/outline_colour = "#c203fc"
 	var/stacks = 1
 	var/max_stacks = 3
 
@@ -154,6 +161,7 @@
 		var/mob/living/target = owner
 		if(target)
 			target.visible_message(span_warning("[target]'s arcane marks flare as a finishing spell draws near!"), span_userdanger("MARKED."))
+			target.add_filter(ARCANEMARK_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 100, "size" = 1))
 			playsound(get_turf(target), 'sound/magic/mark_max.ogg', 100)
 	update_alert()
 	return
