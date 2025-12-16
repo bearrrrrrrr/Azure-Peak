@@ -61,6 +61,7 @@
 			armor_penetration = 50
 			woundclass = BCLASS_STAB
 			apply_mark = FALSE
+			consume_arcane_mark_stacks(M)
 
 	. = ..()
 
