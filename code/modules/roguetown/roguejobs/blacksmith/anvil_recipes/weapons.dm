@@ -351,7 +351,7 @@
 	created_item = /obj/item/rogueweapon/huntingknife
 	createditem_num = 1
 
-/datum/anvil_recipe/weapons/steel/greatsword
+/datum/anvil_recipe/weapons/iron/greatsword
 	name = "Greatsword, Iron (+2 Iron)"
 	req_bar = /obj/item/ingot/iron
 	req_blade = /obj/item/blade/iron_sword
@@ -359,10 +359,10 @@
 	created_item = /obj/item/rogueweapon/greatsword/iron
 
 /datum/anvil_recipe/weapons/iron/claymore
-	name = "Claymore, Iron (+2 Iron)"
+	name = "Claymore, Iron (+4 Iron)"
 	req_bar = /obj/item/ingot/iron
 	req_blade = /obj/item/blade/iron_sword
-	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron)
+	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/ingot/iron)
 	created_item = /obj/item/rogueweapon/greatsword/zwei
 
 /datum/anvil_recipe/weapons/iron/axe
