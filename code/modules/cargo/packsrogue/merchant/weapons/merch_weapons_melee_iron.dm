@@ -74,13 +74,6 @@
 					/obj/item/rogueweapon/mace/warhammer,
 				)
 
-/datum/supply_pack/rogue/iron_weapons/claymore
-	name = "Claymore"
-	cost = 40 // 2 Iron Ingot
-	contains = list(
-					/obj/item/rogueweapon/greatsword/zwei,
-				)
-
 /datum/supply_pack/rogue/iron_weapons/greataxe
 	name = "Greataxe"
 	cost = 45 // 2 Iron Ingot, 1 Small Log
