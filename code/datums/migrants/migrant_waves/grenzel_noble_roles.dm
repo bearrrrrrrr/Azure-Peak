@@ -114,7 +114,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/angle/grenzelgloves
 	backr = /obj/item/storage/backpack/rogue/satchel/short
 	backl = /obj/item/rogueweapon/scabbard/gwstrap
-	r_hand = /grenz
+	r_hand = /obj/item/rogueweapon/greatsword/grenz
 	backpack_contents = list(
 		/obj/item/storage/belt/rogue/pouch/coins/poor = 1,
 		/obj/item/rogueweapon/huntingknife/idagger = 1,

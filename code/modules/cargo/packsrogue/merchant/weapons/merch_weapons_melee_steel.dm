@@ -125,13 +125,6 @@
 					/obj/item/rogueweapon/greatsword,
 				)
 
-/obj/item/rogueweapon/greatsword/iron
-	name = "Iron Greatsword"
-	cost = 40
-	contains = list(
-					/obj/item/rogueweapon/greatsword/iron,
-				)
-
 /datum/supply_pack/rogue/steel_weapons/estoc
 	name = "Estoc"
 	cost = 70 // 2 Steel Ingot
