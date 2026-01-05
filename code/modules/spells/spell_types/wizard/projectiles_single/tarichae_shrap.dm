@@ -41,7 +41,29 @@
 	hitsound = 'sound/combat/hits/bladed/smallslash (1).ogg'
 
 /obj/projectile/energy/shrapnelbloom/on_hit(target) //no antimagic; knockback for full stacks
+
+	var/has_full_mark = FALSE
+	var/mob/living/carbon/M
+	if(istype(target, /mob/living/carbon))
+		M = target
+		var/datum/status_effect/debuff/arcanemark/mark = M.has_status_effect(/datum/status_effect/debuff/arcanemark)
+		if(mark && mark.stacks >= mark.max_stacks)
+			has_full_mark = TRUE
+			consume_arcane_mark_stacks(M)
+
 	. = ..()
+
+	if(has_full_mark && M)
+		var/dir = angle2dir(Angle)
+		if(!dir && firer)
+			dir = get_dir(firer, M)
+		if(!dir)
+			dir = get_dir(src, M)
+		if(dir)
+			var/turf/start_turf = get_turf(M)
+			var/turf/edge_target_turf = get_edge_target_turf(M, dir)
+			if(edge_target_turf)
+				M.safe_throw_at(edge_target_turf, 1, 1, firer, spin = FALSE, force = M.move_force, callback = CALLBACK(M, TYPE_PROC_REF(/mob/living, handle_knockback), start_turf))
 
 
 /obj/effect/proc_holder/spell/invoked/projectile/shrapnelbloom/ready_projectile(obj/projectile/P, atom/target, mob/user, iteration) //dude this is all copy-paste guessed from other servers and ai slop. if this shit works id be so surprised
