@@ -1,5 +1,5 @@
 /obj/effect/proc_holder/spell/invoked/projectile/shrapnelbloom
-	name = "Alkahest Efflorescence"
+	name = "Stygian Efflorescence"
 	desc = "Burst three sharpened onyxian shards cut from the Mount Golgotha. Close-range. Strips away a fully-stacked Arcane Mark to briefly Expose an enemy."
 	range = 5
 	projectile_type = /obj/projectile/energy/shrapnelbloom
