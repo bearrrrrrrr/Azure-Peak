@@ -1,26 +1,25 @@
-//shotgun spell. big slowdown, high casting time, big dmg if all 3 hit. very good vs light or no armor; not so much vs plate...
+//shotgun spell. big slowdown, high cd, big dmg if all 3 hit. very good vs light or no armor; not so much vs plate...
 //may have pre-emptively nerfed it too hard
 
 /obj/effect/proc_holder/spell/invoked/projectile/shrapnelbloom
 	name = "Stygian Efflorescence"
-	desc = "Burst three sharpened onyxian shards cut from the Mount Golgotha. Close-range. Strips away a fully-stacked Arcane Mark to briefly Expose an enemy."
-	range = 3
+	desc = "Burst forth a triad of sharpened onyxian shards, cut from the Mount Golgotha herself. Strips away a fully-stacked Arcane Mark to knock an enemy back. Knocks them down and drops their weapon if knocked into a wall!"
+	range = 5
 	projectile_type = /obj/projectile/energy/shrapnelbloom
 	projectiles_per_fire = 3
 	overlay_state = "stygian"
 	sound = list('sound/magic/scrapeblade.ogg') //todo: this is Bad
-	sound = list('sound/combat/hits/bladed/smallslash (1).ogg')
 	active = FALSE
 	releasedrain = 30
 	chargedrain = 1
-	chargetime = 15
+	chargetime = 20
 	charging_slowdown = 2
-	recharge_time = 7 SECONDS
+	recharge_time = 20 SECONDS //this shit very strong actually
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
 	spell_tier = 2
-	invocations = list("Golgotha enflux!")
+	invocations = list("Golgotha shraptae!")
 	invocation_type = "shout"
 	glow_color = GLOW_COLOR_METAL
 	glow_intensity = GLOW_INTENSITY_LOW
@@ -31,16 +30,16 @@
 
 /obj/projectile/energy/shrapnelbloom
 	name = "stygian harpe"
-	accuracy = 50
-	icon_state = "stygian"
-//	color = "#1c1c1c" //>literally codersprited. the reason this is fast isnt for balance, it's so ppl dont realize how bad it looks LOOL
+	range = 3
+	accuracy = 50 //lower accuracy bc 3 of em
+	icon = 'icons/mob/actions/roguespells.dmi'
+	icon_state = "stygian" //>literally codersprited. the reason this is fast isnt for balance, it's so ppl dont realize how bad it looks LOOL
 	damage = 30
 	woundclass = BCLASS_CUT
-	armor_penetration = 40
+	armor_penetration = 15
 	npc_simple_damage_mult = 1.5
 	speed = 2
-	hitsound = 'sound/combat/hits/bladed/smallslash (1).ogg'
-	hitsound = 'sound/magic/scrapeblade.ogg'
+	hitsound = 'sound/foley/glass_step.ogg'
 
 /obj/projectile/energy/shrapnelbloom/on_hit(target) //no antimagic; knockback for full stacks
 
@@ -52,7 +51,8 @@
 		if(mark && mark.stacks >= mark.max_stacks)
 			has_full_mark = TRUE
 			consume_arcane_mark_stacks(M)
-			damage = 40 //once the first projectile hits it'll inherently be out of range of the other projectiles, so we want to compensate with at least a bit of dmg
+			damage = 40
+			to_chat(M, "<span class='userdanger'>STYGIAN WORLDECHO; TRYPTICH-MARKE DETONATION!</span>")
 
 	. = ..()
 
