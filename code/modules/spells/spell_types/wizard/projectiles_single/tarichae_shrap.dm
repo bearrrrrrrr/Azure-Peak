@@ -7,12 +7,13 @@
 	range = 3
 	projectile_type = /obj/projectile/energy/shrapnelbloom
 	projectiles_per_fire = 3
-	overlay_state = "air_blade"
+	overlay_state = "stygian"
 	sound = list('sound/magic/scrapeblade.ogg') //todo: this is Bad
+	sound = list('sound/combat/hits/bladed/smallslash (1).ogg')
 	active = FALSE
 	releasedrain = 30
 	chargedrain = 1
-	chargetime = 20
+	chargetime = 15
 	charging_slowdown = 2
 	recharge_time = 7 SECONDS
 	warnie = "spellwarning"
@@ -30,15 +31,16 @@
 
 /obj/projectile/energy/shrapnelbloom
 	name = "stygian harpe"
-	accuracy = 50 //this is a shotgun blast, not a concentrated attack
-	icon_state = "chronobolt"
-	color = "#1c1c1c" //>literally codersprited
-	damage = 20
+	accuracy = 50
+	icon_state = "stygian"
+//	color = "#1c1c1c" //>literally codersprited. the reason this is fast isnt for balance, it's so ppl dont realize how bad it looks LOOL
+	damage = 30
 	woundclass = BCLASS_CUT
-	armor_penetration = 35
+	armor_penetration = 40
 	npc_simple_damage_mult = 1.5
-	speed = 4
+	speed = 2
 	hitsound = 'sound/combat/hits/bladed/smallslash (1).ogg'
+	hitsound = 'sound/magic/scrapeblade.ogg'
 
 /obj/projectile/energy/shrapnelbloom/on_hit(target) //no antimagic; knockback for full stacks
 
@@ -50,6 +52,7 @@
 		if(mark && mark.stacks >= mark.max_stacks)
 			has_full_mark = TRUE
 			consume_arcane_mark_stacks(M)
+			damage = 40 //once the first projectile hits it'll inherently be out of range of the other projectiles, so we want to compensate with at least a bit of dmg
 
 	. = ..()
 
@@ -70,6 +73,6 @@
 	var/base_angle = P.Angle
 	if(isnull(base_angle))
 		base_angle = Get_Angle(user, target)
-	var/spread_step = 30
+	var/spread_step = 20
 	var/center_index = (projectiles_per_fire + 1) / 2
 	P.Angle = base_angle + ((iteration - center_index) * spread_step)
