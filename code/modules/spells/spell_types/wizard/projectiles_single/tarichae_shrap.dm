@@ -1,5 +1,5 @@
 //shotgun spell. big slowdown, high cd, big dmg if all 3 hit. very good vs light or no armor; not so much vs plate...
-//may have pre-emptively nerfed it too hard
+//low accuracy bc 3 of them, literally codersprited, identical dmg/pen to sword thrust from 12str person
 
 /obj/effect/proc_holder/spell/invoked/projectile/shrapnelbloom
 	name = "Stygian Efflorescence"
@@ -12,8 +12,7 @@
 	active = FALSE
 	releasedrain = 30
 	chargedrain = 1
-	chargetime = 20
-	charging_slowdown = 2
+	chargetime = 0
 	recharge_time = 20 SECONDS //this shit very strong actually
 	warnie = "spellwarning"
 	no_early_release = TRUE
@@ -31,12 +30,12 @@
 /obj/projectile/energy/shrapnelbloom
 	name = "stygian harpe"
 	range = 3
-	accuracy = 50 //lower accuracy bc 3 of em
+	accuracy = 50
 	icon = 'icons/mob/actions/roguespells.dmi'
-	icon_state = "stygian" //>literally codersprited. the reason this is fast isnt for balance, it's so ppl dont realize how bad it looks LOOL
-	damage = 30
-	woundclass = BCLASS_CUT
-	armor_penetration = 15
+	icon_state = "stygian"
+	damage = 22
+	woundclass = BCLASS_STAB
+	armor_penetration = 20
 	npc_simple_damage_mult = 1.5
 	speed = 2
 	hitsound = 'sound/foley/glass_step.ogg'
@@ -52,7 +51,7 @@
 			has_full_mark = TRUE
 			consume_arcane_mark_stacks(M)
 			damage = 40
-			to_chat(M, "<span class='userdanger'>STYGIAN WORLDECHO; TRYPTICH-MARKE DETONATION!</span>")
+			to_chat(M, "<span class='userdanger'>STYGIAN WORLD-ECHO; TRYPTICH-MARKE DETONATION!</span>")
 
 	. = ..()
 
