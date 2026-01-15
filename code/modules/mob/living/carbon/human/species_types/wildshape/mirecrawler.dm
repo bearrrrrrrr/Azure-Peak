@@ -19,7 +19,7 @@
 		src.adjust_skillrank(/datum/skill/misc/sneaking, 5, TRUE)
 		src.adjust_skillrank(/datum/skill/misc/climbing, 6, TRUE) //I am in your walls
 //Give it miracles maybe as well if needed, but this boi is already good
-		src.STASTR = 5
+		src.STASTR = 7
 		src.STACON = 8
 		src.STAINT = 9 //Tiny spider brain.
 		src.STAPER = 15
@@ -43,8 +43,9 @@
 		TRAIT_HARDDISMEMBER, //Decapping causes them to bug out, badly, and need admin intervention to fix. Bandaid fix.
 		TRAIT_PIERCEIMMUNE, //Prevents weapon dusting and caltrop effects due to them transforming when killed/stepping on shards.
 		TRAIT_LONGSTRIDER,
-		TRAIT_INFINITE_ENERGY, //It's a 5 strength spiderling, what's the worst that could happen?
+		TRAIT_INFINITE_ENERGY, //It's a 7 strength spiderling, what's the worst that could happen?
 		TRAIT_PERFECT_TRACKER,
+		TRAIT_NIGHT_VISION,
 	)
 	inherent_biotypes = MOB_HUMANOID
 	armor = 5
@@ -107,7 +108,7 @@
 /obj/item/rogueweapon/spider_fang/mire //Like a less defense dagger
 	max_blade_int = 300
 	max_integrity = 300
-	force = 30 //This form has 5 strength by default so this is more like 15 damage.
+	force = 30 //This form has 7 strength by default so this is more like 15 damage.
 	swingsound = list('sound/vo/mobs/vw/attack (1).ogg','sound/vo/mobs/vw/attack (2).ogg','sound/vo/mobs/vw/attack (3).ogg','sound/vo/mobs/vw/attack (4).ogg')
 	possible_item_intents = list(/datum/intent/simple/spider/mire, /datum/intent/pick)
 
@@ -129,6 +130,7 @@
 	antimagic_allowed = TRUE
 	recharge_time = 40 //4 seconds
 	ignore_cockblock = TRUE	
+	var/extendid = FALSE
 
 /obj/effect/proc_holder/spell/self/spiderfangs/mire/cast(mob/user = usr)
 	..()
@@ -137,22 +139,22 @@
 
 	l = user.get_active_held_item()
 	r = user.get_inactive_held_item()
-	if(extended)
+	if(extendid)
 		if(istype(l, /obj/item/rogueweapon/spider_fang/mire))
 			user.dropItemToGround(l, TRUE)
 			qdel(l)
 		if(istype(r, /obj/item/rogueweapon/spider_fang/mire))
 			user.dropItemToGround(r, TRUE)
 			qdel(r)
-		user.visible_message("Your fangs retract.", "You feel your fangs retracting.", "You hear a sound of fangs retracting.")
-		extended = FALSE
+		//user.visible_message("Your fangs retract.", "You feel your fangs retracting.", "You hear a sound of fangs retracting.")
+		extendid = FALSE
 	else
 		l = new(user,1)
 		r = new(user,2)
 		user.put_in_hands(l, TRUE, FALSE, TRUE)
 		user.put_in_hands(r, TRUE, FALSE, TRUE)
-		user.visible_message("Your fangs extend.", "You feel your fangs extending.", "You hear a sound of fangs extending.")
-		extended = TRUE
+		//user.visible_message("Your fangs extend.", "You feel your fangs extending.", "You hear a sound of fangs extending.")
+		extendid = TRUE
 
 /datum/intent/simple/spider/mire
 	name = "monch"

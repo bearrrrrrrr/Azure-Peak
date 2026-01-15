@@ -78,7 +78,7 @@
 	playsound(H, pick('sound/vo/mobs/vw/idle (1).ogg','sound/vo/mobs/vw/idle (2).ogg','sound/vo/mobs/vw/bark (1).ogg','sound/vo/mobs/vw/bark (2).ogg','sound/vo/mobs/vw/idle (3).ogg'), 80, TRUE, -1)
 
 /datum/species/dendormole/regenerate_icons(mob/living/carbon/human/H)
-	H.icon = 'icons/roguetown/mob/monster/mole.dmi'
+	H.icon = 'icons/roguetown/mob/monster/mosscrawler.dmi'
 	H.base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB)
 	H.icon_state = "mole_briars"
 	H.update_damage_overlays()
