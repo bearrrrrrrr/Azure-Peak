@@ -1035,6 +1035,11 @@
 
 	emote("sigh", intentional = TRUE)
 
+/datum/emote/living/sigh/run_emote(mob/user, params, type_override, intentional, targetted)
+	. = ..()
+	if(. && user.mind)
+		record_featured_stat(FEATURED_STATS_EMOS, user)
+
 /datum/emote/living/whistle
 	key = "whistle"
 	key_third_person = "whistles"
