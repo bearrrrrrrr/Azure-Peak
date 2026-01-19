@@ -1167,6 +1167,11 @@
 	key_third_person = "sulks"
 	message = "sulks down sadly."
 
+/datum/emote/living/sulk/run_emote(mob/user, params, type_override, intentional, targetted)
+	. = ..()
+	if(. && user.mind)
+		record_featured_stat(FEATURED_STATS_EMOS, user)
+
 /datum/emote/living/sway
 	key = "sway"
 	key_third_person = "sways"
