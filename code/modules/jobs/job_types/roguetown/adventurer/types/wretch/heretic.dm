@@ -289,7 +289,7 @@
 			if("Rapier")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
-					l_hand = /obj/item/rogueweapon/sword/short/psy
+					l_hand = /obj/item/rogueweapon/sword/rapier/psy //Fuck you it's aura
 				else
 					l_hand = /obj/item/rogueweapon/sword/rapier
 				beltl = /obj/item/rogueweapon/scabbard/sword
