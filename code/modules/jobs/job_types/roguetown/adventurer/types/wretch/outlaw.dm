@@ -15,8 +15,8 @@
 	)
 	subclass_skills = list(
 		/datum/skill/misc/tracking = SKILL_LEVEL_MASTER,
-		/datum/skill/combat/crossbows = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/crossbows = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/knives = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/whipsflails = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/maces = SKILL_LEVEL_APPRENTICE, //A bonus rather than something to be encouraged
@@ -50,7 +50,6 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/heavy
 	mask = /obj/item/clothing/mask/rogue/ragmask/black
 	beltr = /obj/item/quiver/bolts
-	r_hand = /obj/item/rogueweapon/mace/cudgel //From thief PR
 	backpack_contents = list(
 		/obj/item/storage/belt/rogue/pouch/coins/poor = 1,
 		/obj/item/lockpickring/mundane = 1,
@@ -69,13 +68,13 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				l_hand = /obj/item/rogueweapon/sword/rapier
-			if("Dagger")
-				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
+			if("Dagger and Tossblades")
+				l_hand = /obj/item/storage/belt/rogue/leather/knifebelt/black/steel
 				beltl = /obj/item/rogueweapon/scabbard/sheath
-				l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/special // Why were they spawning with an elven dagger in the first place??? Please LMK.
+				r_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/special
 			if ("Whip")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
-				beltl = /obj/item/rogueweapon/whip
+				l_hand = /obj/item/rogueweapon/whip
 		wretch_select_bounty(H)
 
 /datum/advclass/wretch/outlaw/marauder
@@ -84,6 +83,7 @@
 	outfit = /datum/outfit/job/roguetown/wretch/marauder
 	cmode_music = 'sound/music/cmode/antag/combat_thewall.ogg'
 	subclass_languages = list(/datum/language/thievescant)
+	traits_applied = list(TRAIT_MEDIUMARMOR)
 	//Still the speed class
 	subclass_stats = list(
 		STATKEY_CON = 2,
@@ -138,15 +138,16 @@
 		switch(weapon_choice)
 			if("Just An Iron Shield")
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
+				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_EXPERT, TRUE) //Bro thinks he's Captain Azuria 
 				backr = /obj/item/rogueweapon/shield/iron
-			if("Dagger + Crossbow")
+			if("Combat Knife + Crossbow")
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
+				H.adjust_skillrank_up_to(/datum/skill/combat/crossbows, SKILL_LEVEL_EXPERT, TRUE)
 				beltl = /obj/item/rogueweapon/scabbard/sheath
-				l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel
+				l_hand = /obj/item/rogueweapon/huntingknife/combat //Darkest Dungeon Highwayman LARP
 				backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow //"POPULAR AMONGST HIGHWAYMEN" BLOW ME.
 				beltr = /obj/item/quiver/bolts
-			if ("Militia Warpick + Heater Shield")
+			if ("Militia Warpick + Iron Shield")
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_EXPERT, TRUE)
 				beltl = /obj/item/rogueweapon/pick/militia/steel //The iron warpick doesnt even fucking scale with axes dumbass
 				backr = /obj/item/rogueweapon/shield/iron
