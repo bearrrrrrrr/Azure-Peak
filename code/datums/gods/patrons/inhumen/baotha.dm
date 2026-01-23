@@ -22,6 +22,7 @@
 		"BAOTHA IS MY JOY!",
 	)
 	storyteller = /datum/storyteller/baotha
+	traits_tier = list(TRAIT_CRACKHEAD = CLERIC_T2)
 
 /datum/patron/inhumen/baotha/can_pray(mob/living/follower)
 	. = ..()
