@@ -4,6 +4,7 @@
 	tutorial = "A shady guardian of the Black Oaks. Half mercenary band, half irregular militia fighting for control of their ancestral elven homeland of the Peaks. Thankfully, you are not here today to shed the blood of the Duke's men — unless someone pays you to..."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
+		/datum/species/human/halfelf,
 		/datum/species/elf/wood,
 		/datum/species/elf/dark,
 	)
@@ -11,7 +12,7 @@
 	class_select_category = CLASS_CAT_RACIAL
 	category_tags = list(CTAG_MERCENARY)
 	cmode_music = 'sound/music/combat_blackoak.ogg'
-	extra_context = "This subclass is race-restricted to: Elves, Dark Elves."
+	extra_context = "This subclass is race-restricted to: Half-Elves, Elves, Dark Elves."
 	traits_applied = list(TRAIT_AZURENATIVE, TRAIT_OUTDOORSMAN, TRAIT_XENOPHOBIA, TRAIT_MEDIUMARMOR)
 	subclass_stats = list(
 		STATKEY_STR = 3,
@@ -49,7 +50,7 @@
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel/special
 	beltr = /obj/item/flashlight/flare/torch
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather/elven_boots
+	shoes = /obj/item/clothing/shoes/roguetown/boots/elven_boots
 	cloak = /obj/item/clothing/cloak/forrestercloak
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/black
 	gloves = /obj/item/clothing/gloves/roguetown/elven_gloves
@@ -110,9 +111,6 @@
 		/datum/skill/labor/farming = SKILL_LEVEL_APPRENTICE,
 	)
 
-/datum/outfit/job/roguetown/mercenary/blackoak_ranger
-	allowed_patrons = list(/datum/patron/divine/dendor)
-
 /datum/outfit/job/roguetown/mercenary/blackoak_ranger/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
@@ -120,7 +118,7 @@
 	neck = /obj/item/clothing/neck/roguetown/chaincoif/full
 	beltl = /obj/item/quiver/arrows
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather/elven_boots
+	shoes = /obj/item/clothing/shoes/roguetown/boots/elven_boots
 	cloak = /obj/item/clothing/cloak/forrestercloak
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/black
 	gloves = /obj/item/clothing/gloves/roguetown/elven_gloves
