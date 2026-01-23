@@ -85,6 +85,7 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 		"Escalate appropriately and try",
 		"Don't give up!",
 		"Take inventory of your role",
+		"Try"
 	)
 	var/list/directives = list(
 		"looking for a hidden location,",
@@ -106,7 +107,9 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 		"looking in the Discord",
 		"check the Holiest of Wikis,",
 		"Unfortunately not.",
-		"Thankfully no."
+		"Thankfully no.",
+		"bite",
+		"the squire"
 	)
 	var/list/closers = list(
 		"(No closing)",
@@ -114,6 +117,7 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 		"and have fun!",
 		"and look carefully...",
 		"and use thyne Noccian wits.",
+		"and do as Baotha would",
 		"Use thyne Zizoan determination.",
 		"and use it upon the terrain.",
 		"do as Graggar would do.",
@@ -123,7 +127,8 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 		"Skelelon!",
 		"PROGRESS AFLOAT, NYEHEHE.",
 		"but be careful!",
-		"and then think carefully."
+		"and then think carefully.",
+		"but, hole!"
 	)
 	var/opener = input("Compose your response: choose an opening.", "Mentorhelp Response") in openers
 	if(!opener)
