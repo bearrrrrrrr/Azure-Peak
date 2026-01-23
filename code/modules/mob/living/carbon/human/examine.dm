@@ -131,9 +131,9 @@
 				. += span_phobia("An invader...")
 			if (src.dna.species.name == "Half-Elf")
 				if (HAS_TRAIT(src, TRAIT_XENOPHOBIA))
-					. += span_boldgreen("A half-breed... but not without proper heritage.")
+					. += span_boldgreen("A half-blood... but not without proper heritage.")
 				else
-					. += span_boldred("A half-breed...")
+					. += span_boldred("A half-blood...")
 
 		//For tennite schism god-event
 		if(length(GLOB.tennite_schisms))
