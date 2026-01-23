@@ -57,10 +57,75 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 	if(QDELETED(schizo))
 		to_chat(src, span_warning("This meditation can no longer be answered..."))
 		return
-	if(schizo.owner == src.mob)
-		to_chat(src, span_warning("I can't answer my own meditation!"))
+//	if(schizo.owner == src.mob)
+//		to_chat(src, span_warning("I can't answer my own meditation!"))
+//		return
+	var/list/openers = list(
+		"(No opening)",
+		"Good question!,",
+		"Look around",
+		"Graggar, here.",
+		"Left Kidney tumor here,",
+		"Dearest Monarch",
+		"Thus shall it be:",
+		"Simply get better.",
+		"Aim for their weakest point",
+		"Try",
+		"Grab thine first item",
+		"A book may be useful:",
+		"This feature is bullshit, but",
+		"Try North",
+		"Try South",
+		"Try East",
+		"Try West",
+		"Skelelon!",
+		"Grab thyne tool,"
+	)
+	var/list/directives = list(
+		"for a hidden location,",
+		"the Middle Mouse Button",
+		"the Right Mouse Button",
+		"hitting over the head with rocks",
+		"drown it in butter",
+		"and then",
+		"in the Town of Azuria,",
+		"retreat and regroup",
+		"in the Azurian Library",
+		"watch your surroundings",
+		"ask again with details",
+		"consult the guides",
+		"practice before the trial",
+		"ENDURE through it. ",
+		"Skelelon!"
+	)
+	var/list/closers = list(
+		"(No closing)",
+		"may be the answer",
+		"and have fun!",
+		"and look carefully.",
+		"and use thyne Noccian wits.",
+		"Use thyne Zizoan determination.",
+		"and use it upon the terrain",
+		"do as Graggar would do.",
+		"and spend all your money on the XYLIX'S FORTUNE.",
+		"Purity Afloat",
+		"Skelelon!",
+		"PROGRESS AFLOAT, NYEHEHE"
+	)
+	var/opener = input("Compose your response: choose an opening.", "Mentorhelp Response") in openers
+	if(!opener)
 		return
-	var/answer = input("Answer their meditations...", "VOICE")
+	var/directive = input("Compose your response: choose a directive.", "Mentorhelp Response") in directives
+	if(!directive)
+		return
+	var/closer = input("Compose your response: choose a closing.", "Mentorhelp Response") in closers
+	if(!closer)
+		return
+	var/answer = "[directive]"
+	if(opener != "(No opening)")
+		answer = "[opener] [answer]"
+	if(closer != "(No closing)")
+		answer += " [closer]"
 	if(!answer || QDELETED(schizo))
 		return
 	schizo.answer_schizo(answer, src.mob)
@@ -83,7 +148,7 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 	GLOB.schizohelps += src
 	if(timeout)
 		QDEL_IN(src, timeout)
-	
+
 /datum/schizohelp/Destroy(force)
 	. = ..()
 	owner = null
