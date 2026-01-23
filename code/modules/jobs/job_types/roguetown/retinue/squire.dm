@@ -147,14 +147,14 @@
 	)
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("Iron Sword","Cudgel",)
+		var/weapons = list("Training Sword","Club",)
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("Training sword")
+			if("Training Sword")
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/long/training
-			if("Cudgel")
+			if("Club")
 				beltr = /obj/item/rogueweapon/mace/woodclub
 	if(H.mind)
 		SStreasury.give_money_account(ECONOMIC_WORKING_CLASS, H, "Savings.")
