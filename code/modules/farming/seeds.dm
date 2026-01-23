@@ -248,4 +248,4 @@
 
 /obj/item/seeds/eggplant
 	seed_identity = "eggplant seeds"
-	plant_def_type = /datum/plant_def/eggplant
+	plant_def_type = /datum/plant_def/bush/eggplant
