@@ -110,7 +110,7 @@
 		/datum/skill/labor/farming = SKILL_LEVEL_APPRENTICE,
 	)
 
-/datum/outfit/job/roguetown/mercenary/blackoak/ranger
+/datum/outfit/job/roguetown/mercenary/blackoak_ranger
 	allowed_patrons = list(/datum/patron/divine/dendor)
 
 /datum/outfit/job/roguetown/mercenary/blackoak_ranger/pre_equip(mob/living/carbon/human/H)
