@@ -57,9 +57,10 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 	if(QDELETED(schizo))
 		to_chat(src, span_warning("This meditation can no longer be answered..."))
 		return
-//	if(schizo.owner == src.mob)
-//		to_chat(src, span_warning("I can't answer my own meditation!"))
-//		return
+	if(schizo.owner == src.mob)
+		to_chat(src, span_warning("I can't answer my own meditation!"))
+		return
+
 	var/list/openers = list(
 		"(No opening)",
 		"Good question!,",
@@ -68,6 +69,7 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 		"Left Kidney tumor here,",
 		"Dearest Monarch",
 		"Thus shall it be:",
+		"What are you even talking about? Just",
 		"Simply get better.",
 		"Aim for their weakest point",
 		"Try",
@@ -79,10 +81,13 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 		"Try East",
 		"Try West",
 		"Skelelon!",
-		"Grab thyne tool,"
+		"Grab thyne tool,",
+		"Escalate appropriately and try",
+		"Don't give up!",
+		"Take inventory of your role",
 	)
 	var/list/directives = list(
-		"for a hidden location,",
+		"looking for a hidden location,",
 		"the Middle Mouse Button",
 		"the Right Mouse Button",
 		"hitting over the head with rocks",
@@ -91,26 +96,33 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 		"in the Town of Azuria,",
 		"retreat and regroup",
 		"in the Azurian Library",
+		"of the Town,",
 		"watch your surroundings",
 		"ask again with details",
 		"consult the guides",
 		"practice before the trial",
 		"ENDURE through it. ",
-		"Skelelon!"
+		"Skelelon!",
+		"looking in the Discord",
+		"check the Holiest of Wikis,",
+
 	)
 	var/list/closers = list(
 		"(No closing)",
 		"may be the answer",
 		"and have fun!",
-		"and look carefully.",
+		"and look carefully...",
 		"and use thyne Noccian wits.",
 		"Use thyne Zizoan determination.",
-		"and use it upon the terrain",
+		"and use it upon the terrain.",
 		"do as Graggar would do.",
-		"and spend all your money on the XYLIX'S FORTUNE.",
-		"Purity Afloat",
+		"do as Dendor would.",
+		". Spend all your money on the XYLIX'S FORTUNE.",
+		"Purity Afloat.",
 		"Skelelon!",
-		"PROGRESS AFLOAT, NYEHEHE"
+		"PROGRESS AFLOAT, NYEHEHE.",
+		"but be careful!",
+		"and then think carefully."
 	)
 	var/opener = input("Compose your response: choose an opening.", "Mentorhelp Response") in openers
 	if(!opener)
