@@ -105,7 +105,8 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 		"Skelelon!",
 		"looking in the Discord",
 		"check the Holiest of Wikis,",
-
+		"Unfortunately not.",
+		"Thankfully no."
 	)
 	var/list/closers = list(
 		"(No closing)",
