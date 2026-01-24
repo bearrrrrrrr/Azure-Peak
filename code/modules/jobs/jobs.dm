@@ -80,7 +80,6 @@ GLOBAL_LIST_INIT(leadership_positions, list( // Used for boldening text primaril
 
 GLOBAL_LIST_INIT(regency_positions, list( // Used to determine elligibility for Regency
 	"Consort",
-	"Prince",
 	"Hand",
 	"Steward",
 	"Councillor",
