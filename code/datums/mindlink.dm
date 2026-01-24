@@ -29,11 +29,12 @@ GLOBAL_LIST_EMPTY(mindlinks)
 	// Check for the ,y prefix
 	if(findtext(message, ",y", 1, 3))
 		message = trim(copytext(message, 3))
+		message = span_centcomradio("[message]")
 		var/mob/living/recipient = (speaker == owner ? target : owner)
 		
-		to_chat(speaker, span_purple("You project your thoughts to [recipient]: \"[message]\""))
-		to_chat(recipient, span_purple("[speaker] projects their thoughts to you: \"[message]\""))
-		recipient.playsound_local(recipient, 'sound/magic/message.ogg', 100)
+		var/audible_message = "The voice of [speaker] echoes, \"<i>[message]</i>\"."
+		recipient.audible_message(audible_message, runechat_message = message, is_emote = FALSE)
+		playsound(recipient, 'sound/magic/mindlink.ogg', 100, TRUE)
+		playsound(speaker, 'sound/magic/mindlink.ogg', 100, TRUE)
+		speech_args[SPEECH_MESSAGE] = message
 		speaker.log_talk(message, LOG_SAY, tag="mindlink (to [recipient])")
-		
-		speech_args[SPEECH_MESSAGE] = null // Prevent the normal speech from happening

@@ -4,10 +4,10 @@
 	clothes_req = FALSE
 	overlay_state = "mindlink"
 	associated_skill = /datum/skill/magic/arcane
-	cost = 3
+	cost = 2
 	xp_gain = TRUE
 	recharge_time = 3 MINUTES
-	spell_tier = 3
+	spell_tier = 2
 	invocations = list("Mens Nexu")
 	invocation_type = "whisper"
 
