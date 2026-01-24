@@ -292,10 +292,8 @@
 			owner.add_stress(/datum/stressevent/soulchurnerhorror)
 		for (var/mob/living/carbon/human/H in hearers(7, owner))
 			if (!H.client)
-				to_chat(H, "No client")
 				continue
 			if(HAS_TRAIT(H, TRAIT_INQUISITION))
-				to_chat(H, "Testing, works")
 				H.apply_status_effect(/datum/status_effect/buff/churnerprotection)
 
 /*
