@@ -23,6 +23,10 @@ GLOBAL_LIST_INIT(virtue_mount_choices_noble, (list(
 	list("fogbeast stallion", /mob/living/simple_animal/hostile/retaliate/rogue/fogbeast/male/tame/saddled),
 )))
 
+GLOBAL_LIST_INIT(virtue_mount_choices_anthrax, (list(
+	list("giant spider", /mob/living/simple_animal/hostile/retaliate/rogue/drider/tame/saddled),
+)))
+
 /datum/stressevent/precious_mob_died
 	timer = INFINITY
 	stressadd = 10
@@ -70,6 +74,9 @@ GLOBAL_LIST_INIT(virtue_mount_choices_noble, (list(
 	if (HAS_TRAIT(user, TRAIT_NOBLE))
 		to_chat(user, span_info("As an anointed noble, your steed can also come from pedigree stock."))
 		mount_choices += GLOB.virtue_mount_choices_noble
+	if (HAS_TRAIT(user, TRAIT_ANTHRAXI))
+		to_chat(user, span_info("As a Drow, you are skilled in handling giant spiders of the Underdark."))
+		mount_choices += GLOB.virtue_mount_choices_anthrax
 
 	for(var/i = 1, i <= mount_choices.len, i++)
 		var/mob/living/simple_animal/honse
