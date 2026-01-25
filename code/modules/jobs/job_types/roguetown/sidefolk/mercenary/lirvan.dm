@@ -40,3 +40,62 @@
 		/datum/skill/combat/staves = SKILL_LEVEL_EXPERT //awww yeah
 	)
 	extra_context = "This subclass is race-limited to: Drakian, Zardman, and Kobold. This subclass locks you to Matthios-worship."
+
+/datum/outfit/job/roguetown/mercenary/lirvanmerc/pre_equip(mob/living/carbon/human/H)
+	..()
+
+	wrists = /obj/item/clothing/wrists/roguetown/bracers
+	belt = /obj/item/storage/belt/rogue/leather
+	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
+	neck = /obj/item/clothing/neck/roguetown/fencerguard
+	shirt = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/lirvas
+	head = /obj/item/clothing/head/roguetown/helmet/otavan
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/otavan
+	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan
+	shoes = /obj/item/clothing/shoes/roguetown/boots/otavan
+	gloves = /obj/item/clothing/gloves/roguetown/otavan
+	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backl = /obj/item/rogueweapon/shield/tower/metal
+	backpack_contents = list(
+		/obj/item/roguekey/mercenary = 1,
+		/obj/item/flashlight/flare/torch = 1,
+		)
+
+	H.merctype = 16 //literally no idea what this does
+
+
+
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/lirvas
+	name = "hardened scales"
+	repairmsg_begin = "My scales harden and begin mending."
+	repairmsg_continue = "Golden light seeps 'tween myne mending scales."
+	repairmsg_stop = "The onslaught stops my scales' regeneration!"
+	repairmsg_end = "My scales are as strong and stiff as mammon once more!"
+
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/lirvas/Destroy() //this shouldn't happen, but just in case.....though maybe it'd be more sovl if it didn't...?
+	remove_broken_scales_buff()
+	return ..()
+
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/lirvas/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir, armor_penetration)
+	var/was_intact = obj_integrity > 0
+	. = ..()
+	if(was_intact && obj_integrity <= 0)
+		apply_broken_scales_buff()
+
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/lirvas/armour_regen() //i...hope this works??
+	remove_broken_scales_buff()
+	return ..()
+
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/lirvas/proc/apply_broken_scales_buff()
+	if(!ishuman(loc))
+		return
+	var/mob/living/carbon/human/H = loc
+	if(!H.has_status_effect(/datum/status_effect/buff/lirvan_broken_scales))
+		H.apply_status_effect(/datum/status_effect/buff/lirvan_broken_scales)
+
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/lirvas/proc/remove_broken_scales_buff()
+	if(!ishuman(loc))
+		return
+	var/mob/living/carbon/human/H = loc
+	if(H.has_status_effect(/datum/status_effect/buff/lirvan_broken_scales))
+		H.remove_status_effect(/datum/status_effect/buff/lirvan_broken_scales)

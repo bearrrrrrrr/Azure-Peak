@@ -2123,3 +2123,15 @@
 	. = ..()
 	if(!istype(owner.get_active_held_item(), held_dagger))
 		owner.remove_status_effect(/datum/status_effect/buff/dagger_boost)
+
+// special lirvas dragonskin buffs
+/datum/status_effect/buff/lirvan_broken_scales
+	id = "lirvan_broken_scales"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/lirvan_broken_scales
+	effectedstats = list(STATKEY_SPD = 4, STATKEY_STR = -4)
+	duration = -1
+
+/atom/movable/screen/alert/status_effect/buff/lirvan_broken_scales
+	name = "Broken Scales"
+	desc = "My natural defenses are gone! I am lighter, but far weaker."
+	icon_state = "buff"
