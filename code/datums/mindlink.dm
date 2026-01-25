@@ -48,7 +48,7 @@ GLOBAL_LIST_EMPTY(mindlinks)
 		var/mob/living/recipient = (speaker == owner ? target : owner)
 		
 		var/audible_message = span_small("The voice of [speaker] echoes, \"<i>[message]</i>\".")
-		recipient.audible_message(audible_message, runechat_message = message, custom_spans = list("mindlink", "italic", "small"))
+		recipient.audible_message(audible_message, runechat_message = message, custom_spans = list("mindlink", "italic"))
 		playsound(recipient, 'sound/magic/mindlink.ogg', 100, TRUE)
 		playsound(speaker, 'sound/magic/mindlink.ogg', 100, TRUE)
 		speech_args[SPEECH_MESSAGE] = message
