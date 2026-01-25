@@ -41,7 +41,7 @@
 		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,
 
 	)
-	extra_context = "This subclass is race-limited to: Dark Elves Only."
+	extra_context = "This subclass is race-limited to: Dark Elves Only. Chooses either free Saddleborn virtue with access to Drider Spider mount, or +1 to Athlethics level."
 
 /datum/outfit/job/roguetown/mercenary/anthrax/pre_equip(mob/living/carbon/human/H)
 	..()
