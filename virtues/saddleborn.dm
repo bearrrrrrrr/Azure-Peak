@@ -114,7 +114,10 @@ GLOBAL_LIST_INIT(virtue_mount_choices_anthrax, (list(
 	playsound(user, 'sound/magic/saddleborn-call.ogg', 150, FALSE, 5)
 	if (!user.buckled)
 		the_real_honse.buckle_mob(user, TRUE)
-		playsound(the_real_honse, 'sound/magic/saddleborn-summoned.ogg', 100, FALSE, 2)
+		if(istype(the_real_honse, /mob/living/simple_animal/hostile/retaliate/rogue/drider/tame/saddled))
+			playsound(the_real_honse, 'sound/vo/mobs/spider/speak (3).ogg', 100, FALSE, 2)
+		else
+			playsound(the_real_honse, 'sound/magic/saddleborn-summoned.ogg', 100, FALSE, 2)
 
 	// give us all the saddleborn summon/send-away spells and all that jazz
 	user.AddSpell(new /obj/effect/proc_holder/spell/self/saddleborn/sendaway)
@@ -276,7 +279,10 @@ GLOBAL_LIST_INIT(virtue_mount_choices_anthrax, (list(
 		honse.forceMove(user.loc)
 		if (!user.buckled)
 			honse.buckle_mob(user, TRUE)
-		playsound(honse, 'sound/magic/saddleborn-summoned.ogg', 100, FALSE, 2)
+		if(istype(honse, /mob/living/simple_animal/hostile/retaliate/rogue/drider/tame/saddled))
+			playsound(honse, 'sound/vo/mobs/spider/speak (3).ogg', 100, FALSE, 2)
+		else
+			playsound(honse, 'sound/magic/saddleborn-summoned.ogg', 100, FALSE, 2)
 
 		if (dangerous_summon) // the horse dragged some attention uh-oh
 			if (!user.goodluck(10)) // every point of fortune above 10 gives us a 10% chance to not summon
