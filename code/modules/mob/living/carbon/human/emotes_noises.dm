@@ -469,3 +469,21 @@
 	else
 		to_chat(usr, span_warning("Your back doesn't do that"))
 		return
+
+/datum/emote/living/yip
+	key = "yip"
+	key_third_person = "yips"
+	message = "yips!"
+	emote_type = EMOTE_AUDIBLE
+	message_muffled = "makes a muffled yip!"
+	is_animal = TRUE
+	show_runechat = FALSE
+
+/mob/living/carbon/human/verb/emote_yip()
+	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
+		set name = "Yip"
+		set category = "Wildtongue"
+		emote("flutter", intentional = TRUE)
+	else
+		to_chat(usr, span_warning("Your tongue doesn't do that"))
+		return
