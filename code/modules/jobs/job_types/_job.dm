@@ -249,6 +249,9 @@
 
 		to_chat(M, span_notice("Rising early, you made sure to pack a pouch of coins in your stash and eat a hearty breakfast before starting your day. A true TRIUMPH!"))
 
+	if(HAS_TRAIT(H, TRAIT_NOHUNGER))
+		H.hydration = 1000
+
 	if(H.islatejoin && announce_latejoin)
 		var/used_title = display_title || title
 		if((H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F) && f_title)
