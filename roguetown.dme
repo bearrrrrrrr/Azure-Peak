@@ -1830,6 +1830,7 @@
 #include "code\modules\jobs\job_types\roguetown\sidefolk\mercenary\gronnheavy.dm"
 #include "code\modules\jobs\job_types\roguetown\sidefolk\mercenary\grudgebearer.dm"
 #include "code\modules\jobs\job_types\roguetown\sidefolk\mercenary\hangyaku.dm"
+#include "code\modules\jobs\job_types\roguetown\sidefolk\mercenary\lirvan.dm"
 #include "code\modules\jobs\job_types\roguetown\sidefolk\mercenary\routier.dm"
 #include "code\modules\jobs\job_types\roguetown\sidefolk\mercenary\rumaclan.dm"
 #include "code\modules\jobs\job_types\roguetown\sidefolk\mercenary\seonjang.dm"
