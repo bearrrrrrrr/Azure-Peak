@@ -480,10 +480,82 @@
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_yip()
-	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
+	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/lizard))
 		set name = "Yip"
 		set category = "Wildtongue"
-		emote("flutter", intentional = TRUE)
+		emote("yip", intentional = TRUE)
 	else
 		to_chat(usr, span_warning("Your tongue doesn't do that"))
 		return
+
+/datum/emote/living/lizard_bellow
+	key = "bellow"
+	key_third_person = "bellows"
+	message = "bellows!"
+	emote_type = EMOTE_AUDIBLE
+	message_muffled = "makes a muffled bellow!"
+	is_animal = TRUE
+	show_runechat = FALSE
+
+/mob/living/carbon/human/verb/emote_lizard_bellow()
+	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/lizard))
+		set name = "LizBellow"
+		set category = "Wildtongue"
+		emote("bellow", intentional = TRUE)
+	else
+		to_chat(usr, span_warning("Your tongue doesn't do that"))
+		return
+
+/datum/emote/living/lizard_hiss
+	key = "hiss"
+	key_third_person = "hisses"
+	message = "hisses!"
+	emote_type = EMOTE_AUDIBLE
+	message_muffled = "makes a muffled hiss!"
+	is_animal = TRUE
+	show_runechat = FALSE
+
+/mob/living/carbon/human/verb/emote_lizard_hiss()
+	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/lizard))
+		set name = "LizHiss"
+		set category = "Wildtongue"
+		emote("hiss", intentional = TRUE)
+	else
+		to_chat(usr, span_warning("Your tongue doesn't do that"))
+		return
+
+/datum/emote/living/lizard_squeal
+	key = "squeal"
+	key_third_person = "squeals"
+	message = "squeals!"
+	emote_type = EMOTE_AUDIBLE
+	message_muffled = "makes a muffled squeal!"
+	is_animal = TRUE
+	show_runechat = FALSE
+
+/mob/living/carbon/human/verb/emote_lizard_squeal()
+	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/lizard))
+		set name = "LizSqueal"
+		set category = "Wildtongue"
+		emote("squeal", intentional = TRUE)
+	else
+		to_chat(usr, span_warning("Your tongue doesn't do that"))
+		return
+
+/datum/emote/living/emote_lizard_thump
+	key = "thump"
+	key_third_person = "squeals"
+	message = "thumps!"
+	emote_type = EMOTE_VISIBLE
+	show_runechat = FALSE
+	is_animal = TRUE
+
+/mob/living/carbon/human/verb/emote_lizard_thump()
+	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/lizard))
+		set name = "LizThump"
+		set category = "Wildtongue"
+		emote("thump", intentional = TRUE)
+	else
+		to_chat(usr, span_warning("Your tongue doesn't do that"))
+		return
+
