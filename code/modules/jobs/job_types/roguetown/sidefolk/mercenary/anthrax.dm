@@ -71,7 +71,7 @@
 		var/ridingchoice = input(H, "Choose your faith", "FAITH") as anything in riding
 		switch(ridingchoice)
 			if("I'm a spider rider (your pet with you)")
-				apply_virtue(H, /datum/virtue/utility/riding)
+				apply_virtue(H, new /datum/virtue/utility/riding)
 			if("I walk on my legs (+1 for athletics)")
 				H.adjust_skillrank_up_to(/datum/skill/misc/athletics, SKILL_LEVEL_MASTER, TRUE)		
 
