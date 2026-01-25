@@ -24,7 +24,7 @@ GLOBAL_LIST_INIT(virtue_mount_choices_noble, (list(
 )))
 
 GLOBAL_LIST_INIT(virtue_mount_choices_anthrax, (list(
-	list("giant spider", /mob/living/simple_animal/hostile/retaliate/rogue/drider/tame/saddled),
+	list("drider spider", /mob/living/simple_animal/hostile/retaliate/rogue/drider/tame/saddled),
 )))
 
 /datum/stressevent/precious_mob_died
