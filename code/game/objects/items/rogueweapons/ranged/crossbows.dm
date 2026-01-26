@@ -59,7 +59,7 @@
 	basetime = 20
 
 /datum/intent/shoot/crossbow/can_charge(atom/clicked_object)
-	if(mastermob.client.last_cooldown_warn + 2 < world.time)
+	if(mastermob.client.last_cooldown_warn + 10 > world.time)
 		to_chat(mastermob, span_warning("I'm not ready to do that yet!"))
 		mastermob.client.last_cooldown_warn = world.time
 		return FALSE
@@ -102,7 +102,7 @@
 	chargedrain = 0
 
 /datum/intent/arc/crossbow/can_charge(atom/clicked_object)
-	if(mastermob.client.last_cooldown_warn + 2 < world.time)
+	if(mastermob.client.last_cooldown_warn + 10 > world.time)
 		to_chat(mastermob, span_warning("I'm not ready to do that yet!"))
 		mastermob.client.last_cooldown_warn = world.time
 		return FALSE
