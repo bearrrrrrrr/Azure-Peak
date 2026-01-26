@@ -59,10 +59,6 @@
 	basetime = 20
 
 /datum/intent/shoot/crossbow/can_charge(atom/clicked_object)
-	if(mastermob.client.last_cooldown_warn + 10 > world.time)
-		to_chat(mastermob, span_warning("I'm not ready to do that yet!"))
-		mastermob.client.last_cooldown_warn = world.time
-		return FALSE
 	if(mastermob && masteritem)
 		var/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/c_bow = masteritem
 		if(mastermob.get_num_arms(FALSE) < 2 && !c_bow.onehanded || mastermob.get_inactive_held_item() && !c_bow.onehanded)
@@ -102,10 +98,6 @@
 	chargedrain = 0
 
 /datum/intent/arc/crossbow/can_charge(atom/clicked_object)
-	if(mastermob.client.last_cooldown_warn + 10 > world.time)
-		to_chat(mastermob, span_warning("I'm not ready to do that yet!"))
-		mastermob.client.last_cooldown_warn = world.time
-		return FALSE
 	if(mastermob && masteritem)
 		var/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/c_bow = masteritem
 		if(mastermob.get_num_arms(FALSE) < 2 && !c_bow.onehanded || mastermob.get_inactive_held_item() && !c_bow.onehanded)
