@@ -52,6 +52,11 @@
 	desc = "A maille shirt fashioned from hundreds of interlinked steel rings; lighter than its compatriots, yet reinforced with the presence of a besilked underjacket. Though fragile, it is a coveted article of nobility. When worn beneath a silk blouse, it can thwart an unsuspecting assassin's blow."
 	armor_class = ARMOR_CLASS_LIGHT //Why the hell didn't I just do this in the first place? This makes a lot more sense, in hindsight.
 
+/obj/item/clothing/suit/roguetown/armor/chainmail/light/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
+	AddComponent(/datum/component/armour_filtering/negative, TRAIT_HONORBOUND)
+
 //HAUBERK//
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
