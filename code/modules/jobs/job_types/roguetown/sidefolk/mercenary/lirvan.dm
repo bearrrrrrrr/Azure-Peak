@@ -107,7 +107,8 @@ Second, a self-buff spell that buffs them depending on their total wealth. I wou
 	if(H.has_status_effect(/datum/status_effect/buff/lirvan_broken_scales))
 		H.remove_status_effect(/datum/status_effect/buff/lirvan_broken_scales)
 
-//
+
+#define LIRVAN_BLING_FILTER "lirvan_titheaura"
 
 /proc/get_moni_value(atom/movable/movable)
 	var/wealth = 0
@@ -141,6 +142,7 @@ Second, a self-buff spell that buffs them depending on their total wealth. I wou
 	name = "Mammon's Bulwark"
 	desc = "My carried wealth hardens body and will."
 	icon_state = "buff"
+	var/outline_colour = "#f5d96c"
 
 /datum/status_effect/buff/lirvan_tithe
 	id = "lirvan_tithe"
@@ -153,7 +155,9 @@ Second, a self-buff spell that buffs them depending on their total wealth. I wou
 	update_effects()
 	. = ..()
 	if(.)
-		to_chat(owner, span_notice("My wealth answers my call."))
+		var/filter = owner.get_filter(LIRVAN_BLING_FILTER)
+			owner.add_filter(LIRVAN_BLING_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 120, "size" = 1))
+		to_chat(owner, span_notice("My wealth answers my call. All [src.wealth_value] pieces of it!"))
 
 /datum/status_effect/buff/lirvan_tithe/on_remove()
 	. = ..()
