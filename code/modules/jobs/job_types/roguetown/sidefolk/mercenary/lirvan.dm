@@ -11,6 +11,7 @@
 	class_select_category = CLASS_CAT_RACIAL
 	category_tags = list(CTAG_MERCENARY)
 	traits_applied = list(TRAIT_SEEPRICES, TRAIT_MEDIUMARMOR)
+	cmode_music = 'sound/music/combat_matthios.ogg'
 
 	subclass_stats = list(
 		STATKEY_STR = 1, //poopy adv-tier stats, the majority of it will be via selfbuff
@@ -40,13 +41,13 @@
 /datum/outfit/job/roguetown/mercenary/lirvanmerc/pre_equip(mob/living/carbon/human/H)
 	..()
 
-	wrists = /obj/item/clothing/wrists/roguetown/bracers
-	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/jackchain
+	belt = /obj/item/storage/belt/rogue/leather/plaquegold
+	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor //this kind of doesnt make sense but otherwise they'd start with like 10000 dollars total so
 	neck = /obj/item/clothing/neck/roguetown/fencerguard
-	shirt = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/lirvas
+	shirt = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas
 	head = /obj/item/clothing/head/roguetown/helmet/otavan
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/otavan
+	armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan
 	shoes = /obj/item/clothing/shoes/roguetown/boots/otavan
 	gloves = /obj/item/clothing/gloves/roguetown/otavan
@@ -58,6 +59,7 @@
 		)
 
 	H.merctype = 16 //literally no idea what this does
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/lirvan_tithe)
 
 
 /*                              ,---.
@@ -68,39 +70,42 @@
 `--'  `--' `--`--'`--'  `--'  .--.
                               '--'
 shitcode stuff below this point; first, their regenerating skin which gives them a buff when broken, which works fine.
-Second, a self-buff spell that buffs them depending on their total wealth. I would have liked this to ideally been just a thing they got passively, but I can't fucking code, so... */
+Second, a self-buff spell that buffs them depending on their total wealth including item sellvalue. I would have liked this to ideally been just a thing they got passively, but I can't fucking code, so... */
+
+/obj/item/clothing/neck/roguetown/gorget/steel/gold
+	name = "gold-plated gorget"
+	desc = "A series of steel plates designed to protect the neck, traditionally worn atop a jacket or cuirass. It bares a mammon-sized divet along its right flank; the certification of its 'proofedness' against a longbow's strike. This one is covered in a thin layer of gold."
+	color = "#f9a602"
 
 
-
-/obj/item/clothing/suit/roguetown/armor/regenerating/skin/lirvas
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas
 	name = "hardened scales"
 	repairmsg_begin = "My scales harden and begin mending."
 	repairmsg_continue = "Golden light seeps 'tween myne mending scales."
 	repairmsg_stop = "The onslaught stops my scales' regeneration!"
 	repairmsg_end = "My scales are as strong once more!"
 
-/obj/item/clothing/suit/roguetown/armor/regenerating/skin/lirvas/Destroy() //this shouldn't happen, but just in case.....though maybe it'd be more sovl if it didn't...?
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas/Destroy() //this shouldn't happen, but just in case.....though maybe it'd be more sovl if it didn't...?
 	remove_broken_scales_buff()
 	return ..()
 
-/obj/item/clothing/suit/roguetown/armor/regenerating/skin/lirvas/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir, armor_penetration)
-	var/was_intact = obj_integrity > 0
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir, armor_penetration)
 	. = ..()
-	if(was_intact && obj_integrity <= 0)
+	if(obj_integrity <= (initial(obj_integrity) * (0.11))) //UNBELIEVABLY SHIT CODE
 		apply_broken_scales_buff()
 
-/obj/item/clothing/suit/roguetown/armor/regenerating/skin/lirvas/armour_regen() //i...hope this works??
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas/armour_regen() //i...hope this works??
 	remove_broken_scales_buff()
 	return ..()
 
-/obj/item/clothing/suit/roguetown/armor/regenerating/skin/lirvas/proc/apply_broken_scales_buff()
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas/proc/apply_broken_scales_buff()
 	if(!ishuman(loc))
 		return
 	var/mob/living/carbon/human/H = loc
 	if(!H.has_status_effect(/datum/status_effect/buff/lirvan_broken_scales))
 		H.apply_status_effect(/datum/status_effect/buff/lirvan_broken_scales)
 
-/obj/item/clothing/suit/roguetown/armor/regenerating/skin/lirvas/proc/remove_broken_scales_buff()
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas/proc/remove_broken_scales_buff()
 	if(!ishuman(loc))
 		return
 	var/mob/living/carbon/human/H = loc
@@ -140,9 +145,8 @@ Second, a self-buff spell that buffs them depending on their total wealth. I wou
 
 /atom/movable/screen/alert/status_effect/buff/lirvan_tithe
 	name = "Mammon's Bulwark"
-	desc = "My carried wealth hardens body and will."
+	desc = "Briefly convert WEALTH to POWER, gaining stats based off of the total value of mammon, equipment, and jewelry on me. More POWER at 100, 200, 300, and 600 mammon."
 	icon_state = "buff"
-	var/outline_colour = "#f5d96c"
 
 /datum/status_effect/buff/lirvan_tithe
 	id = "lirvan_tithe"
@@ -150,18 +154,21 @@ Second, a self-buff spell that buffs them depending on their total wealth. I wou
 	status_type = STATUS_EFFECT_REFRESH
 	duration = 2 MINUTES
 	var/wealth_value = 0
+	var/outline_colour = "#f5d96c"
 
 /datum/status_effect/buff/lirvan_tithe/on_apply()
 	update_effects()
 	. = ..()
 	if(.)
 		var/filter = owner.get_filter(LIRVAN_BLING_FILTER)
+		if(!filter)
 			owner.add_filter(LIRVAN_BLING_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 120, "size" = 1))
-		to_chat(owner, span_notice("My wealth answers my call. All [src.wealth_value] pieces of it!"))
+		to_chat(owner, span_notice("WEALTH answers my call. Every single one of my [src.wealth_value] pieces of it."))
 
 /datum/status_effect/buff/lirvan_tithe/on_remove()
 	. = ..()
-	to_chat(owner, span_warning("The weight of my wealth grows quiet again."))
+	owner.remove_filter(LIRVAN_BLING_FILTER)
+	to_chat(owner, span_warning("POWER fades."))
 
 /datum/status_effect/buff/lirvan_tithe/proc/update_effects()
 	wealth_value = get_moni_value(owner)
