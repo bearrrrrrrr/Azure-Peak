@@ -193,6 +193,7 @@
 	user.visible_message(span_danger("[user] stares into [src], [user.p_their()] eyes rolling back into [user.p_their()] head."))
 	target.throw_alert("scryingeye", /atom/movable/screen/alert/scryingeye, override = TRUE)
 	addtimer(CALLBACK(S, TYPE_PROC_REF(/mob/dead/observer, reenter_corpse)), 8 SECONDS)
+	addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/, clear_alert), "scryingeye", TRUE), 8 SECONDS)
 	if(!target.stat)
 		if(target.STAPER >= 15)
 			if(target.mind)
