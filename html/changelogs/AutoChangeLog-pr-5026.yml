@@ -1,9 +1,0 @@
-author: "Ryan180602"
-delete-after: True
-changes:
-  - balance: "All non-wrestling classes are now capped to Jman wrestling roundstart."
-  - balance: "All wrestling classes have lost critres/nopainstun (if they had it)."
-  - balance: "Wretch Berserker / Adv Warrior gain IgnoreDamageSlowdown. They get their respective skin-armour."
-  - balance: "Otavan Repentant lost CritRes."
-  - balance: "Atgervi Shaman/Church Monk/Inq Disciple/MAA Bailiff gain Expert wrestling, now."
-  - balance: "Disciple's Skin is now +100 integrity. Berserker skin armour is leather-tier, same integrity/repair. Barbarian is half integrity, 5s more repair."
