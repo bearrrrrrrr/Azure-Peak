@@ -17,7 +17,7 @@
 		STATKEY_STR = 1, //poopy adv-tier stats, the majority of it will be via selfbuff
 		STATKEY_INT = 1,
 		STATKEY_CON = 1,
-		STATKEY_WIL = 1,
+		STATKEY_WIL = 2,
 		STATKEY_PER = 1,
 		STATKEY_SPD = -2
 	)
@@ -33,23 +33,37 @@
 		/datum/skill/craft/crafting = SKILL_LEVEL_NOVICE,
 		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/polearms = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/swords = SKILL_LEVEL_EXPERT,,
 		/datum/skill/combat/staves = SKILL_LEVEL_EXPERT //awww yeah
 	)
 	extra_context = "This subclass is race-limited to: Drakian, Zardman, and Kobold. This subclass locks you to Matthios or Astrata-worship."
 
+/datum/outfit/job/roguetown/mercenary/lirvanmerc
+	allowed_patrons = list(/datum/patron/divine/astrata, /datum/patron/inhumen/matthios)
+
 /datum/outfit/job/roguetown/mercenary/lirvanmerc/pre_equip(mob/living/carbon/human/H)
 	..()
 
+	if(H.mind)
+		var/list/patron_choices = list("The ORDER and MONARCHY of Astrata", "The WEALTH and POWER of Matthios")
+		var/patron_choice = input(H, "What do you worship?", "Choose a Patron", "The WEALTH and POWER of Matthios") as anything in patron_choices
+		switch(patron_choice)
+			if("The ORDER and MONARCHY of Astrata")
+				H.set_patron(/datum/patron/divine/astrata)
+				H.mind?.AddSpell(new /obj/effect/proc_holder/spell/invoked/ignition)
+			if("The WEALTH and POWER of Matthios")
+				H.set_patron(/datum/patron/inhumen/matthios)
+				H.mind?.AddSpell(new /obj/effect/proc_holder/spell/invoked/transact)
+
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/jackchain
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor //this kind of doesnt make sense but otherwise they'd start with like 10000 dollars total so
-	neck = /obj/item/clothing/neck/roguetown/fencerguard
+	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor //this kind of doesnt make sense but otherwise they'd start with like a billion dollars total so
+	neck = /obj/item/clothing/neck/roguetown/gorget/steel/gold
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	head = /obj/item/clothing/head/roguetown/helmet/otavan
 	armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas
-	pants = /obj/item/clothing/under/roguetown/chainlegs
-	shoes = /obj/item/clothing/shoes/roguetown/boots/otavan
+	pants = /obj/item/clothing/under/roguetown/chainlegs/kilt
+	shoes = /obj/item/clothing/shoes/roguetown/sandals
 	gloves = /obj/item/clothing/gloves/roguetown/otavan
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backl = /obj/item/rogueweapon/scabbard/gwstrap
@@ -79,13 +93,15 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 	color = "#f9a602"
 
 
-/obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas //high armor,  U N G O D L Y  high regen time
 	name = "hardened scales"
-	desc = "Scales hardened by Lirvan Matthiosan rituo.
+	desc = "Scales hardened by Lirvan rituo. When broken, my body crumbles, but the lack of encumberance is wildly freeing. </br> </br> Who is more worthy to inherit the wealth of the Sun than those who fly closest?"
 	repairmsg_begin = "My scales harden and begin mending."
 	repairmsg_continue = "Golden light seeps 'tween myne mending scales."
 	repairmsg_stop = "The onslaught stops my scales' regeneration!"
-	repairmsg_end = "My scales are as strong once more!"
+	repairmsg_end = "My scales are as strong as stone once more!"
+	repair_time = 120 SECONDS
+	armor_class = ARMOR_CLASS_MEDIUM
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas/Destroy() //this shouldn't happen, but just in case.....though maybe it'd be more sovl if it didn't...?
 	remove_broken_scales_buff()
@@ -152,6 +168,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 
 /datum/status_effect/buff/lirvan_tithe
 	id = "lirvan_tithe"
+	examine_text = "<font color='red'>SUBJECTPRONOUN radiates POWER.</font>"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/lirvan_tithe
 	status_type = STATUS_EFFECT_REFRESH
 	duration = 2 MINUTES
@@ -177,10 +194,12 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 	if(wealth_value < 100)
 		effectedstats = list(STATKEY_CON = 1, STATKEY_WIL = 1)
 	else if(wealth_value < 200)
-		effectedstats = list(STATKEY_STR = 1, STATKEY_CON = 1, STATKEY_WIL = 1)
+		effectedstats = list(STATKEY_STR = 1, STATKEY_CON = 1, STATKEY_WIL = 2, STATKEY_SPD = 1)
 	else if(wealth_value < 300)
-		effectedstats = list(STATKEY_STR = 1, STATKEY_CON = 1, STATKEY_WIL = 3)
+		effectedstats = list(STATKEY_STR = 2, STATKEY_CON = 2, STATKEY_WIL = 3, STATKEY_SPD = 1)
 	else if(wealth_value < 600)
-		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 2, STATKEY_WIL = 4)
+		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 3, STATKEY_WIL = 4, STATKEY_SPD = 2)
 	else
-		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 2, STATKEY_WIL = 4)
+		effectedstats = list(STATKEY_STR = 4, STATKEY_CON = 4, STATKEY_WIL = 4, STATKEY_SPD = 2) //I'm hoping this doesn't happen often.
+
+#undef LIRVAN_BLING_FILTER

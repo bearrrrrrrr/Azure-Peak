@@ -2128,7 +2128,7 @@
 /datum/status_effect/buff/lirvan_broken_scales
 	id = "lirvan_broken_scales"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/lirvan_broken_scales
-	effectedstats = list(STATKEY_SPD = 4, STATKEY_STR = -4)
+	effectedstats = list(STATKEY_SPD = 6, STATKEY_STR = -6)
 	duration = -1
 
 /atom/movable/screen/alert/status_effect/buff/lirvan_broken_scales
