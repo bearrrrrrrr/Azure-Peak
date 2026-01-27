@@ -2048,6 +2048,7 @@
 #include "code\modules\mob\living\carbon\human\death.dm"
 #include "code\modules\mob\living\carbon\human\dummy.dm"
 #include "code\modules\mob\living\carbon\human\emote.dm"
+#include "code\modules\mob\living\carbon\human\emotes_noises.dm"
 #include "code\modules\mob\living\carbon\human\examine.dm"
 #include "code\modules\mob\living\carbon\human\examine_tgui.dm"
 #include "code\modules\mob\living\carbon\human\exercise.dm"

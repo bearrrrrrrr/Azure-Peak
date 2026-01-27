@@ -164,5 +164,12 @@
 				used = list('sound/vo/male/gen/moan (1).ogg','sound/vo/male/gen/moan (2).ogg','sound/vo/male/gen/moan (3).ogg')
 			if("sexmoanhvy")
 				used = list('sound/vo/male/gen/moan (1).ogg','sound/vo/male/gen/moan (2).ogg','sound/vo/male/gen/moan (3).ogg')
-
+			if("bellow")
+				used = list('sound/vo/LizardBellow.ogg')
+			if("hiss")
+				used = list('sound/vo/LizardHiss.ogg')
+			if("squeal")
+				used = list('sound/vo/LizardSqueal.ogg')
+			if("thump")
+				used = list('sound/vo/LizardThump.ogg')
 	return used

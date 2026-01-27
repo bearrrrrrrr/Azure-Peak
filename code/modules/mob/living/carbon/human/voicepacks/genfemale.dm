@@ -159,5 +159,12 @@
 				used = list('sound/vo/yip.ogg', 'sound/vo/yip2.ogg', 'sound/vo/yip3.ogg')
 			if("oink")
 				used = list('modular/Creechers/sound/pig1.ogg', 'modular/Creechers/sound/pig2.ogg')
-
+			if("bellow")
+				used = list('sound/vo/LizardBellow.ogg')
+			if("hiss")
+				used = list('sound/vo/LizardHiss.ogg')
+			if("squeal")
+				used = list('sound/vo/LizardSqueal.ogg')
+			if("thump")
+				used = list('sound/vo/LizardThump.ogg')
 	return used
