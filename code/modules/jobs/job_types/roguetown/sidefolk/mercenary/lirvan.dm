@@ -1,6 +1,6 @@
 /datum/advclass/mercenary/lirvanmerc
 	name = "Lirvan Tithebound"
-	tutorial = "Contrary to the name, you're not indebted. Far from it. Lirvas is well-known for its economically aggressive brand of Matthiosanism, and the Tithebound are no exception to this opportunistic mammon-making. With tough scales reinforced by Matthiosan rituo, and solid armor, stand 'gainst the tide, and turn thyne WEALTH to POWER."
+	tutorial = "Contrary to the name, you're not indebted. Far from it. Lirvas is well-known for its economically aggressive brand of Matthiosanism, and the Tithebound are no exception to this opportunistic mammon-making. With tough scales reinforced by Matthiosan rituo, and solid armor, stand 'gainst the tide, and turn thyne WEALTH to POWER. A few rare Tithebound are more aligned towards Astrata."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/dracon,
@@ -36,7 +36,7 @@
 		/datum/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/staves = SKILL_LEVEL_EXPERT //awww yeah
 	)
-	extra_context = "This subclass is race-limited to: Drakian, Zardman, and Kobold. This subclass locks you to Matthios-worship."
+	extra_context = "This subclass is race-limited to: Drakian, Zardman, and Kobold. This subclass locks you to Matthios or Astrata-worship."
 
 /datum/outfit/job/roguetown/mercenary/lirvanmerc/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -45,14 +45,15 @@
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor //this kind of doesnt make sense but otherwise they'd start with like 10000 dollars total so
 	neck = /obj/item/clothing/neck/roguetown/fencerguard
-	shirt = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	head = /obj/item/clothing/head/roguetown/helmet/otavan
 	armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas
-	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan
+	pants = /obj/item/clothing/under/roguetown/chainlegs
 	shoes = /obj/item/clothing/shoes/roguetown/boots/otavan
 	gloves = /obj/item/clothing/gloves/roguetown/otavan
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-	backl = /obj/item/rogueweapon/shield/tower/metal
+	backl = /obj/item/rogueweapon/scabbard/gwstrap
+	r_hand = /obj/item/rogueweapon/woodstaff/quarterstaff/steel
 	backpack_contents = list(
 		/obj/item/roguekey/mercenary = 1,
 		/obj/item/flashlight/flare/torch = 1,
@@ -80,6 +81,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas
 	name = "hardened scales"
+	desc = "Scales hardened by Lirvan Matthiosan rituo.
 	repairmsg_begin = "My scales harden and begin mending."
 	repairmsg_continue = "Golden light seeps 'tween myne mending scales."
 	repairmsg_stop = "The onslaught stops my scales' regeneration!"
@@ -129,8 +131,8 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 	return wealth
 
 /obj/effect/proc_holder/spell/self/lirvan_tithe
-	name = "Mammon's Bulwark"
-	desc = "Invoke Lirvan rites to draw strength from the wealth you carry."
+	name = "INVOKE"
+	desc = "Draw strength from the wealth you carry. Armor, jewelry, and raw mammon counted equally. More WEALTH means more POWER."
 	antimagic_allowed = TRUE
 	clothes_req = FALSE
 	recharge_time = 3 MINUTES
@@ -173,12 +175,12 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 /datum/status_effect/buff/lirvan_tithe/proc/update_effects()
 	wealth_value = get_moni_value(owner)
 	if(wealth_value < 100)
-		effectedstats = list(STATKEY_CON = 1)
+		effectedstats = list(STATKEY_CON = 1, STATKEY_WIL = 1)
 	else if(wealth_value < 200)
-		effectedstats = list(STATKEY_STR = 1, STATKEY_CON = 1)
+		effectedstats = list(STATKEY_STR = 1, STATKEY_CON = 1, STATKEY_WIL = 1)
 	else if(wealth_value < 300)
-		effectedstats = list(STATKEY_STR = 2, STATKEY_CON = 1, STATKEY_WIL = 1)
+		effectedstats = list(STATKEY_STR = 1, STATKEY_CON = 1, STATKEY_WIL = 3)
 	else if(wealth_value < 600)
-		effectedstats = list(STATKEY_STR = 2, STATKEY_CON = 2, STATKEY_WIL = 1)
+		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 2, STATKEY_WIL = 4)
 	else
-		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 2, STATKEY_WIL = 2)
+		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 2, STATKEY_WIL = 4)
