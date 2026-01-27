@@ -232,7 +232,7 @@
 	name = "bird filled bird-roast"
 	desc = "A plump bird, roasted perfection.. filled with another bird - what compelled you to make this? Psydon Weeps at your hubris."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat_meal.dmi'
-	icon_state = "roastchicken"
+	icon_state = "stuffedchicken"
 	eat_effect = /datum/status_effect/buff/mealbuff
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE*2)
 
