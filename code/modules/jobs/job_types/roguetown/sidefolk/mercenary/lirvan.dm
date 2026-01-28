@@ -44,17 +44,6 @@
 /datum/outfit/job/roguetown/mercenary/lirvanmerc/pre_equip(mob/living/carbon/human/H)
 	..()
 
-	if(H.mind)
-		var/list/patron_choices = list("The ORDER and MONARCHY of Astrata", "The WEALTH and POWER of Matthios")
-		var/patron_choice = input(H, "What do you worship?", "Choose a Patron", "The WEALTH and POWER of Matthios") as anything in patron_choices
-		switch(patron_choice)
-			if("The ORDER and MONARCHY of Astrata")
-				H.set_patron(/datum/patron/divine/astrata)
-				H.adjust_skillrank_up_to(/datum/skill/misc/reading, SKILL_LEVEL_EXPERT, TRUE) //idfk what astratans do man
-			if("The WEALTH and POWER of Matthios")
-				H.set_patron(/datum/patron/inhumen/matthios)
-				H.adjust_skillrank_up_to(/datum/skill/misc/athletics, SKILL_LEVEL_JOURNEYMAN, TRUE)
-
 	if(should_wear_femme_clothes(H))
 		shirt = /obj/item/clothing/suit/roguetown/shirt/desertbra //idk?
 
@@ -78,6 +67,16 @@
 	H.merctype = 16 //literally no idea what this does
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/lirvan_tithe)
 
+	if(H.mind)
+		var/list/patron_choices = list("The ORDER and MONARCHY of Astrata", "The WEALTH and POWER of Matthios")
+		var/patron_choice = input(H, "What do you worship?", "Choose a Patron", "The WEALTH and POWER of Matthios") as anything in patron_choices
+		switch(patron_choice)
+			if("The ORDER and MONARCHY of Astrata")
+				H.set_patron(/datum/patron/divine/astrata)
+				H.adjust_skillrank_up_to(/datum/skill/misc/reading, SKILL_LEVEL_EXPERT, TRUE) //idfk what astratans do man
+			if("The WEALTH and POWER of Matthios")
+				H.set_patron(/datum/patron/inhumen/matthios)
+				H.adjust_skillrank_up_to(/datum/skill/misc/athletics, SKILL_LEVEL_JOURNEYMAN, TRUE)
 
 /*                              ,---.
 ,--.  ,--.        ,--.  ,--.  |   |
@@ -108,8 +107,9 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 	repairmsg_continue = "Golden light seeps 'tween myne mending scales."
 	repairmsg_stop = "The onslaught stops my scales' regeneration!"
 	repairmsg_end = "My scales are as strong as stone once more!"
-	repair_time = 120 SECONDS
+	repair_time = 60 SECONDS
 	armor_class = ARMOR_CLASS_MEDIUM
+	armor = ARMOR_PLATE //scalemail equivalent and ensures it takes dmg last
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas/Destroy() //this shouldn't happen, but just in case.....though maybe it'd be more sovl if it didn't...?
 	remove_broken_scales_buff()

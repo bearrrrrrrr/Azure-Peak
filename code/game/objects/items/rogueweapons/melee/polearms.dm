@@ -1394,10 +1394,12 @@
 
 /obj/item/rogueweapon/woodstaff/quarterstaff/gold
 	name = "golden quarterstaff"
-	desc = "The astute may point out that this is a poor weapon. They would be correct. Gold, even low karat, is a poor material for a weapon. This weapon additionally manages to be doubly-sinned by having a heavy chunk of gold at the end. Practical? No. But it makes a statement."
+	desc = "The astute may point out that this staff is poorly designed. They would be correct. Gold, even low karat, is a bad material for a weapon. This one additionally manages to be doubly-sinned by having a heavy chunk of gold at the end. It's almost a polehammer. Practical? No. But it makes a statement."
 	icon_state = "quarterstaff_gold"
 	force = 22
 	force_wielded = 29
+	sellprice = 50
+	max_integrity = 125
 
 
 /obj/item/rogueweapon/spear/partizan
