@@ -17,8 +17,11 @@ SUBSYSTEM_DEF(rivers)
 	var/list/currentrun = src.currentrun
 
 	while(currentrun.len)
-		var/turf/open/water/river/thing = currentrun[currentrun.len]
+		var/turf/thing = currentrun[currentrun.len]
 		currentrun.len--
+		if(!istype(thing, /turf/open/water/river))
+			processing -= thing
+			continue
 		if(!QDELETED(thing))
 			thing.process_river()
 		else
@@ -29,3 +32,7 @@ SUBSYSTEM_DEF(rivers)
 /datum/controller/subsystem/rivers/Recover()
 	if (istype(SSrivers.processing))
 		processing = SSrivers.processing
+
+/turf/open/water/river/Destroy()
+	STOP_PROCESSING(SSrivers, src)
+	..()
