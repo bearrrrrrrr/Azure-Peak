@@ -49,13 +49,12 @@
 
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/jackchain
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor //this kind of doesnt make sense but otherwise they'd start with like a billion dollars total so
+	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	neck = /obj/item/clothing/neck/roguetown/gorget/steel/gold
-	head = /obj/item/clothing/head/roguetown/helmet/otavan
 	armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas
 	pants = /obj/item/clothing/under/roguetown/chainlegs/kilt
 	shoes = /obj/item/clothing/shoes/roguetown/sandals
-	gloves = /obj/item/clothing/gloves/roguetown/otavan
+	gloves = /obj/item/clothing/gloves/roguetown/angle
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backl = /obj/item/rogueweapon/scabbard/gwstrap
 	r_hand = /obj/item/rogueweapon/woodstaff/quarterstaff/gold
@@ -190,6 +189,8 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 		var/filter = owner.get_filter(LIRVAN_BLING_FILTER)
 		if(!filter)
 			owner.add_filter(LIRVAN_BLING_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 120, "size" = 1))
+		if(wealth_value < 100)
+			to_chat(owner, span_notice("WEALTH answers my call. Every single one of my- ONLY [src.wealth_value] MAMMON?!"))
 		to_chat(owner, span_notice("WEALTH answers my call. Every single one of my [src.wealth_value] pieces of it."))
 
 /datum/status_effect/buff/lirvan_tithe/on_remove()
@@ -203,9 +204,9 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 		effectedstats = list(STATKEY_CON = 1, STATKEY_WIL = 1)
 	else if(wealth_value < 200)
 		effectedstats = list(STATKEY_STR = 1, STATKEY_CON = 1, STATKEY_WIL = 2, STATKEY_SPD = 1)
-	else if(wealth_value < 300)
+	else if(wealth_value < 400)
 		effectedstats = list(STATKEY_STR = 2, STATKEY_CON = 2, STATKEY_WIL = 3, STATKEY_SPD = 1)
-	else if(wealth_value < 600)
+	else if(wealth_value < 800)
 		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 3, STATKEY_WIL = 4, STATKEY_SPD = 2)
 	else
 		effectedstats = list(STATKEY_STR = 4, STATKEY_CON = 4, STATKEY_WIL = 4, STATKEY_SPD = 2) //I'm hoping this doesn't happen often.
