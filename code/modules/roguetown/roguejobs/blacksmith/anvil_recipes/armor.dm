@@ -293,6 +293,13 @@
 	created_item = /obj/item/clothing/head/roguetown/helmet/horned
 	craftdiff = 2
 
+/datum/anvil_recipe/armor/iron/hoodstudded
+	name = "Hood, Studded Leather (+ Leather Hood)"
+	req_bar = /obj/item/ingot/iron
+	req_blade = /obj/item/blade/iron_plate
+	additional_items = list(/obj/item/clothing/head/roguetown/roguehood)
+	created_item = /obj/item/clothing/head/roguetown/roguehood/studded
+
 /datum/anvil_recipe/armor/iron/mask
 	name = "Mask, Iron"
 	req_bar = /obj/item/ingot/iron
