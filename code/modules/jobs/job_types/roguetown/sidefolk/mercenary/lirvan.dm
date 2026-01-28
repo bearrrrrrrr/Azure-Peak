@@ -17,7 +17,7 @@
 		STATKEY_STR = 1, //poopy adv-tier stats, the majority of it will be via selfbuff
 		STATKEY_INT = 1,
 		STATKEY_CON = 1,
-		STATKEY_WIL = 2,
+		STATKEY_WIL = 1,
 		STATKEY_PER = 1,
 		STATKEY_SPD = -2
 	)
@@ -25,7 +25,7 @@
 		/datum/skill/combat/maces = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/knives = SKILL_LEVEL_NOVICE,
+		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/reading = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/athletics = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/climbing = SKILL_LEVEL_NOVICE,
@@ -33,7 +33,7 @@
 		/datum/skill/craft/crafting = SKILL_LEVEL_NOVICE,
 		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/polearms = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/swords = SKILL_LEVEL_EXPERT,,
+		/datum/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN,,
 		/datum/skill/combat/staves = SKILL_LEVEL_EXPERT //awww yeah
 	)
 	extra_context = "This subclass is race-limited to: Drakian, Zardman, and Kobold. This subclass locks you to Matthios or Astrata-worship."
@@ -50,16 +50,18 @@
 		switch(patron_choice)
 			if("The ORDER and MONARCHY of Astrata")
 				H.set_patron(/datum/patron/divine/astrata)
-				H.mind?.AddSpell(new /obj/effect/proc_holder/spell/invoked/ignition)
+				H.adjust_skillrank_up_to(/datum/skill/misc/reading, SKILL_LEVEL_EXPERT, TRUE) //idfk what astratans do man
 			if("The WEALTH and POWER of Matthios")
 				H.set_patron(/datum/patron/inhumen/matthios)
-				H.mind?.AddSpell(new /obj/effect/proc_holder/spell/invoked/transact)
+				H.adjust_skillrank_up_to(/datum/skill/misc/athletics, SKILL_LEVEL_JOURNEYMAN, TRUE)
+
+	if(should_wear_femme_clothes(H))
+		shirt = /obj/item/clothing/suit/roguetown/shirt/desertbra //idk?
 
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/jackchain
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor //this kind of doesnt make sense but otherwise they'd start with like a billion dollars total so
 	neck = /obj/item/clothing/neck/roguetown/gorget/steel/gold
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	head = /obj/item/clothing/head/roguetown/helmet/otavan
 	armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas
 	pants = /obj/item/clothing/under/roguetown/chainlegs/kilt
@@ -67,7 +69,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/otavan
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backl = /obj/item/rogueweapon/scabbard/gwstrap
-	r_hand = /obj/item/rogueweapon/woodstaff/quarterstaff/steel
+	r_hand = /obj/item/rogueweapon/woodstaff/quarterstaff/gold
 	backpack_contents = list(
 		/obj/item/roguekey/mercenary = 1,
 		/obj/item/flashlight/flare/torch = 1,
@@ -87,11 +89,17 @@
 shitcode stuff below this point; first, their regenerating skin which gives them a buff when broken, which works fine.
 Second, a self-buff spell that buffs them depending on their total wealth including item sellvalue. I would have liked this to ideally been just a thing they got passively, but I can't fucking code, so... */
 
+
 /obj/item/clothing/neck/roguetown/gorget/steel/gold
 	name = "gold-plated gorget"
 	desc = "A series of steel plates designed to protect the neck, traditionally worn atop a jacket or cuirass. It bares a mammon-sized divet along its right flank; the certification of its 'proofedness' against a longbow's strike. This one is covered in a thin layer of gold."
 	color = "#f9a602"
 
+/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/lirvmerc
+	color = "#f9a602"
+
+/obj/item/clothing/under/roguetown/chainlegs/kilt
+	color = "#f9a602"
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas //high armor,  U N G O D L Y  high regen time
 	name = "hardened scales"
@@ -148,7 +156,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 
 /obj/effect/proc_holder/spell/self/lirvan_tithe
 	name = "INVOKE"
-	desc = "Draw strength from the wealth you carry. Armor, jewelry, and raw mammon counted equally. More WEALTH means more POWER."
+	desc = "Draw strength from the wealth you carry. Armor, jewelry, and raw mammon counted equally. More WEALTH means more POWER. More POWER at 100, 200, 300, and 600 mammon."
 	antimagic_allowed = TRUE
 	clothes_req = FALSE
 	recharge_time = 3 MINUTES

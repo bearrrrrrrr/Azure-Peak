@@ -1392,6 +1392,14 @@
 		added_def = 2,\
 	)
 
+/obj/item/rogueweapon/woodstaff/quarterstaff/gold
+	name = "golden quarterstaff"
+	desc = "The astute may point out that this is a poor weapon. They would be correct. Gold, even low karat, is a poor material for a weapon. This weapon additionally manages to be doubly-sinned by having a heavy chunk of gold at the end. Practical? No. But it makes a statement."
+	icon_state = "quarterstaff_gold"
+	force = 22
+	force_wielded = 29
+
+
 /obj/item/rogueweapon/spear/partizan
 	name = "partizan"
 	desc = "A reinforced spear-like polearm of disputed origin: A studded shaft fitted with a steel spearhead with protrusions to aid in parrying. An extremely recent invention that is seeing increasingly more usage in the Western lands."
