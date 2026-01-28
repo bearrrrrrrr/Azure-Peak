@@ -22,11 +22,13 @@ SUBSYSTEM_DEF(rivers)
 		if(!istype(thing, /turf/open/water/river))
 			processing -= thing
 			continue
-		if(!QDELETED(thing))
-			thing.process_river()
+		var/turf/open/water/river/river = thing
+		if(!QDELETED(river))
+			river.process_river()
 		else
-			processing -= thing
-		if (MC_TICK_CHECK)
+			processing -= river
+
+		if(MC_TICK_CHECK)
 			return
 
 /datum/controller/subsystem/rivers/Recover()
