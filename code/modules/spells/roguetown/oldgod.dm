@@ -505,7 +505,7 @@
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	sound = null
-	invocations = list(span_blue("quietly recites a lesser psalm, steadying their mind."))
+	invocations = list(span_blue("quietly recites a lesser psalm, soothing their pains."))
 	invocation_type = "emote"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = FALSE
@@ -610,7 +610,7 @@
 	range = 2
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
-	invocations = list(span_blue("quietly recites a greater psalm, steadying their mind."))
+	invocations = list(span_blue("quietly recites a greater psalm, soothing their pains."))
 	invocation_type = "emote"
 	sound = null
 	associated_skill = /datum/skill/magic/holy
