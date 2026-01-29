@@ -5,8 +5,6 @@
 			used = list('sound/vo/female/haughty/giggle (1).ogg', 'sound/vo/female/haughty/giggle (2).ogg')
 		if("sigh")
 			used = list('sound/vo/female/haughty/sigh (1).ogg', 'sound/vo/female/haughty/sigh (2).ogg')
-		if("hmph")
-			used = 'sound/vo/female/haughty/hmph (1).ogg'
 		if("gasp")
 			used = list('sound/vo/female/haughty/gasp (2).ogg')
 		if("cackle")
