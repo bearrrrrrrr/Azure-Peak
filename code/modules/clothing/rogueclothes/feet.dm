@@ -69,6 +69,7 @@
 
 /obj/item/clothing/shoes/roguetown/boots/psydonboots/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
+	AddComponent(/datum/component/armour_filtering/positive, TRAIT_HONORBOUND)
 
 /obj/item/clothing/shoes/roguetown/boots/nobleboot
 	name = "noble boots"
@@ -85,6 +86,7 @@
 
 /obj/item/clothing/shoes/roguetown/boots/nobleboot/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
+	AddComponent(/datum/component/armour_filtering/positive, TRAIT_HONORBOUND)
 
 /obj/item/clothing/shoes/roguetown/boots/nobleboot/steppesman
 	name = "aavnic riding boots"
@@ -193,6 +195,7 @@
 
 /obj/item/clothing/shoes/roguetown/boots/leather/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
+	AddComponent(/datum/component/armour_filtering/positive, TRAIT_HONORBOUND)
 
 /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
 	name = "heavy leather boots"
@@ -225,6 +228,7 @@
 
 /obj/item/clothing/shoes/roguetown/boots/otavan/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
+	AddComponent(/datum/component/armour_filtering/negative, TRAIT_HONORBOUND)
 
 /obj/item/clothing/shoes/roguetown/grenzelhoft
 	name = "grenzelhoft boots"
@@ -266,6 +270,7 @@
 
 /obj/item/clothing/shoes/roguetown/boots/armor/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
+	AddComponent(/datum/component/armour_filtering/negative, TRAIT_HONORBOUND)
 
 /obj/item/clothing/shoes/roguetown/boots/armor/graggar
 	name = "vicious boots"
@@ -497,6 +502,9 @@
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	armor = ARMOR_LEATHER_GOOD
 
+/obj/item/clothing/shoes/roguetown/armor/rumaclan/shitty
+	armor = ARMOR_CLOTHING
+
 // horseshoes!
 /obj/item/clothing/shoes/roguetown/horseshoes
 	name = "iron horseshoes"
@@ -554,3 +562,37 @@
 	sewrepair = FALSE
 	armor = ARMOR_PLATE_BAD // these are awful!
 	smeltresult = /obj/item/ingot/gold
+
+/obj/item/clothing/shoes/courtphysician
+	name = "sanguine shoes"
+	desc = "Leather shoes, the solemn tap of these bears grim news, or salvation."
+	icon_state = "docshoes"
+	item_state = "docshoes"
+	icon = 'icons/roguetown/clothing/special/courtphys.dmi'
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_courtphys.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/courtphys.dmi'
+	salvage_result = /obj/item/natural/hide/cured
+
+/obj/item/clothing/shoes/courtphysician/female
+	name = "sanguine heels"
+	desc = "Leather heels, the solemn tap of these bears grim news, or salvation."
+	icon_state = "docheels"
+	item_state = "docheels"
+	icon = 'icons/roguetown/clothing/special/courtphys.dmi'
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_courtphys.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/courtphys.dmi'
+	detail_tag = "_detail"
+	detail_color = CLOTHING_RED
+
+/obj/item/clothing/shoes/courtphysician/female/Initialize()
+	. = ..()
+	update_icon()
+
+/obj/item/clothing/shoes/courtphysician/female/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
