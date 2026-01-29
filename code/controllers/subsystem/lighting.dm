@@ -1,3 +1,5 @@
+#define LIGHTING_INITIAL_FIRE_DELAY 1
+
 SUBSYSTEM_DEF(lighting)
 	name = "Lighting"
 	wait = 0
@@ -24,11 +26,16 @@ SUBSYSTEM_DEF(lighting)
 		create_all_lighting_objects()
 		initialized = TRUE
 
-	fire(FALSE, TRUE)
+	addtimer(CALLBACK(src, PROC_REF(deferred_initial_fire)), LIGHTING_INITIAL_FIRE_DELAY)
 
 	return ..()
 
+/datum/controller/subsystem/lighting/proc/deferred_initial_fire()
+	fire(FALSE, TRUE)
+
 /datum/controller/subsystem/lighting/fire(resumed, init_tick_checks)
+	if(!sources_queue.len && !corners_queue.len && !objects_queue.len)
+		return
 	MC_SPLIT_TICK_INIT(3)
 	if(!init_tick_checks)
 		MC_SPLIT_TICK
@@ -90,3 +97,5 @@ SUBSYSTEM_DEF(lighting)
 /datum/controller/subsystem/lighting/Recover()
 	initialized = SSlighting.initialized
 	..()
+
+#undef LIGHTING_INITIAL_FIRE_DELAY
