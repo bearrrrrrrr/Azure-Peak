@@ -117,9 +117,6 @@
 	salvage_result = /obj/item/natural/hide/cured
 	color = "#684338"
 
-/obj/item/clothing/wrists/roguetown/bracers/leather/black
-	color = CLOTHING_BLACK
-
 /obj/item/clothing/wrists/roguetown/bracers/leather/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_HONORBOUND)
