@@ -36,55 +36,57 @@ SUBSYSTEM_DEF(lighting)
 /datum/controller/subsystem/lighting/fire(resumed, init_tick_checks)
 	if(!sources_queue.len && !corners_queue.len && !objects_queue.len)
 		return
+
 	MC_SPLIT_TICK_INIT(3)
 	if(!init_tick_checks)
 		MC_SPLIT_TICK
-	var/list/queue = sources_queue
-	var/i = 0
-	if(queue.len)
-		for (i in 1 to length(queue))
-			var/datum/light_source/L = queue[i]
-			L.update_corners()
-			L.needs_update = LIGHTING_NO_UPDATE
-			if(init_tick_checks)
-				CHECK_TICK
-			else if (MC_TICK_CHECK)
-				break
-		if (i)
-			queue.Cut(1, i+1)
-			i = 0
-	if(!init_tick_checks)
-		MC_SPLIT_TICK
-	queue = corners_queue
-	if(queue.len)
-		for (i in 1 to length(queue))
-			var/datum/lighting_corner/C = queue[i]
-			C.update_objects()
-			C.needs_update = FALSE
-			if(init_tick_checks)
-				CHECK_TICK
-			else if (MC_TICK_CHECK)
-				break
-		if (i)
-			queue.Cut(1, i+1)
-			i = 0
-	if(!init_tick_checks)
-		MC_SPLIT_TICK
-	queue = objects_queue
-	if(queue.len)
-		for (i in 1 to length(queue))
-			var/atom/movable/lighting_object/O = queue[i]
-			if(QDELETED(O))
-				continue
-			O.update()
-			O.needs_update = FALSE
-			if(init_tick_checks)
-				CHECK_TICK
-			else if (MC_TICK_CHECK)
-				break
-		if (i)
-			queue.Cut(1, i+1)
 
+	var/list/queue
+	var/i
+
+	queue = sources_queue
+	i = 1
+	while(i <= queue.len)
+		var/datum/light_source/L = queue[i]
+		L.update_corners()
+		L.needs_update = LIGHTING_NO_UPDATE
+		queue.Cut(i, i+1)
+		if(init_tick_checks)
+			CHECK_TICK
+		else if(MC_TICK_CHECK)
+			break
+
+	if(!init_tick_checks)
+		MC_SPLIT_TICK
+
+	queue = corners_queue
+	i = 1
+	while(i <= queue.len)
+		var/datum/lighting_corner/C = queue[i]
+		C.update_objects()
+		C.needs_update = FALSE
+		queue.Cut(i, i+1)
+		if(init_tick_checks)
+			CHECK_TICK
+		else if(MC_TICK_CHECK)
+			break
+
+	if(!init_tick_checks)
+		MC_SPLIT_TICK
+
+	queue = objects_queue
+	i = 1
+	while(i <= queue.len)
+		var/atom/movable/lighting_object/O = queue[i]
+		queue.Cut(i, i+1)
+		if(QDELETED(O))
+			continue
+		O.update()
+		O.needs_update = FALSE
+		if(init_tick_checks)
+			CHECK_TICK
+		else if(MC_TICK_CHECK)
+			break
 
 /datum/controller/subsystem/lighting/Recover()
 	initialized = SSlighting.initialized
