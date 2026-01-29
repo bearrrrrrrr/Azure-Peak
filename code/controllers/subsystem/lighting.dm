@@ -42,15 +42,13 @@ SUBSYSTEM_DEF(lighting)
 		MC_SPLIT_TICK
 
 	var/list/queue
-	var/i
 
 	queue = sources_queue
-	i = 1
-	while(i <= queue.len)
-		var/datum/light_source/L = queue[i]
+	while(queue.len)
+		var/datum/light_source/L = queue[1]
+		queue.Cut(1, 2)
 		L.update_corners()
 		L.needs_update = LIGHTING_NO_UPDATE
-		queue.Cut(i, i+1)
 		if(init_tick_checks)
 			CHECK_TICK
 		else if(MC_TICK_CHECK)
@@ -60,12 +58,11 @@ SUBSYSTEM_DEF(lighting)
 		MC_SPLIT_TICK
 
 	queue = corners_queue
-	i = 1
-	while(i <= queue.len)
-		var/datum/lighting_corner/C = queue[i]
+	while(queue.len)
+		var/datum/lighting_corner/C = queue[1]
+		queue.Cut(1, 2)
 		C.update_objects()
 		C.needs_update = FALSE
-		queue.Cut(i, i+1)
 		if(init_tick_checks)
 			CHECK_TICK
 		else if(MC_TICK_CHECK)
@@ -75,10 +72,9 @@ SUBSYSTEM_DEF(lighting)
 		MC_SPLIT_TICK
 
 	queue = objects_queue
-	i = 1
-	while(i <= queue.len)
-		var/atom/movable/lighting_object/O = queue[i]
-		queue.Cut(i, i+1)
+	while(queue.len)
+		var/atom/movable/lighting_object/O = queue[1]
+		queue.Cut(1, 2)
 		if(QDELETED(O))
 			continue
 		O.update()
