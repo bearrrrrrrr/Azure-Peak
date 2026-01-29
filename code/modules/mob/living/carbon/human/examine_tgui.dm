@@ -34,7 +34,7 @@
 		ui = new(user, src, "ExaminePanel")
 		ui.open()
 
-/datum/examine_panel/familiar/ui_data(mob/user) //altered and condensed version used for familiars. sorry
+/datum/examine_panel/familiar/ui_static_data(mob/user) //altered and condensed version used for familiars. sorry
 
 	var/flavor_text
 	var/flavor_text_nsfw //probably breaks if i remove it entirely, just leaving it null
@@ -76,17 +76,21 @@
 		"flavor_text_nsfw" = flavor_text_nsfw,
 		"ooc_notes_nsfw" = ooc_notes_nsfw,
 		"img_gallery" = img_gallery,
-		"is_playing" = is_playing,
 		"has_song" = has_song,
 		"is_vet" = is_vet,
 		"is_naked" = is_naked,
 	)
+
 	return data
 
+/datum/examine_panel/familiar/ui_data(mob/user)
+	var/list/data = list( 
+		"is_playing" = is_playing,
+	)
+	return data
 
-
-/datum/examine_panel/ui_data(mob/user)
-
+// Where MOST of the examine panel data lives because it don't update mid game
+/datum/examine_panel/ui_static_data(mob/user)
 	var/flavor_text
 	var/flavor_text_nsfw
 	var/obscured
@@ -160,10 +164,15 @@
 		"flavor_text_nsfw" = flavor_text_nsfw,
 		"ooc_notes_nsfw" = ooc_notes_nsfw,
 		"img_gallery" = img_gallery,
-		"is_playing" = is_playing,
 		"has_song" = has_song,
 		"is_vet" = is_vet,
 		"is_naked" = is_naked,
+	)
+	return data
+
+/datum/examine_panel/ui_data(mob/user)
+	var/list/data = list(
+		"is_playing" = is_playing,
 	)
 	return data
 
