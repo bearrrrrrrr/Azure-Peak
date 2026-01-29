@@ -376,6 +376,7 @@
 	if(fam.revive(full_heal = TRUE, admin_revive = TRUE))
 		to_chat(user, span_notice("You channel the stone's magic into [fam.name], reviving them!"))
 		qdel(magic_stone)
+		fam.grab_ghost(force = TRUE)
 		fam.familiar_summoner = user
 		fam.visible_message(span_notice("[fam.name] is restored to life by [user]'s magic!"))
 		return TRUE
