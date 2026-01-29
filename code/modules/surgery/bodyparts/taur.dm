@@ -93,7 +93,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/goat
-	name = "Goat Body"
+	name = "Goat Legs"
 
 	offset_x = -16
 	taur_icon_state = "goat_s"
