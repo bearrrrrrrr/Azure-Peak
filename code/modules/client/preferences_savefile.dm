@@ -599,6 +599,16 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if(needs_update >= 0)
 		update_character(needs_update, S)		//needs_update == savefile_version if we need an update (positive integer)
 
+	// Regenerate cache for flavor texts etc. 
+	if(!flavortext_cached && flavortext)
+		flavortext_cached = parsemarkdown_basic(html_encode(flavortext), hyperlink = TRUE)
+	if(!ooc_notes_cached && ooc_notes)
+		ooc_notes_cached = parsemarkdown_basic(html_encode(ooc_notes), hyperlink = TRUE)
+	if(!nsfwflavortext_cached && nsfwflavortext)
+		nsfwflavortext_cached = parsemarkdown_basic(html_encode(nsfwflavortext), hyperlink = TRUE)
+	if(!erpprefs_cached && erpprefs)
+		erpprefs_cached = parsemarkdown_basic(html_encode(erpprefs), hyperlink = TRUE)
+
 	//Sanitize
 
 	real_name = reject_bad_name(real_name)
