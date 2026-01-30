@@ -57,6 +57,10 @@
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_HONORBOUND)
 
+/obj/item/clothing/suit/roguetown/armor/chainmail/light/fencer
+	name = "besilked haubergeon"
+	max_integrity = ARMOR_INT_CHEST_LIGHT_STEEL //Matching the Fencer Cuirass.
+
 //HAUBERK//
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
