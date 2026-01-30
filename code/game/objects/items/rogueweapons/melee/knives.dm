@@ -102,12 +102,7 @@
 
 /obj/item/rogueweapon/huntingknife
 	force = 12
-	possible_item_intents = list(
-		/datum/intent/dagger/thrust,
-		/datum/intent/dagger/cut,
-		/datum/intent/dagger/thrust/pick,
-		/datum/intent/dagger/sucker_punch,
-		)
+	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust, /datum/intent/dagger/chop)
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
 	name = "hunting knife"
 	desc = "A hunter's prized possession. Keep it sharp, and it might last you through the wild."
