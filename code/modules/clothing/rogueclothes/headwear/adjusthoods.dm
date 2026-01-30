@@ -328,14 +328,15 @@
 	body_parts_covered = NECK | HEAD | HAIR
 	slot_flags = ITEM_SLOT_HEAD
 	flags_inv = HIDEEARS|HIDEHAIR
-	prevent_crits = PREVENT_CRITS_MOST
+	blocksound = SOFTHIT
 	armor = ARMOR_LEATHER_STUDDED
+	prevent_crits = PREVENT_CRITS_MOST
+	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
 	dynamic_hair_suffix = ""
 	edelay_type = 1
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
 	block2add = null
-	max_integrity = 200
 	salvage_result = /obj/item/natural/cloth
 	salvage_amount = 1
 

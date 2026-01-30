@@ -424,7 +424,7 @@
 
 /obj/item/rogueweapon/huntingknife/combat/messser //Just as Grenzelhoft intended
 	name = "kampfmesser"
-	desc = "An undersized steel messer that barely fits into conventional dagger sheaths, saving grace of any hunter. Impossible to stab as it lacks proper tip - yet the edge alone is sharp enough to hack most issues right away. \
+	desc = "An undersized steel messer that barely fits into a conventional dagger sheath, the saving grace of any hunter. It lacks a tip for stabbing - yet the edge alone is sharp enough to hack most issues right away. \
 	While it was brought over by Grenzelhoftian migrants it is considered Azurean staple these daes - The right tool for the right job."
 	possible_item_intents = list(/datum/intent/dagger/cut/heavy, /datum/intent/dagger/cut/combat, /datum/intent/dagger/chop/cleaver, /datum/intent/dagger/sucker_punch)
 	icon_state = "minimesser"
