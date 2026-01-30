@@ -343,6 +343,8 @@
 				client_schedule[C] = expire_time
 			continue
 
+		C.images += I
+
 		client_schedule[C] = expire_time
 
 	if(!length(client_schedule))
