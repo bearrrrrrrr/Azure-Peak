@@ -21,7 +21,7 @@
 /datum/stressevent/tragedy
 	timer = 30 MINUTES
 	stressadd = -2
-	desc = span_green("Life isn't so bad after all.")
+	desc = span_green("Perhaps life isn't so bad after all.")
 
 /datum/stressevent/blessed
 	timer = 60 MINUTES
@@ -41,7 +41,7 @@
 /datum/stressevent/pweed
 	timer = 1 MINUTES
 	stressadd = -2
-	desc = span_green("I enjoy a relaxing smoke.")
+	desc = span_green("I've enjoyed a relaxing smoke.")
 
 /datum/stressevent/weed
 	timer = 5 MINUTES
@@ -61,7 +61,7 @@
 /datum/stressevent/goodsnack
 	timer = 8 MINUTES
 	stressadd = -1
-	desc = span_green("Quite a pleasant snack!")
+	desc = span_green("That was quite a pleasant snack!")
 
 /datum/stressevent/greatsnack
 	timer = 10 MINUTES
@@ -76,7 +76,8 @@
 /datum/stressevent/greatmeal
 	timer = 15 MINUTES
 	stressadd = -2
-	desc = list(span_green("That was a meal fit for a king!"), span_green("What an explosion of flavour!"))
+	desc = list(span_green("That was a meal fit for a king!"), span_green("What an explosion of flavour \
+	I just experienced!"))
 
 /datum/stressevent/sweet
 	timer = 8 MINUTES
@@ -91,7 +92,7 @@
 /datum/stressevent/prebel
 	timer = 5 MINUTES
 	stressadd = -5
-	desc = span_boldgreen("I am invigoated by revolutinary fervour!")
+	desc = span_boldgreen("I am invigoated by revolutinary fervor!")
 
 /datum/stressevent/music
 	timer = 1 MINUTES
@@ -255,7 +256,7 @@
 
 /datum/stressevent/hated_food
 	stressadd = 1
-	desc = span_red("How vile! How can anyone eat this?!")
+	desc = span_red("How vile! How can anyone eat what I just ate?!")
 	timer = 10 MINUTES
 
 /datum/stressevent/hated_food/can_apply(mob/living/user)
@@ -267,7 +268,7 @@
 
 /datum/stressevent/hated_drink
 	stressadd = 1
-	desc = span_red("Disgusting! How could anyone drink this?!")
+	desc = span_red("Disgusting! How could anyone drink what I just drank?!")
 	timer = 10 MINUTES
 
 /datum/stressevent/hated_drink/can_apply(mob/living/user)
@@ -306,7 +307,7 @@
 /datum/stressevent/noble_bowed_to
 	timer = 5 MINUTES
 	stressadd = -3
-	desc = span_green("Someone showed me the respect I deserve as a noble, as they should.")
+	desc = span_green("Someone showed me the respect I deserve as a noble!")
 
 /datum/stressevent/noble_bowed_to/can_apply(mob/living/user)
 	return HAS_TRAIT(user, TRAIT_NOBLE)
@@ -340,7 +341,6 @@
 	stressadd = -5
 	desc = span_green("I feel inspired by the sermon!")
 	timer = 20 MINUTES
-
 
 /datum/stressevent/champion
 	stressadd = -3
