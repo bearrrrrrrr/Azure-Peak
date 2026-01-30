@@ -170,7 +170,7 @@
 
 /obj/item/grabbing/bite/valid_check()
 	// We require adjacency to count the grab as valid
-	if(!grabee)
+	if(!grabbee)
 		qdel(src)
 		return FALSE
 
