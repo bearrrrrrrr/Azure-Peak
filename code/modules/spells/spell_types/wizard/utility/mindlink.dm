@@ -69,6 +69,13 @@
 		if(HL.real_name == second_target_name)
 			second_target = HL
 
+	for(var/datum/mindlink/ML in GLOB.mindlinks)
+		if(ML)
+			if(ML.owner == first_target || ML.target == first_target || ML.owner == second_target || ML.target == second_target)
+				to_chat(user, span_warning("A mindlink is already present binding one of the targets!"))
+				revert_cast()
+				return
+
 	user.visible_message(span_notice("[user] touches their temples and concentrates..."), span_notice("I establish a mental connection between [first_target] and [second_target]..."))
 
 	// Create the mindlink

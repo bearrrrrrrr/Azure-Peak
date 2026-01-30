@@ -47,7 +47,7 @@ GLOBAL_LIST_EMPTY(mindlinks)
 		message = span_centcomradio("[message]")
 		var/mob/living/recipient = (speaker == owner ? target : owner)
 		
-		var/audible_message = "The voice of [speaker] echoes, \"<i>[message]</i>\"."
+		var/audible_message = "The voice of [speaker] echoes, \"<i>[capitalize(message)]</i>\"."
 		recipient.audible_message(audible_message, runechat_message = message, custom_spans = list("mindlink", "italic"))
 		playsound(recipient, 'sound/magic/mindlink.ogg', 100, TRUE)
 		playsound(speaker, 'sound/magic/mindlink.ogg', 100, TRUE)
