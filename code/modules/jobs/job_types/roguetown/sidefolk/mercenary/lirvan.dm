@@ -52,7 +52,7 @@
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	neck = /obj/item/clothing/neck/roguetown/gorget/steel/gold
 	armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas
-	pants = /obj/item/clothing/under/roguetown/chainlegs/kilt
+	pants = /obj/item/clothing/under/roguetown/chainlegs/kilt/gold
 	shoes = /obj/item/clothing/shoes/roguetown/sandals
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	backr = /obj/item/storage/backpack/rogue/satchel/black
@@ -93,10 +93,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 	desc = "A series of steel plates designed to protect the neck, traditionally worn atop a jacket or cuirass. It bares a mammon-sized divet along its right flank; the certification of its 'proofedness' against a longbow's strike. This one is covered in a thin layer of gold."
 	color = "#f9a602"
 
-/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/lirvmerc
-	color = "#f9a602"
-
-/obj/item/clothing/under/roguetown/chainlegs/kilt
+/obj/item/clothing/under/roguetown/chainlegs/kilt/gold
 	color = "#f9a602"
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas //high armor,  U N G O D L Y  high regen time
