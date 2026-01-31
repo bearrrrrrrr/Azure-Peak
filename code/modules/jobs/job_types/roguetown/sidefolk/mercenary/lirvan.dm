@@ -47,7 +47,8 @@
 	if(should_wear_femme_clothes(H))
 		shirt = /obj/item/clothing/suit/roguetown/shirt/desertbra //idk?
 
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/jackchain
+	cloak = /obj/item/clothing/cloak/darkcloak/lirvas
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/lirvas
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	neck = /obj/item/clothing/neck/roguetown/gorget/steel/gold
