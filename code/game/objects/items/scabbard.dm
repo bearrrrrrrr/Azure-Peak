@@ -705,28 +705,9 @@
 	max_integrity = 0
 	sellprice = 15
 
-/obj/item/rogueweapon/scabbard/gwstrap/update_icon(mob/living/user)
-	if(sheathed)
-		worn_x_dimension = 64
-		worn_y_dimension = 64
-		icon = sheathed.icon
-		icon_state = sheathed.icon_state
-		experimental_onback = TRUE
-	else
-		icon = initial(icon)
-		icon_state = initial(icon_state)
-		worn_x_dimension = initial(worn_x_dimension)
-		worn_y_dimension = initial(worn_y_dimension)
-		experimental_onback = FALSE
-
-	if(user)
-		user.update_inv_back()
-
-	getonmobprop(tag)
-
 /obj/item/rogueweapon/scabbard/gwstrap/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/holster/gwstrap, FALSE, FALSE, FALSE)
+	AddComponent(/datum/component/holster/gwstrap, FALSE, FALSE, FALSE, sheathe_time)
 
 /obj/item/rogueweapon/scabbard/gwstrap/getonmobprop(tag)
 	..()

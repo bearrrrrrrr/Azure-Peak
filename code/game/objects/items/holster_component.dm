@@ -14,7 +14,7 @@
 	var/use_icons = TRUE
 
 
-/datum/component/holster/Initialize(obj/item/rogueweapon/arg_validblade, list/arg_valid_blades, list/arg_invalid_blades)
+/datum/component/holster/Initialize(obj/item/rogueweapon/arg_validblade, list/arg_valid_blades, list/arg_invalid_blades, arg_sheathe_time)
 	if(!isitem(parent))
 		return COMPONENT_INCOMPATIBLE
 
@@ -24,6 +24,8 @@
 		valid_blades = arg_valid_blades.Copy()
 	if(islist(arg_invalid_blades) && length(arg_invalid_blades))
 		invalid_blades = arg_invalid_blades.Copy()
+	if(arg_sheathe_time)
+		sheathe_time = arg_sheathe_time
 
 	RegisterSignal(parent, COMSIG_ITEM_ATTACK_TURF, PROC_REF(search_turf))
 	RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND, PROC_REF(hand_check))
@@ -160,7 +162,6 @@
 			user.update_inv_belt()
 			user.update_inv_back()
 
-	I.update_icon()
 	I.getonmobprop(tag)
 
 /datum/component/holster/gwstrap
@@ -169,8 +170,30 @@
 /datum/component/holster/gwstrap/weapon_check(mob/living/user, obj/item/A)
 	if(sheathed)
 		return FALSE
+
 	if(istype(A, /obj/item/rogueweapon))
 		if(A.w_class >= WEIGHT_CLASS_BULKY)
 			return TRUE
+
 	if(!istype(A, /obj/item/clothing/neck/roguetown/psicross)) //snowflake that bypasses the valid_blades that i made. i will commit seppuku eventually
 		return FALSE
+
+/datum/component/holster/gwstrap/update_icon(mob/living/user)
+	var/obj/item/I = parent
+	if(sheathed)
+		I.worn_x_dimension = 64
+		I.worn_y_dimension = 64
+		I.icon = sheathed.icon
+		I.icon_state = sheathed.icon_state
+		I.experimental_onback = TRUE
+	else
+		I.icon = initial(I.icon)
+		I.icon_state = initial(I.icon_state)
+		I.worn_x_dimension = initial(I.worn_x_dimension)
+		I.worn_y_dimension = initial(I.worn_y_dimension)
+		I.experimental_onback = FALSE
+
+	if(user)
+		user.update_inv_back()
+
+	I.getonmobprop(tag)
