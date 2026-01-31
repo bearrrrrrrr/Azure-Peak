@@ -208,7 +208,7 @@
 		prefs.save_preferences()
 
 	to_chat(src, "You will[prefs.chat_toggles & CHAT_MOODMESSAGES ? "" : " not"] see all mood messages \
-	in your chat. Sufficiently severe negative mood messages are shown in chat regardless of this toggle.")
+	in your chat. Sufficiently severe mood messages are shown in chat regardless of this toggle.")
 
 /client/verb/toggle_xptext() // Whether the user can see the balloon XP pop ups.
 	set category = "Options"
