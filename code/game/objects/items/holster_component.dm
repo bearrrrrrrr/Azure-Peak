@@ -11,6 +11,7 @@
 
 	var/sheathe_time = 0.1 SECONDS
 	var/sheathe_sound = 'sound/foley/equip/scabbard_holster.ogg'
+	var/use_icons = TRUE
 
 
 /datum/component/holster/Initialize(obj/item/rogueweapon/arg_validblade, list/arg_valid_blades, list/arg_invalid_blades)
@@ -126,6 +127,7 @@
 		is_in_slot = (I in (list(human.backl, human.backr, human.beltl, human.beltr) + human.get_inactive_held_item()))
 	if(sheathed && is_in_slot)
 		puke_sword(user)
+		return COMPONENT_NO_ATTACK_HAND
 
 /datum/component/holster/proc/right_click(atom/source, mob/user)
 	if(sheathed)
@@ -145,14 +147,28 @@
 
 /datum/component/holster/proc/update_icon(atom/source, mob/living/user)
 	var/obj/item/I = parent
-	if(sheathed)
-		I.icon_state = "[initial(I.icon_state)]_[sheathed.sheathe_icon]"
-	else
-		I.icon_state = "[initial(I.icon_state)]"
+	if(use_icons)
+		if(sheathed)
+			I.icon_state = "[initial(I.icon_state)]_[sheathed.sheathe_icon]"
+		else
+			I.icon_state = "[initial(I.icon_state)]"
 
-	if(user)
-		user.update_inv_hands()
-		user.update_inv_belt()
-		user.update_inv_back()
+		if(user)
+			user.update_inv_hands()
+			user.update_inv_belt()
+			user.update_inv_back()
 
+	I.update_icon()
 	I.getonmobprop(tag)
+
+/datum/component/holster/gwstrap
+	use_icons = FALSE
+
+/datum/component/holster/gwstrap/weapon_check(mob/living/user, obj/item/A)
+	if(sheathed)
+		return FALSE
+	if(istype(A, /obj/item/rogueweapon))
+		if(A.w_class >= WEIGHT_CLASS_BULKY)
+			return TRUE
+	if(!istype(A, /obj/item/clothing/neck/roguetown/psicross)) //snowflake that bypasses the valid_blades that i made. i will commit seppuku eventually
+		return FALSE
