@@ -58,6 +58,8 @@
 		if(!RW.sheathe_icon)
 			to_chat(user, span_warning("[A] won't fit in there."))
 			return FALSE
+	else
+		return FALSE
 	return TRUE
 
 
