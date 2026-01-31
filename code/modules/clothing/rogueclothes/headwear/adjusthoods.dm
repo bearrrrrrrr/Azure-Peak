@@ -384,7 +384,7 @@
 
 /obj/item/clothing/head/roguetown/roguehood/studded/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/adjustable_clothing, HEAD, null, null, 'sound/foley/equip/cloak (3).ogg', null, (UPD_HEAD))
+	AddComponent(/datum/component/adjustable_clothing, NECK, null, null, 'sound/foley/equip/cloak (3).ogg', null, (UPD_HEAD))
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_HONORBOUND)
 
