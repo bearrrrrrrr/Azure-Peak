@@ -12,6 +12,7 @@
 	category_tags = list(CTAG_MERCENARY)
 	traits_applied = list(TRAIT_SEEPRICES, TRAIT_MEDIUMARMOR)
 	cmode_music = 'sound/music/combat_matthios.ogg'
+	maximum_possible_slots = 2 //lower this to 1 when we're good to merge-merge
 
 	subclass_stats = list(
 		STATKEY_STR = 1, //poopy adv-tier stats, the majority of it will be via selfbuff
@@ -153,7 +154,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 
 /obj/effect/proc_holder/spell/self/lirvan_tithe
 	name = "INVOKE"
-	desc = "Draw strength from the wealth you carry. Armor, jewelry, and raw mammon counted equally. More WEALTH means more POWER. More POWER at 100, 200, 300, and 600 mammon."
+	desc = "Draw strength from the wealth you carry. Armor, jewelry, and raw mammon counted equally. More WEALTH means more POWER. More POWER at 150, 200, 400, and 800 mammon."
 	antimagic_allowed = TRUE
 	clothes_req = FALSE
 	recharge_time = 3 MINUTES
@@ -168,7 +169,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 
 /atom/movable/screen/alert/status_effect/buff/lirvan_tithe
 	name = "Mammon's Bulwark"
-	desc = "Briefly convert WEALTH to POWER, gaining stats based off of the total value of mammon, equipment, and jewelry on me. More POWER at 100, 200, 300, and 600 mammon."
+	desc = "The air burns with POWER."
 	icon_state = "buff"
 
 /datum/status_effect/buff/lirvan_tithe
@@ -187,8 +188,9 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 		var/filter = owner.get_filter(LIRVAN_BLING_FILTER)
 		if(!filter)
 			owner.add_filter(LIRVAN_BLING_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 120, "size" = 1))
-		if(wealth_value < 100)
+		if(wealth_value < 150)
 			to_chat(owner, span_notice("WEALTH answers my call. Every single one of my- ONLY [src.wealth_value] MAMMON?!"))
+			return
 		to_chat(owner, span_notice("WEALTH answers my call. Every single one of my [src.wealth_value] pieces of it."))
 
 /datum/status_effect/buff/lirvan_tithe/on_remove()
@@ -198,7 +200,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 
 /datum/status_effect/buff/lirvan_tithe/proc/update_effects()
 	wealth_value = get_moni_value(owner)
-	if(wealth_value < 100)
+	if(wealth_value < 150)
 		effectedstats = list(STATKEY_CON = 1, STATKEY_WIL = 1)
 	else if(wealth_value < 200)
 		effectedstats = list(STATKEY_STR = 1, STATKEY_CON = 1, STATKEY_WIL = 2, STATKEY_SPD = 1)
