@@ -92,8 +92,8 @@
 	var/obj/item/I = parent
 	if(I.obj_broken)
 		user.visible_message(
-			span_warning("[user] begins to force [sheathed] out of [src]!"),
-			span_warningbig("I begin to force [sheathed] out of [src].")
+			span_warning("[user] begins to force [sheathed] out of [I]!"),
+			span_warningbig("I begin to force [sheathed] out of [I].")
 		)
 		if(!move_after(user, 2 SECONDS, target = user))
 			return FALSE
@@ -114,10 +114,11 @@
 
 
 /datum/component/holster/proc/hand_check(datum/source, mob/user)
+	var/obj/item/I = parent
 	var/is_in_slot = TRUE
 	if(ishuman(user))
 		var/mob/living/carbon/human/human = user
-		is_in_slot = (src in (list(human.backl, human.backr, human.beltl, human.beltr) + human.get_inactive_held_item()))
+		is_in_slot = (I in (list(human.backl, human.backr, human.beltl, human.beltr) + human.get_inactive_held_item()))
 	if(sheathed && is_in_slot)
 		puke_sword(user)
 
