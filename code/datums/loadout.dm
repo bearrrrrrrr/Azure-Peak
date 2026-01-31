@@ -754,6 +754,11 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	path = /obj/item/enchantingkit/eirensabre2
 	ckeywhitelist = list("eirenxiv")
 
+/datum/loadout_item/donator_eiren4
+	name = "Donator Kit - Darkwood's Embrace"
+	path = /obj/item/clothing/suit/roguetown/armor/longcoat/eiren
+	ckeywhitelist = list("eirenxiv")
+
 /datum/loadout_item/donator_waff
 	name = "Donator Kit - Weeper's Lathe"
 	path = /obj/item/enchantingkit/waff
