@@ -52,6 +52,11 @@
 		if(A.type in invalid_blades)
 			to_chat(user, span_warning("[A] won't fit in there."))
 			return FALSE
+	if(istype(A, /obj/item/rogueweapon))
+		var/obj/item/rogueweapon/RW = A
+		if(!RW.sheathe_icon)
+			to_chat(user, span_warning("[A] won't fit in there."))
+			return FALSE
 	return TRUE
 
 
