@@ -123,8 +123,48 @@
 /datum/migrant_wave/heartfelt_down_ten
 	name = "The Court of Heartfelt"
 	shared_wave_type = /datum/migrant_wave/heartfelt
+	downgrade_wave = /datum/migrant_wave/heartfelt_down_eleven
 	can_roll = FALSE
 	roles = list(
 		/datum/migrant_role/heartfelt/lord = 1,
+	)
+	greet_text = "Fleeing disaster, you have came together as a court, united in a final effort to restore the former glory and promise of Heartfelt. It was all for naught - in the end, only you are left, bereft of your family and men. How the mighty have fallen..."
+
+/datum/migrant_wave/heartfelt_down_eleven
+	name = "The Court of Heartfelt"
+	shared_wave_type = /datum/migrant_wave/heartfelt
+	downgrade_wave = /datum/migrant_wave/heartfelt_down_twelve
+	can_roll = FALSE
+	roles = list(
+		/datum/migrant_role/heartfelt/hand = 1,
+	)
+	greet_text = "Fleeing disaster, you have came together as a court, united in a final effort to restore the former glory and promise of Heartfelt. It was all for naught - in the end, only you are left, bereft of your family and men. How the mighty have fallen..."
+
+/datum/migrant_wave/heartfelt_down_twelve
+	name = "The Court of Heartfelt"
+	shared_wave_type = /datum/migrant_wave/heartfelt
+	downgrade_wave = /datum/migrant_wave/heartfelt_down_thirteen
+	can_roll = FALSE
+	roles = list(
+		/datum/migrant_role/heartfelt/knight = 1,
+	)
+	greet_text = "Fleeing disaster, you have came together as a court, united in a final effort to restore the former glory and promise of Heartfelt. It was all for naught - in the end, only you are left, bereft of your family and men. How the mighty have fallen..."
+
+/datum/migrant_wave/heartfelt_down_thirteen
+	name = "The Court of Heartfelt"
+	shared_wave_type = /datum/migrant_wave/heartfelt
+	downgrade_wave = /datum/migrant_wave/heartfelt_down_fourteen
+	can_roll = FALSE
+	roles = list(
+		/datum/migrant_role/heartfelt/retinue = 2,
+	)
+	greet_text = "Fleeing disaster, you have came together as a court, united in a final effort to restore the former glory and promise of Heartfelt. It was all for naught - in the end, only you are left, bereft of your family and men. How the mighty have fallen..."
+
+/datum/migrant_wave/heartfelt_down_fourteen
+	name = "The Court of Heartfelt"
+	shared_wave_type = /datum/migrant_wave/heartfelt
+	can_roll = FALSE
+	roles = list(
+		/datum/migrant_role/heartfelt/retinue = 1,
 	)
 	greet_text = "Fleeing disaster, you have came together as a court, united in a final effort to restore the former glory and promise of Heartfelt. It was all for naught - in the end, only you are left, bereft of your family and men. How the mighty have fallen..."
