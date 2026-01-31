@@ -505,35 +505,30 @@ GLOBAL_LIST_EMPTY(reach_dummy_pool)
 	if(!here || !there)
 		return FALSE
 
+	var/turf/start = get_turf(here)
+	if(!start)
+		return FALSE
+
 	switch(reach)
 		if(0)
 			return FALSE
 		if(1)
-			return FALSE // here.Adjacent(there)
-
+			return FALSE
 		if(2 to INFINITY)
-			var/turf/start = get_turf(here)
-			if(!start)
-				return FALSE
-
-			var/obj/dummy = new(start)
+			var/obj/effect/dummy = new(start)
 			dummy.pass_flags |= PASSTABLE
 			dummy.movement_type = FLYING
 			dummy.invisibility = INVISIBILITY_ABSTRACT
-
 			for(var/i in 1 to reach)
 				if(dummy.CanReach(there))
 					qdel(dummy)
 					return TRUE
-
 				var/turf/T = get_step(dummy, get_dir(dummy, there))
 				if(!T || !dummy.Move(T))
 					qdel(dummy)
 					return FALSE
-
 			qdel(dummy)
 			return FALSE
-
 
 
 // Default behavior: ignore double clicks (the second click that makes the doubleclick call already calls for a normal click)
