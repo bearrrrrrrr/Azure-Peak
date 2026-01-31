@@ -862,7 +862,7 @@
 	repair_skill = /datum/skill/craft/carpentry
 
 /obj/structure/mineral_door/wood/donjon/stone
-	desc = "stone door"
+	desc = "A thick, heavy door built into a carved stone frame."
 	icon_state = "stone"
 	base_state = "stone"
 	keylock = TRUE

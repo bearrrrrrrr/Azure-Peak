@@ -19,7 +19,8 @@
 	eat_effect = /datum/status_effect/debuff/rotfood
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
 	name = "rotten meat"
-	desc = "This was edible once... To most it's just a putrid mess now."
+	desc = "This was once edible. It is now only a putrid mess, except to the most steadfast \
+	of stomachs."
 	icon = 'modular/Neu_Food/icons/raw/raw_meat.dmi'
 	icon_state = "meat_rotten"
 

@@ -2,8 +2,9 @@
 //newtree
 
 /obj/structure/flora/roguetree
-	name = "old tree"
-	desc = "An old wicked tree that not even elves could love."
+	name = "bedraggled tree"
+	desc = "A stunted tree upon which structures loosely resembling faces have formed. Thought to result \
+	from the possession of the tree by wayward spirits. Increasingly common in all parts of the world."
 	icon = 'icons/roguetown/misc/foliagetall.dmi'
 	icon_state = "t1"
 	opacity = 1
@@ -98,7 +99,9 @@
 
 /obj/structure/flora/roguetree/wise
 	name = "sacred tree"
-	desc = "A blessed primordial tree, ancient beyond years. Said to be the very embodiment of the Tree Father himself—whose presence alone imbues druids with wild energies."
+	desc = "A blessed primordial tree, ancient beyond years. Said to be the very embodiment of the \
+	Tree Father himself—whose presence alone imbues druids with wild energies. It is wildly taboo \
+	among Dendorites to fell a tree through which their God is peering."
 	icon_state = "mystical"
 	max_integrity = 400
 	var/activated = FALSE

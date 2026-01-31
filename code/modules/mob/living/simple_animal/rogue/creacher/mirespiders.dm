@@ -263,6 +263,8 @@
 /mob/living/simple_animal/hostile/rogue/mirespider_paralytic
 	icon = 'icons/mob/mirespider_small.dmi'
 	name = "aragn"
+	desc = "A gigantic species of spider accompanied always by a strong sulphuric stench. Its fangs carry \
+	a dangerous paralytic; a danger for the common traveller, and an opportunity to any aspiring poisoner."
 	icon_state = "aragn"
 	icon_living = "aragn"
 	icon_dead = "aragn_dead"
