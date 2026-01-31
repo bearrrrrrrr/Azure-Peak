@@ -66,7 +66,7 @@
 	max_integrity = ARMOR_INT_SIDE_GOLDPLUS // Doubled integrity.
 	sellprice = 300
 
-/obj/item/clothing/wrists/orguetown/bracers/gold/lirvas
+/obj/item/clothing/wrists/roguetown/bracers/gold/lirvas
 	name = "lirvasi pauldrons"
 	desc = "I love GOOOLD...!"
 	icon_state = "goldpauldron"

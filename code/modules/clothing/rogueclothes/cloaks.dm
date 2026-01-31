@@ -320,6 +320,11 @@
 	sleeved = 'icons/roguetown/clothing/onmob/detailed/tabards.dmi'
 	sleevetype = "shirt"
 
+/obj/item/clothing/cloak/tabard/devotee/lirvas //what a typepath. sorry
+	name = "lirvan robes"
+	desc = "Fine silks. Only the best for me, of course. You need to look good while beating someone to death. It's necessitated."
+	icon_state = "
+
 
 /obj/item/clothing/cloak/tabard/knight
 	color = CLOTHING_PURPLE
@@ -744,6 +749,7 @@
 /obj/item/clothing/cloak/apron/waist/bar
 	color = "#251f1d"
 
+/obj/item/clothing/cloak/lirvas
 
 /obj/item/clothing/cloak/apron/cook
 	name = "cook apron"
