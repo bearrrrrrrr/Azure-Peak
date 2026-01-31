@@ -108,7 +108,7 @@
 			continue
 		target.apply_status_effect(/datum/status_effect/buff/call_to_arms)
 	return TRUE
-	
+
 //Persistence - Harms the shit out of an undead mob/player while causing bleeding/pain wounds to clot at higher rate for living ones. Basically a 'shittier' yet still good greater heal effect.
 /obj/effect/proc_holder/spell/invoked/persistence
 	name = "Persistence"
@@ -273,7 +273,7 @@
 	miracle = TRUE
 	devotion_cost = 100
 
-GLOBAL_LIST_EMPTY(arenafolks) // we're just going to use a list and add to it. Since /entered doesnt work on teleported mobs. 
+GLOBAL_LIST_EMPTY(arenafolks) // we're just going to use a list and add to it. Since /entered doesnt work on teleported mobs.
 
 /obj/effect/proc_holder/spell/invoked/challenge/cast(list/targets, mob/living/user)
 	var/area/rogue/indoors/ravoxarena/thearena = GLOB.areas_by_type[/area/rogue/indoors/ravoxarena]
@@ -302,7 +302,7 @@ GLOBAL_LIST_EMPTY(arenafolks) // we're just going to use a list and add to it. S
 			challengerspawnpoint = get_turf(aflag)
 		for(var/obj/structure/fluff/ravox/challenged/bflag in thearena)
 			challengedspawnpoint = get_turf(bflag)
-		
+
 		do_teleport(user, challengerspawnpoint)
 		do_teleport(target, challengedspawnpoint)
 		GLOB.arenafolks += user
@@ -538,7 +538,7 @@ GLOBAL_LIST_EMPTY(arenafolks) // we're just going to use a list and add to it. S
 	no_early_release = TRUE
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokeholy
-	gesture_required = TRUE 
+	gesture_required = TRUE
 	associated_skill = /datum/skill/magic/holy
 	recharge_time = 5 MINUTES
 	hide_charge_effect = TRUE
@@ -565,15 +565,21 @@ GLOBAL_LIST_EMPTY(arenafolks) // we're just going to use a list and add to it. S
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
 		if(user.dir == SOUTH || user.dir == NORTH)
-			new /mob/living/simple_animal/hostile/rogue/skeleton/ravox_ghost/spear(get_turf(user),user)
-			new /mob/living/simple_animal/hostile/rogue/skeleton/ravox_ghost/axe(get_step(user, EAST),user)
-			new /mob/living/simple_animal/hostile/rogue/skeleton/ravox_ghost/sword(get_step(user, WEST),user)
+			if(prob(33))
+				new /mob/living/simple_animal/hostile/rogue/skeleton/ravox_ghost/spear(get_turf(user),user)
+			else if(prob(33))
+				new /mob/living/simple_animal/hostile/rogue/skeleton/ravox_ghost/axe(get_step(user, EAST),user)
+			else
+				new /mob/living/simple_animal/hostile/rogue/skeleton/ravox_ghost/sword(get_step(user, WEST),user)
 		else
-			new /mob/living/simple_animal/hostile/rogue/skeleton/ravox_ghost/spear(get_turf(user),user)
-			new /mob/living/simple_animal/hostile/rogue/skeleton/ravox_ghost/axe(get_step(user, NORTH),user)
-			new /mob/living/simple_animal/hostile/rogue/skeleton/ravox_ghost/sword(get_step(user, SOUTH),user)
+			if(prob(33))
+				new /mob/living/simple_animal/hostile/rogue/skeleton/ravox_ghost/spear(get_turf(user),user)
+			else if(prob(33))
+				new /mob/living/simple_animal/hostile/rogue/skeleton/ravox_ghost/axe(get_step(user, NORTH),user)
+			else
+				new /mob/living/simple_animal/hostile/rogue/skeleton/ravox_ghost/sword(get_step(user, SOUTH),user)
 		for(var/mob/living/simple_animal/hostile/rogue/skeleton/ravox_ghost/swarm in view(3, user))
-			swarm.ai_controller.set_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET, target) 
+			swarm.ai_controller.set_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET, target)
 			if(swarm.buffed_r == FALSE)
 				swarm.maxHealth *= skill
 				swarm.health *= skill

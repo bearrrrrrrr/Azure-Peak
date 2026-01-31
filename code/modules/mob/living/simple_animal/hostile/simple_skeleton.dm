@@ -160,7 +160,7 @@
 		return FALSE
 	if (!(user.name in friends))
 		return FALSE
-	
+
 	return TRUE
 
 /mob/living/simple_animal/hostile/rogue/skeleton/beckoned(mob/user)
@@ -203,7 +203,7 @@
 
 /datum/intent/simple/claw/skeleton
 	clickcd = SKELETON_ATTACK_SPEED
-	
+
 /datum/intent/simple/spear/skeleton
 	reach = 2
 	clickcd = SKELETON_ATTACK_SPEED * 1.2
@@ -242,7 +242,7 @@
 	STACON = 14
 	STASTR = 13
 	STASPD = 8
-	maxHealth = 50
+	maxHealth = 40
 	health = 50
 	pixel_x = -16
 	pixel_y = -16
