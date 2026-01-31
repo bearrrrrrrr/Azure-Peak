@@ -382,6 +382,12 @@
 	color = CLOTHING_AZURE
 	detail_color = CLOTHING_WHITE
 
+/obj/item/clothing/head/roguetown/roguehood/studded/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/adjustable_clothing, HEAD, null, null, 'sound/foley/equip/cloak (3).ogg', null, (UPD_HEAD))
+	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
+	AddComponent(/datum/component/armour_filtering/negative, TRAIT_HONORBOUND)
+
 /obj/item/clothing/head/roguetown/roguehood/studded/retinue/update_icon()
 	cut_overlays()
 	if(get_detail_tag())
@@ -408,7 +414,3 @@
 /obj/item/clothing/head/roguetown/roguehood/studded/retinue/Destroy()
 	GLOB.lordcolor -= src
 	return ..()
-
-/obj/item/clothing/head/roguetown/roguehood/studded/ComponentInitialize()
-	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
-	AddComponent(/datum/component/armour_filtering/negative, TRAIT_HONORBOUND)
