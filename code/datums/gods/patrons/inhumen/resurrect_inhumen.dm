@@ -31,7 +31,7 @@
 	required_structure = /obj/structure/fluff/psycross/zizocross
 
 /obj/effect/proc_holder/spell/invoked/resurrect/baotha
-	name = "Drive the thorns deep"
+	name = "Drive the Thorns Deep"
 	desc = "Revives the target by afflicting them with a lasting addiction."
 	debuff_type = /datum/status_effect/debuff/baotha_addiction
 	alt_required_items = list(/obj/item/natural/thorn = 3)
