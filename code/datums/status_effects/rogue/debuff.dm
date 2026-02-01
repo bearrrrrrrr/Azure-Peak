@@ -324,12 +324,12 @@
 /datum/status_effect/debuff/ravox_spirit_backlash
 	id = "ravox_spirit_backlash"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/ravox_spirit_backlash
-	effectedstats = list(STATKEY_WIL = -1, STATKEY_CON = -1)
-	duration = 5 SECONDS
+	effectedstats = list(STATKEY_WIL = -2, STATKEY_CON = -1, STATKEY_STR = -1)
+	duration = 60 SECONDS
 
 /atom/movable/screen/alert/status_effect/debuff/ravox_spirit_backlash
-	name = "Ravoxian Backlash"
-	desc = "The loss of a warrior soul rattles my resolve and constitution."
+	name = "Spiritual Backlash"
+	desc = "The loss of my spirit drains me...!"
 	icon_state = "call_to_arms_negative"
 
 /datum/status_effect/debuff/ravox_burden

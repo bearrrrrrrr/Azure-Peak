@@ -108,7 +108,7 @@
 			continue
 		target.apply_status_effect(/datum/status_effect/buff/call_to_arms)
 	return TRUE
-	
+
 //Persistence - Harms the shit out of an undead mob/player while causing bleeding/pain wounds to clot at higher rate for living ones. Basically a 'shittier' yet still good greater heal effect.
 /obj/effect/proc_holder/spell/invoked/persistence
 	name = "Persistence"
@@ -273,7 +273,7 @@
 	miracle = TRUE
 	devotion_cost = 100
 
-GLOBAL_LIST_EMPTY(arenafolks) // we're just going to use a list and add to it. Since /entered doesnt work on teleported mobs. 
+GLOBAL_LIST_EMPTY(arenafolks) // we're just going to use a list and add to it. Since /entered doesnt work on teleported mobs.
 
 /obj/effect/proc_holder/spell/invoked/challenge/cast(list/targets, mob/living/user)
 	var/area/rogue/indoors/ravoxarena/thearena = GLOB.areas_by_type[/area/rogue/indoors/ravoxarena]
@@ -302,7 +302,7 @@ GLOBAL_LIST_EMPTY(arenafolks) // we're just going to use a list and add to it. S
 			challengerspawnpoint = get_turf(aflag)
 		for(var/obj/structure/fluff/ravox/challenged/bflag in thearena)
 			challengedspawnpoint = get_turf(bflag)
-		
+
 		do_teleport(user, challengerspawnpoint)
 		do_teleport(target, challengedspawnpoint)
 		GLOB.arenafolks += user
@@ -524,9 +524,9 @@ GLOBAL_LIST_EMPTY(arenafolks) // we're just going to use a list and add to it. S
 	. = ..()
 
 /obj/effect/proc_holder/spell/invoked/raise_warrior_spirits
-	name = "Warrior Spirits"
-	desc = "Summon Elder Warrior spirits to tear at an opponent!"
-	range = 7
+	name = "Inner Fire"
+	desc = "Tear out part of your warrior's spirit, and manifest it into a spirit of battle!"
+	range = 3
 	sound = list('sound/magic/magnet.ogg')
 	action_icon = 'icons/mob/actions/ravoxmiracles.dmi'
 	overlay_icon = 'icons/mob/actions/ravoxmiracles.dmi'
@@ -538,13 +538,13 @@ GLOBAL_LIST_EMPTY(arenafolks) // we're just going to use a list and add to it. S
 	no_early_release = TRUE
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokeholy
-	gesture_required = TRUE 
+	gesture_required = TRUE
 	associated_skill = /datum/skill/magic/holy
 	recharge_time = 5 MINUTES
 	hide_charge_effect = TRUE
 	miracle = TRUE
 	devotion_cost = 50
-	invocations = list("Soldiers of Ravox, come to me!!")
+	invocations = list("I ACTIVATE MY STAND, '3 2 1 MASK MASK MASK MASK MASK'!!")
 	invocation_type = "shout"
 
 /obj/effect/proc_holder/spell/invoked/raise_warrior_spirits/cast(list/targets, mob/living/user)
@@ -576,7 +576,7 @@ GLOBAL_LIST_EMPTY(arenafolks) // we're just going to use a list and add to it. S
 			if(3)
 				new /mob/living/simple_animal/hostile/rogue/skeleton/ravox_ghost/sword(spawn_turf, user)
 		for(var/mob/living/simple_animal/hostile/rogue/skeleton/ravox_ghost/swarm in view(3, user))
-			swarm.ai_controller.set_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET, target) 
+			swarm.ai_controller.set_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET, target)
 			if(swarm.buffed_r == FALSE)
 				swarm.maxHealth *= skill
 				swarm.health *= skill
