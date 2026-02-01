@@ -400,4 +400,4 @@ Medical defines
 #define VISMSG_ARMOR_INT_STAGETHREE "<span class='armoralert'><b> Crumbling!</b></span>"
 
 #define PROB_ATTACK_EMOTE_PLAYER 10
-#define PROB_ATTACK_EMOTE_NPC 5
+#define PROB_ATTACK_EMOTE_NPC 10

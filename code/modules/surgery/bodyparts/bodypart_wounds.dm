@@ -169,7 +169,11 @@
 			if(ishuman(owner))
 				var/mob/living/carbon/human/human_owner = owner
 				human_owner.hud_used?.stressies?.flick_pain(TRUE)
-				user.emote("attack", forced = TRUE)
+				var/suppress_attack_blip = FALSE
+				if(user.client?.prefs?.attack_blip_frequency == 100)	//At 100% we're guaranteed to have already emoted due to a successful attack.
+					suppress_attack_blip = TRUE 
+				if(!suppress_attack_blip)
+					user.emote("attack", forced = TRUE)
 				human_owner.emote("paincrit", forced = TRUE)
 
 			if(user)

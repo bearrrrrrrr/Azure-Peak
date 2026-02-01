@@ -397,9 +397,10 @@
 // Attack blip played randomly.
 /datum/emote/living/attack
 	key = "attack"
-	key_third_person = ""
+	key_third_person = "attacks"
 	message = ""
-	message_muffled = ""
+	nomsg = TRUE
+	message_muffled = "makes a muffled groan."
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
