@@ -329,8 +329,20 @@
 
 /atom/movable/screen/alert/status_effect/debuff/ravox_spirit_backlash
 	name = "Spiritual Backlash"
-	desc = "The loss of my spirit drains me...!"
+	desc = "Myne body weak, myne muscles burn- but I must fight on."
 	icon_state = "call_to_arms_negative"
+
+/atom/movable/screen/alert/status_effect/debuff/ravox_warrior_spirit
+	name = "Lux-strain"
+	desc = "My spirit is momentarily stretched thin."
+	icon_state = "astrata_gaze"
+
+/datum/status_effect/debuff/ravox_warrior_spirit
+	id = "ravox_warrior_spirit"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/ravox_warrior_spirit
+	duration = 1 MINUTES
+	effectedstats = list(STATKEY_STR = -1, STATKEY_WIL = -1, STATKEY_SPD = -1)
+
 
 /datum/status_effect/debuff/ravox_burden
 	id = "ravox_burden"
