@@ -2181,6 +2181,7 @@
 	sellprice = 300
 	sheathe_icon = "goldsword"
 	wbalance = WBALANCE_HEAVY
+	unenchantable = TRUE
 
 /obj/item/rogueweapon/sword/gold/lordscepter
 	name = "\"Godshand\""
@@ -2194,6 +2195,7 @@
 	sellprice = 363
 	possible_item_intents = list(/datum/intent/sword/cut/arming, /datum/intent/sword/thrust/arming, /datum/intent/lord_electrocute, /datum/intent/lord_silence)
 	gripped_intents = list(/datum/intent/sword/cut/arming, /datum/intent/sword/thrust/arming, /datum/intent/sword/strike, /datum/intent/sword/peel)
+	unenchantable = TRUE
 	COOLDOWN_DECLARE(sceptersword)
 
 /obj/item/rogueweapon/sword/gold/lordscepter/afterattack(atom/target, mob/user, flag)
