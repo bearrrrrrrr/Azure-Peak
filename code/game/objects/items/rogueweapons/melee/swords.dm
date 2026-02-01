@@ -138,6 +138,25 @@
 	damfactor = 1.2
 	clickcd = 10
 
+/datum/intent/sword/chop/broadsword
+	name = "heavy swing" //Standard penetration, but with a higher damage modifier.
+	penfactor = 30
+	damfactor = 1.15
+
+/datum/intent/sword/thrust/long/broadsword
+	name = "heavy thrust" //Ditto.
+	penfactor = 30
+	damfactor = 1.15
+	swingdelay = 4 //Halved swigndelay compared to chopping.
+
+/datum/intent/sword/thrust/long/broadsword/heavy
+	name = "impale" //Stabbing variant of the Chop intent. Higher damage, but slower and evadable. Exclusive to two-handed broadswords.
+	icon_state = "inimpale"
+	attack_verb = list("impales", "thrusts into")
+	penfactor = 30
+	damfactor = 1.3
+	swingdelay = 8
+
 /datum/intent/rend/krieg
 	intent_intdamage_factor = 0.2
 
@@ -357,8 +376,9 @@
 	max_blade_int = 230 //Less of an edge than the longsword..
 	max_integrity = 180 //..but tougher.
 	wdefense_wbonus = 3 // Same defense when one-handed, but slightly reduced wielded defense compared to the longsword.
-	possible_item_intents = list(/datum/intent/sword/chop, /datum/intent/sword/thrust/long, /datum/intent/sword/strike, /datum/intent/sword/peel) 
-	smeltresult = /obj/item/ingot/iron //Note for the above line - otherwise 1:1 with the longsword, intent-wise. One-handed chop helps to fill the gap left by the lack of iron axes.
+	possible_item_intents = list(/datum/intent/sword/chop/broadsword, /datum/intent/sword/thrust/long/broadsword, /datum/intent/sword/strike, /datum/intent/sword/peel)
+	gripped_intents = list(/datum/intent/sword/chop/broadsword, /datum/intent/sword/thrust/long/broadsword/heavy, /datum/intent/sword/strike, /datum/intent/sword/peel)
+	smeltresult = /obj/item/ingot/iron //Sidegrade of the longswords and battle axes - non-blunt attacks hit harder, but are always telegraphed and swing-delayed.
 
 /obj/item/rogueweapon/sword/long/broadsword/bronze
 	name = "spatha"
@@ -369,7 +389,8 @@
 	wdefense_wbonus = 3
 	max_blade_int = 295 //Inverse. Sharper..
 	max_integrity = 125 //..but weaker.
-	possible_item_intents = list(/datum/intent/sword/chop, /datum/intent/sword/thrust/long, /datum/intent/sword/strike, /datum/intent/sword/peel) 
+	possible_item_intents = list(/datum/intent/sword/chop/broadsword, /datum/intent/sword/thrust/long/broadsword, /datum/intent/sword/strike, /datum/intent/sword/peel)
+	gripped_intents = list(/datum/intent/sword/chop/broadsword, /datum/intent/sword/thrust/long/broadsword/heavy, /datum/intent/sword/strike, /datum/intent/sword/peel)
 	smeltresult = /obj/item/ingot/bronze //Like before, it falls under the unofficial 'broadsword' category with one-handed chops. Best to pack a shield!
 
 /obj/item/rogueweapon/sword/long/broadsword/steel
@@ -377,13 +398,14 @@
 	desc = "A lethal and well-balanced weapon. The broadsword - better known as a 'hand-and-a-halfer' - has dutifully served the \
 	swordsmen of Psydonia in their clashes against man-and-monster alike since time immemmorial. Valoria's watchmen are renowned for \
 	their use of these steel-bladed iterations: an expensive necessity, in order to lay their undying besiegers to rest for good."
-	icon_state = "broadsword"
+	icon_state = "sbroadsword"
 	sheathe_icon = "sbroadsword"
 	max_blade_int = 330 //Sharper than a longsword, but with reduced defense. The use of steel balances its integrity out with a slight +10 bonus.
 	max_integrity = 160 
 	wdefense_wbonus = 3
-	possible_item_intents = list(/datum/intent/sword/chop, /datum/intent/sword/thrust/long, /datum/intent/sword/strike, /datum/intent/sword/peel) 
-	smeltresult = /obj/item/ingot/steel //Note for the above line - otherwise 1:1 with the longsword, intent-wise. One-handed chop helps to fill the gap left by the lack of iron axes.
+	possible_item_intents = list(/datum/intent/sword/chop/broadsword, /datum/intent/sword/thrust/long/broadsword, /datum/intent/sword/strike, /datum/intent/sword/peel)
+	gripped_intents = list(/datum/intent/sword/chop/broadsword, /datum/intent/sword/thrust/long/broadsword/heavy, /datum/intent/sword/strike, /datum/intent/sword/peel)
+	smeltresult = /obj/item/ingot/steel
 
 ////////////////////////
 // TRIUMPH-EXCLUSIVE! //
@@ -2181,6 +2203,7 @@
 	sellprice = 300
 	sheathe_icon = "goldsword"
 	wbalance = WBALANCE_HEAVY
+	unenchantable = TRUE
 
 /obj/item/rogueweapon/sword/gold/lordscepter
 	name = "\"Godshand\""
@@ -2192,6 +2215,7 @@
 	max_integrity = 250
 	max_blade_int = 250
 	sellprice = 363
+	unenchantable = TRUE
 	possible_item_intents = list(/datum/intent/sword/cut/arming, /datum/intent/sword/thrust/arming, /datum/intent/lord_electrocute, /datum/intent/lord_silence)
 	gripped_intents = list(/datum/intent/sword/cut/arming, /datum/intent/sword/thrust/arming, /datum/intent/sword/strike, /datum/intent/sword/peel)
 	COOLDOWN_DECLARE(sceptersword)
