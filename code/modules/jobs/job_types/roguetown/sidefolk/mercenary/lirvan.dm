@@ -20,7 +20,7 @@
 		STATKEY_CON = 1,
 		STATKEY_WIL = 1,
 		STATKEY_PER = 1,
-		STATKEY_SPD = -2
+		STATKEY_SPD = -1
 	)
 	subclass_skills = list(
 		/datum/skill/combat/maces = SKILL_LEVEL_JOURNEYMAN,
@@ -31,6 +31,7 @@
 		/datum/skill/misc/athletics = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/climbing = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/medicine = SKILL_LEVEL_NOVICE,
+		/datum/skill/craft/carpentry = SKILL_LEVEL_NOVICE, //pity. your staff is incredibly fragile
 		/datum/skill/craft/crafting = SKILL_LEVEL_NOVICE,
 		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/polearms = SKILL_LEVEL_EXPERT,
@@ -52,6 +53,7 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/lirvas
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
+	beltl = /obj/item/rogueweapon/sword/sabre
 	neck = /obj/item/clothing/neck/roguetown/gorget/steel/gold
 	armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas
 	pants = /obj/item/clothing/under/roguetown/chainlegs/kilt/gold
@@ -98,7 +100,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 /obj/item/clothing/under/roguetown/chainlegs/kilt/gold
 	color = "#f9a602"
 
-/obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas //high armor,  U N G O D L Y  high regen time
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas //high and good armor, but full body, so constant dmg  U N G O D L Y  high regen time. get owned when it breaks or swap to a sidearm
 	name = "hardened scales"
 	desc = "Scales hardened by Lirvan rituo. When broken, my body crumbles, but the lack of encumberance is wildly freeing. </br> </br> Who is more worthy to inherit the wealth of the Sun than those who fly closest?"
 	repairmsg_begin = "My scales harden and begin mending."
@@ -107,6 +109,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 	repairmsg_end = "My scales are as strong as stone once more!"
 	repair_time = 60 SECONDS
 	armor = ARMOR_PLATE //scalemail equivalent and ensures it takes dmg last
+	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET | HANDS | FEET | COVERAGE_HEAD //all but eyes/nose, seems fair.
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas/Destroy() //this shouldn't happen, but just in case.....though maybe it'd be more sovl if it didn't...?
 	remove_broken_scales_buff()
