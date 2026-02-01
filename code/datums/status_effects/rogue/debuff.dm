@@ -324,7 +324,7 @@
 /datum/status_effect/debuff/ravox_spirit_backlash
 	id = "ravox_spirit_backlash"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/ravox_spirit_backlash
-	effectedstats = list(STATKEY_WIL = -2, STATKEY_CON = -1, STATKEY_STR = -1)
+	effectedstats = list(STATKEY_WIL = -1, STATKEY_CON = -1, STATKEY_STR = -1)
 	duration = 60 SECONDS
 
 /atom/movable/screen/alert/status_effect/debuff/ravox_spirit_backlash

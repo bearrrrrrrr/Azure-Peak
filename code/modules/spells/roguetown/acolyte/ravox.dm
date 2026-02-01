@@ -544,7 +544,7 @@ GLOBAL_LIST_EMPTY(arenafolks) // we're just going to use a list and add to it. S
 	hide_charge_effect = TRUE
 	miracle = TRUE
 	devotion_cost = 50
-	invocations = list("I ACTIVATE MY STAND, '3 2 1 MASK MASK MASK MASK MASK'!!")
+	invocations = list("Armor-claid faith, enflame myne spirit!") //I'M A FOOL, I KNOW NOTHING. I TAKE THE ROLE OF A SIILLY CLOOOWN
 	invocation_type = "shout"
 
 /obj/effect/proc_holder/spell/invoked/raise_warrior_spirits/cast(list/targets, mob/living/user)
@@ -578,10 +578,11 @@ GLOBAL_LIST_EMPTY(arenafolks) // we're just going to use a list and add to it. S
 		for(var/mob/living/simple_animal/hostile/rogue/skeleton/ravox_ghost/swarm in view(3, user))
 			swarm.ai_controller.set_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET, target)
 			if(swarm.buffed_r == FALSE)
-				swarm.maxHealth *= skill
-				swarm.health *= skill
+				swarm.maxHealth += (skill*10)
+				swarm.health += (skill*10)
 				addtimer(CALLBACK(swarm, TYPE_PROC_REF(/mob/living/simple_animal/hostile/rogue/skeleton, deathtime), TRUE), time)
 				swarm.buffed_r = TRUE
+				swarm.name = "[user]'s Spirit"
 		return TRUE
 	revert_cast()
 	return FALSE

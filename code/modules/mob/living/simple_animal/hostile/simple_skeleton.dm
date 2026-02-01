@@ -234,15 +234,15 @@
     . = ..(mapload, user, cabal_affine, is_summoned)
 
 /mob/living/simple_animal/hostile/rogue/skeleton/ravox_ghost
-	name = "Warrior Soul"
-	desc = ""
+	name = "Ravoxian Soul"
+	desc = "A portion of a Ravoxian's soul. Kill it to damage and stun them. Metal."
 	icon = 'icons/roguetown/mob/monster/ravoxghost.dmi'
 	icon_state = "rghost"
 	icon_living = "rghost"
-	STACON = 14
-	STASTR = 13
+	STACON = 10
+	STASTR = 10
 	STASPD = 8
-	maxHealth = 50
+	maxHealth = 50 //summoned with 50 + 10 hp per skill lvl
 	health = 50
 	pixel_x = -16
 	pixel_y = -16
