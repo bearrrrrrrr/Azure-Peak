@@ -560,7 +560,6 @@ GLOBAL_LIST_EMPTY(arenafolks) // we're just going to use a list and add to it. S
 
 	var/skill = user.get_skill_level(/datum/skill/magic/holy)
 	var/time = 1 MINUTES
-	time *= skill
 
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
