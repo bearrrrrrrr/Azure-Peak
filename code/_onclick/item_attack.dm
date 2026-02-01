@@ -201,6 +201,13 @@
 	else if(_attacker_signal & COMPONENT_ITEM_NO_DEFENSE || _defender_signal & ATTACK_OVERRIDE_NODEFENSE)
 		override_status = ATTACK_OVERRIDE_NODEFENSE
 
+	var/blip_prob = PROB_ATTACK_EMOTE_NPC
+	if(user.mind)
+		blip_prob = PROB_ATTACK_EMOTE_PLAYER
+
+	if(prob(blip_prob))
+		user.emote("attack", forced = TRUE)
+
 	if(override_status != ATTACK_OVERRIDE_NODEFENSE)
 		if(M.checkdefense(user.used_intent, user))
 			return

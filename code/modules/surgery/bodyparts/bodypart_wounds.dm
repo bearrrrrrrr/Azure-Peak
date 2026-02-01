@@ -169,6 +169,8 @@
 			if(ishuman(owner))
 				var/mob/living/carbon/human/human_owner = owner
 				human_owner.hud_used?.stressies?.flick_pain(TRUE)
+				user.emote("attack", forced = TRUE)
+				human_owner.emote("paincrit", forced = TRUE)
 
 			if(user)
 				if(user.has_flaw(/datum/charflaw/addiction/thrillseeker))
