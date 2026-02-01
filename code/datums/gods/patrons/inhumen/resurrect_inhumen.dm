@@ -44,6 +44,7 @@
 	action_icon_state = "revival"
 	action_icon = 'icons/mob/actions/zizomiracles.dmi'
 	required_structure = /obj/structure/fluff/psycross/zizocross
+	req_items = list() // temp. baothans dont have a holy symbol. apparently one is being commed so this is just the stopgap.
 
 /obj/effect/proc_holder/spell/invoked/resurrect/zizo
 	name = "Zizo's Rebirth"
