@@ -526,7 +526,7 @@ GLOBAL_LIST_EMPTY(arenafolks) // we're just going to use a list and add to it. S
 /obj/effect/proc_holder/spell/invoked/raise_warrior_spirits
 	name = "Inner Fire"
 	desc = "Tear out part of your warrior's spirit, and manifest it into a spirit of battle!"
-	range = 3
+	range = 7
 	sound = list('sound/magic/magnet.ogg')
 	action_icon = 'icons/mob/actions/ravoxmiracles.dmi'
 	overlay_icon = 'icons/mob/actions/ravoxmiracles.dmi'
@@ -544,7 +544,7 @@ GLOBAL_LIST_EMPTY(arenafolks) // we're just going to use a list and add to it. S
 	hide_charge_effect = TRUE
 	miracle = TRUE
 	devotion_cost = 50
-	invocations = list("Armor-claid faith, enflame myne spirit!") //I'M A FOOL, I KNOW NOTHING. I TAKE THE ROLE OF A SIILLY CLOOOWN
+	invocations = list("Armor-claid faith, enflame myne spirit!!") //I'M A FOOL, I KNOW NOTHING. I TAKE THE ROLE OF A SIILLY CLOOOWN
 	invocation_type = "shout"
 
 /obj/effect/proc_holder/spell/invoked/raise_warrior_spirits/cast(list/targets, mob/living/user)
@@ -563,6 +563,7 @@ GLOBAL_LIST_EMPTY(arenafolks) // we're just going to use a list and add to it. S
 
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
+		user.apply_status_effect(/datum/status_effect/debuff/ravox_warrior_spirit)
 		var/blorbo_picker = rand(1, 3)
 		var/turf/spawn_turf = get_step(user, user.dir)
 		if(!spawn_turf)
@@ -581,7 +582,7 @@ GLOBAL_LIST_EMPTY(arenafolks) // we're just going to use a list and add to it. S
 				swarm.health += (skill*10)
 				addtimer(CALLBACK(swarm, TYPE_PROC_REF(/mob/living/simple_animal/hostile/rogue/skeleton, deathtime), TRUE), time)
 				swarm.buffed_r = TRUE
-				swarm.name = "[user]'s Spirit"
+				swarm.name = "[user.real_name]'s Spirit"
 		return TRUE
 	revert_cast()
 	return FALSE
