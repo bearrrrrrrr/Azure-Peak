@@ -55,8 +55,8 @@
 	. = ..()
 	if(isliving(target))
 		var/mob/living/H = target
-		if((H.job in list("Templar", "Acolyte", "Bishop", "Martyr")))
-			visible_message(span_warning("[src]'s power brushes off of [H] with no harm!"))
+		if(H.job in GLOB.church_positions) // TRAIT_CLERGY could work here but is unmaintained and druids, sextons, etc. all lack it.
+			visible_message(span_warning("The divine blast bounces off [H] harmlessly!"))
 			playsound(get_turf(H), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK
