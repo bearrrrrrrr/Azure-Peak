@@ -230,7 +230,7 @@
 	created_item = /obj/item/clothing/ring/diamonds
 
 /datum/anvil_recipe/valuables/terminus
-	name = "Terminus Est (+1 Gold Bar, +1 Steel, +1 Rontz)"
+	name = "Ferryman (+1 Gold Bar, +1 Steel, +1 Rontz)"
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/steel, /obj/item/roguegem/ruby)
 	created_item = /obj/item/rogueweapon/sword/long/exe/cloth
