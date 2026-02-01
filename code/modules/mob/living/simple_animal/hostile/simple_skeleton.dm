@@ -160,7 +160,7 @@
 		return FALSE
 	if (!(user.name in friends))
 		return FALSE
-	
+
 	return TRUE
 
 /mob/living/simple_animal/hostile/rogue/skeleton/beckoned(mob/user)
@@ -203,7 +203,7 @@
 
 /datum/intent/simple/claw/skeleton
 	clickcd = SKELETON_ATTACK_SPEED
-	
+
 /datum/intent/simple/spear/skeleton
 	reach = 2
 	clickcd = SKELETON_ATTACK_SPEED * 1.2
@@ -254,6 +254,20 @@
 	can_have_ai = FALSE //disable native ai
 	AIStatus = AI_OFF
 	var/buffed_r = FALSE
+	var/mob/living/spirit_owner = null
+
+/mob/living/simple_animal/hostile/rogue/skeleton/ravox_ghost/Initialize(mapload, mob/user, cabal_affine = FALSE, is_summoned = FALSE)
+	. = ..(mapload, user, cabal_affine, is_summoned)
+	if(isliving(user))
+		spirit_owner = user
+
+/mob/living/simple_animal/hostile/rogue/skeleton/ravox_ghost/death(gibbed)
+	if(spirit_owner && isliving(spirit_owner))
+		spirit_owner.adjustBruteLoss(30)
+		spirit_owner.apply_status_effect(/datum/status_effect/debuff/ravox_spirit_backlash)
+		spirit_owner.Stun(20)
+		spirit_owner.emote("agony", forced = TRUE)
+	. = ..()
 
 /mob/living/simple_animal/hostile/rogue/skeleton/ravox_ghost/spear
 	icon_state = "rghost_s"

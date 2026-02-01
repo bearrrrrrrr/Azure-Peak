@@ -321,6 +321,17 @@
 	desc = "His voice keeps ringing in your ears, rocking your soul.."
 	icon_state = "call_to_arms_negative"
 
+/datum/status_effect/debuff/ravox_spirit_backlash
+	id = "ravox_spirit_backlash"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/ravox_spirit_backlash
+	effectedstats = list(STATKEY_WIL = -1, STATKEY_CON = -1)
+	duration = 5 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/ravox_spirit_backlash
+	name = "Ravoxian Backlash"
+	desc = "The loss of a warrior soul rattles my resolve and constitution."
+	icon_state = "call_to_arms_negative"
+
 /datum/status_effect/debuff/ravox_burden
 	id = "ravox_burden"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/ravox_burden
@@ -671,7 +682,7 @@
 			PM.backdrop(owner)
 			PM = locate(/atom/movable/screen/plane_master/game_world_above) in owner.client.screen
 			PM.backdrop(owner)
-	
+
 /datum/status_effect/debuff/vampbite/on_remove()
 	. = ..()
 	REMOVE_TRAIT(owner, TRAIT_DRUQK, id)
