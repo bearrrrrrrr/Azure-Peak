@@ -18,6 +18,8 @@
 			used = list('sound/vo/female/warrior/warcry (1).ogg', 'sound/vo/female/warrior/warcry (2).ogg')
 		if("fatigue")
 			used = 'sound/vo/female/warrior/fatigue (1).ogg'
+		if("cackle")
+			used = 'sound/vo/female/warrior/cackle (1).ogg'
 		if("leap")
 			used = list('sound/vo/female/warrior/leap (1).ogg', 'sound/vo/female/warrior/leap (2).ogg', 'sound/vo/female/warrior/leap (3).ogg')
 		if("jump")
@@ -29,7 +31,7 @@
 		if("scream")
 			used = list('sound/vo/female/warrior/scream (1).ogg', 'sound/vo/female/warrior/scream (2).ogg')
 		if("laugh")
-			used = list('sound/vo/female/warrior/laugh (1).ogg', 'sound/vo/female/warrior/laugh (2).ogg', 'sound/vo/female/warrior/laugh (3).ogg' ,'sound/vo/female/warrior/laugh (4).ogg' ,'sound/vo/female/warrior/laugh (5).ogg','sound/vo/female/warrior/laugh (6).ogg')
+			used = list('sound/vo/female/warrior/laugh (1).ogg', 'sound/vo/female/warrior/laugh (2).ogg', 'sound/vo/female/warrior/laugh (3).ogg' ,'sound/vo/female/warrior/laugh (4).ogg' ,'sound/vo/female/warrior/laugh (5).ogg','sound/vo/female/warrior/laugh (6).ogg','sound/vo/female/warrior/laugh (7).ogg','sound/vo/female/warrior/laugh (8).ogg')
 		if("pleased")
 			used = list('sound/vo/female/warrior/pleased (1).ogg', 'sound/vo/female/warrior/pleased (2).ogg', 'sound/vo/female/warrior/pleased (3).ogg')
 		if("gasp")
@@ -42,6 +44,8 @@
 			used = list('sound/vo/female/warrior/groan (1).ogg', 'sound/vo/female/warrior/groan (2).ogg', 'sound/vo/female/warrior/groan (3).ogg', 'sound/vo/female/warrior/groan (4).ogg', 'sound/vo/female/warrior/groan (6).ogg')
 		if("sigh")
 			used = list('sound/vo/female/warrior/sigh (1).ogg', 'sound/vo/female/warrior/sigh (2).ogg')
+		if("hum")
+			used = list('sound/vo/female/warrior/hum (1).ogg', 'sound/vo/female/warrior/hum (2).ogg', 'sound/vo/female/warrior/hum (3).ogg', 'sound/vo/female/warrior/hum (4).ogg', 'sound/vo/female/warrior/hum (5).ogg', 'sound/vo/female/warrior/hum (6).ogg')
 
 	if(!used)
 		used = ..(soundin, modifiers)
