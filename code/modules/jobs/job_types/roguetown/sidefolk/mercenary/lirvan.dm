@@ -106,7 +106,6 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 	repairmsg_stop = "The onslaught stops my scales' regeneration!"
 	repairmsg_end = "My scales are as strong as stone once more!"
 	repair_time = 60 SECONDS
-	armor_class = ARMOR_CLASS_MEDIUM
 	armor = ARMOR_PLATE //scalemail equivalent and ensures it takes dmg last
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas/Destroy() //this shouldn't happen, but just in case.....though maybe it'd be more sovl if it didn't...?
