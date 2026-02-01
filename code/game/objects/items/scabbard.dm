@@ -706,7 +706,6 @@
 	sellprice = 15
 
 /obj/item/rogueweapon/scabbard/gwstrap/ComponentInitialize()
-	. = ..()
 	AddComponent(/datum/component/holster/gwstrap, FALSE, FALSE, FALSE, sheathe_time)
 
 /obj/item/rogueweapon/scabbard/gwstrap/getonmobprop(tag)
