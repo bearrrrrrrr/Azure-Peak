@@ -425,26 +425,9 @@
 	item_state = "beltstrapr"
 	force = 3
 
-/obj/item/rogueweapon/scabbard/sword/strap/update_icon(mob/living/user)
-	if(sheathed)
-		if(sheathed.bigboy)
-			bigboy = TRUE
-		icon = sheathed.icon
-		icon_state = sheathed.icon_state
-		experimental_onback = TRUE
-		experimental_onhip = TRUE
-	else
-		icon = initial(icon)
-		icon_state = initial(icon_state)
-		experimental_onback = FALSE
-		experimental_onhip = FALSE
-		bigboy = FALSE
-	if(user)
-		user.update_inv_hands()
-		user.update_inv_back()
-		user.update_inv_belt()
-
-	getonmobprop(tag)
+/obj/item/rogueweapon/scabbard/sword/strap/ComponentInitialize()
+	AddComponent(/datum/component/holster/simplestrap, (valid_blade ? valid_blade : null), (length(valid_blades) ? valid_blades : null), (length(invalid_blades) ? invalid_blades : null))
+	
 
 /obj/item/rogueweapon/scabbard/sword/strap/getonmobprop(tag)
 	..()

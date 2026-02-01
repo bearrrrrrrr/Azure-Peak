@@ -197,3 +197,25 @@
 		user.update_inv_back()
 
 	I.getonmobprop(tag)
+
+/datum/component/holster/simplestrap/update_icon(mob/living/user)
+	var/obj/item/I = parent
+	if(sheathed)
+		if(sheathed.bigboy)
+			I.bigboy = TRUE
+		I.icon = sheathed.icon
+		I.icon_state = sheathed.icon_state
+		I.experimental_onback = TRUE
+		I.experimental_onhip = TRUE
+	else
+		I.icon = initial(I.icon)
+		I.icon_state = initial(I.icon_state)
+		I.experimental_onback = FALSE
+		I.experimental_onhip = FALSE
+		I.bigboy = FALSE
+	if(user)
+		user.update_inv_hands()
+		user.update_inv_back()
+		user.update_inv_belt()
+
+	I.getonmobprop(tag)
