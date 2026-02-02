@@ -54,7 +54,7 @@
 		M.adjustOxyLoss(-5, 0)
 		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -5  * REAGENTS_EFFECT_MULTIPLIER)
 		M.adjustCloneLoss(-7  * REAGENTS_EFFECT_MULTIPLIER, 0)
-		M.adjustOrganLoss(ORGAN_SLOT_EYES, -2.5 * REAGENTS_EFFECT_MULTIPLIER)
+		M.adjustOrganLoss(ORGAN_SLOT_EYES, -2.5 * REAGENTS_EFFECT_MULTIPLIER) //
 	..()
 	. = 1
 
