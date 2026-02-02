@@ -156,7 +156,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 
 /obj/effect/proc_holder/spell/self/lirvan_tithe
 	name = "INVOKE"
-	desc = "Draw strength from the wealth you carry. Armor, jewelry, and raw mammon counted equally. More WEALTH means more POWER. More POWER at 150, 200, 400, and 800 mammon."
+	desc = "Draw strength from the wealth you carry. Armor, jewelry, and raw mammon counted equally. More WEALTH means more POWER. More POWER at 150, 200, 300, 400, and 600 mammon."
 	antimagic_allowed = TRUE
 	clothes_req = FALSE
 	recharge_time = 3 MINUTES
@@ -182,6 +182,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 	duration = 2 MINUTES
 	var/wealth_value = 0
 	var/outline_colour = "#f5d96c"
+	var/obj/effect/dummy/lighting_obj/moblight/lirvanlight
 
 /datum/status_effect/buff/lirvan_tithe/on_apply()
 	update_effects()
@@ -190,7 +191,9 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 		var/filter = owner.get_filter(LIRVAN_BLING_FILTER)
 		if(!filter)
 			owner.add_filter(LIRVAN_BLING_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 120, "size" = 1))
-		if(wealth_value < 150)
+		if(!lirvanlight)
+			lirvanlight = owner.mob_light(7, 7, _color = outline_colour)
+		if(wealth_value < 100)
 			to_chat(owner, span_notice("WEALTH answers my call. Every single one of my- ONLY [src.wealth_value] MAMMON?!"))
 			owner.emote("whimper", forced = TRUE)
 			return
@@ -200,17 +203,22 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 /datum/status_effect/buff/lirvan_tithe/on_remove()
 	. = ..()
 	owner.remove_filter(LIRVAN_BLING_FILTER)
+	QDEL_NULL(lirvanlight)
 	to_chat(owner, span_warning("POWER fades."))
 
 /datum/status_effect/buff/lirvan_tithe/proc/update_effects()
 	wealth_value = get_moni_value(owner)
-	if(wealth_value < 150)
+	if(wealth_value < 100)
 		effectedstats = list(STATKEY_CON = 1, STATKEY_WIL = 1)
+	else if(wealth_value < 150)
+		effectedstats = list(STATKEY_STR = 1, STATKEY_CON = 1, STATKEY_WIL = 1)
 	else if(wealth_value < 200)
-		effectedstats = list(STATKEY_STR = 1, STATKEY_CON = 1, STATKEY_WIL = 2, STATKEY_SPD = 1)
-	else if(wealth_value < 400)
+		effectedstats = list(STATKEY_STR = 1, STATKEY_CON = 1, STATKEY_WIL = 2)
+	else if(wealth_value < 300)
 		effectedstats = list(STATKEY_STR = 2, STATKEY_CON = 2, STATKEY_WIL = 3, STATKEY_SPD = 1)
-	else if(wealth_value < 800)
+	else if(wealth_value < 400)
+		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 2, STATKEY_WIL = 3, STATKEY_SPD = 1)
+	else if(wealth_value < 600)
 		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 3, STATKEY_WIL = 4, STATKEY_SPD = 2)
 	else
 		effectedstats = list(STATKEY_STR = 4, STATKEY_CON = 4, STATKEY_WIL = 4, STATKEY_SPD = 2) //I'm hoping this doesn't happen often.
