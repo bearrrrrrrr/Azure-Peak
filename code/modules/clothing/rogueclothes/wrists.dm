@@ -68,7 +68,7 @@
 
 /obj/item/clothing/wrists/roguetown/bracers/lirvas
 	name = "lirvasi pauldrons"
-	desc = "I love GOOOLD...!"
+	desc = "Oversized gold pauldrons that protect the forearms and upper-arms. Surprisingly protective and flashy, but heavy...!"
 	icon_state = "goldpauldron"
 	sellprice = 20
 
