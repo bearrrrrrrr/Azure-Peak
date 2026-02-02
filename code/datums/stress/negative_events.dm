@@ -219,7 +219,7 @@
 /datum/stressevent/coldhead
 	timer = 60 SECONDS
 	stressadd = 1
-	desc = span_red("My head feels uncomfortably cold.")
+	desc = span_red("My head and neck feel uncomfortably cold.")
 
 /datum/stressevent/sleepytime
 	timer = 40 MINUTES
