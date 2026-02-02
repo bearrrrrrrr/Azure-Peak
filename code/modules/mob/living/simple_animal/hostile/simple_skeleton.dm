@@ -242,7 +242,7 @@
 	STACON = 10
 	STASTR = 10
 	STASPD = 8
-	maxHealth = 50 //summoned with 50 + 10 hp per skill lvl
+	maxHealth = 60 //summoned with 60 + 10 hp per skill lvl
 	health = 50
 	pixel_x = -16
 	pixel_y = -16
@@ -265,7 +265,7 @@
 	if(spirit_owner && isliving(spirit_owner))
 		spirit_owner.adjustBruteLoss(30)
 		spirit_owner.apply_status_effect(/datum/status_effect/debuff/ravox_spirit_backlash)
-		spirit_owner.Stun(20)
+		spirit_owner.Immobilize(20)
 		spirit_owner.emote("agony", forced = TRUE)
 	. = ..()
 
