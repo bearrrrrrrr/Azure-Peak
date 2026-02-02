@@ -764,7 +764,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 		stat(null, SS.timeofday_text)
 		stat(null, SS.ic_time_text)
 		stat(null, "PING: [round(client.lastping,1)]ms (AVG: [round(client.avgping,1)]ms)")
-
+		stat(null, SS.td_info_text)
 		if(check_rights(R_ADMIN,0))
 			for(var/line in SS.admin_roundinfo_text)
 				stat(null, line)

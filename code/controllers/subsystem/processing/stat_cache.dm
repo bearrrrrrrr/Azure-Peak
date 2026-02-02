@@ -14,6 +14,7 @@ SUBSYSTEM_DEF(statpanel)
 
 	var/timeofday_text
 	var/ic_time_text
+	var/td_info_text
 
 /datum/controller/subsystem/statpanel/Initialize()
 	. = ..()
@@ -58,12 +59,11 @@ SUBSYSTEM_DEF(statpanel)
 
 	admin_roundinfo_text = list(
 		SSmigrants.get_status_line(),
-		"TIME DILATION: [round(SStime_track.time_dilation_current,1)]% \
-AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, \
-[round(SStime_track.time_dilation_avg,1)]%, \
-[round(SStime_track.time_dilation_avg_slow,1)]%)"
 	)
-
+	td_info_text = "TIME DILATION: [round(SStime_track.time_dilation_current,1)]% \
+	AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, \
+	[round(SStime_track.time_dilation_avg,1)]%, \
+	[round(SStime_track.time_dilation_avg_slow,1)]%)"
 	mc_info_text = list()
 
 	mc_info_text += "CPU: [world.cpu]"
