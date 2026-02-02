@@ -883,7 +883,7 @@
 
 /obj/item/rogueweapon/sword/long/exe/cloth
 	icon_state = "terminusest"
-	name = "\"Ferryman\""
+	name = "\"Terminus Est\""
 	desc = "An ancient and damaged executioner's sword, decorated with a bronze pommel and crossguard. A bloody rag winds around the ricasso, ever-present to keep the blade clean."
 	smeltresult = /obj/item/ingot/gold // It is the most valuable component
 	smelt_bar_num = 2
