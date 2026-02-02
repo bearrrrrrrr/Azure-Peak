@@ -195,7 +195,7 @@
 
 	if(user)
 		user.update_inv_back()
-
+		
 	I.getonmobprop(tag)
 
 /datum/component/holster/simplestrap/update_icon(mob/living/user)

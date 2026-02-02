@@ -693,9 +693,10 @@
 
 /obj/item/rogueweapon/scabbard/gwstrap/getonmobprop(tag)
 	..()
-	if(!sheathed)
+	var/datum/component/holster/HC = GetComponent(/datum/component/holster)
+	if(!HC.sheathed)
 		return
-	if(istype(sheathed, /obj/item/rogueweapon/estoc) || istype(sheathed, /obj/item/rogueweapon/greatsword))
+	if(istype(HC.sheathed, /obj/item/rogueweapon/estoc) || istype(HC.sheathed, /obj/item/rogueweapon/greatsword))
 		switch(tag)
 			if("onback")
 				return list(
