@@ -192,8 +192,10 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 			owner.add_filter(LIRVAN_BLING_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 120, "size" = 1))
 		if(wealth_value < 150)
 			to_chat(owner, span_notice("WEALTH answers my call. Every single one of my- ONLY [src.wealth_value] MAMMON?!"))
+			owner.emote("whimper", forced = TRUE)
 			return
 		to_chat(owner, span_notice("WEALTH answers my call. Every single one of my [src.wealth_value] pieces of it."))
+		playsound(user, 'sound/combat/hits/burn (2).ogg', 100, TRUE)
 
 /datum/status_effect/buff/lirvan_tithe/on_remove()
 	. = ..()
