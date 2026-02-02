@@ -223,8 +223,8 @@
 		prefs.save_preferences()
 
 	var/text = choice
-	if(choice == "Default (Frequent)")
-		text = "Frequently"
+	if(choice == "Half the time (Default)")
+		text = "Half the time"
 
 	to_chat(src, "Your character will [text] voice their successful attacks.")
 

@@ -206,7 +206,7 @@
 			return
 
 	if(user.mind)
-		if(user.client?.prefs?.attack_blip_frequency > 0)
+		if(user.client?.prefs?.attack_blip_frequency != ATTACK_BLIP_PREF_NEVER)
 			var/blip_prob = user.client?.prefs?.attack_blip_frequency
 			if(prob(blip_prob))
 				user.emote("attack", forced = TRUE)

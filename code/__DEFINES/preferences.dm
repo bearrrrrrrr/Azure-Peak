@@ -181,16 +181,16 @@ GLOBAL_LIST_INIT(voice_packs_list, list(
 	VOICE_PACK_FEM_HAUGHTY = /datum/voicepack/female/haughty,
 ))
 
-#define ATTACK_BLIP_PREF_DEFAULT 75
-#define ATTACK_BLIP_PREF_HALF 50
-#define ATTACK_BLIP_PREF_ALWAYS 100
+#define ATTACK_BLIP_PREF_DEFAULT 50
 #define ATTACK_BLIP_PREF_RARELY 25
+#define ATTACK_BLIP_PREF_ALWAYS 100
+#define ATTACK_BLIP_PREF_FREQUENT 75
 #define ATTACK_BLIP_PREF_NEVER 0
 
 GLOBAL_LIST_INIT(attack_blip_pref_list, list(
 	"Always" = ATTACK_BLIP_PREF_ALWAYS,
-	"Default (Frequent)" = ATTACK_BLIP_PREF_DEFAULT,
-	"Half the time" = ATTACK_BLIP_PREF_HALF,
+	"Frequent" = ATTACK_BLIP_PREF_FREQUENT,
+	"Half the time (Default)" = ATTACK_BLIP_PREF_DEFAULT,
 	"Rarely" = ATTACK_BLIP_PREF_RARELY,
 	"Never" = ATTACK_BLIP_PREF_NEVER
 ))

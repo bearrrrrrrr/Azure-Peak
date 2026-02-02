@@ -174,6 +174,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["widescreenpref"]	    >> widescreenpref
 	S["menuoptions"]		>> menuoptions
 	S["enable_tips"]		>> enable_tips
+	S["attack_blip_frequency"] >> attack_blip_frequency
 	S["tip_delay"]			>> tip_delay
 	S["pda_style"]			>> pda_style
 	S["pda_color"]			>> pda_color
@@ -573,7 +574,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["rumour"]			>> rumour
 	S["noble_gossip"]			>> noble_gossip
 	S["averse_chosen_faction"] >> averse_chosen_faction
-	S["attack_blip_frequency"] >> attack_blip_frequency
 	S["song_artist"]		>> song_artist
 	S["song_title"]			>> song_title
 	S["nsfwflavortext"]	>> nsfwflavortext
