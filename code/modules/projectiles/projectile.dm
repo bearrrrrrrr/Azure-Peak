@@ -235,7 +235,6 @@
 	if(!nodamage && (damage_type == BRUTE || damage_type == BURN) && iswallturf(target_loca))
 		var/turf/closed/wall/W = target_loca
 		hit_wall = TRUE
-		to_chat(world, span_userdanger("Hit a wall!"))
 		if(prob(75))
 			if(impact_effect_type && !hitscan)
 				new impact_effect_type(target_loca, hitx, hity)
