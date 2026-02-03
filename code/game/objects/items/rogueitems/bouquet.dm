@@ -36,7 +36,8 @@
 
 /obj/item/flowercrown
 	name = "flowercrown"
-	desc = "A carefully woven crown of fresh flowers, yet to wilt."
+	desc = "A carefully woven crown of fresh flowers, yet to wilt. Headwear beloved \
+	by Eorans and all pining romantics."
 	icon = 'icons/roguetown/clothing/head.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head_items.dmi'
 	alternate_worn_layer = 8.9 //On top of helmet
@@ -72,6 +73,8 @@
 
 /obj/item/flowercrown/manabloom
 	name = "crown of manabloom"
+	desc = "A crown formed of manabloom flowers. Often worn by those who find themselves in need of a \
+	deeper attunement to the arcyne; a favourite of young apprentices and faltering old masters both."
 	item_state = "manabloom_crown"
 	icon_state = "manabloom_crown"
 
