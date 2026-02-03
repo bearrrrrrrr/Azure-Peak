@@ -35,11 +35,11 @@
 	icon_state = "bouquet_calendula"
 
 /obj/item/flowercrown
-	name = ""
-	desc = ""
-	icon = 'icons/roguetown/clothing/head.dmi' 
+	name = "flowercrown"
+	desc = "A carefully woven crown of fresh flowers, yet to wilt."
+	icon = 'icons/roguetown/clothing/head.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head_items.dmi'
-	alternate_worn_layer  = 8.9 //On top of helmet
+	alternate_worn_layer = 8.9 //On top of helmet
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
 	body_parts_covered = null
 	icon_state = ""
