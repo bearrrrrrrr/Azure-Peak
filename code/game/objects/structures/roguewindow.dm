@@ -1,7 +1,7 @@
 
 /obj/structure/roguewindow
 	name = "window"
-	desc = "A glass window formed of several moderetely sized panes of glass in a frame. Quite the \
+	desc = "A glass window formed of several moderately sized panes of glass in a frame. Quite the \
 	luxury for any home, offering a clear view to the outside world."
 	icon = 'icons/roguetown/misc/roguewindow.dmi'
 	icon_state = "window-solid"
