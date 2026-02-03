@@ -198,7 +198,9 @@
 
 /mob/living/simple_animal/hostile/rogue/mirespider_lurker/mushroom
 	icon = 'icons/mob/mirespider_shroom.dmi'
-	desc = "Mushroom!"
+	desc = "While recognizable as a mire lurker, this specimen appears to suffer a gigantic \
+	fungal growth over its rear end. It reeks of the smell of mold, and tar-like secretions \
+	drip from its mandibles. Something here is horribly wrong."
 	name = "mire lurker?"
 	icon_state = "mushroom"
 	icon_living = "mushroom"
