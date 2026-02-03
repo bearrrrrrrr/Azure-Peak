@@ -109,6 +109,6 @@
 
 /obj/structure/wild_plant/nospread/poppy
 	name = "wild poppy"
-	desc = "A lively red flower which will eventually wilt, regardless of your actions."
+	desc = "A lively red flower which will eventually wilt."
 	icon_state = "poppy2"
 	plant_type = /datum/plant_def/poppy

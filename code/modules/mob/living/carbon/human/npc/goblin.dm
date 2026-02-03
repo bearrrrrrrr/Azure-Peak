@@ -379,7 +379,7 @@
 
 /obj/structure/gob_portal
 	name = "gob portal"
-	desc = "This looks magical. It also looks ominous."
+	desc = "A bright portal torn through the fabric of the world. This can't be good."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "shitportal"
 	max_integrity = 200
