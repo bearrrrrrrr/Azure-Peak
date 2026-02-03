@@ -77,7 +77,8 @@
 
 /obj/item/flowercrown/briar
 	name = "crown of briar thorns"
-	desc = "The pain of wearing it might distract you from the whispers of a mad God overpowering your sanity..."
+	desc = "A circlet of thorns often worn by devout followers of Dendor. Designed to dig \
+	into the flesh just enough to ground the wearer's sanity."
 	item_state = "briar_crown"
 	icon_state = "briar_crown"
 
