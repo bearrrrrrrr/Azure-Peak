@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(biggates)
 
 /obj/structure/gate
 	name = "gate"
-	desc = "A strong steel gate decoratedly ornately with vivid image. Something important \
+	desc = "A strong steel gate decorated ornately with vivid images. Something important \
 	must be behind it."
 	icon = 'icons/roguetown/misc/gate.dmi'
 	icon_state = "gate1"
