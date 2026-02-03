@@ -1,0 +1,6 @@
+author: "hazelrat"
+delete-after: True
+changes:
+  - rscadd: "Followers of Abyssor no longer receive a mood debuff when soaked in water."
+  - qol: "Tweaked several negative mood messages to read more seamlessly."
+  - refactor: "Removed several unused mood datums."
