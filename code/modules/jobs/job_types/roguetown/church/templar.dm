@@ -207,6 +207,8 @@
 		H.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/music, 1, TRUE)
+	if(H.patron?.type == /datum/patron/divine/ravox)
+		H.adjust_skillrank_up_to(/datum/skill/misc/athletics, 5, TRUE)
 	// -- End of section for god specific bonuses --
 
 /datum/advclass/templar/crusader
