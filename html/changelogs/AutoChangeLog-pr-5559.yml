@@ -1,0 +1,5 @@
+author: "nauticall"
+delete-after: True
+changes:
+  - code_imp: "Items in 'lordcolor' no longer remove themselves from the list after the royal colors are first applied. In practice this means the royal colors can now be changed an unlimited amount of times - subject to admin discretion."
+  - qol: "Grace period for latejoining Dukes choosing the royal standard has been bumped from 10 minutes to 30."
