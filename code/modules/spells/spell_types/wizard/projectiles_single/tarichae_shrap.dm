@@ -3,7 +3,7 @@
 
 /obj/effect/proc_holder/spell/invoked/projectile/shrapnelbloom
 	name = "Stygian Efflorescence"
-	desc = "Burst forth a triad of sharpened onyxian shards, cut from Mount Golgotha herself. Strips away a fully-stacked Arcane Mark to knock an enemy down and briefly stun them."
+	desc = "Burst forth a triad of sharpened onyxian shards, cut from Mount Golgotha herself. Strips away a fully-stacked Arcane Mark to briefly immobilize an enemy and off-balance them for a few seconds."
 	range = 7 //no reason to not
 	projectile_type = /obj/projectile/energy/shrapnelbloom
 	projectiles_per_fire = 3
@@ -13,7 +13,7 @@
 	releasedrain = 30
 	chargedrain = 1
 	chargetime = 0
-	recharge_time = 15 SECONDS //this shit very strong actually
+	recharge_time = 20 SECONDS //this shit very strong actually
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
@@ -45,7 +45,7 @@
 	ricochet_incidence_leeway = 50
 	hitsound = 'sound/foley/glass_step.ogg'
 
-/obj/projectile/energy/shrapnelbloom/on_hit(target) //no antimagic; knockback for full stacks
+/obj/projectile/energy/shrapnelbloom/on_hit(target) //no antimagic; immobilize and off-balance for full stacks
 
 	var/has_full_mark = FALSE
 	var/mob/living/carbon/M
@@ -61,23 +61,14 @@
 	. = ..()
 
 	if(has_full_mark && M)
-		var/dir = angle2dir(Angle)
-		if(!dir && firer)
-			dir = get_dir(firer, M)
-		if(!dir)
-			dir = get_dir(src, M)
-		if(dir)
-			var/turf/start_turf = get_turf(M)
-			var/turf/edge_target_turf = get_edge_target_turf(M, dir)
-			if(edge_target_turf)
-				M.safe_throw_at(edge_target_turf, 1, 1, firer, spin = FALSE, force = M.move_force, callback = CALLBACK(M, TYPE_PROC_REF(/mob/living, handle_knockback), start_turf))
-				M.Stun(10)
+		M.Immobilize(2) //less actual effect and more 'woah. Something Just Happened'. sets up transition to the post-hit kick-juking mindgame
+		M.OffBalance(40)
 
 
-/obj/effect/proc_holder/spell/invoked/projectile/shrapnelbloom/ready_projectile(obj/projectile/P, atom/target, mob/user, iteration) //dude this is all copy-paste guessed from other servers and ai slop. if this shit works id be so surprised
+/obj/effect/proc_holder/spell/invoked/projectile/shrapnelbloom/ready_projectile(obj/projectile/P, atom/target, mob/user, iteration)
 	var/base_angle = P.Angle
 	if(isnull(base_angle))
 		base_angle = Get_Angle(user, target)
-	var/spread_step = 20
+	var/spread_step = 15
 	var/center_index = (projectiles_per_fire + 1) / 2
 	P.Angle = base_angle + ((iteration - center_index) * spread_step)
