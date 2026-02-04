@@ -3,7 +3,7 @@
 
 /obj/effect/proc_holder/spell/invoked/projectile/shrapnelbloom
 	name = "Stygian Efflorescence"
-	desc = "Burst forth a triad of sharpened onyxian shards, cut from Mount Golgotha herself. Strips away a fully-stacked Arcane Mark to briefly immobilize an enemy and off-balance them for a few seconds."
+	desc = "Burst forth a triad of sharpened onyxian shards, cut from Mount Golgotha herself. Strips away a fully-stacked Arcane Mark to off-balance an enemy for a few seconds, and Expose them for half as long."
 	range = 7 //no reason to not
 	projectile_type = /obj/projectile/energy/shrapnelbloom
 	projectiles_per_fire = 3
@@ -63,6 +63,7 @@
 	if(has_full_mark && M)
 		M.Immobilize(2) //less actual effect and more 'woah. Something Just Happened'. sets up transition to the post-hit kick-juking mindgame
 		M.OffBalance(40)
+		M.apply_status_effect(/datum/status_effect/debuff/exposed, 2 SECONDS) //rock paper scissors and shoot
 
 
 /obj/effect/proc_holder/spell/invoked/projectile/shrapnelbloom/ready_projectile(obj/projectile/P, atom/target, mob/user, iteration)
