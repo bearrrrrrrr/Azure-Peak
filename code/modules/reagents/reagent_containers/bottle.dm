@@ -51,6 +51,11 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 	if(closed)
 		add_overlay("[icon_state]cork")
 
+/obj/item/reagent_containers/glass/bottle/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("Use in hand or right-click to toggle the cork.")
+	. += span_info("Throwing a bottle will shatter it on impact")
+
 /obj/item/reagent_containers/glass/bottle/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum, do_splash = TRUE)
 	playsound(loc, 'sound/combat/hits/onglass/glassbreak (4).ogg', 100)
 	shatter(get_turf(src))
