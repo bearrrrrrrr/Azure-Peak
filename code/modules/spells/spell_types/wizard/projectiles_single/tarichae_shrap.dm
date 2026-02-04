@@ -33,10 +33,10 @@
 	accuracy = 50
 	icon = 'icons/mob/actions/roguespells.dmi'
 	icon_state = "stygian"
-	damage = 30
+	damage = 35
 	woundclass = BCLASS_STAB
 	armor_penetration = 20
-	npc_simple_damage_mult = 1.5
+	npc_simple_damage_mult = 1.3
 	speed = 2
 	ricochets_max = 4
 	ricochet_chance = 50
