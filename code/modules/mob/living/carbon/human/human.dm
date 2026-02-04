@@ -570,24 +570,44 @@
 				. = 1
 				if(stamina >= max_stamina)
 					hud_used.stamina.icon_state = "stam0"
+				else if(stamina > max_stamina*0.95)
+					hud_used.stamina.icon_state = "stam5"
 				else if(stamina > max_stamina*0.90)
 					hud_used.stamina.icon_state = "stam10"
+				else if(stamina > max_stamina*0.85)
+					hud_used.stamina.icon_state = "stam15"
 				else if(stamina > max_stamina*0.80)
 					hud_used.stamina.icon_state = "stam20"
+				else if(stamina > max_stamina*0.75)
+					hud_used.stamina.icon_state = "stam25"
 				else if(stamina > max_stamina*0.70)
 					hud_used.stamina.icon_state = "stam30"
+				else if(stamina > max_stamina*0.65)
+					hud_used.stamina.icon_state = "stam35"
 				else if(stamina > max_stamina*0.60)
 					hud_used.stamina.icon_state = "stam40"
+				else if(stamina > max_stamina*0.55)
+					hud_used.stamina.icon_state = "stam45"
 				else if(stamina > max_stamina*0.50)
 					hud_used.stamina.icon_state = "stam50"
+				else if(stamina > max_stamina*0.45)
+					hud_used.stamina.icon_state = "stam55"
 				else if(stamina > max_stamina*0.40)
 					hud_used.stamina.icon_state = "stam60"
+				else if(stamina > max_stamina*0.35)
+					hud_used.stamina.icon_state = "stam65"
 				else if(stamina > max_stamina*0.30)
 					hud_used.stamina.icon_state = "stam70"
+				else if(stamina > max_stamina*0.25)
+					hud_used.stamina.icon_state = "stam75"
 				else if(stamina > max_stamina*0.20)
 					hud_used.stamina.icon_state = "stam80"
+				else if(stamina > max_stamina*0.15)
+					hud_used.stamina.icon_state = "stam85"
 				else if(stamina > max_stamina*0.10)
 					hud_used.stamina.icon_state = "stam90"
+				else if(stamina > max_stamina*0.05)
+					hud_used.stamina.icon_state = "stam95"
 				else if(stamina >= 0)
 					hud_used.stamina.icon_state = "stam100"
 		if(hud_used.energy)
