@@ -615,26 +615,46 @@
 				. = 1
 				if(energy <= 0)
 					hud_used.energy.icon_state = "energy0"
-				else if(energy > max_energy*0.90)
+				else if(energy > max_energy*0.95)
 					hud_used.energy.icon_state = "energy100"
-				else if(energy > max_energy*0.80)
+				else if(energy > max_energy*0.90)
+					hud_used.energy.icon_state = "energy95"
+				else if(energy > max_energy*0.85)
 					hud_used.energy.icon_state = "energy90"
-				else if(energy > max_energy*0.70)
+				else if(energy > max_energy*0.80)
+					hud_used.energy.icon_state = "energy85"
+				else if(energy > max_energy*0.75)
 					hud_used.energy.icon_state = "energy80"
-				else if(energy > max_energy*0.60)
+				else if(energy > max_energy*0.70)
+					hud_used.energy.icon_state = "energy75"
+				else if(energy > max_energy*0.65)
 					hud_used.energy.icon_state = "energy70"
-				else if(energy > max_energy*0.50)
+				else if(energy > max_energy*0.60)
+					hud_used.energy.icon_state = "energy65"
+				else if(energy > max_energy*0.55)
 					hud_used.energy.icon_state = "energy60"
-				else if(energy > max_energy*0.40)
+				else if(energy > max_energy*0.50)
+					hud_used.energy.icon_state = "energy55"
+				else if(energy > max_energy*0.45)
 					hud_used.energy.icon_state = "energy50"
-				else if(energy > max_energy*0.30)
+				else if(energy > max_energy*0.40)
+					hud_used.energy.icon_state = "energy45"
+				else if(energy > max_energy*0.35)
 					hud_used.energy.icon_state = "energy40"
-				else if(energy > max_energy*0.20)
+				else if(energy > max_energy*0.30)
+					hud_used.energy.icon_state = "energy35"
+				else if(energy > max_energy*0.25)
 					hud_used.energy.icon_state = "energy30"
-				else if(energy > max_energy*0.10)
+				else if(energy > max_energy*0.20)
+					hud_used.energy.icon_state = "energy25"
+				else if(energy > max_energy*0.15)
 					hud_used.energy.icon_state = "energy20"
-				else if(energy > 0)
+				else if(energy > max_energy*0.10)
+					hud_used.energy.icon_state = "energy15"
+				else if(energy > max_energy*0.05)
 					hud_used.energy.icon_state = "energy10"
+				else if(energy > 0)
+					hud_used.energy.icon_state = "energy5"
 
 		if(hud_used.zone_select)
 			hud_used.zone_select.update_icon()
