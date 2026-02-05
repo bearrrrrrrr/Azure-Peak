@@ -11,6 +11,8 @@
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = TRUE
+	gesture_required = TRUE // Offensive spell
+	human_req = TRUE // Combat spell
 	charging_slowdown = 2
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
