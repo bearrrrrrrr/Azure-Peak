@@ -49,11 +49,6 @@
 
 	var/has_full_mark = FALSE
 	var/mob/living/carbon/M
-	if(M.anti_magic_check())
-		visible_message(span_warning("[src] fizzles on contact with [target]!"))
-		playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
-		qdel(src)
-		return BULLET_ACT_BLOCK
 	if(istype(target, /mob/living/carbon))
 		M = target
 		var/datum/status_effect/debuff/arcanemark/mark = M.has_status_effect(/datum/status_effect/debuff/arcanemark)
