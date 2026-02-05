@@ -260,7 +260,7 @@
 			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT * 0.5)
-				new /obj/item/reagent_containers/food/snacks/rogue/frybirdtato(loc)
+				new /obj/item/reagent_containers/food/snacks/rogue/meat/rabbit/fried/garlick(loc)
 				qdel(I)
 				qdel(src)
 	else
