@@ -277,7 +277,12 @@
 
 	var/last_dodge = 0
 	var/last_parry = 0
-	var/last_used_double_attack = 0 //Used for Dual Wielder virtue, holds the timer since the double attack was last used
+
+//dual wielding stuff. in order: timer for dual wielder, how many times we failed to proc in a row, and a var to not proc stamina drain
+	var/last_used_double_attack = 0
+	var/dualattackpity = 0
+	var/skip_next_attack_stamina_drain = FALSE
+
 	var/next_emote = 0
 	var/next_me_emote = 0
 	var/lastpoint = 0

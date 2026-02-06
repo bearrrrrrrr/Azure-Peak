@@ -95,6 +95,11 @@
 
 /obj/item/proc/attack(mob/living/M, mob/living/user)
 	var/override_status
+	var/skip_stamina_drain = FALSE
+	if(isliving(user))
+		var/mob/living/LU = user
+		skip_stamina_drain = LU.skip_next_attack_stamina_drain
+		LU.skip_next_attack_stamina_drain = FALSE
 	//Item signal for override
 	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACK, M, user) & COMPONENT_ITEM_NO_ATTACK)
 		return FALSE
@@ -179,7 +184,8 @@
 			rmb_stam_penalty = EXTRA_STAMDRAIN_SWIFSTRONG
 	// Release drain on attacks besides unarmed attacks/grabs is 1, so it'll just be whatever the penalty is + 1.
 	// Unarmed attacks are the only ones right now that have differing releasedrain, see unarmed attacks for their calc.
-	user.stamina_add(user.used_intent.releasedrain + rmb_stam_penalty)
+	if(!skip_stamina_drain)
+		user.stamina_add(user.used_intent.releasedrain + rmb_stam_penalty)
 	if(user.mob_biotypes & MOB_UNDEAD)
 		if(M.has_status_effect(/datum/status_effect/buff/necras_vow))
 			if(isnull(user.mind))
