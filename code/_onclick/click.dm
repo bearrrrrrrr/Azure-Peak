@@ -360,11 +360,11 @@
 				if(offh && (istype(W, offh) || istype(offh, W)) && W != offh && !L.check_arm_grabbed(L.get_inactive_hand_index()))
 					var/should_double_attack = prob(33)
 					if(!should_double_attack)
-						L.dual_attack_miss_streak++
-						if(L.dual_attack_miss_streak >= 5)
+						L.dualattackpity++
+						if(L.dualattackpity >= 5)
 							should_double_attack = TRUE
 					if(should_double_attack)
-						L.dual_attack_miss_streak = 0
+						L.dualattackpity = 0
 						L.last_used_double_attack = world.time + 3 SECONDS
 						L.skip_next_attack_stamina_drain = TRUE
 						L.visible_message(span_warning("There's an opening! I strike with my off-hand weapon!"))
