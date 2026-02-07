@@ -355,13 +355,22 @@
 		W.melee_attack_chain(src, A, params)
 		if(isliving(src))
 			var/mob/living/L = src
-			if(HAS_TRAIT(L, TRAIT_DUALWIELDER) && prob(33) && L.last_used_double_attack <= world.time)
+
+
+			if(HAS_TRAIT(L, TRAIT_DUALWIELDER) && L.last_used_double_attack <= world.time)
 				var/obj/item/offh = L.get_inactive_held_item()
 				if(offh && (istype(W, offh) || istype(offh, W)) && W != offh && !L.check_arm_grabbed(L.get_inactive_hand_index()))
-					if(L.stamina_add(2))
-						L.last_used_double_attack = world.time + 3 SECONDS
-						L.visible_message(span_warning("There's an opening! I strike with my off-hand weapon!"))
-						offh.melee_attack_chain(src, A, params)
+					var/forceoffhand = L.dualwieldpitystacks >= L.dualwieldpitythreshhold
+					var/offhand_success = forceoffhand || prob(33)
+					if(offhand_success)
+						L.dualwieldpitystacks = 0
+						if(L.stamina_add(2))
+							L.last_used_double_attack = world.time + 3 SECONDS
+							L.visible_message(span_warning("There's an opening! I strike with my off-hand weapon!"))
+							offh.melee_attack_chain(src, A, params)
+						else
+							L.dualwieldpitystacks++
+
 	else
 		if(ismob(A))
 			var/adf = used_intent.clickcd
