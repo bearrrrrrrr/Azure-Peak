@@ -537,7 +537,7 @@
 		if(istype(user.a_intent, /datum/intent/mace/smash/astrata))
 			var/fire_stacks = M.fire_stacks
 			if(fire_stacks > 4)
-				M.adjustBurnLoss(fire_stacks * 3)
+				M.adjustFireLoss(fire_stacks * 3) //i am confident in your ability to kill someone after doing
 				M.adjust_fire_stacks(-fire_stacks)
 				M.extinguish_mob()
 				return
