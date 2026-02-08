@@ -13,7 +13,7 @@
 	releasedrain = 20
 	chargedrain = 1
 	chargetime = 0
-	recharge_time = 25 SECONDS //this shit very strong actually
+	recharge_time = 20 SECONDS //this shit very strong actually
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
