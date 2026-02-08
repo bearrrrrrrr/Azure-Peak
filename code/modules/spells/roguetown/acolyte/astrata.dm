@@ -534,6 +534,13 @@
 		var/dist = get_dist(M, user)
 		if(dist > 1)
 			return
+		if(istype(user.a_intent, /datum/intent/mace/smash/astrata))
+			var/fire_stacks = M.fire_stacks
+			if(fire_stacks > 4)
+				M.adjustBurnLoss(fire_stacks * 3)
+				M.adjust_fire_stacks(-fire_stacks)
+				M.extinguish_mob()
+				return
 		if(prob(fprob))
 			M.adjust_fire_stacks(1)
 			M.ignite_mob()
