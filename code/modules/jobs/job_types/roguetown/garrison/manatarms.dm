@@ -142,8 +142,8 @@
 			if("Light Brigandine Set")
 				armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light/retinue
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-				wrists = /obj/item/clothing/wrists/roguetown/splintarms
-				pants = /obj/item/clothing/under/roguetown/splintlegs
+				wrists = /obj/item/clothing/wrists/roguetown/bracers/brigandine
+				pants = /obj/item/clothing/under/roguetown/brigandinelegs
 
 			if("Maille Set")
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
@@ -232,8 +232,8 @@
 			if("Brigandine Armor") //New MAA skirmisher
 				head = /obj/item/clothing/head/roguetown/helmet/kettle
 				armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light/retinue
-				wrists = /obj/item/clothing/wrists/roguetown/splintarms
-				pants = /obj/item/clothing/under/roguetown/splintlegs
+				wrists = /obj/item/clothing/wrists/roguetown/bracers/brigandine
+				pants = /obj/item/clothing/under/roguetown/brigandinelegs
 				ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 		backpack_contents = list(
@@ -441,8 +441,8 @@
 	head = /obj/item/clothing/head/roguetown/helmet/kettle
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light/retinue
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-	wrists = /obj/item/clothing/wrists/roguetown/splintarms
-	pants = /obj/item/clothing/under/roguetown/splintlegs
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/brigandine
+	pants = /obj/item/clothing/under/roguetown/brigandinelegs
 	r_hand = /obj/item/rogueweapon/spear/keep_standard
 	backl = /obj/item/rogueweapon/scabbard/gwstrap
 	backpack_contents = list(
