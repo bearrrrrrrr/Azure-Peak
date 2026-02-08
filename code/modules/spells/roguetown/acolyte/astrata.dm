@@ -12,14 +12,14 @@
 	projectile_type = /obj/projectile/magic/lightning/astratablast
 
 /obj/projectile/magic/lightning/astratablast
-	damage = 10 
+	damage = 25
 	name = "ray of holy fire"
 	damage_type = BURN
 	flag = "magic"
 	light_color = "#a98107"
 	light_outer_range = 7
 	tracer_type = /obj/effect/projectile/tracer/solar_beam
-	var/fuck_that_guy_multiplier = 2.5
+	var/fuck_that_guy_multiplier = 2
 	var/biotype_we_look_for = MOB_UNDEAD
 
 /obj/projectile/magic/lightning/astratablast/on_hit(target, mob/user)
@@ -31,18 +31,9 @@
 		playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 		qdel(src)
 		return BULLET_ACT_BLOCK
-	var/firebust = 0
-	if(!((M.patron?.type) == /datum/patron/divine/astrata) || !M.mind || istype(M, /mob/living/simple_animal)) //If your target not astratan, you deal addition firestaks and damage, if your target already set in fire fire
-		firebust = M.fire_stacks/2
-		damage += M.fire_stacks * 10
-		if(GLOB.tod == "day" || GLOB.tod == "dawn" || GLOB.tod == "dusk")
-			damage += 20
-		new /obj/effect/temp_visual/explosion/fast(get_turf(M))
 	if(M.mob_biotypes & biotype_we_look_for || istype(M, /mob/living/simple_animal/hostile/rogue/skeleton) || !M.mind || istype(M, /mob/living/simple_animal)) //PVE
 		damage *= fuck_that_guy_multiplier
-	if(damage > 100) //cap
-		damage = 100
-	M.adjust_fire_stacks(4+firebust)
+	M.adjust_fire_stacks(4)
 	M.ignite_mob()
 	visible_message(span_warning("[src] ignites [target] in holy flame!"))
 	return TRUE
@@ -77,20 +68,8 @@
 		user.visible_message("<font color='yellow'>[user] points at [L]!</font>")
 		if(L.anti_magic_check(TRUE, TRUE))
 			return FALSE
-		var/firebust = (user.get_skill_level(associated_skill) - 1) //Your miracle skill increase them, 2 JOURNMAN, 3 EXPERT, 4 MASTER, 5 LEGENDARY.
-		if(firebust < 1)
-			firebust = 1
-		if(GLOB.tod == "day" || GLOB.tod == "dawn" || GLOB.tod == "dusk")
-			firebust += 1
-		if(firebust >= 4) //Master, Legend, or Expert on day.
-			recharge_time = 5 SECONDS
-		if(firebust >= 5) //LEGENDARY ASTRATAN, or MASTER casts it on day.
-			new /obj/effect/hotspot(get_turf(L))
-		if(firebust > 0)
-			L.adjust_fire_stacks(firebust, /datum/status_effect/fire_handler/fire_stacks/divine)
-			L.ignite_mob()
-		if(!L.mind || istype(L, /mob/living/simple_animal)) //Firestacks not effective VS carbon-AL enemy. Simple mobs don't take fire damage.
-			L.adjustFireLoss(10*firebust) //10 * skill-1. Legendary cast take 50 burn damage for non-minded creatures. 
+		L.adjust_fire_stacks(2)
+		L.ignite_mob()
 
 		return TRUE
 
@@ -131,13 +110,13 @@
 	var/revive_pq = PQ_GAIN_REVIVE
 
 /obj/effect/proc_holder/spell/invoked/revive/calculate_recharge_time()
-	var/final_time = ..() 
-	
+	var/final_time = ..()
+
 	var/tech_resurrection_modifier = SSchimeric_tech.get_resurrection_multiplier()
-	
+
 	if(tech_resurrection_modifier > 1)
 		final_time *= (tech_resurrection_modifier * 1.25)
-	
+
 	return max(cooldown_min, round(final_time))
 
 /obj/effect/proc_holder/spell/invoked/revive/cast(list/targets, mob/living/user)
@@ -157,7 +136,7 @@
 		S.AOE_flash(user, range = 8)
 	if(target.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
 		target.visible_message(
-			span_danger("[target] is unmade by holy light!"), 
+			span_danger("[target] is unmade by holy light!"),
 			span_userdanger("I'm unmade by holy light!")
 		)
 		target.gib()
@@ -721,7 +700,7 @@
 			COMSIG_LIVING_MIRACLE_HEAL_APPLY,
 			COMSIG_PARENT_QDELETING
 		))
-	
+
 	if(partner)
 		partner.remove_status_effect(/datum/status_effect/immolation)
 		var/datum/component/immolation/other = partner.GetComponent(/datum/component/immolation)
