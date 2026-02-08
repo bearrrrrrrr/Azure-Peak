@@ -416,9 +416,9 @@
 	. = ..()
 	owner.weather_immunities -= "lava"
 
-/obj/effect/proc_holder/spell/targeted/touch/summonrogueweapon/astratagrasp
+/obj/effect/proc_holder/spell/targeted/touch/summonrogueweapon/astratagrasp // ASTRATAN HERETIC EXCLUSIVE
 	name = "Astrata's Grasp"
-	desc = "Summon the Sacred Flame from your soul and let it envelop your hand. Use on ashes, fire dust and fyritius flowers to convert them into devotion. Can ignite objects."
+	desc = "HER fire burnet eaternae. Summon Her flame from your soul and let it envelop your hand. Use on ashes, fire dust and fyritius flowers to convert them into devotion. Can ignite objects. Consumes fire stacks on people to do extra damage."
 	clothes_req = FALSE
 	drawmessage = "I prepare to perform a divine incantation."
 	dropmessage = "I release my divine focus."
@@ -819,7 +819,7 @@
 
 /obj/effect/proc_holder/spell/invoked/sunstrike
 	name = "Sun Strike"
-	desc = "Focus Astratas energy though a stationary Psycross or Bishop hands. Call Devostating Solar Mercy on enemy head."
+	desc = "Focus Astratas energy though a stationary Psycross or Bishop hands. Call Devastating Solar Mercy on enemy head."
 	overlay_state = "sunstrike"
 	base_icon_state = "regalyscroll"
 	releasedrain = 200
