@@ -40,7 +40,7 @@
 
 /obj/effect/proc_holder/spell/invoked/ignition
 	name = "Ignition"
-	desc = "Ignites target."
+	desc = "Ignites target, living or object. No cooldown on objects."
 	overlay_state = "sacredflame"
 	base_icon_state = "regalyscroll"
 	releasedrain = 15
@@ -59,10 +59,17 @@
 	recharge_time = 10 SECONDS
 	miracle = TRUE
 	devotion_cost = 15
+	var/rechargefast = FALSE
+
+/obj/effect/proc_holder/spell/invoked/ignition/calculate_recharge_time()
+	if(rechargefast)
+		return 1 SECONDS
+	return ..()
 
 /obj/effect/proc_holder/spell/invoked/ignition/cast(list/targets, mob/user = usr)
 	..()
 	. = ..()
+	rechargefast = FALSE
 	if(isliving(targets[1]))
 		var/mob/living/L = targets[1]
 		user.visible_message("<font color='yellow'>[user] points at [L]!</font>")
@@ -79,12 +86,17 @@
 		if(O.fire_act())
 			user.visible_message("<font color='yellow'>[user] points at [O], igniting it with sacred flames!</font>")
 			O.fire_act()
+			rechargefast = TRUE
 			return TRUE
 		else
 			to_chat(user, span_warning("You point at [O], but it fails to catch fire."))
 			return FALSE
 	revert_cast()
 	return FALSE
+
+/obj/effect/proc_holder/spell/invoked/ignition/after_cast(list/targets, mob/user = usr)
+	. = ..()
+	rechargefast = FALSE
 
 /obj/effect/proc_holder/spell/invoked/revive
 	name = "Anastasis"
