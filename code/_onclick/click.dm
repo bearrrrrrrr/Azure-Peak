@@ -359,10 +359,10 @@
 
 			if(HAS_TRAIT(L, TRAIT_DUALWIELDER) && L.last_used_double_attack <= world.time)
 				var/obj/item/offh = L.get_inactive_held_item()
-				if(offh && (istype(W, offh) || istype(offh, W)) && W != offh && !L.check_arm_grabbed(L.get_inactive_hand_index()))
+				var/dual_wielding = offh && (istype(W, offh) || istype(offh, W)) && W != offh && !L.check_arm_grabbed(L.get_inactive_hand_index())
+				if(dual_wielding)
 					var/forceoffhand = L.dualwieldpitystacks >= L.dualwieldpitythreshhold
-					var/offhand_success = forceoffhand || prob(33)
-					if(offhand_success)
+					if(forceoffhand)
 						L.dualwieldpitystacks = 0
 						if(L.stamina_add(2))
 							L.last_used_double_attack = world.time + 3 SECONDS
