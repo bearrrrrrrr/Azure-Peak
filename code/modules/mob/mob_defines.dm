@@ -279,8 +279,8 @@
 	var/last_parry = 0
 
 	var/last_used_double_attack = 0 //Used for Dual Wielder virtue, holds the timer since the double attack was last used
-	var/dualwieldpitythreshhold = 4
-	var/dualwieldpitystacks = 0 //counts amt of fails on dual wield procs, auto-procs after dualwieldpitythreshhold is hit
+	var/dualwieldpitythreshhold = 2 //dual attack every 3rd
+	var/dualwieldpitystacks = 0 //used to count dual wield attacks
 
 	var/next_emote = 0
 	var/next_me_emote = 0
