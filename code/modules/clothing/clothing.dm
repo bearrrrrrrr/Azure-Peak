@@ -75,6 +75,12 @@
 /obj/item/clothing/New()
 	..()
 
+/obj/item/clothing/Initialize()
+	. = ..()
+	if(max_integrity && integrity_failure)
+		max_integrity += (max_integrity * 0.11142857143)	// don't ask
+		obj_integrity = max_integrity
+
 /obj/item/clothing/examine(mob/user)
 	. = ..()
 	if(torn_sleeve_number)
