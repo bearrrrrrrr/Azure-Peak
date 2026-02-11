@@ -54,7 +54,9 @@
 
 /obj/item/rogueweapon/pick/blacksteel
 	name = "blacksteel pick"
-	desc = "Glimmering with silver-y black, this is a pretigious tool for miners delving in the darkness."
+	desc = "Glimmering with silvered blackness, this is a pretigious tool for miners delving into the darkness."
+	possible_item_intents = list(/datum/intent/pick)
+	gripped_intents = list(/datum/intent/pick/good)
 	force_wielded = 30
 	icon_state = "blacksteelpick1"
 	item_state = "blacksteelpick1"
