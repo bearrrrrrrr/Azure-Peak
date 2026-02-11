@@ -826,6 +826,11 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	path = /obj/item/clothing/head/roguetown/mentorhat/koruu
 	ckeywhitelist = list("koruu")
 
+/datum/loadout_item/donator_dakken
+	name = "Donator Kit - Armoured Avantyne Barbute"
+	path = /obj/item/enchantingkit/dakken_zizhelm
+	ckeywhitelist = list("dakken12")
+
 //////////////////
 //  TRIUMPHS !  //
 //////////////////
