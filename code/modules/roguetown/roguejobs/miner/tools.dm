@@ -57,11 +57,10 @@
 	desc = "Glimmering with silvered blackness, this is a pretigious tool for miners delving into the darkness."
 	possible_item_intents = list(/datum/intent/pick)
 	gripped_intents = list(/datum/intent/pick/good)
-	force_wielded = 30
+	force = 25
+	force_wielded = 32
 	icon_state = "blacksteelpick1"
 	item_state = "blacksteelpick1"
-	possible_item_intents = list(/datum/intent/pick)
-	gripped_intents = list(/datum/intent/pick)
 	max_integrity = 800
 	smeltresult = /obj/item/ingot/blacksteel
 
