@@ -1,0 +1,4 @@
+author: "Baneuus"
+delete-after: True
+changes:
+  - balance: "Estoc now cuts instead of chops."
