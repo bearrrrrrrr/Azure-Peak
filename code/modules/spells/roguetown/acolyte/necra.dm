@@ -20,12 +20,10 @@
 	. = ..()
 	var/success = FALSE
 	for(var/obj/structure/closet/crate/coffin/coffin in view(1))
-		success = pacify_coffin(coffin, user)
 		if(success)
 			user.visible_message("[user] consecrates [coffin]!", "My funeral rites have been performed on [coffin]!")
 			return
 	for(var/obj/structure/closet/dirthole/hole in view(1))
-		success = pacify_coffin(hole, user)
 		if(success)
 			user.visible_message("[user] consecrates [hole]!", "My funeral rites have been performed on [hole]!")
 			record_round_statistic(STATS_GRAVES_CONSECRATED)
