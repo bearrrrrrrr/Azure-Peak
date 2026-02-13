@@ -115,7 +115,7 @@
 		var/turf/open/T = C.loc
 		if(istype(T))
 			T.pollute_turf(/datum/pollutant/rot, 5)
-			if(soundloop && soundloop.stopped && !is_zombie)
+			if(soundloop && soundloop.stopped)
 				soundloop.start()
 		else
 			if(soundloop && !soundloop.stopped)
@@ -131,13 +131,6 @@
 			if(soundloop && soundloop.stopped && !is_zombie)
 				soundloop.start()
 		C.update_body()
-
-	// Sanity check: if we're a human and we've been buried, we kill the sound.
-	// Otherwise, we'll keep making a racket after the corpse is buried.
-	if(ishuman(C))
-		var/mob/living/carbon/human/H = C
-		if(H.buried)
-			soundloop.stop()
 
 /datum/component/rot/simple/process()
 	..()
