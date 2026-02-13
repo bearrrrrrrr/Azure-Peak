@@ -120,6 +120,8 @@
 					to_chat(user, "I have extracted a strand of luxthread, proof of passing.")
 					playsound(user, 'sound/misc/bellold.ogg', 20)
 					new /obj/item/soulthread((get_turf(user)))
+					SEND_SIGNAL(user, COMSIG_GRAVE_CONSECRATED, src)
+					record_round_statistic(STATS_GRAVES_CONSECRATED)
 					corpse.burialrited = TRUE
 
 
