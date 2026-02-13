@@ -91,7 +91,7 @@
 
 /obj/effect/proc_holder/spell/invoked/ignition/start_recharge()
 	if(rechargefast)
-		charge_counter = recharge_time
+		charge_counter = max(recharge_time - (1.5 SECONDS), 0)
 		if(action)
 			action.UpdateButtonIcon()
 		STOP_PROCESSING(SSfastprocess, src)
