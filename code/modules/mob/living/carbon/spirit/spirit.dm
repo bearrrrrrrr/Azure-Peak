@@ -211,19 +211,17 @@
 
 	return success
 
-/// Proc formerly responsible for sending the client associated with a given corpse to the lobby.
-/// It now exclusively handles the behaviour for Necran coins.
+/// Proc responsible for handling the logic for Necran coins, and for verifying that a corpse isn't still alive.
+/// Needs to exist to be called by pacify_coffin.
 /proc/pacify_corpse(mob/living/corpse, mob/user)
-	if((corpse.stat != DEAD) || !corpse.mind)
+	// Our quick-and-dirty check to make sure they're really dead.
+	if((corpse.stat != DEAD))
 		return FALSE
 
-	var/attacker_ckey = corpse.lastattackerckey || TRUE
 	if(ishuman(corpse))
 		var/mob/living/carbon/human/human_corpse = corpse
 		human_corpse.buried = TRUE
 		human_corpse.funeral = TRUE
-
-		// Logic for Necran coins!
 		if(istype(human_corpse.mouth, /obj/item/roguecoin) && !HAS_TRAIT(corpse, TRAIT_BURIED_COIN_GIVEN))
 			var/obj/item/roguecoin/coin = human_corpse.mouth
 
@@ -238,22 +236,5 @@
 					qdel(human_corpse.mouth)
 					human_corpse.update_inv_mouth()
 
-	return FALSE
-
-/proc/burial_rite_return_ghost_to_lobby(mob/dead/observer/ghost)
-	if(ghost.key)
-		GLOB.respawntimes[ghost.key] = world.time - RESPAWNTIME
-
-	log_game("[key_name(ghost)] returned to lobby from burial rites.")
-
-	if(!ghost.client)
-		log_game("[key_name(ghost)] had no client in game during burial rites.")
-
-	if(ghost.client)
-		ghost.client.screen.Cut()
-		ghost.client.screen += ghost.client.void
-		SSdroning.kill_rain(ghost.client)
-		SSdroning.kill_loop(ghost.client)
-		SSdroning.kill_droning(ghost.client)
-		ghost.remove_client_colour(/datum/client_colour/monochrome)
-	ghost.returntolobby()
+	// If we haven't returned by now, everything looks alright and we return TRUE.
+	return TRUE
