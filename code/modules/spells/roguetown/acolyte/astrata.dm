@@ -89,6 +89,15 @@
 	revert_cast()
 	return FALSE
 
+/obj/effect/proc_holder/spell/invoked/ignition/start_recharge()
+	if(rechargefast)
+		charge_counter = recharge_time
+		if(action)
+			action.UpdateButtonIcon()
+		STOP_PROCESSING(SSfastprocess, src)
+		return
+	. = ..()
+
 /obj/effect/proc_holder/spell/invoked/ignition/after_cast(list/targets, mob/user = usr)
 	. = ..()
 	rechargefast = FALSE
