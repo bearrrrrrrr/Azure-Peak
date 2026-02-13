@@ -118,6 +118,7 @@
 				if(do_after(user, 50))
 					user.say("#Rest thy soul for all aeon within Necra's embrace!")
 					to_chat(user, "I have extracted a strand of luxthread, proof of passing.")
+					record_round_statistic(STATS_GRAVES_CONSECRATED)
 					playsound(user, 'sound/misc/bellold.ogg', 20)
 					new /obj/item/soulthread((get_turf(user)))
 					corpse.burialrited = TRUE
