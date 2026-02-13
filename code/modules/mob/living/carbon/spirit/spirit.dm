@@ -180,7 +180,7 @@
 /mob/living/carbon/spirit/get_spirit()
 	return src
 
-/// Proc that will search inside a given atom for any corpses.
+/// Proc that will search inside a given atom for any corpses, and return TRUE if it finds one.
 /proc/pacify_coffin(atom/movable/coffin, mob/user, deep = TRUE)
 	if(!coffin)
 		return FALSE
@@ -200,17 +200,19 @@
 		if(pacify_corpse(head.brainmob, user))
 			success = TRUE
 
-	//if this is a deep search, we will also search the contents of the coffin to pacify (EXCEPT MOBS, SINCE WE HANDLED THOSE)
+	// If this is a deep search, we will also search the contents of the coffin to pacify
+	// (EXCEPT MOBS, SINCE WE HANDLED THOSE)
 	if(deep)
 		for(var/atom/movable/stuffing in coffin)
 			if(isliving(stuffing) || istype(stuffing, /obj/item/bodypart/head))
 				continue
-			if(pacify_coffin(stuffing, user, deep, give_pq = FALSE))
+			if(pacify_coffin(stuffing, user, deep))
 				success = TRUE
+
 	return success
 
 /// Proc formerly responsible for sending the client associated with a given corpse to the lobby.
-/// It now exclusively handles the behaviour for Necran coins, and 
+/// It now exclusively handles the behaviour for Necran coins.
 /proc/pacify_corpse(mob/living/corpse, mob/user)
 	if((corpse.stat != DEAD) || !corpse.mind)
 		return FALSE
@@ -221,6 +223,7 @@
 		human_corpse.buried = TRUE
 		human_corpse.funeral = TRUE
 
+		// Logic for Necran coins!
 		if(istype(human_corpse.mouth, /obj/item/roguecoin) && !HAS_TRAIT(corpse, TRAIT_BURIED_COIN_GIVEN))
 			var/obj/item/roguecoin/coin = human_corpse.mouth
 
@@ -234,6 +237,8 @@
 					fallen.visible_message(span_warning("A coin falls from above!"))
 					qdel(human_corpse.mouth)
 					human_corpse.update_inv_mouth()
+
+	return FALSE
 
 /proc/burial_rite_return_ghost_to_lobby(mob/dead/observer/ghost)
 	if(ghost.key)
