@@ -280,7 +280,7 @@
 
 /obj/structure/closet/dirthole/dump_contents()
 	for(var/mob/A in contents)
-		if((!A.stat) && (istype(A, /mob/living/carbon/human)))
+		if((istype(A, /mob/living/carbon/human)))
 			var/mob/living/carbon/human/B = A
 			B.buried = FALSE
 	..()
