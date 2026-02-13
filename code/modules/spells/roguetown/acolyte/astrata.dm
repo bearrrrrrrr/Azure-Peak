@@ -61,11 +61,6 @@
 	devotion_cost = 15
 	var/rechargefast = FALSE
 
-/obj/effect/proc_holder/spell/invoked/ignition/calculate_recharge_time()
-	if(rechargefast)
-		return 1 SECONDS
-	return ..()
-
 /obj/effect/proc_holder/spell/invoked/ignition/cast(list/targets, mob/user = usr)
 	..()
 	. = ..()
