@@ -180,8 +180,37 @@
 /mob/living/carbon/spirit/get_spirit()
 	return src
 
+/// Proc that will search inside a given atom for any corpses.
+/proc/pacify_coffin(atom/movable/coffin, mob/user, deep = TRUE)
+	if(!coffin)
+		return FALSE
+	var/success = FALSE
+
+	if(isliving(coffin))
+		if(pacify_corpse(coffin, user))
+			success = TRUE
+
+	for(var/mob/living/corpse in coffin)
+		if(pacify_corpse(corpse, user))
+			success = TRUE
+
+	for(var/obj/item/bodypart/head/head in coffin)
+		if(!head.brainmob)
+			continue
+		if(pacify_corpse(head.brainmob, user))
+			success = TRUE
+
+	//if this is a deep search, we will also search the contents of the coffin to pacify (EXCEPT MOBS, SINCE WE HANDLED THOSE)
+	if(deep)
+		for(var/atom/movable/stuffing in coffin)
+			if(isliving(stuffing) || istype(stuffing, /obj/item/bodypart/head))
+				continue
+			if(pacify_coffin(stuffing, user, deep, give_pq = FALSE))
+				success = TRUE
+	return success
+
 /// Proc formerly responsible for sending the client associated with a given corpse to the lobby.
-/// It now exclusively handles the behaviour for Necran coins.
+/// It now exclusively handles the behaviour for Necran coins, and 
 /proc/pacify_corpse(mob/living/corpse, mob/user)
 	if((corpse.stat != DEAD) || !corpse.mind)
 		return FALSE
