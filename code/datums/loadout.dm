@@ -900,6 +900,11 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	path = /obj/item/clothing/head/roguetown/circlet/triumph
 	triumph_cost = 3
 
+/datum/loadout_item/triumph_weaponkitaxe
+	name = "Morphing Elixir, 'Valorian Axe' (-3 TRI)"
+	path = /obj/item/enchantingkit/triumph_weaponkit_axe
+	triumph_cost = 3
+
 // -5 TRI Minisection.
 
 /datum/loadout_item/triumph_shortsatchel
@@ -990,32 +995,32 @@ GLOBAL_LIST_EMPTY(loadout_items)
 //
 
 /datum/loadout_item/triumph_armorkit
-	name = "Morphing Elixer, 'Valorian Steel Armor' (-5 TRI)"
+	name = "Morphing Elixir, 'Valorian Steel Armor' (-5 TRI)"
 	path = /obj/item/enchantingkit/triumph_armorkit
 	triumph_cost = 5
 
 /datum/loadout_item/triumph_weaponkittri
-	name = "Morphing Elixer, 'Valorian Longsword' (-5 TRI)"
+	name = "Morphing Elixir, 'Valorian Longsword' (-5 TRI)"
 	path = /obj/item/enchantingkit/triumph_weaponkit_tri
 	triumph_cost = 5
 
 /datum/loadout_item/triumph_weaponkitwide
-	name = "Morphing Elixer, 'Wideguard Longsword' (-5 TRI)"
+	name = "Morphing Elixir, 'Wideguard Longsword' (-5 TRI)"
 	path = /obj/item/enchantingkit/triumph_weaponkit_wide
 	triumph_cost = 5
 
 /datum/loadout_item/triumph_weaponkitrock
-	name = "Morphing Elixer, 'Rockhillian Longsword' (-5 TRI)"
+	name = "Morphing Elixir, 'Rockhillian Longsword' (-5 TRI)"
 	path = /obj/item/enchantingkit/triumph_weaponkit_rock
 	triumph_cost = 5
 
 /datum/loadout_item/triumph_weaponkitsabre
-	name = "Morphing Elixer, 'Sabreguard Longsword' (-5 TRI)"
+	name = "Morphing Elixir, 'Sabreguard Longsword' (-5 TRI)"
 	path = /obj/item/enchantingkit/triumph_weaponkit_sabre
 	triumph_cost = 5
 
 /datum/loadout_item/triumph_weaponkitpsy
-	name = "Morphing Elixer, 'Psycrucifix Longsword' (-5 TRI)"
+	name = "Morphing Elixir, 'Psycrucifix Longsword' (-5 TRI)"
 	path = /obj/item/enchantingkit/triumph_weaponkit_psy
 	triumph_cost = 5
 
