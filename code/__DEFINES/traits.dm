@@ -245,7 +245,7 @@
 #define TRAIT_SILVER_WEAK "Silver Weakness"
 #define TRAIT_ASSASSIN	"Assassin"
 #define TRAIT_EQUESTRIAN "Equestrian"
-#define TRAIT_DESERT_RIDER_MOMENTUM "Rider Momentum"
+#define TRAIT_COMBATMOMENTUM "Rider Momentum"
 // ARMOR / CLOTHING GIVEN TRAITS (GIVEN BY WEARING CLOTHES/ARMOR PIECES)
 #define TRAIT_MONK_ROBE	"Holy Vestatures"
 #define TRAIT_BLACKOAK "Heritage Vision"
@@ -489,7 +489,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_MASTER_CARPENTER = span_warning("I've been trained to make the most of wood"),
 	TRAIT_MASTER_MASON = span_warning("I've been trained to make the most of stone"),
 	TRAIT_EQUESTRIAN = span_warning("I am a capable rider. My mount is an extension of me."),
-	TRAIT_DESERT_RIDER_MOMENTUM = span_greentext("My fighting spirit builds into momentum as I press an advantage. I gain stacks when my attacks connect (even through parries), lose a stack when my own defense fails, and can spend all stacks to enter a brief burst of tireless combat."),
+	TRAIT_COMBATMOMENTUM = span_greentext("My fighting spirit builds into momentum as I press an advantage. I gain stacks when my attacks connect (even through parries), lose a stack when my own defense fails, and can spend all stacks to enter a brief burst of tireless combat."),
 	TRAIT_SIMPLESPEECH = span_info("I can not say hard words."),
 	TRAIT_BLOODPOOL_BORN = span_bloody("I emerged from the bloodpool of a Vampire Lord. There is no possibility for redemption for me in this land."),
 	TRAIT_ROYALSERVANT = span_greentext("I've been serving the royal family for long enough to know their exotic tastes."),

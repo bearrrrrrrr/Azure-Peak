@@ -388,8 +388,11 @@
 			if(has_status_effect(/datum/status_effect/buff/tempo_three))
 				return 3
 
+
+// -----momentum stuff
+
 #define DESERT_RIDER_MAX_MOMENTUM 15
-#define DESERT_RIDER_LOCKOUT_DURATION (1 MINUTES)
+#define DESERT_RIDER_LOCKOUT_DURATION (2 MINUTES)
 
 /mob/living/carbon/human/proc/can_gain_desert_rider_momentum()
 	if(!HAS_TRAIT(src, TRAIT_COMBATMOMENTUM))
@@ -437,12 +440,12 @@
 
 /obj/effect/proc_holder/spell/self/desert_rider_momentum_consume
 	name = "Momentum Surge"
-	desc = "Consume all Momentum stacks. Gain no fatigue drain and keep your Momentum benefits for that many seconds. Momentum gain is locked for 1 minute."
+	desc = "Consume all Momentum stacks. Gain no fatigue drain and keep your Momentum benefits for that many seconds. Momentum gain is locked for 1 minute afterwards."
 	overlay_state = "fortitude"
 	recharge_time = 8 SECONDS
 	ignore_cockblock = TRUE
 	antimagic_allowed = TRUE
-	invocations = list("Ride the storm.")
+	invocations = list("Heh, ur attacks failed 2 hit any of myne vital organges ... tyme to die, foole.")
 	invocation_type = "none"
 
 /obj/effect/proc_holder/spell/self/desert_rider_momentum_consume/cast(mob/living/user)

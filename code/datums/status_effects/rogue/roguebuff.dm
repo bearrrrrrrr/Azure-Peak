@@ -2224,9 +2224,9 @@
 	. = ..()
 
 /datum/status_effect/buff/desert_rider_momentum/proc/configure_from_stacks()
-	fortune_bonus = 0
+	lckboost = 0
 	spdboost = 0
-	will_bonus = 0
+	wilboost = 0
 	has_outline = FALSE
 	grants_fortitude = FALSE
 	grants_healing = FALSE
@@ -2289,6 +2289,8 @@
 
 /datum/status_effect/buff/desert_rider_momentum/surge/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_INFINITE_STAMINA, id)
+	if(owner.has_status_effect(/datum/status_effect/buff/desert_rider_momentum))
+		owner.remove_status_effect(/datum/status_effect/buff/desert_rider_momentum)
 	. = ..()
 
 /datum/status_effect/debuff/desert_rider_momentum_lockout
