@@ -171,6 +171,8 @@
 	var/list/tempo_attackers = list()
 
 	var/next_tempo_cull
+	var/desert_rider_momentum_stacks = 0
+	var/desert_rider_momentum_lockout_until = 0
 
 
 	var/datum/charflaw/charflaw

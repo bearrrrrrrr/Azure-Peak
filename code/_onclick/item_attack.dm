@@ -203,6 +203,9 @@
 
 	if(override_status != ATTACK_OVERRIDE_NODEFENSE)
 		if(M.checkdefense(user.used_intent, user))
+			if(ishuman(user))
+				var/mob/living/carbon/human/UH = user
+				UH.add_desert_rider_momentum()
 			return
 
 	if(user.mind)
@@ -241,6 +244,9 @@
 			return
 
 	if(M.attacked_by(src, user))
+		if(ishuman(user))
+			var/mob/living/carbon/human/UH = user
+			UH.add_desert_rider_momentum()
 		if(user.used_intent == cached_intent)
 			var/tempsound = user.used_intent.hitsound
 			if(tempsound)

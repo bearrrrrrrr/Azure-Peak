@@ -34,6 +34,8 @@
 
 /datum/outfit/job/roguetown/mercenary/desert_rider/pre_equip(mob/living/carbon/human/H)
 	..()
+	if(H.mind)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/desert_rider_momentum_consume)
 	to_chat(H, span_warning("The Janissaries are the Empire's elite infantry units, wielding mace and shield. We do not break."))
 	head = /obj/item/clothing/head/roguetown/helmet/sallet/raneshen
 	neck = /obj/item/clothing/neck/roguetown/bevor
@@ -80,7 +82,7 @@
 	name = "Desert Rider Zeybek"
 	tutorial = "Ranesheni 'Blade Dancers' are famed and feared the world over. Their expertise in blades both long and short is well known."
 	outfit = /datum/outfit/job/roguetown/mercenary/desert_rider_zeybek
-	traits_applied = list(TRAIT_DODGEEXPERT)
+	traits_applied = list(TRAIT_DODGEEXPERT, TRAIT_COMBATMOMENTUM)
 	subclass_stats = list(
 		STATKEY_SPD = 3,
 		STATKEY_WIL = 2,
@@ -106,6 +108,8 @@
 
 /datum/outfit/job/roguetown/mercenary/desert_rider_zeybek/pre_equip(mob/living/carbon/human/H)
 	..()
+	if(H.mind)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/desert_rider_momentum_consume)
 	to_chat(H, span_warning("Ranesheni 'Blade Dancers' are famed and feared the world over. Their expertise in blades both long and short is well known."))
 	head = /obj/item/clothing/head/roguetown/roguehood/shalal/hijab/raneshen
 	neck = /obj/item/clothing/neck/roguetown/leather
@@ -155,7 +159,7 @@
 	name = "Desert Rider Almah"
 	tutorial = "Almah are those skilled in both magyck and swordsmanship, but excelling in nothing."
 	outfit = /datum/outfit/job/roguetown/mercenary/desert_rider_almah
-	traits_applied = list(TRAIT_ARCYNE_T2, TRAIT_MAGEARMOR)
+	traits_applied = list(TRAIT_ARCYNE_T2, TRAIT_MAGEARMOR, TRAIT_COMBATMOMENTUM)
 	subclass_stats = list(
 		STATKEY_SPD = 3,
 		STATKEY_WIL = 2,
@@ -181,6 +185,8 @@
 
 /datum/outfit/job/roguetown/mercenary/desert_rider_almah/pre_equip(mob/living/carbon/human/H)
 	..()
+	if(H.mind)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/desert_rider_momentum_consume)
 	to_chat(H, span_warning("Almah are those skilled in both magyck and swordsmanship, but excelling in nothing."))
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/repulse)

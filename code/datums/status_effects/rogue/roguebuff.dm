@@ -2191,3 +2191,109 @@
 	name = "Broken Scales"
 	desc = "My natural defenses are gone! I am lighter, but far weaker."
 	icon_state = "buff"
+
+//momentum stuff
+
+#define DESERT_RIDER_MOMENTUM_FILTER "desert_rider_momentum"
+/atom/movable/screen/alert/status_effect/buff/desert_rider_momentum
+	name = "Momentum"
+	desc = "Each stack grants increasing power. At high momentum, I become unstoppable."
+	icon_state = "buff"
+
+/atom/movable/screen/alert/status_effect/debuff/desert_rider_momentum_lockout
+	name = "Momentum Recovery"
+	desc = "My momentum cannot build yet."
+	icon_state = "debuff"
+
+/datum/status_effect/buff/desert_rider_momentum
+	id = "desert_rider_momentum"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/desert_rider_momentum
+	duration = -1
+	tick_interval = 2 SECONDS
+	var/stacks = 0
+	var/lckboost = 0
+	var/spdboost = 0
+	var/wilboost = 0
+	var/has_outline = FALSE
+	var/grants_fortitude = FALSE
+	var/grants_healing = FALSE
+	var/outline_colour = "#f2b544"
+
+/datum/status_effect/buff/desert_rider_momentum/on_creation(mob/living/new_owner, stack_amount)
+	stacks = clamp(stack_amount, 0, 15)
+	. = ..()
+
+/datum/status_effect/buff/desert_rider_momentum/proc/configure_from_stacks()
+	fortune_bonus = 0
+	spdboost = 0
+	will_bonus = 0
+	has_outline = FALSE
+	grants_fortitude = FALSE
+	grants_healing = FALSE
+
+	if(stacks >= 2)
+		lckboost = 1
+	if(stacks >= 4)
+		lckboost = 2
+	if(stacks >= 6)
+		spdboost = 1
+	if(stacks >= 8)
+		wilboost = 1
+		has_outline = TRUE
+	if(stacks >= 10)
+		grants_fortitude = TRUE
+	if(stacks >= 12)
+		grants_healing = TRUE
+
+	effectedstats = list(
+		STATKEY_LCK = lckboost,
+		STATKEY_SPD = spdboost,
+		STATKEY_WIL = wilboost,
+	)
+
+/datum/status_effect/buff/desert_rider_momentum/on_apply()
+	configure_from_stacks()
+	. = ..()
+	if(has_outline)
+		if(!owner.get_filter(DESERT_RIDER_MOMENTUM_FILTER))
+			owner.add_filter(DESERT_RIDER_MOMENTUM_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 90, "size" = 1))
+			playsound(owner, 'sound/magic/magearmordown.ogg', 75, FALSE) //does this only the 1st time now, oops....
+	if(grants_fortitude)
+		ADD_TRAIT(owner, TRAIT_FORTITUDE, id)
+
+/datum/status_effect/buff/desert_rider_momentum/on_remove()
+	owner.remove_filter(DESERT_RIDER_MOMENTUM_FILTER)
+	REMOVE_TRAIT(owner, TRAIT_FORTITUDE, id)
+	. = ..()
+
+/datum/status_effect/buff/desert_rider_momentum/process()
+	if(grants_healing)
+		owner.adjustBruteLoss(-0.5, 0)
+		owner.adjustFireLoss(-0.5, 0)
+
+/datum/status_effect/buff/desert_rider_momentum/surge
+	id = "desert_rider_momentum_surge"
+	duration = 1 SECONDS
+	var/surge_seconds = 1
+
+/datum/status_effect/buff/desert_rider_momentum/surge/on_creation(mob/living/new_owner, stack_amount)
+	surge_seconds = max(round(stack_amount), 1)
+	stacks = clamp(stack_amount, 0, 15)
+	duration = surge_seconds SECONDS
+	. = ..()
+
+/datum/status_effect/buff/desert_rider_momentum/surge/on_apply()
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_INFINITE_STAMINA, id)
+	owner.apply_status_effect(/datum/status_effect/debuff/desert_rider_momentum_lockout)
+
+/datum/status_effect/buff/desert_rider_momentum/surge/on_remove()
+	REMOVE_TRAIT(owner, TRAIT_INFINITE_STAMINA, id)
+	. = ..()
+
+/datum/status_effect/debuff/desert_rider_momentum_lockout
+	id = "desert_rider_momentum_lockout"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/desert_rider_momentum_lockout
+	duration = 1 MINUTES
+
+#undef DESERT_RIDER_MOMENTUM_FILTER

@@ -176,6 +176,9 @@
 			if(intenty.masteritem.wbalance < WBALANCE_NORMAL && user.STASTR > src.STASTR) //enemy weapon is heavy, so get a bonus scaling on strdiff
 				drained = drained + ( intenty.masteritem.wbalance * ((user.STASTR - src.STASTR) * STAM_DRAIN_PER_STR_DIFF_HEAVY_BAL) )
 	else
+		if(ishuman(src))
+			var/mob/living/carbon/human/HU = src
+			HU.lose_desert_rider_momentum()
 		to_chat(src, span_warning("The enemy defeated my parry!"))
 		if(HAS_TRAIT(src, TRAIT_MAGEARMOR))
 			if(H.magearmor == 0)
@@ -320,6 +323,7 @@
 			return TRUE
 		else
 			to_chat(src, span_warning("I'm too tired to parry!"))
+			H.lose_desert_rider_momentum()
 			return FALSE //crush through
 	else
 		if(W)
@@ -340,6 +344,9 @@
 			return TRUE
 		else
 			to_chat(src, span_boldwarning("I'm too tired to parry!"))
+			if(ishuman(src))
+				var/mob/living/carbon/human/HU = src
+				HU.lose_desert_rider_momentum()
 			return FALSE
 	else
 		if(src.client)

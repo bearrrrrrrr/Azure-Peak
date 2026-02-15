@@ -225,6 +225,9 @@
 			to_chat(user, span_info("[attacker_feedback]"))
 
 		if(!dodge_status)
+			if(ishuman(src))
+				var/mob/living/carbon/human/HU = src
+				HU.lose_desert_rider_momentum()
 			return FALSE
 		if(!UH?.mind) // For NPC, reduce the drained to 5 stamina
 			drained = drained_npc
@@ -235,6 +238,7 @@
 
 		if(!H.stamina_add(stamdrain))
 			to_chat(src, span_warning("I'm too tired to dodge!"))
+			H.lose_desert_rider_momentum()
 			return FALSE
 	else //we are a non human
 		prob2defend = clamp(prob2defend, 5, 90)

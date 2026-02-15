@@ -60,6 +60,13 @@
 			return
 		if(!L.checkdefense(used_intent, src))
 			L.attack_hand(src, params)
+			if(ishuman(src))
+				var/mob/living/carbon/human/H = src
+				H.add_desert_rider_momentum()
+		else
+			if(ishuman(src))
+				var/mob/living/carbon/human/H = src
+				H.add_desert_rider_momentum()
 		return
 	else
 		var/item_skip = FALSE
