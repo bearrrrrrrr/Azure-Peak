@@ -2287,15 +2287,16 @@
 	ADD_TRAIT(owner, TRAIT_INFINITE_STAMINA, id)
 	owner.apply_status_effect(/datum/status_effect/debuff/desert_rider_momentum_lockout)
 
-/datum/status_effect/buff/desert_rider_momentum/surge/on_remove()
+/datum/status_effect/buff/desert_rider_momentum/surge/on_remove() //when this expires, we remove
 	REMOVE_TRAIT(owner, TRAIT_INFINITE_STAMINA, id)
 	if(owner.has_status_effect(/datum/status_effect/buff/desert_rider_momentum))
 		owner.remove_status_effect(/datum/status_effect/buff/desert_rider_momentum)
+		owner.desert_rider_momentum_stacks = 0
 	. = ..()
 
 /datum/status_effect/debuff/desert_rider_momentum_lockout
 	id = "desert_rider_momentum_lockout"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/desert_rider_momentum_lockout
-	duration = 1 MINUTES
+	duration = 2 MINUTES
 
 #undef DESERT_RIDER_MOMENTUM_FILTER
