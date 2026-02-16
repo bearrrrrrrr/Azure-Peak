@@ -2287,11 +2287,15 @@
 	ADD_TRAIT(owner, TRAIT_INFINITE_STAMINA, id)
 	owner.apply_status_effect(/datum/status_effect/debuff/desert_rider_momentum_lockout)
 
-/datum/status_effect/buff/desert_rider_momentum/surge/on_remove() //when this expires, we remove
+/datum/status_effect/buff/desert_rider_momentum/surge/on_remove() //when this expires, we remove infinite stam, momentum, and outline, and set stacks to 0 manually, since otherwise it does extremely weird shit!!
 	REMOVE_TRAIT(owner, TRAIT_INFINITE_STAMINA, id)
+	var/mob/living/carbon/human/H = owner
 	if(owner.has_status_effect(/datum/status_effect/buff/desert_rider_momentum))
 		owner.remove_status_effect(/datum/status_effect/buff/desert_rider_momentum)
-		owner.desert_rider_momentum_stacks = 0
+		if(!owner.get_filter(DESERT_RIDER_MOMENTUM_FILTER))
+			owner.remove_filter(DESERT_RIDER_MOMENTUM_FILTER)
+		if(H)
+			H.desert_rider_momentum_stacks = 0
 	. = ..()
 
 /datum/status_effect/debuff/desert_rider_momentum_lockout
