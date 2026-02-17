@@ -85,6 +85,7 @@
 		STATKEY_SPD = 3,
 		STATKEY_WIL = 2,
 		STATKEY_INT = 1,
+		STATKEY_CON = 1
 	)
 	subclass_skills = list(
 		/datum/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN,
@@ -106,6 +107,8 @@
 
 /datum/outfit/job/roguetown/mercenary/desert_rider_zeybek/pre_equip(mob/living/carbon/human/H)
 	..()
+	if(H.mind)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/zeybek_momentum)
 	to_chat(H, span_warning("Ranesheni 'Blade Dancers' are famed and feared the world over. Their expertise in blades both long and short is well known."))
 	head = /obj/item/clothing/head/roguetown/roguehood/shalal/hijab/raneshen
 	neck = /obj/item/clothing/neck/roguetown/leather
@@ -124,12 +127,12 @@
 		/obj/item/flashlight/flare/torch,
 		/obj/item/storage/belt/rogue/pouch/coins/poor
 		)
-	var/weapons = list("Shamshir and Javelin","Whips and Knives", "Recurve Bow")
+	var/weapons = list("Shamshirs and Javelin","Whips and Knives", "Recurve Bow")
 	if(H.mind)
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("Shamshir and Javelin")
+			if("Shamshirs and Javelin")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/sabre/shamshir
 				backl = /obj/item/quiver/javelin/iron
@@ -150,6 +153,86 @@
 	l_hand = /obj/item/rogueweapon/sword/sabre/shamshir
 
 	H.merctype = 4
+
+/obj/effect/proc_holder/spell/self/zeybek_momentum
+	name = "Momentum"
+	desc = "Enter a flow-state of deadly dancing. For 60 seconds, each landed strike builds momentum. The first level of momentum gives +1 SPD, +1 WIL. The second doubles these effects. The third and final state gives Fortitude."
+	overlay_state = "haste"
+	recharge_time = 2 MINUTES
+	ignore_cockblock = TRUE
+	invocations = list("FLOW.")
+	invocation_type = "shout"
+	sound = 'sound/magic/haste.ogg'
+
+/obj/effect/proc_holder/spell/self/zeybek_momentum/cast(mob/living/user)
+	if(user.has_status_effect(/datum/status_effect/buff/zeybek_momentum))
+		user.remove_status_effect(/datum/status_effect/buff/zeybek_momentum)
+	user.apply_status_effect(/datum/status_effect/buff/zeybek_momentum)
+	return TRUE
+
+#define MOMENTUM_FILTER "zeybek_momentum_outline"
+/atom/movable/screen/alert/status_effect/buff/zeybek_momentum
+	name = "Momentum"
+	desc = "My strikes are building into a deadly rhythm."
+	icon_state = "buff"
+
+/datum/status_effect/buff/zeybek_momentum
+	id = "zeybek_momentum"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/zeybek_momentum
+	duration = 60 SECONDS
+	var/stacks = 0
+	var/wil_bonus = 0
+	var/spd_bonus = 0
+	var/per_bonus = 0
+	var/fortitude_active = FALSE
+	var/outline_colour = "#F4D35E"
+
+/datum/status_effect/buff/zeybek_momentum/on_apply()
+	. = ..()
+	RegisterSignal(owner, COMSIG_MOB_ITEM_ATTACK_POST_SWINGDELAY, PROC_REF(on_attack))
+	to_chat(owner, span_notice("STACKING."))
+
+/datum/status_effect/buff/zeybek_momentum/on_remove()
+	. = ..()
+	UnregisterSignal(owner, COMSIG_MOB_ITEM_ATTACK_POST_SWINGDELAY)
+	owner.change_stat(STATKEY_WIL, -wil_bonus)
+	owner.change_stat(STATKEY_SPD, -spd_bonus)
+	wil_bonus = 0
+	spd_bonus = 0
+	per_bonus = 0
+	stacks = 0
+	if(fortitude_active)
+		REMOVE_TRAIT(owner, TRAIT_FORTITUDE, STATUS_EFFECT_TRAIT)
+		owner.remove_filter(MOMENTUM_FILTER)
+		fortitude_active = FALSE
+	to_chat(owner, span_warning("Expended."))
+
+/datum/status_effect/buff/zeybek_momentum/proc/on_attack(mob/living/target, mob/living/user, obj/item/weapon)
+	SIGNAL_HANDLER
+	if(QDELETED(target) || !istype(target))
+		return
+	stacks++
+	if(stacks == 5)
+		owner.change_stat(STATKEY_WIL, 1)
+		owner.change_stat(STATKEY_SPD, 1)
+		wil_bonus += 1
+		spd_bonus += 1
+		to_chat(owner, span_notice("ONE."))
+	else if(stacks == 10)
+		owner.change_stat(STATKEY_WIL, 1)
+		owner.change_stat(STATKEY_SPD, 1)
+		wil_bonus += 1
+		spd_bonus += 1
+		per_bonus += 1
+		to_chat(owner, span_danger("TWO."))
+	else if(stacks == 15 && !fortitude_active)
+		ADD_TRAIT(owner, TRAIT_FORTITUDE, STATUS_EFFECT_TRAIT)
+		owner.add_filter(MOMENTUM_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 55, "size" = 1))
+		fortitude_active = TRUE
+		to_chat(owner, span_userdanger("I'VE GOT YOU NOW, FREEKSHIT.")) //wip cruelty squad reference lol
+		playsound(loc, 'sound/magic/momentum_max.ogg', 75, TRUE, -1)
+
+#undef MOMENTUM_FILTER
 
 /datum/advclass/mercenary/desert_rider/almah
 	name = "Desert Rider Almah"
@@ -213,6 +296,5 @@
 	r_hand = /obj/item/rogueweapon/sword/sabre/shamshir
 
 	H.merctype = 4
-
 
 
