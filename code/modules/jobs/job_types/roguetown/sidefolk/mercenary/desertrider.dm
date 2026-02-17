@@ -188,7 +188,6 @@
 	..()
 	to_chat(H, span_warning("Almah are those skilled in both magyck and swordsmanship, but excelling in nothing."))
 	if(H.mind)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/zeybek_momentum/almah)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/repulse)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/enchant_weapon)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/airblade)
@@ -228,7 +227,7 @@
 	overlay_state = "haste"
 	recharge_time = 2 MINUTES
 	ignore_cockblock = TRUE
-	invocations = list("FLOW.") //K N E E L. You hav
+	invocations = list("FLOW.") //K N E E L. You have
 	invocation_type = "shout"
 	sound = 'sound/magic/haste.ogg'
 	var/momentum_style = "zeybek"
@@ -238,12 +237,12 @@
 
 /obj/effect/proc_holder/spell/self/zeybek_momentum/janissary
 	desc = "Steady your stance and grow unbreakable with each landed strike. For 60 seconds, each landed strike builds momentum, increasing level every 5 strikes. The first level of momentum gives +1 CON, +1 WIL. The second also grants +2 STR, +1 CON. The third grants Fortitude."
-	invocations = list("FLOW.")
+	invocations = list("BRACE.")
 	momentum_style = "janissary"
 
-/obj/effect/proc_holder/spell/self/zeybek_momentum/almah
+/obj/effect/proc_holder/spell/self/zeybek_momentum/almah //unused; almah is prooobably fine
 	desc = "Thread steel and sorcery together. For 60 seconds, each landed strike builds momentum, increasing level every 5 strikes. The first level of momentum gives +1 CON, +1 WIL. The second also grants +2 STR, +1 CON. The third grants Fortitude."
-	invocations = list("BRACE.")
+	invocations = list("TAPESTRY.")
 	momentum_style = "almah"
 
 /obj/effect/proc_holder/spell/self/zeybek_momentum/cast(mob/living/user)
@@ -270,6 +269,7 @@
 	var/con_bonus = 0
 	var/str_bonus = 0
 	var/fortitude_active = FALSE
+	var/afterimage_active = FALSE
 	var/outline_colour = "#F4D35E"
 	var/momentum_style = "zeybek"
 
@@ -280,6 +280,7 @@
 /datum/status_effect/buff/zeybek_momentum/on_apply()
 	. = ..()
 	RegisterSignal(owner, COMSIG_MOB_ITEM_ATTACK_POST_SWINGDELAY, PROC_REF(on_attack))
+	owner.add_filter(MOMENTUM_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 55, "size" = 1))
 	to_chat(owner, span_notice("STACKING."))
 
 /datum/status_effect/buff/zeybek_momentum/on_remove()
@@ -300,8 +301,13 @@
 	stacks = 0
 	if(fortitude_active)
 		REMOVE_TRAIT(owner, TRAIT_FORTITUDE, STATUS_EFFECT_TRAIT)
-		owner.remove_filter(MOMENTUM_FILTER)
 		fortitude_active = FALSE
+	owner.remove_filter(MOMENTUM_FILTER)
+	if(afterimage_active)
+		var/datum/component/after_image/after_image_component = owner.GetComponent(/datum/component/after_image)
+		if(after_image_component)
+			qdel(after_image_component)
+		afterimage_active = FALSE
 	to_chat(owner, span_warning("Expended."))
 
 /datum/status_effect/buff/zeybek_momentum/proc/on_attack(mob/living/target, mob/living/user, obj/item/weapon)
@@ -315,7 +321,8 @@
 		apply_stack_bonus(2)
 	else if(stacks == 15 && !fortitude_active)
 		ADD_TRAIT(owner, TRAIT_FORTITUDE, STATUS_EFFECT_TRAIT)
-		owner.add_filter(MOMENTUM_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 55, "size" = 1))
+		owner.AddComponent(/datum/component/after_image)
+		afterimage_active = TRUE
 		fortitude_active = TRUE
 		to_chat(owner, get_final_momentum_message())
 		playsound(owner, 'sound/magic/momentum_max.ogg', 100, TRUE, -1)
