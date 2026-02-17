@@ -87,7 +87,6 @@
 		STATKEY_SPD = 3,
 		STATKEY_WIL = 2,
 		STATKEY_INT = 1,
-		STATKEY_CON = 1
 	)
 	subclass_skills = list(
 		/datum/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN,
@@ -225,11 +224,11 @@
 
 /obj/effect/proc_holder/spell/self/zeybek_momentum
 	name = "Momentum"
-	desc = "Enter a flow-state of deadly swordsmanship. For 60 seconds, each landed strike builds momentum. The first level of momentum gives +1 SPD, +1 WIL. The second doubles these effects. The third and final state gives Fortitude."
+	desc = "Enter a flow-state of deadly swordsmanship. For 60 seconds, each landed strike builds momentum, increasing level every 5 strikes. The first level of momentum gives +1 SPD, +1 WIL. The second doubles these effects. The third and final state gives Fortitude."
 	overlay_state = "haste"
 	recharge_time = 2 MINUTES
 	ignore_cockblock = TRUE
-	invocations = list("FLOW.")
+	invocations = list("FLOW.") //K N E E L. You hav
 	invocation_type = "shout"
 	sound = 'sound/magic/haste.ogg'
 	var/momentum_style = "zeybek"
@@ -238,12 +237,12 @@
 	momentum_style = "zeybek"
 
 /obj/effect/proc_holder/spell/self/zeybek_momentum/janissary
-	desc = "Steady your stance and grow unbreakable with each landed strike. For 60 seconds, your momentum hardens your body and resolve."
+	desc = "Steady your stance and grow unbreakable with each landed strike. For 60 seconds, each landed strike builds momentum, increasing level every 5 strikes. The first level of momentum gives +1 CON, +1 WIL. The second also grants +2 STR, +1 CON. The third grants Fortitude."
 	invocations = list("FLOW.")
 	momentum_style = "janissary"
 
 /obj/effect/proc_holder/spell/self/zeybek_momentum/almah
-	desc = "Thread steel and sorcery together. For 60 seconds, each landed strike builds arcane momentum to sharpen mind and movement."
+	desc = "Thread steel and sorcery together. For 60 seconds, each landed strike builds momentum, increasing level every 5 strikes. The first level of momentum gives +1 CON, +1 WIL. The second also grants +2 STR, +1 CON. The third grants Fortitude."
 	invocations = list("BRACE.")
 	momentum_style = "almah"
 
