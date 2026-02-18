@@ -236,7 +236,7 @@
 	momentum_style = "zeybek"
 
 /obj/effect/proc_holder/spell/self/zeybek_momentum/janissary
-	desc = "Steady your stance and grow unbreakable with each landed strike. For 60 seconds, each landed strike builds momentum, increasing level every 5 strikes. The first level of momentum gives +1 CON, +1 WIL. The second also grants +2 STR, +1 CON. The third grants Fortitude."
+	desc = "Steady your stance and grow unbreakable with each landed strike. For 60 seconds, each landed strike builds momentum, increasing level every 5 strikes. The first level of momentum gives +1 STR, +1 WIL. The second also grants +2 INT, +1 FOR. The third grants Fortitude."
 	invocations = list("BRACE.")
 	momentum_style = "janissary"
 
@@ -268,6 +268,7 @@
 	var/int_bonus = 0
 	var/con_bonus = 0
 	var/str_bonus = 0
+	var/for_bonus = 0
 	var/fortitude_active = FALSE
 	var/afterimage_active = FALSE
 	var/outline_colour = "#F4D35E"
@@ -292,12 +293,14 @@
 	owner.change_stat(STATKEY_INT, -int_bonus)
 	owner.change_stat(STATKEY_CON, -con_bonus)
 	owner.change_stat(STATKEY_STR, -str_bonus)
+	owner.change_stat(STATKEY_LCK, -for_bonus)
 	wil_bonus = 0
 	spd_bonus = 0
 	per_bonus = 0
 	int_bonus = 0
 	con_bonus = 0
 	str_bonus = 0
+	for_bonus = 0
 	stacks = 0
 	if(fortitude_active)
 		REMOVE_TRAIT(owner, TRAIT_FORTITUDE, STATUS_EFFECT_TRAIT)
@@ -331,16 +334,16 @@
 	switch(momentum_style)
 		if("janissary")
 			if(stack_level == 1)
-				owner.change_stat(STATKEY_CON, 1)
+				owner.change_stat(STATKEY_STR, 1)
 				owner.change_stat(STATKEY_WIL, 1)
-				con_bonus += 1
+				str_bonus += 1
 				wil_bonus += 1
 				to_chat(owner, span_notice("BRACE."))
 			else
-				owner.change_stat(STATKEY_STR, 2) //probably too strong
-				owner.change_stat(STATKEY_CON, 1)
-				str_bonus += 2
-				con_bonus += 1
+				owner.change_stat(STATKEY_INT, 2)
+				owner.change_stat(STATKEY_LCK, 1)
+				int_bonus += 2
+				for_bonus += 1
 				to_chat(owner, span_danger("CLOSE RANK."))
 		if("almah")
 			if(stack_level == 1)
