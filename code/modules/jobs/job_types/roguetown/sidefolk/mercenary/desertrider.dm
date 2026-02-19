@@ -80,7 +80,7 @@
 
 /datum/advclass/mercenary/desert_rider/zeybek
 	name = "Desert Rider Zeybek"
-	tutorial = "The Desert Riders are a band of mercenaries known for their loose morals and high effectiveness. From a wicked and infamous beginning as a company meant to track down runaway slaves, they grew into a considerable force. Their skill with long and short blades are famed and feared the world over."
+	tutorial = "The Desert Riders are a band of mercenaries known for their loose morals and high effectiveness. From an evil, ignoble beginning as an infamous company meant to track down runaway slaves, they grew into a considerable force. Their skill with long and short blades are famed and feared the world over."
 	outfit = /datum/outfit/job/roguetown/mercenary/desert_rider_zeybek
 	traits_applied = list(TRAIT_DODGEEXPERT)
 	subclass_stats = list(
