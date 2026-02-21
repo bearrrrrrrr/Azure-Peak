@@ -225,7 +225,7 @@
 
 /obj/effect/proc_holder/spell/self/zeybek_momentum
 	name = "Momentum"
-	desc = "Enter a flow-state of deadly swordsmanship. For 60 seconds, each landed strike builds momentum, increasing level every 5 strikes. The first level of momentum gives +1 SPD, +1 WIL. The second doubles these effects. The third and final state gives Fortitude."
+	desc = "Enter a flow-state of deadly swordsmanship. For 45 seconds, each landed strike builds momentum, increasing level every 5 strikes. Getting to a higher level increases duration, and restores energy. Bonuses reset by bait or riposte, and completely lost on exhaustion or stun. The first level of momentum gives +1 SPD, +1 WIL. The second doubles these effects. The third and final state gives Fortitude."
 	overlay_state = "haste"
 	recharge_time = 2 MINUTES
 	ignore_cockblock = TRUE
@@ -238,12 +238,12 @@
 	momentum_style = "zeybek"
 
 /obj/effect/proc_holder/spell/self/zeybek_momentum/janissary
-	desc = "Steady your stance and grow unbreakable with each landed strike. For 60 seconds, each landed strike builds momentum, increasing level every 5 strikes. The first level of momentum gives +1 STR, +1 WIL. The second also grants +2 INT, +1 FOR. The third grants Fortitude."
+	desc = "Steady your stance and grow unbreakable with each landed strike. For 45 seconds, each landed strike builds momentum, increasing level every 5 strikes. Getting to a higher level increases duration, and restores energy. Bonuses reset by bait or riposte, and completely lost on exhaustion or stun. The first level of momentum gives +1 STR, +1 WIL. The second also grants +2 INT, +1 FOR. The third grants Fortitude."
 	invocations = list("BRACE.")
 	momentum_style = "janissary"
 
 /obj/effect/proc_holder/spell/self/zeybek_momentum/almah //unused; almah is prooobably fine
-	desc = "Thread steel and sorcery together. For 60 seconds, each landed strike builds momentum, increasing level every 5 strikes. The first level of momentum gives +1 CON, +1 WIL. The second also grants +2 STR, +1 CON. The third grants Fortitude."
+	desc = "Thread steel and sorcery together. For 45 seconds, each landed strike builds momentum, increasing level every 5 strikes. Getting to a higher level increases duration, and restores energy. Bonuses reset by bait or riposte, and completely lost on exhaustion or stun. The first level of momentum gives +1 CON, +1 WIL. The second also grants +2 STR, +1 CON. The third grants Fortitude."
 	invocations = list("TAPESTRY.")
 	momentum_style = "almah"
 
@@ -353,9 +353,7 @@
 	if(!owner)
 		return
 
-	var/stamina_restore = owner.max_stamina * 0.25
-	var/fatigue_restore = owner.max_energy * 0.05
-	owner.stamina_add(-stamina_restore)
+	var/fatigue_restore = owner.max_energy * 0.1
 	owner.energy_add(fatigue_restore)
 
 	var/duration_extension = 0
