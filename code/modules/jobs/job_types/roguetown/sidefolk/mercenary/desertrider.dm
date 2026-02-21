@@ -253,6 +253,11 @@
 	user.apply_status_effect(/datum/status_effect/buff/zeybek_momentum, momentum_style)
 	return TRUE
 
+/mob/living/carbon/human/proc/reset_desert_rider_momentum_tier()
+	var/datum/status_effect/buff/zeybek_momentum/momentum_status = has_status_effect(/datum/status_effect/buff/zeybek_momentum)
+	if(momentum_status)
+		momentum_status.reset_to_tier_start()
+
 #define MOMENTUM_FILTER "zeybek_momentum_outline"
 /atom/movable/screen/alert/status_effect/buff/zeybek_momentum
 	name = "Momentum"
@@ -262,7 +267,7 @@
 /datum/status_effect/buff/zeybek_momentum
 	id = "zeybek_momentum"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/zeybek_momentum
-	duration = 60 SECONDS
+	duration = 30 SECONDS
 	var/stacks = 0
 	var/wil_bonus = 0
 	var/spd_bonus = 0
@@ -273,6 +278,9 @@
 	var/for_bonus = 0
 	var/fortitude_active = FALSE
 	var/afterimage_active = FALSE
+	var/milestone_five_rewarded = FALSE
+	var/milestone_ten_rewarded = FALSE
+	var/milestone_fifteen_rewarded = FALSE
 	var/outline_colour = "#F4D35E"
 	var/momentum_style = "zeybek"
 
@@ -312,7 +320,10 @@
 		var/datum/component/after_image/after_image_component = owner.GetComponent(/datum/component/after_image)
 		if(after_image_component)
 			qdel(after_image_component)
-		afterimage_active = FALSE
+	afterimage_active = FALSE
+	milestone_five_rewarded = FALSE
+	milestone_ten_rewarded = FALSE
+	milestone_fifteen_rewarded = FALSE
 	to_chat(owner, span_warning("Expended."))
 
 /datum/status_effect/buff/zeybek_momentum/proc/on_attack(mob/living/target, mob/living/user, obj/item/weapon)
@@ -321,12 +332,15 @@
 		return
 	stacks++
 	if(stacks == 5)
+		grant_milestone_boost(5)
 		owner.balloon_alert_to_viewers("One...", "One...")
 		apply_stack_bonus(1)
 	else if(stacks == 10)
+		grant_milestone_boost(10)
 		owner.balloon_alert_to_viewers("Two...", "Two...")
 		apply_stack_bonus(2)
 	else if(stacks == 15 && !fortitude_active)
+		grant_milestone_boost(15)
 		owner.balloon_alert_to_viewers("STACKED.", "STACKED.")
 		ADD_TRAIT(owner, TRAIT_FORTITUDE, STATUS_EFFECT_TRAIT)
 		owner.AddComponent(/datum/component/after_image)
@@ -334,6 +348,55 @@
 		fortitude_active = TRUE
 		to_chat(owner, get_final_momentum_message())
 		playsound(owner, 'sound/magic/momentum_max.ogg', 100, TRUE, -1)
+
+/datum/status_effect/buff/zeybek_momentum/proc/grant_milestone_boost(milestone)
+	if(!owner)
+		return
+
+	var/stamina_restore = owner.max_stamina * 0.25
+	var/fatigue_restore = owner.max_energy * 0.05
+	owner.stamina_add(-stamina_restore)
+	owner.energy_add(fatigue_restore)
+
+	var/duration_extension = 0
+	switch(milestone)
+		if(5)
+			if(milestone_five_rewarded)
+				return
+			milestone_five_rewarded = TRUE
+			duration_extension = 15 SECONDS
+		if(10)
+			if(milestone_ten_rewarded)
+				return
+			milestone_ten_rewarded = TRUE
+			duration_extension = 15 SECONDS
+		if(15)
+			if(milestone_fifteen_rewarded)
+				return
+			milestone_fifteen_rewarded = TRUE
+			duration_extension = 30 SECONDS
+
+	if(duration_extension)
+		duration += duration_extension
+
+/datum/status_effect/buff/zeybek_momentum/proc/reset_to_tier_start()
+	var/new_stacks = FLOOR(stacks / 5, 1) * 5
+	if(stacks >= 15)
+		new_stacks = 10
+
+	if(new_stacks == stacks)
+		return
+
+	stacks = new_stacks
+
+	if(fortitude_active && stacks < 15)
+		REMOVE_TRAIT(owner, TRAIT_FORTITUDE, STATUS_EFFECT_TRAIT)
+		fortitude_active = FALSE
+	if(afterimage_active && stacks < 15)
+		var/datum/component/after_image/after_image_component = owner.GetComponent(/datum/component/after_image)
+		if(after_image_component)
+			qdel(after_image_component)
+		afterimage_active = FALSE
 
 /datum/status_effect/buff/zeybek_momentum/proc/apply_stack_bonus(stack_level)
 	switch(momentum_style)
