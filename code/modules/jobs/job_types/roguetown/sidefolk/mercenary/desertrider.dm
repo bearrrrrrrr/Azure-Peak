@@ -290,7 +290,7 @@
 
 /datum/status_effect/buff/zeybek_momentum/on_apply()
 	. = ..()
-	RegisterSignal(owner, COMSIG_MOB_ITEM_ATTACK_POST_SWINGDELAY, PROC_REF(on_attack))
+	RegisterSignal(owner, COMSIG_MOB_ITEM_ATTACK_POST_SWINGDELAY, PROC_REF(smack_attack))
 	owner.add_filter(MOMENTUM_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 55, "size" = 1))
 	to_chat(owner, span_notice("STACKING."))
 
@@ -326,7 +326,7 @@
 	milestone_fifteen_rewarded = FALSE
 	to_chat(owner, span_warning("Expended."))
 
-/datum/status_effect/buff/zeybek_momentum/proc/on_attack(mob/living/target, mob/living/user, obj/item/weapon)
+/datum/status_effect/buff/zeybek_momentum/proc/smack_attack(mob/living/target, mob/living/user, obj/item/weapon)
 	SIGNAL_HANDLER
 	if(QDELETED(target) || !istype(target))
 		return
