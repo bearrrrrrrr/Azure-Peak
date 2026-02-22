@@ -291,12 +291,15 @@
 /datum/status_effect/buff/zeybek_momentum/on_apply()
 	. = ..()
 	RegisterSignal(owner, COMSIG_MOB_ITEM_ATTACK_POST_SWINGDELAY, PROC_REF(smack_attack))
+	RegisterSignal(owner, COMSIG_LIVING_STATUS_STUN, PROC_REF(cancel_on_incapacitation))
+	RegisterSignal(owner, COMSIG_LIVING_STATUS_KNOCKDOWN, PROC_REF(cancel_on_incapacitation))
 	owner.add_filter(MOMENTUM_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 55, "size" = 1))
 	to_chat(owner, span_notice("STACKING."))
 
 /datum/status_effect/buff/zeybek_momentum/on_remove()
 	. = ..()
 	UnregisterSignal(owner, COMSIG_MOB_ITEM_ATTACK_POST_SWINGDELAY)
+	UnregisterSignal(owner, list(COMSIG_LIVING_STATUS_STUN, COMSIG_LIVING_STATUS_KNOCKDOWN))
 	owner.change_stat(STATKEY_WIL, -wil_bonus)
 	owner.change_stat(STATKEY_SPD, -spd_bonus)
 	owner.change_stat(STATKEY_PER, -per_bonus)
@@ -348,6 +351,17 @@
 		fortitude_active = TRUE
 		to_chat(owner, get_final_momentum_message())
 		playsound(owner, 'sound/magic/momentum_max.ogg', 100, TRUE, -1)
+
+/datum/status_effect/buff/zeybek_momentum/proc/cancel_on_incapacitation(mob/living/source, amount, updating, ignore)
+	SIGNAL_HANDLER
+	if(!amount || ignore)
+		return
+	if(!owner)
+		return
+	if(owner.stamina >= owner.max_stamina && !owner.IsKnockdown() && !owner.IsStun())
+		return
+	to_chat(owner, span_warning("NO...!"))
+	qdel(src)
 
 /datum/status_effect/buff/zeybek_momentum/proc/grant_milestone_boost(milestone)
 	if(!owner)
