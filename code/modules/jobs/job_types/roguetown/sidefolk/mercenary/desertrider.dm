@@ -336,12 +336,15 @@
 	stacks++
 	if(stacks == 5)
 		grant_milestone_boost(5)
+		owner.balloon_alert_to_viewers("One...", "One...")
 		apply_stack_bonus(1)
 	else if(stacks == 10)
 		grant_milestone_boost(10)
+		owner.balloon_alert_to_viewers("Two...", "Two...")
 		apply_stack_bonus(2)
 	else if(stacks == 15 && !fortitude_active)
 		grant_milestone_boost(15)
+		owner.balloon_alert_to_viewers("STACKED.", "STACKED.")
 		ADD_TRAIT(owner, TRAIT_FORTITUDE, STATUS_EFFECT_TRAIT)
 		owner.AddComponent(/datum/component/after_image)
 		afterimage_active = TRUE
