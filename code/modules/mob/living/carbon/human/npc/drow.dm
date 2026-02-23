@@ -49,6 +49,7 @@ GLOBAL_LIST_INIT(drowraider_aggro, world.file2list("strings/rt/drowaggrolines.tx
 	ADD_TRAIT(src, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 	equipOutfit(new /datum/outfit/job/roguetown/human/species/elf/dark/drowraider)
+	make_armor_unlootable()
 	if(prob(40))
 		gender = MALE
 	else
@@ -103,6 +104,14 @@ GLOBAL_LIST_INIT(drowraider_aggro, world.file2list("strings/rt/drowaggrolines.tx
 
 	update_hair()
 	update_body()
+
+/mob/living/carbon/human/species/elf/dark/drowraider/proc/make_armor_unlootable()
+	var/static/list/armor_slots = list(SLOT_ARMOR, SLOT_PANTS, SLOT_GLOVES, SLOT_SHOES, SLOT_WRISTS, SLOT_NECK, SLOT_WEAR_MASK)
+
+	for(var/slot in armor_slots)
+		var/obj/item/armor_piece = get_item_by_slot(slot)
+		if(armor_piece)
+			ADD_TRAIT(armor_piece, TRAIT_NODROP, "drow_npc_armor")
 
 /mob/living/carbon/human/species/elf/dark/drowraider/npc_idle()
 	if(m_intent == MOVE_INTENT_SNEAK)
