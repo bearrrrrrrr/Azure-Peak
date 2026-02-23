@@ -333,6 +333,11 @@
 	SIGNAL_HANDLER
 	if(QDELETED(target) || !istype(target))
 		return
+	INVOKE_ASYNC(src, PROC_REF(process_smack_attack), target, user, weapon)
+
+/datum/status_effect/buff/zeybek_momentum/proc/process_smack_attack(mob/living/target, mob/living/user, obj/item/weapon)
+	if(QDELETED(src) || QDELETED(target) || !istype(target) || !owner)
+		return
 	stacks++
 	if(stacks == 5)
 		grant_milestone_boost(5)
