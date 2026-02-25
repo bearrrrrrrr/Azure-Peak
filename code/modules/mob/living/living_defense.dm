@@ -57,6 +57,8 @@
 	var/datum/status_effect/buff/clash/guard = has_status_effect(/datum/status_effect/buff/clash)
 	if(guard)
 		if(P.on_guard_deflect(src))
+			if(isarcyne(src))
+				guard.set_next_cooldown_override(5 SECONDS)
 			apply_status_effect(/datum/status_effect/buff/spell_parry_buffer)
 			remove_status_effect(/datum/status_effect/buff/clash)
 			return TRUE

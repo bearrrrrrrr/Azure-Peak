@@ -852,6 +852,8 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	var/datum/status_effect/buff/clash/guard = target.has_status_effect(/datum/status_effect/buff/clash)
 	if(guard)
 		if(isarcyne(target))
+			guard.set_next_cooldown_override(5 SECONDS)
+		if(isarcyne(target))
 			if(!no_message)
 				target.visible_message(span_warning("[target] deflects [name] with a reactive ward!"))
 				to_chat(target, span_notice("My ward deflects the incoming spell!"))

@@ -1283,6 +1283,8 @@
 	id = "clash"
 	duration = 6 SECONDS
 	var/dur
+	/// Optional one-time cooldown override for the next time Guard is removed.
+	var/next_cooldown_override
 	var/sfx_on_apply = 'sound/combat/clash_initiate.ogg'
 	var/swingdelay_mod = 5
 	alert_type = /atom/movable/screen/alert/status_effect/buff/clash
@@ -1355,8 +1357,12 @@
 	guard_disrupted()
 
 /datum/status_effect/buff/clash/proc/apply_cooldown()
-	var/newcd = BASE_RCLICK_CD - owner.get_tempo_bonus(TEMPO_TAG_RCLICK_CD_BONUS)
+	var/newcd = next_cooldown_override || (BASE_RCLICK_CD - owner.get_tempo_bonus(TEMPO_TAG_RCLICK_CD_BONUS))
+	next_cooldown_override = null
 	owner.apply_status_effect(/datum/status_effect/debuff/clashcd, newcd)
+
+/datum/status_effect/buff/clash/proc/set_next_cooldown_override(newcd)
+	next_cooldown_override = newcd
 
 //Our guard was disrupted by normal means.
 /datum/status_effect/buff/clash/proc/guard_disrupted()
