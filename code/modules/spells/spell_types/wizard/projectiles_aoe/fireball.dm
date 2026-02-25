@@ -51,7 +51,7 @@
 			return BULLET_ACT_BLOCK
 		var/datum/status_effect/debuff/arcanemark/mark = M.has_status_effect(/datum/status_effect/debuff/arcanemark)
 		if(mark && mark.stacks >= mark.max_stacks)
-			M.apply_damage((mark_stacks*20), BURN) //Fuck You, Dude.
+			M.adjustFireLoss(60) //Fuck You, Dude.
 			to_chat(M, "<span class='userdanger'>SCALDING HELLFIRE; TRYPTICH-MARKE DETONATION!</span>")
 			M.adjust_fire_stacks(2)
 			consume_arcane_mark_stacks(M)

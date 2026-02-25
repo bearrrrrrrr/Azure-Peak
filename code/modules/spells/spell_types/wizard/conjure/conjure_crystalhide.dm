@@ -17,7 +17,7 @@
 	cost = 4
 	spell_tier = 3
 
-	invocations = list("Vitrum Tegere!") //SHATTER WORLDLINE
+	invocations = list("Psymagia Congrego!") //COLLECT WORLDLINE.
 	invocation_type = "shout"
 	glow_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_MEDIUM
