@@ -148,7 +148,7 @@
 	armor = ARMOR_PADDED
 
 /obj/item/clothing/suit/roguetown/shirt/shadowshirt/elflock/drowraider
-	desc = "custom-fit silk armor"
+	desc = "custom-fit silk shirt"
 	desc = "A sleeveless shirt woven from glossy material. Custom-fit for its (now deceased) wearer."
 	allowed_race = list(/datum/species/elf/dark/raider)
 	sellprice = 10
