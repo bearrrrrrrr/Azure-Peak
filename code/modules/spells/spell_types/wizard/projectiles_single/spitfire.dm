@@ -13,7 +13,7 @@
 	releasedrain = 30
 	chargedrain = 1
 	chargetime = 1
-	recharge_time = 8 SECONDS
+	recharge_time = 6 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
@@ -22,7 +22,7 @@
 	invocation_type = "shout"
 	glow_color = GLOW_COLOR_FIRE
 	glow_intensity = GLOW_INTENSITY_LOW
-	charging_slowdown = 3
+	charging_slowdown = 2
 	chargedloop = /datum/looping_sound/invokefire
 	associated_skill = /datum/skill/magic/arcane
 	cost = 3
@@ -42,7 +42,7 @@
 	exp_light = -1
 	exp_flash = 0
 	exp_fire = 0
-	damage = 20
+	damage = 30
 	npc_simple_damage_mult = 2 // Makes it more effective against NPCs.
 	accuracy = 40 // Base accuracy is lower for burn projectiles because they bypass armor
 	damage_type = BURN

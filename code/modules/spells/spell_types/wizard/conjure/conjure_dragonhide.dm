@@ -5,18 +5,18 @@
 	overlay_state = "conjure_dragonhide"
 	sound = list('sound/magic/whiteflame.ogg')
 
-	releasedrain = 50
+	releasedrain = 70 //Do Not Pass Go. Do Not Cast (during combat)
 	chargedrain = 1
 	chargetime = 3 SECONDS
 	no_early_release = TRUE
-	recharge_time = 3 MINUTES
+	recharge_time = 5 MINUTES
 
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	antimagic_allowed = FALSE
 	charging_slowdown = 3
 	cost = 4 // upgrade on ring, + firestack immunity pretty dang good.
-	spell_tier = 3
+	spell_tier = 2
 
 	invocations = list("Equitare Draconis") // google translate latin 'ride the dragon' - If someone literate wants to change this, feel free to.
 	invocation_type = "shout"
@@ -27,7 +27,7 @@
 	objtoequip = /obj/item/clothing/suit/roguetown/dragonhide
 	slottoequip = SLOT_ARMOR
 	checkspot = "armor"
-	cooldown_on_dissipate = FALSE
+	cooldown_on_dissipate = TRUE
 
 /obj/effect/proc_holder/spell/self/conjure_armor/conjure_dragonhide/Destroy()
 	if(src.conjured_armor)
@@ -40,7 +40,6 @@
 /obj/item/clothing/suit/roguetown/dragonhide
 	name = "dragonhide"
 	desc = "An arcyne art first mastered by the 'dragonsbreath magisters' of Lirvas. This barrier protects best against the heat."
-	max_integrity = 200
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	icon = 'icons/mob/actions/roguespells.dmi'
@@ -53,7 +52,8 @@
 	armor_class = ARMOR_CLASS_LIGHT
 	blade_dulling = DULLING_BASHCHOP
 	blocksound = PLATEHIT
-	armor = ARMOR_DRAGONHIDE
+	armor = ARMOR_MAILLE
+	max_integrity = ARMOR_INT_CHEST_LIGHT_MEDIUM
 	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET | COVERAGE_HEAD_NOSE | NECK | HANDS | FEET
 	unenchantable = TRUE
 
@@ -77,7 +77,7 @@
 	. = ..()
 	if(!QDELETED(src))
 		dispel()
-	
+
 /obj/item/clothing/suit/roguetown/dragonhide/dropped(mob/living/user)
 	. = ..()
 	user.remove_status_effect(/datum/status_effect/buff/dragonhide)

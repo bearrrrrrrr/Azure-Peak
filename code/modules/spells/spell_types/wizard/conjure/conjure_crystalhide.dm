@@ -5,9 +5,9 @@
 	overlay_state = "conjure_dragonhide"
 	sound = list('sound/magic/whiteflame.ogg')
 
-	releasedrain = 50
+	releasedrain = 70 //Cast This In Combat, I Dare You.
 	chargedrain = 1
-	chargetime = 3 SECONDS
+	chargetime = 5 SECONDS
 	no_early_release = TRUE
 	recharge_time = 5 MINUTES
 
@@ -17,9 +17,9 @@
 	cost = 4
 	spell_tier = 3
 
-	invocations = list("Vitrum Tegere!")
+	invocations = list("Vitrum Tegere!") //SHATTER WORLDLINE
 	invocation_type = "shout"
-	glow_color = GLOW_COLOR_BLUE
+	glow_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_MEDIUM
 
 	objtoequip = /obj/item/clothing/suit/roguetown/crystalhide
@@ -29,8 +29,7 @@
 
 /obj/item/clothing/suit/roguetown/crystalhide
 	name = "crystalhide"
-	desc = "A shell of translucent arcyne crystal. It spreads over the whole body, but cracks as quickly as it formed."
-	max_integrity = 140
+	desc = "A shell of translucent arcyne crystal. Shatters violently into Signal-cut static-wind when broken.."
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	icon = 'icons/mob/actions/roguespells.dmi'
@@ -43,7 +42,8 @@
 	armor_class = ARMOR_CLASS_LIGHT
 	blade_dulling = DULLING_BASHCHOP
 	blocksound = PLATEHIT
-	armor = ARMOR_LEATHER
+	armor = ARMOR_MAILLE
+	max_integrity = ARMOR_INT_CHEST_LIGHT_BASE
 	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET | COVERAGE_HEAD_NOSE | NECK | HANDS | FEET
 	unenchantable = TRUE
 	var/obj/effect/proc_holder/spell/self/conjure_armor/linked_conjure_spell
