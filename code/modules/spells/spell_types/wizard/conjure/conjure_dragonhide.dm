@@ -16,7 +16,7 @@
 	antimagic_allowed = FALSE
 	charging_slowdown = 3
 	cost = 4 // upgrade on ring, + firestack immunity pretty dang good.
-	spell_tier = 2 // Spellblade tier.
+	spell_tier = 3
 
 	invocations = list("Equitare Draconis") // google translate latin 'ride the dragon' - If someone literate wants to change this, feel free to.
 	invocation_type = "shout"
@@ -27,6 +27,7 @@
 	objtoequip = /obj/item/clothing/suit/roguetown/dragonhide
 	slottoequip = SLOT_ARMOR
 	checkspot = "armor"
+	cooldown_on_dissipate = FALSE
 
 /obj/effect/proc_holder/spell/self/conjure_armor/conjure_dragonhide/Destroy()
 	if(src.conjured_armor)
@@ -111,6 +112,5 @@
 	owner.remove_filter(DRAGONHIDE_FILTER)
 
 #undef DRAGONHIDE_FILTER
-
 
 
