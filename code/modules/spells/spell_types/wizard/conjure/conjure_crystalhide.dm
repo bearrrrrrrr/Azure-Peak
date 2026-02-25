@@ -1,7 +1,6 @@
 /obj/effect/proc_holder/spell/self/conjure_armor/crystalhide
 	name = "Conjure Crystalhide"
-	desc = "Conjure a Crystalhide Barrier that wraps your whole body in brittle arcane crystal. Your armor slot must be free to use this.\n\
-	When the barrier shatters or is dismissed, nearby foes are blasted backward."
+	desc = "Conjure a Crystalhide Barrier that wraps your whole body in brittle arcane crystal. Your armor slot must be free to use this. While active, the barrier bolsters your intelligence. When the barrier shatters or is dismissed, nearby foes are blasted backward."
 	overlay_state = "conjure_dragonhide"
 	sound = list('sound/magic/whiteflame.ogg')
 
@@ -17,7 +16,7 @@
 	cost = 4
 	spell_tier = 3
 
-	invocations = list("Psymagia Congrego!") //COLLECT WORLDLINE.
+	invocations = list("Psymagia Congrego!") //COLLECT WORLDLUX/WORLDLEY.
 	invocation_type = "shout"
 	glow_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_MEDIUM
@@ -29,7 +28,7 @@
 
 /obj/item/clothing/suit/roguetown/crystalhide
 	name = "crystalhide"
-	desc = "A shell of translucent arcyne crystal. Shatters violently into Signal-cut static-wind when broken.."
+	desc = "A shell of translucent arcyne crystal. Shatters violently into Signal-cut static-wind when broken."
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	icon = 'icons/mob/actions/roguespells.dmi'
@@ -48,17 +47,25 @@
 	unenchantable = TRUE
 	var/obj/effect/proc_holder/spell/self/conjure_armor/linked_conjure_spell
 
+/obj/item/clothing/suit/roguetown/crystalhide/equipped(mob/living/user)
+	. = ..()
+	if(!QDELETED(src))
+		user.apply_status_effect(/datum/status_effect/buff/crystalhide)
+
 /obj/item/clothing/suit/roguetown/crystalhide/proc/blast_back(mob/living/wearer)
 	if(!wearer)
 		return
 	for(var/mob/living/target in oview(1, wearer))
 		var/throwtarget = get_edge_target_turf(wearer, get_dir(wearer, get_step_away(target, wearer)))
 		target.safe_throw_at(throwtarget, 2, 1, wearer, spin = FALSE, force = MOVE_FORCE_EXTREMELY_STRONG)
+		target.adjustBruteLoss(20) //bonus. doesnt rly matter
 
 /obj/item/clothing/suit/roguetown/crystalhide/proc/dispel()
 	if(QDELETED(src))
 		return
 	var/mob/living/wearer = istype(loc, /mob/living) ? loc : null
+	if(wearer)
+		wearer.remove_status_effect(/datum/status_effect/buff/crystalhide)
 	src.visible_message(span_warning("The [src] fractures into a violent crystal burst!"))
 	if(linked_conjure_spell)
 		linked_conjure_spell.start_delayed_recharge()
@@ -77,5 +84,33 @@
 
 /obj/item/clothing/suit/roguetown/crystalhide/dropped(mob/living/user)
 	. = ..()
+	user.remove_status_effect(/datum/status_effect/buff/crystalhide)
 	if(!QDELETED(src))
 		dispel()
+
+
+#define CRYSTALHIDE_FILTER "crystalhide_glow"
+
+/datum/status_effect/buff/crystalhide
+	id = "crystalhide"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/crystalhide
+	duration = -1
+	effectedstats = list(STATKEY_INT = 1)
+	examine_text = "<font color='cyan'>SUBJECTPRONOUN glimmers with brittle arcyne crystal.</font>"
+	var/outline_colour = "#3aa8ff"
+
+/atom/movable/screen/alert/status_effect/buff/crystalhide
+	name = "Crystalhide Aggregatemind"
+	desc = "Collection of worldline-static; my mind expandeth. Whispers and suggestions from foreign egos."
+
+/datum/status_effect/buff/crystalhide/on_apply()
+	. = ..()
+	var/filter = owner.get_filter(CRYSTALHIDE_FILTER)
+	if(!filter)
+		owner.add_filter(CRYSTALHIDE_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 70, "size" = 1.2))
+
+/datum/status_effect/buff/crystalhide/on_remove()
+	. = ..()
+	owner.remove_filter(CRYSTALHIDE_FILTER)
+
+#undef CRYSTALHIDE_FILTER
