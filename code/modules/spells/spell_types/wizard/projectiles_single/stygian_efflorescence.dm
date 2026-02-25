@@ -72,8 +72,8 @@
 			var/turf/edge_target_turf = get_edge_target_turf(M, dir)
 			if(edge_target_turf)
 				M.safe_throw_at(edge_target_turf, 1, 1, firer, spin = FALSE, force = M.move_force, callback = CALLBACK(M, TYPE_PROC_REF(/mob/living, handle_knockback), start_turf))
-				M.Immobilize(0.5 SECONDS) //reset, a thing just happened!!!
-				M.Slowdown(4 SECONDS) //a bit worse than a heavy bolt in duration
+				M.Immobilize(0.2 SECONDS) //reset, a thing just happened!!!
+				M.Slowdown(5 SECONDS) //a bit worse than a heavy bolt in duration
 
 
 /obj/effect/proc_holder/spell/invoked/projectile/stygian/ready_projectile(obj/projectile/P, atom/target, mob/user, iteration) //dude this is all copy-paste guessed from other servers and ai slop. if this shit works id be so surprised
