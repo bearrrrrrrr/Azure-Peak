@@ -13,7 +13,7 @@
 	warnie = "spellwarning"
 	antimagic_allowed = FALSE
 	charging_slowdown = 3
-	cost = 4
+	cost = 5
 	spell_tier = 3
 
 	invocations = list("Psymagia Congrego!") //COLLECT WORLD-LUX/WORLD-LEY.
@@ -107,7 +107,7 @@
 	. = ..()
 	var/filter = owner.get_filter(CRYSTALHIDE_FILTER)
 	if(!filter)
-		owner.add_filter(CRYSTALHIDE_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 70, "size" = 1.2))
+		owner.add_filter(CRYSTALHIDE_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 40, "size" = 1))
 
 /datum/status_effect/buff/crystalhide/on_remove()
 	. = ..()

@@ -1,5 +1,5 @@
 /obj/effect/proc_holder/spell/self/conjure_armor
-	name = "Weave Fate"
+	name = "Conjure Fateweaver"
 	desc = "Conjure a fate weaver, a full-body protecting ring that breaks easily. Cannot be summoned if wearing anything heavier than light armor.\n\
 	The ring lasts until it is broken, a new one is summoned, or the spell is forgotten."
 	overlay_state = "conjure_armor"
@@ -80,6 +80,9 @@
 				ring.linked_conjure_spell = src
 			if(istype(conjured_armor, /obj/item/clothing/suit/roguetown/crystalhide))
 				var/obj/item/clothing/suit/roguetown/crystalhide/armor = conjured_armor
+				armor.linked_conjure_spell = src
+			if(istype(conjured_armor, /obj/item/clothing/suit/roguetown/dragonhide))
+				var/obj/item/clothing/suit/roguetown/dragonhide/armor = conjured_armor
 				armor.linked_conjure_spell = src
 			charge_counter = recharge_time
 			STOP_PROCESSING(SSfastprocess, src)

@@ -56,6 +56,7 @@
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MEDIUM
 	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET | COVERAGE_HEAD_NOSE | NECK | HANDS | FEET
 	unenchantable = TRUE
+	var/obj/effect/proc_holder/spell/self/conjure_armor/linked_conjure_spell
 
 /obj/item/clothing/suit/roguetown/dragonhide/equipped(mob/living/user)
 	. = ..()
@@ -64,9 +65,12 @@
 
 
 /obj/item/clothing/suit/roguetown/dragonhide/proc/dispel()
-	if(!QDELETED(src))
-		src.visible_message(span_warning("The [src]'s borders begin to shimmer and fade, before it vanishes entirely!"))
-		qdel(src)
+	if(QDELETED(src))
+		return
+	if(linked_conjure_spell)
+		linked_conjure_spell.start_delayed_recharge()
+	src.visible_message(span_warning("The [src]'s borders begin to shimmer and fade, before it vanishes entirely!"))
+	qdel(src)
 
 /obj/item/clothing/suit/roguetown/dragonhide/obj_break()
 	. = ..()
@@ -112,5 +116,4 @@
 	owner.remove_filter(DRAGONHIDE_FILTER)
 
 #undef DRAGONHIDE_FILTER
-
 
