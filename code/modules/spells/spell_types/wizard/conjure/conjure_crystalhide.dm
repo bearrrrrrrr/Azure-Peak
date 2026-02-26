@@ -1,6 +1,6 @@
 /obj/effect/proc_holder/spell/self/conjure_armor/crystalhide
 	name = "Conjure Crystalhide"
-	desc = "Conjure a Crystalhide Barrier that wraps your whole body in brittle arcane crystal. Your armor slot must be free to use this. While active, the barrier bolsters your intelligence. When the barrier shatters or is dismissed, nearby foes are blasted backward."
+	desc = "Conjure a Crystalhide Barrier that wraps your whole body in brittle leyline-crystal. Your armor slot must be free to use this. While active, the barrier bolsters your intelligence. When the barrier shatters or is dismissed, it lets out a burst of hot, Signal-cut statick wind."
 	overlay_state = "conjure_dragonhide"
 	sound = list('sound/magic/whiteflame.ogg')
 
