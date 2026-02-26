@@ -16,7 +16,7 @@
 	cost = 4
 	spell_tier = 3
 
-	invocations = list("Psymagia Congrego!") //COLLECT WORLDLUX/WORLDLEY.
+	invocations = list("Psymagia Congrego!") //COLLECT WORLD-LUX/WORLD-LEY.
 	invocation_type = "shout"
 	glow_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_MEDIUM
@@ -41,7 +41,7 @@
 	armor_class = ARMOR_CLASS_LIGHT
 	blade_dulling = DULLING_BASHCHOP
 	blocksound = PLATEHIT
-	armor = ARMOR_MAILLE
+	armor = ARMOR_LEATHER_GOOD
 	max_integrity = ARMOR_INT_CHEST_LIGHT_BASE
 	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET | COVERAGE_HEAD_NOSE | NECK | HANDS | FEET
 	unenchantable = TRUE
@@ -101,7 +101,7 @@
 
 /atom/movable/screen/alert/status_effect/buff/crystalhide
 	name = "Crystalhide Aggregatemind"
-	desc = "Collection of worldline-static; my mind expandeth. Whispers and suggestions from foreign egos."
+	desc = "Collection of worldline-static; my mind expandeth. Whispers and suggestions from foreign egos are encoded on the holographic boundary."
 
 /datum/status_effect/buff/crystalhide/on_apply()
 	. = ..()
