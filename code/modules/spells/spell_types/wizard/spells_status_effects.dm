@@ -144,7 +144,7 @@
 /datum/status_effect/debuff/arcanemark
 	id = "arcanemark"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/arcanemark
-	duration = 9 SECONDS //seems better
+	duration = 10 SECONDS //seems better
 	status_type = STATUS_EFFECT_REFRESH
 	var/outline_colour = "#c203fc"
 	var/stacks = 1
