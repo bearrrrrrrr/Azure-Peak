@@ -10,7 +10,7 @@
 	overlay_state = "fireball_multi"
 	sound = list('sound/magic/whiteflame.ogg')
 	active = FALSE
-	releasedrain = 30
+	releasedrain = 35
 	chargedrain = 1
 	chargetime = 1
 	recharge_time = 6 SECONDS

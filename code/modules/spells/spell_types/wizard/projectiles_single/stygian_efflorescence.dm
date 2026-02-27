@@ -34,7 +34,7 @@
 	accuracy = 50
 	icon = 'icons/mob/actions/roguespells.dmi'
 	icon_state = "stygian"
-	damage = 35
+	damage = 25
 	woundclass = BCLASS_STAB
 	armor_penetration = 20
 	npc_simple_damage_mult = 1.4
@@ -56,7 +56,7 @@
 		if(mark && mark.stacks >= mark.max_stacks)
 			has_full_mark = TRUE
 			consume_arcane_mark_stacks(M)
-			damage = 60
+			damage = 40
 			to_chat(M, "<span class='userdanger'>STYGIAN WORLD-ECHO; TRYPTICH-MARKE DETONATION!</span>")
 
 	. = ..()

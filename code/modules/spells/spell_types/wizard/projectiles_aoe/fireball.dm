@@ -41,17 +41,26 @@
 
 
 /obj/projectile/magic/aoe/fireball/rogue/on_hit(target)
-	. = ..()
+
+	var/mob/living/M
+	var/consume_marks = FALSE
 	if(ismob(target))
-		var/mob/living/M = target
+		M = target
+		var/datum/status_effect/debuff/arcanemark/mark = M.has_status_effect(/datum/status_effect/debuff/arcanemark)
+		if(mark && mark.stacks >= mark.max_stacks)
+			damage += 60 //Fuck You, Dude.
+			consume_marks = TRUE
+
+
+	. = ..()
+
+	if(ismob(target))
 		if(M.anti_magic_check())
 			visible_message(span_warning("[src] fizzles on contact with [target]!"))
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK
-		var/datum/status_effect/debuff/arcanemark/mark = M.has_status_effect(/datum/status_effect/debuff/arcanemark)
-		if(mark && mark.stacks >= mark.max_stacks)
-			M.adjustFireLoss(60) //Fuck You, Dude.
+		if(consume_marks)
 			to_chat(M, "<span class='userdanger'>SCALDING HELLFIRE; TRYPTICH-MARKE DETONATION!</span>")
 			M.adjust_fire_stacks(2)
 			consume_arcane_mark_stacks(M)
