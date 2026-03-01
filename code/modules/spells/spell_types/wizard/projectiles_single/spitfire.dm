@@ -22,7 +22,7 @@
 	invocation_type = "shout"
 	glow_color = GLOW_COLOR_FIRE
 	glow_intensity = GLOW_INTENSITY_LOW
-	charging_slowdown = 2
+	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokefire
 	associated_skill = /datum/skill/magic/arcane
 	cost = 3
