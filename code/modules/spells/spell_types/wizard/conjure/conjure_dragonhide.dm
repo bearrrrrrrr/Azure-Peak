@@ -5,7 +5,7 @@
 	overlay_state = "conjure_dragonhide"
 	sound = list('sound/magic/whiteflame.ogg')
 
-	releasedrain = 70 //Do Not Pass Go. Do Not Cast (during combat)
+	releasedrain = 50
 	chargedrain = 1
 	chargetime = 3 SECONDS
 	no_early_release = TRUE
@@ -15,7 +15,7 @@
 	no_early_release = TRUE
 	antimagic_allowed = FALSE
 	charging_slowdown = 3
-	cost = 5 // upgrade on ring, + firestack immunity pretty dang good.
+	cost = 4 // upgrade on ring, + firestack immunity pretty dang good.
 	spell_tier = 2
 
 	invocations = list("Equitare Draconis") // google translate latin 'ride the dragon' - If someone literate wants to change this, feel free to.
@@ -28,6 +28,7 @@
 	slottoequip = SLOT_ARMOR
 	checkspot = "armor"
 	cooldown_on_dissipate = TRUE
+	summondelay = 7 SECONDS // Do Not Pass Go. Do Not Cast (during combat)
 
 /obj/effect/proc_holder/spell/self/conjure_armor/conjure_dragonhide/Destroy()
 	if(src.conjured_armor)
@@ -116,4 +117,3 @@
 	owner.remove_filter(DRAGONHIDE_FILTER)
 
 #undef DRAGONHIDE_FILTER
-

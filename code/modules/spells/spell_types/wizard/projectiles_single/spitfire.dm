@@ -42,7 +42,7 @@
 	exp_light = -1
 	exp_flash = 0
 	exp_fire = 0
-	damage = 30
+	damage = 20
 	npc_simple_damage_mult = 2 // Makes it more effective against NPCs.
 	accuracy = 40 // Base accuracy is lower for burn projectiles because they bypass armor
 	damage_type = BURN

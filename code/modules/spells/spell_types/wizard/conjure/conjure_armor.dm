@@ -29,6 +29,7 @@
 	var/obj/item/clothing/conjured_armor = null
 	var/checkspot = "ring"
 	var/cooldown_on_dissipate = TRUE
+	var/summondelay = 0
 
 
 /obj/effect/proc_holder/spell/self/conjure_armor/proc/start_delayed_recharge()
@@ -67,6 +68,11 @@
 				to_chat(user, span_warning("I cannot wear this while wearing armor over my chest!"))
 				revert_cast()
 				return FALSE
+
+	if(summondelay)
+		if(!do_after(user, summondelay, target = user))
+			revert_cast()
+			return FALSE
 
 	user.visible_message("[user]'s existence briefly jitters, conjuring protection from doomed fates!")
 	var/item = objtoequip

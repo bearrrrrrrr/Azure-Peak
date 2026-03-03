@@ -4,7 +4,7 @@
 	overlay_state = "conjure_dragonhide"
 	sound = list('sound/magic/whiteflame.ogg')
 
-	releasedrain = 70 //Cast This In Combat, I Dare You.
+	releasedrain = 50
 	chargedrain = 1
 	chargetime = 5 SECONDS
 	no_early_release = TRUE
@@ -13,7 +13,7 @@
 	warnie = "spellwarning"
 	antimagic_allowed = FALSE
 	charging_slowdown = 3
-	cost = 5
+	cost = 4
 	spell_tier = 3
 
 	invocations = list("Psymagia Congrego!") //COLLECT WORLD-LUX/WORLD-LEY.
@@ -25,6 +25,7 @@
 	slottoequip = SLOT_ARMOR
 	checkspot = "armor"
 	cooldown_on_dissipate = TRUE
+	summondelay = 7 SECONDS //Cast This In Combat, I Dare You.
 
 /obj/item/clothing/suit/roguetown/crystalhide
 	name = "crystalhide"

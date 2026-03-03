@@ -33,7 +33,7 @@
 	damage = 40
 	damage_type = BURN
 	npc_simple_damage_mult = 3 // 1 shotting crawlers is cool. intentionally different from other fireballs due to arcyne mark disparity
-	accuracy = 50 // Base accuracy is lower for burn projectiles because they bypass armor
+	accuracy = 40 // Base accuracy is lower for burn projectiles because they bypass armor
 	nodamage = FALSE
 	flag = "magic"
 	hitsound = 'sound/blank.ogg'
@@ -48,7 +48,7 @@
 		M = target
 		var/datum/status_effect/debuff/arcanemark/mark = M.has_status_effect(/datum/status_effect/debuff/arcanemark)
 		if(mark && mark.stacks >= mark.max_stacks)
-			damage += 60 //Fuck You, Dude.
+			damage += 20 //Fuck You, Dude.
 			consume_marks = TRUE
 
 
