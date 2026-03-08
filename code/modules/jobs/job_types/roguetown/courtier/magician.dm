@@ -16,7 +16,7 @@
 	outfit = /datum/outfit/job/roguetown/magician
 	whitelist_req = TRUE
 	give_bank_account = TRUE
-	min_pq = 20 //significant requirement to work together with people, semi-leadership role
+	min_pq = 30 //significant requirement to work together with people, semi-leadership role
 	max_pq = null
 	round_contrib_points = 2
 	cmode_music = 'sound/music/cmode/nobility/combat_courtmage.ogg'

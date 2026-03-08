@@ -433,7 +433,7 @@
 
 				I.max_blade_int = 9999
 				I.sharpness = I.max_blade_int
-				
+
 				current_holder.adjust_skillrank(/datum/skill/misc/athletics, 6, FALSE)
 
 				current_holder.STASTR = 20
@@ -496,7 +496,7 @@
 	allowed_races = RACES_NO_CONSTRUCT
 	allowed_patrons = list(/datum/patron/divine/undivided)
 	outfit = /datum/outfit/job/roguetown/martyr
-	min_pq = 10 //Cus it's a Martyr of the Ten. Get it.
+	min_pq = 30 //30 by request, high abuse potential
 	max_pq = null
 	round_contrib_points = 4
 	total_positions = 1

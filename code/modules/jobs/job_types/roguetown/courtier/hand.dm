@@ -16,7 +16,7 @@
 	whitelist_req = TRUE
 	give_bank_account = TRUE
 	noble_income = 22
-	min_pq = 20 //not as important as Duke, but still needs a bit of a barrier to entry
+	min_pq = 30 //not as important as Duke, but still needs a bit of a barrier to entry
 	max_pq = null
 	round_contrib_points = 3
 	cmode_music = 'sound/music/cmode/nobility/combat_spymaster.ogg'
