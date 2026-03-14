@@ -12,7 +12,7 @@
 	category_tags = list(CTAG_MERCENARY)
 	traits_applied = list(TRAIT_SEEPRICES, TRAIT_MEDIUMARMOR)
 	cmode_music = 'sound/music/combat_matthios.ogg'
-	maximum_possible_slots = 2 //lower this to 1 when we're good to merge-merge
+	maximum_possible_slots = 2
 
 	subclass_stats = list(
 		STATKEY_STR = 1, //poopy adv-tier stats, the majority of it will be via selfbuff. abt 3 points of weighted stats
@@ -317,9 +317,9 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 	H.pass_flags = old_pass
 
 	playsound(target_turf, pick('sound/combat/ground_smash1.ogg', 'sound/combat/ground_smash2.ogg', 'sound/combat/ground_smash3.ogg'), 80, TRUE)
-	var/impact_damage = (affected_turf == target_turf) ? damage * 2 : damage
 	for(var/turf/affected_turf in range(1, target_turf))
 		new /obj/effect/temp_visual/kinetic_blast(affected_turf)
+		var/impact_damage = (affected_turf == target_turf) ? damage * 3 : damage
 		for(var/mob/living/L in affected_turf)
 			if(L == H || L.stat == DEAD)
 				continue
