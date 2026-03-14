@@ -15,7 +15,7 @@
 	maximum_possible_slots = 2 //lower this to 1 when we're good to merge-merge
 
 	subclass_stats = list(
-		STATKEY_STR = 1, //poopy adv-tier stats, the majority of it will be via selfbuff
+		STATKEY_STR = 1, //poopy adv-tier stats, the majority of it will be via selfbuff. abt 3 points of weighted stats
 		STATKEY_INT = 1,
 		STATKEY_CON = 1,
 		STATKEY_WIL = 1,
@@ -33,7 +33,7 @@
 		/datum/skill/misc/medicine = SKILL_LEVEL_NOVICE,
 		/datum/skill/craft/carpentry = SKILL_LEVEL_NOVICE, //pity. your staff is incredibly fragile
 		/datum/skill/craft/crafting = SKILL_LEVEL_NOVICE,
-		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/shields = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/polearms = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/swords = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/staves = SKILL_LEVEL_EXPERT //awww yeah
@@ -47,7 +47,7 @@
 	..()
 
 	if(should_wear_femme_clothes(H))
-		shirt = /obj/item/clothing/suit/roguetown/shirt/desertbra //idk?
+		shirt = /obj/item/clothing/suit/roguetown/shirt/desertbra
 
 	cloak = /obj/item/clothing/cloak/ordinatorcape/lirvas
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/lirvas
@@ -69,6 +69,7 @@
 
 	H.merctype = 16 //literally no idea what this does
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/lirvan_tithe)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/saxtonhale)
 
 	if(H.mind)
 		var/list/patron_choices = list("The ORDER and MONARCHY of Astrata", "The WEALTH and POWER of Matthios")
@@ -169,6 +170,105 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 	user.apply_status_effect(/datum/status_effect/buff/lirvan_tithe)
 	return TRUE
 
+/obj/effect/proc_holder/spell/invoked/saxtonhale
+	name = "SUNFALL"
+	desc = "Leap skyward, mark a 3x3 strike zone, then crash into it a moment later. All caught within the marked area are damaged. Hit can be parried. Center tile takes triple damage."
+	clothes_req = FALSE
+	range = 5
+	overlay_state = "thunderstrike"
+	releasedrain = 30
+	chargedrain = 0
+	chargetime = 5
+	recharge_time = 30 SECONDS
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	charging_slowdown = 1
+	chargedloop = /datum/looping_sound/invokegen
+	invocations = list("SAXTON LEAP!!")
+	invocation_type = "shout"
+	gesture_required = TRUE
+	var/damage = 35
+	var/delay = 1 SECONDS
+
+/obj/effect/proc_holder/spell/invoked/saxtonhale/cast(list/targets, mob/living/user = usr)
+	var/mob/living/carbon/human/H = user
+	if(!istype(H))
+		revert_cast()
+		return FALSE
+
+	var/obj/item/held_weapon = H.get_active_held_item()
+	if(!held_weapon)
+		to_chat(H, span_warning("...with WHAT WEAPON?"))
+		revert_cast()
+		return FALSE
+
+	var/atom/target = targets[1]
+	var/turf/target_turf = get_turf(target)
+	var/turf/start_turf = get_turf(H)
+	if(!target_turf || !start_turf)
+		revert_cast()
+		return FALSE
+
+	if(target_turf.z != start_turf.z)
+		to_chat(H, span_warning("I cannot reach that level!"))
+		revert_cast()
+		return FALSE
+
+	if(target_turf.density)
+		to_chat(H, span_warning("I need open ground for my landing!"))
+		revert_cast()
+		return FALSE
+
+	var/def_zone = H.zone_selected || BODY_ZONE_CHEST
+
+	for(var/turf/affected_turf in range(1, target_turf))
+		new /obj/effect/temp_visual/trap/thunderstrike(affected_turf, delay)
+
+	H.visible_message(span_warning("[H] vaults skywards in a half-crescent of gold...!"), span_notice("CRUSH."))
+	playsound(start_turf, 'sound/combat/wooshes/bladed/wooshsmall (1).ogg', 60, TRUE)
+
+	if(H.buckled)
+		H.buckled.unbuckle_mob(H, TRUE)
+
+	var/old_pass = H.pass_flags
+	var/prev_pixel_z = H.pixel_z
+	H.pass_flags |= PASSMOB
+	animate(H, pixel_z = prev_pixel_z + 24, time = 2, easing = EASE_OUT) //i literally copy/pasted this i rly hope it works tee hee :3
+
+	sleep(delay)
+
+	if(QDELETED(H) || H.stat == DEAD)
+		return FALSE
+
+	while(get_turf(H) != target_turf)
+		var/turf/current_turf = get_turf(H)
+		var/dir_to_target = get_dir(current_turf, target_turf)
+		var/turf/next = get_step(current_turf, dir_to_target)
+		if(!next || next.density)
+			break
+		step(H, dir_to_target)
+
+	animate(H, pixel_z = prev_pixel_z, time = 1, easing = EASE_IN)
+	H.pass_flags = old_pass
+
+	playsound(target_turf, pick('sound/combat/ground_smash1.ogg', 'sound/combat/ground_smash2.ogg', 'sound/combat/ground_smash3.ogg'), 80, TRUE)
+	for(var/turf/affected_turf in range(1, target_turf))
+		new /obj/effect/temp_visual/kinetic_blast(affected_turf)
+		for(var/mob/living/L in affected_turf)
+			if(L == H || L.stat == DEAD)
+				continue
+			if(L.anti_magic_check())
+				L.visible_message(span_warning("The solar crash scatters around [L]!"))
+				playsound(affected_turf, 'sound/magic/magic_nulled.ogg', 100)
+				continue
+			if(spell_guard_check(L, TRUE))
+				L.visible_message(span_warning("[L] braces and survives the impact!"))
+				continue
+			arcyne_strike(H, L, held_weapon, damage, def_zone, BCLASS_BLUNT, spell_name = "SUNFALL")
+
+	return TRUE
+
 /atom/movable/screen/alert/status_effect/buff/lirvan_tithe
 	name = "Mammon's Bulwark"
 	desc = "The air burns with POWER."
@@ -209,18 +309,18 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 /datum/status_effect/buff/lirvan_tithe/proc/update_effects()
 	wealth_value = get_moni_value(owner)
 	if(wealth_value < 100)
-		effectedstats = list(STATKEY_CON = 1, STATKEY_WIL = 1)
+		effectedstats = list(STATKEY_CON = 1, STATKEY_LCK = 1)
 	else if(wealth_value < 150)
-		effectedstats = list(STATKEY_STR = 1, STATKEY_CON = 1, STATKEY_WIL = 1)
+		effectedstats = list(STATKEY_STR = 1, STATKEY_CON = 1, STATKEY_LCK = 1)
 	else if(wealth_value < 200)
-		effectedstats = list(STATKEY_STR = 1, STATKEY_CON = 1, STATKEY_WIL = 2)
+		effectedstats = list(STATKEY_STR = 1, STATKEY_CON = 2, STATKEY_LCK = 1)
 	else if(wealth_value < 300)
-		effectedstats = list(STATKEY_STR = 2, STATKEY_CON = 2, STATKEY_WIL = 3, STATKEY_SPD = 1)
+		effectedstats = list(STATKEY_STR = 2, STATKEY_CON = 2, STATKEY_LCK = 2, STATKEY_SPD = 1)
 	else if(wealth_value < 400)
 		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 2, STATKEY_WIL = 3, STATKEY_SPD = 1)
 	else if(wealth_value < 600)
 		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 3, STATKEY_WIL = 4, STATKEY_SPD = 2)
 	else
-		effectedstats = list(STATKEY_STR = 4, STATKEY_CON = 4, STATKEY_WIL = 4, STATKEY_SPD = 2) //I'm hoping this doesn't happen often.
+		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 4, STATKEY_WIL = 4, STATKEY_SPD = 2) //I'm hoping this doesn't happen often.
 
 #undef LIRVAN_BLING_FILTER
