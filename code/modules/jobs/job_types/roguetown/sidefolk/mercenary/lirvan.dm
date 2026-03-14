@@ -157,7 +157,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 
 /obj/effect/proc_holder/spell/self/lirvan_tithe
 	name = "INVOKE"
-	desc = "Draw strength from the wealth you carry. Armor, jewelry, and raw mammon counted equally. More WEALTH means more POWER. More POWER at 150, 200, 300, 400, and 600 mammon."
+	desc = "Draw strength from the wealth you carry. Armor, jewelry, and raw mammon counted equally. More WEALTH means more POWER. More POWER at 150, 200, 300, 400, and 750 mammon."
 	antimagic_allowed = TRUE
 	clothes_req = FALSE
 	recharge_time = 3 MINUTES
@@ -227,7 +227,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 		effectedstats = list(STATKEY_STR = 2, STATKEY_CON = 2, STATKEY_LCK = 1, STATKEY_SPD = 1)
 	else if(wealth_value < 400)
 		effectedstats = list(STATKEY_STR = 2, STATKEY_CON = 3, STATKEY_LCK = 2, STATKEY_SPD = 1)
-	else if(wealth_value < 600)
+	else if(wealth_value < 750)
 		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 3, STATKEY_LCK = 2, STATKEY_SPD = 2)
 	else
 		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 4, STATKEY_LCK = 2, STATKEY_SPD = 2) //I'm hoping this doesn't happen often.
@@ -248,10 +248,10 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 	movement_interrupt = FALSE
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokegen
-	invocations = list("SAXTON LEAP!!")
+	invocations = list("FALL UNDERNEATH ME!!")
 	invocation_type = "shout"
 	gesture_required = TRUE
-	var/damage = 35
+	var/damage = 45
 	var/delay = 1 SECONDS
 
 /obj/effect/proc_holder/spell/invoked/saxtonhale/cast(list/targets, mob/living/user = usr)
@@ -290,6 +290,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 
 	H.visible_message(span_warning("[H] vaults skywards in a half-crescent of gold...!"), span_notice("CRUSH."))
 	playsound(start_turf, 'sound/combat/wooshes/bladed/wooshsmall (1).ogg', 60, TRUE)
+	playsound(start_turf, 'sound/vo/mobs/wwolf/idle (1).ogg', 60, TRUE)
 
 	if(H.buckled)
 		H.buckled.unbuckle_mob(H, TRUE)
