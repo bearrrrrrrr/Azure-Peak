@@ -200,7 +200,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 			owner.emote("whimper", forced = TRUE)
 			return
 		to_chat(owner, span_notice("WEALTH answers my call. Every single one of my [src.wealth_value] pieces of it."))
-		if(wealth_value < 400)
+		if(wealth_value > 400)
 			ADD_TRAIT(owner, TRAIT_FORTITUDE, STATUS_EFFECT_TRAIT)
 			gonna_fort = TRUE
 			to_chat(owner, span_userdanger("FORTIFIED."))
