@@ -170,8 +170,71 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 	user.apply_status_effect(/datum/status_effect/buff/lirvan_tithe)
 	return TRUE
 
+/atom/movable/screen/alert/status_effect/buff/lirvan_tithe
+	name = "Mammon's Bulwark"
+	desc = "The air burns with POWER."
+	icon_state = "buff"
+
+/datum/status_effect/buff/lirvan_tithe
+	id = "lirvan_tithe"
+	examine_text = "<font color='red'>SUBJECTPRONOUN radiates POWER.</font>"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/lirvan_tithe
+	status_type = STATUS_EFFECT_REFRESH
+	duration = 2 MINUTES
+	var/wealth_value = 0
+	var/outline_colour = "#f5d96c"
+	var/obj/effect/dummy/lighting_obj/moblight/lirvanlight
+	var/gonna_fort = FALSE //like, we're gonna use fortitude. we'll apply fortitude to...ah, nevermind.
+
+/datum/status_effect/buff/lirvan_tithe/on_apply()
+	update_effects()
+	. = ..()
+	if(.)
+		var/filter = owner.get_filter(LIRVAN_BLING_FILTER)
+		if(!filter)
+			owner.add_filter(LIRVAN_BLING_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 120, "size" = 1))
+		if(!lirvanlight)
+			lirvanlight = owner.mob_light(7, 7, _color = outline_colour)
+		if(wealth_value < 120)
+			to_chat(owner, span_notice("WEALTH answers my call. Every single one of my- ONLY [src.wealth_value] MAMMON?!"))
+			owner.emote("whimper", forced = TRUE)
+			return
+		to_chat(owner, span_notice("WEALTH answers my call. Every single one of my [src.wealth_value] pieces of it."))
+		if(wealth_value < 400)
+			ADD_TRAIT(owner, TRAIT_FORTITUDE, STATUS_EFFECT_TRAIT)
+			gonna_fort = TRUE
+			to_chat(owner, span_userdanger("FORTIFIED."))
+		playsound(owner, 'sound/combat/hits/burn (2).ogg', 100, TRUE)
+
+/datum/status_effect/buff/lirvan_tithe/on_remove()
+	. = ..()
+	if(gonna_fort)
+		REMOVE_TRAIT(owner, TRAIT_FORTITUDE, STATUS_EFFECT_TRAIT)
+		fortitude_active = FALSE
+	owner.remove_filter(LIRVAN_BLING_FILTER)
+	QDEL_NULL(lirvanlight)
+	to_chat(owner, span_warning("POWER fades."))
+
+/datum/status_effect/buff/lirvan_tithe/proc/update_effects()
+	wealth_value = get_moni_value(owner)
+	if(wealth_value < 120)
+		effectedstats = list(STATKEY_CON = 1, STATKEY_LCK = 1)
+	else if(wealth_value < 150)
+		effectedstats = list(STATKEY_STR = 1, STATKEY_CON = 1, STATKEY_LCK = 1)
+	else if(wealth_value < 200)
+		effectedstats = list(STATKEY_STR = 1, STATKEY_CON = 2, STATKEY_LCK = 1)
+	else if(wealth_value < 300)
+		effectedstats = list(STATKEY_STR = 2, STATKEY_CON = 2, STATKEY_LCK = 2, STATKEY_SPD = 1)
+	else if(wealth_value < 400)
+		effectedstats = list(STATKEY_STR = 2, STATKEY_CON = 2, STATKEY_LCK = 2, STATKEY_SPD = 2)
+	else if(wealth_value < 600)
+		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 3, STATKEY_LCK = 2, STATKEY_SPD = 2)
+	else
+		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 4, STATKEY_LCK = 3, STATKEY_SPD = 2) //I'm hoping this doesn't happen often.
+
+
 /obj/effect/proc_holder/spell/invoked/saxtonhale
-	name = "SUNFALL"
+	name = "SUNSET"
 	desc = "Leap skyward, mark a 3x3 strike zone, then crash into it a moment later. All caught within the marked area are damaged. Hit can be parried. Center tile takes triple damage."
 	clothes_req = FALSE
 	range = 5
@@ -259,68 +322,14 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 			if(L == H || L.stat == DEAD)
 				continue
 			if(L.anti_magic_check())
-				L.visible_message(span_warning("The solar crash scatters around [L]!"))
+				L.visible_message(span_warning("POWER shatters 'pon [L]!"))
 				playsound(affected_turf, 'sound/magic/magic_nulled.ogg', 100)
 				continue
 			if(spell_guard_check(L, TRUE))
 				L.visible_message(span_warning("[L] braces and survives the impact!"))
 				continue
-			arcyne_strike(H, L, held_weapon, damage, def_zone, BCLASS_BLUNT, spell_name = "SUNFALL")
+			arcyne_strike(H, L, held_weapon, damage, def_zone, BCLASS_BLUNT, spell_name = "SUNSET")
 
 	return TRUE
-
-/atom/movable/screen/alert/status_effect/buff/lirvan_tithe
-	name = "Mammon's Bulwark"
-	desc = "The air burns with POWER."
-	icon_state = "buff"
-
-/datum/status_effect/buff/lirvan_tithe
-	id = "lirvan_tithe"
-	examine_text = "<font color='red'>SUBJECTPRONOUN radiates POWER.</font>"
-	alert_type = /atom/movable/screen/alert/status_effect/buff/lirvan_tithe
-	status_type = STATUS_EFFECT_REFRESH
-	duration = 2 MINUTES
-	var/wealth_value = 0
-	var/outline_colour = "#f5d96c"
-	var/obj/effect/dummy/lighting_obj/moblight/lirvanlight
-
-/datum/status_effect/buff/lirvan_tithe/on_apply()
-	update_effects()
-	. = ..()
-	if(.)
-		var/filter = owner.get_filter(LIRVAN_BLING_FILTER)
-		if(!filter)
-			owner.add_filter(LIRVAN_BLING_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 120, "size" = 1))
-		if(!lirvanlight)
-			lirvanlight = owner.mob_light(7, 7, _color = outline_colour)
-		if(wealth_value < 100)
-			to_chat(owner, span_notice("WEALTH answers my call. Every single one of my- ONLY [src.wealth_value] MAMMON?!"))
-			owner.emote("whimper", forced = TRUE)
-			return
-		to_chat(owner, span_notice("WEALTH answers my call. Every single one of my [src.wealth_value] pieces of it."))
-		playsound(owner, 'sound/combat/hits/burn (2).ogg', 100, TRUE)
-
-/datum/status_effect/buff/lirvan_tithe/on_remove()
-	. = ..()
-	owner.remove_filter(LIRVAN_BLING_FILTER)
-	QDEL_NULL(lirvanlight)
-	to_chat(owner, span_warning("POWER fades."))
-
-/datum/status_effect/buff/lirvan_tithe/proc/update_effects()
-	wealth_value = get_moni_value(owner)
-	if(wealth_value < 100)
-		effectedstats = list(STATKEY_CON = 1, STATKEY_LCK = 1)
-	else if(wealth_value < 150)
-		effectedstats = list(STATKEY_STR = 1, STATKEY_CON = 1, STATKEY_LCK = 1)
-	else if(wealth_value < 200)
-		effectedstats = list(STATKEY_STR = 1, STATKEY_CON = 2, STATKEY_LCK = 1)
-	else if(wealth_value < 300)
-		effectedstats = list(STATKEY_STR = 2, STATKEY_CON = 2, STATKEY_LCK = 2, STATKEY_SPD = 1)
-	else if(wealth_value < 400)
-		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 2, STATKEY_WIL = 3, STATKEY_SPD = 1)
-	else if(wealth_value < 600)
-		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 3, STATKEY_WIL = 4, STATKEY_SPD = 2)
-	else
-		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 4, STATKEY_WIL = 4, STATKEY_SPD = 2) //I'm hoping this doesn't happen often.
 
 #undef LIRVAN_BLING_FILTER
