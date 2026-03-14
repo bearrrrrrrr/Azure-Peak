@@ -367,6 +367,8 @@ Medical defines
 #define WILLPOWER_STARTING_STAMINA 120	//Starting stamina (green bar) value.
 #define WILLPOWER_MODIFIER	5	//How much stamina (flat value) we gain (or lose) for every WIL above / below 10.
 
+#define SPEED_MOVSPD_MOD 0.075	//Multiplicative modifier for our speed, per point (for both <10 and >10 values)
+
 /*
  Misc. Category. Spin it out if needed
 */
