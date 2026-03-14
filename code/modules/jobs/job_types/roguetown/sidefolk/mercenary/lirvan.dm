@@ -235,7 +235,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 
 /obj/effect/proc_holder/spell/invoked/saxtonhale
 	name = "SUNSET"
-	desc = "Leap skyward, mark a 3x3 strike zone, then crash into it a moment later. All caught within the marked area are damaged. Hit can be parried. Center tile takes triple damage."
+	desc = "Channel but a mote of the power of a Drakkyn. Take to the skies, before crashing into the ground with a punishing slam after a delay. All caught within are damaged. Hit can be riposted. Center tile takes double damage."
 	clothes_req = FALSE
 	range = 5
 	overlay_state = "thunderstrike"
@@ -317,6 +317,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 	H.pass_flags = old_pass
 
 	playsound(target_turf, pick('sound/combat/ground_smash1.ogg', 'sound/combat/ground_smash2.ogg', 'sound/combat/ground_smash3.ogg'), 80, TRUE)
+	var/impact_damage = (affected_turf == target_turf) ? damage * 2 : damage
 	for(var/turf/affected_turf in range(1, target_turf))
 		new /obj/effect/temp_visual/kinetic_blast(affected_turf)
 		for(var/mob/living/L in affected_turf)
@@ -329,7 +330,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 			if(spell_guard_check(L, TRUE))
 				L.visible_message(span_warning("[L] braces and survives the impact!"))
 				continue
-			arcyne_strike(H, L, held_weapon, damage, def_zone, BCLASS_BLUNT, spell_name = "SUNSET")
+			arcyne_strike(H, L, held_weapon, impact_damage, def_zone, BCLASS_BLUNT, spell_name = "SUNSET")
 
 	return TRUE
 
