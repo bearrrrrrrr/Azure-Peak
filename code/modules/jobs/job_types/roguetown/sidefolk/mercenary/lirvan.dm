@@ -210,7 +210,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 	. = ..()
 	if(gonna_fort)
 		REMOVE_TRAIT(owner, TRAIT_FORTITUDE, STATUS_EFFECT_TRAIT)
-		fortitude_active = FALSE
+		gonna_fort = FALSE
 	owner.remove_filter(LIRVAN_BLING_FILTER)
 	QDEL_NULL(lirvanlight)
 	to_chat(owner, span_warning("POWER fades."))
@@ -224,13 +224,13 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 	else if(wealth_value < 200)
 		effectedstats = list(STATKEY_STR = 1, STATKEY_CON = 2, STATKEY_LCK = 1)
 	else if(wealth_value < 300)
-		effectedstats = list(STATKEY_STR = 2, STATKEY_CON = 2, STATKEY_LCK = 2, STATKEY_SPD = 1)
+		effectedstats = list(STATKEY_STR = 2, STATKEY_CON = 2, STATKEY_LCK = 1, STATKEY_SPD = 1)
 	else if(wealth_value < 400)
-		effectedstats = list(STATKEY_STR = 2, STATKEY_CON = 2, STATKEY_LCK = 2, STATKEY_SPD = 2)
+		effectedstats = list(STATKEY_STR = 2, STATKEY_CON = 3, STATKEY_LCK = 2, STATKEY_SPD = 1)
 	else if(wealth_value < 600)
 		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 3, STATKEY_LCK = 2, STATKEY_SPD = 2)
 	else
-		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 4, STATKEY_LCK = 3, STATKEY_SPD = 2) //I'm hoping this doesn't happen often.
+		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 4, STATKEY_LCK = 2, STATKEY_SPD = 2) //I'm hoping this doesn't happen often.
 
 
 /obj/effect/proc_holder/spell/invoked/saxtonhale
