@@ -244,7 +244,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 	recharge_time = 30 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
-	movement_interrupt = TRUE
+	movement_interrupt = FALSE
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokegen
 	invocations = list("Drakkyr eg'tal!") //draconic doesn't have any
@@ -306,15 +306,20 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 	if(QDELETED(H) || H.stat == DEAD)
 		return FALSE
 
-	while(get_turf(H) != target_turf)
+	var/max_leap_steps = max(1, get_dist(start_turf, target_turf) + 1)
+	var/landing_turf = target_turf
+	while(get_turf(H) != target_turf && max_leap_steps-- > 0)
 		var/turf/current_turf = get_turf(H)
 		if(dragon_afterimage)
 			dragon_afterimage.forceMove(current_turf)
 		var/dir_to_target = get_dir(current_turf, target_turf)
 		var/turf/next = get_step(current_turf, dir_to_target)
 		if(!next || next.density)
+			landing_turf = current_turf
 			break
-		step(H, dir_to_target)
+		if(!step(H, dir_to_target))
+			landing_turf = current_turf
+			break
 
 	animate(H, pixel_z = prev_pixel_z, time = 1, easing = EASE_IN)
 	H.pass_flags = old_pass
@@ -322,10 +327,13 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 		dragon_afterimage.fade_out()
 		dragon_afterimage = null
 
-	playsound(target_turf, pick('sound/combat/ground_smash1.ogg', 'sound/combat/ground_smash2.ogg', 'sound/combat/ground_smash3.ogg'), 80, TRUE)
-	for(var/turf/affected_turf in range(1, target_turf))
+	if(get_turf(H) != target_turf)
+		landing_turf = get_turf(H)
+
+	playsound(landing_turf, pick('sound/combat/ground_smash1.ogg', 'sound/combat/ground_smash2.ogg', 'sound/combat/ground_smash3.ogg'), 80, TRUE)
+	for(var/turf/affected_turf in range(1, landing_turf))
 		new /obj/effect/temp_visual/kinetic_blast(affected_turf)
-		var/impact_damage = (affected_turf == target_turf) ? damage * 3 : damage
+		var/impact_damage = (affected_turf == landing_turf) ? damage * 3 : damage
 		for(var/mob/living/L in affected_turf)
 			if(L == H || L.stat == DEAD)
 				continue
@@ -352,7 +360,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 	plane = GAME_PLANE
 	pixel_x = -32
 	pixel_y = -32
-	alpha = 50
+	alpha = 30
 
 /obj/effect/temp_visual/lirvan_sunset_dragon/Initialize(mapload)
 	. = ..()
