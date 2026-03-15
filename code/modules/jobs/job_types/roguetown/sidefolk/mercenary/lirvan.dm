@@ -157,7 +157,7 @@ third; SUNSET, little neat ability. it may be buggy. don't quote me on that. it 
 
 /obj/effect/proc_holder/spell/self/lirvan_tithe
 	name = "INVOKE"
-	desc = "Draw strength from the wealth you carry. Armor, jewelry, and raw mammon counted equally. More WEALTH means more POWER. More POWER at 150, 200, 300, 400, and 750 mammon."
+	desc = "Draw strength from the wealth you carry. Armor, jewelry, and raw mammon counted equally. More WEALTH means more POWER. More POWER at 150, 200, 300, 400, and 700 mammon."
 	antimagic_allowed = TRUE
 	clothes_req = FALSE
 	recharge_time = 3 MINUTES
@@ -227,7 +227,7 @@ third; SUNSET, little neat ability. it may be buggy. don't quote me on that. it 
 		effectedstats = list(STATKEY_STR = 2, STATKEY_CON = 2, STATKEY_LCK = 1, STATKEY_SPD = 1)
 	else if(wealth_value < 400)
 		effectedstats = list(STATKEY_STR = 2, STATKEY_CON = 3, STATKEY_LCK = 2, STATKEY_SPD = 1)
-	else if(wealth_value < 750)
+	else if(wealth_value < 700)
 		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 3, STATKEY_LCK = 2, STATKEY_SPD = 2)
 	else
 		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 4, STATKEY_LCK = 2, STATKEY_SPD = 2) //I'm hoping this doesn't happen often.
@@ -248,7 +248,7 @@ third; SUNSET, little neat ability. it may be buggy. don't quote me on that. it 
 	movement_interrupt = FALSE
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokegen
-	invocations = list("Drakkyr eg'tal!") //draconic doesn't have any
+	invocations = list("Drakkyr Voldta!") //draconic doesn't have any linguistic inspirations i think. 'dragon walk' if you want to be super literal abt the greek translation but like idk man im just a polyglot dont get mad at me
 	invocation_type = "shout"
 	gesture_required = TRUE
 	var/damage = 45
