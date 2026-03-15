@@ -244,14 +244,15 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 	recharge_time = 30 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
-	movement_interrupt = FALSE
+	movement_interrupt = TRUE
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokegen
-	invocations = list("FALL UNDERNEATH ME!!")
+	invocations = list("Drakkyr eg'tal!") //draconic doesn't have any
 	invocation_type = "shout"
 	gesture_required = TRUE
 	var/damage = 45
 	var/delay = 1 SECONDS
+	var/obj/effect/temp_visual/lirvan_sunset_dragon/dragon_afterimage
 
 /obj/effect/proc_holder/spell/invoked/saxtonhale/cast(list/targets, mob/living/user = usr)
 	var/mob/living/carbon/human/H = user
@@ -290,6 +291,7 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 	H.visible_message(span_warning("[H] vaults skywards in a half-crescent of gold...!"), span_notice("CRUSH."))
 	playsound(start_turf, 'sound/combat/wooshes/bladed/wooshsmall (1).ogg', 60, TRUE)
 	playsound(start_turf, 'sound/vo/mobs/wwolf/idle (1).ogg', 60, TRUE)
+	dragon_afterimage = new /obj/effect/temp_visual/lirvan_sunset_dragon(start_turf)
 
 	if(H.buckled)
 		H.buckled.unbuckle_mob(H, TRUE)
@@ -306,6 +308,8 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 
 	while(get_turf(H) != target_turf)
 		var/turf/current_turf = get_turf(H)
+		if(dragon_afterimage)
+			dragon_afterimage.forceMove(current_turf)
 		var/dir_to_target = get_dir(current_turf, target_turf)
 		var/turf/next = get_step(current_turf, dir_to_target)
 		if(!next || next.density)
@@ -314,6 +318,9 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 
 	animate(H, pixel_z = prev_pixel_z, time = 1, easing = EASE_IN)
 	H.pass_flags = old_pass
+	if(dragon_afterimage)
+		dragon_afterimage.fade_out()
+		dragon_afterimage = null
 
 	playsound(target_turf, pick('sound/combat/ground_smash1.ogg', 'sound/combat/ground_smash2.ogg', 'sound/combat/ground_smash3.ogg'), 80, TRUE)
 	for(var/turf/affected_turf in range(1, target_turf))
@@ -332,5 +339,30 @@ Second, a self-buff spell that buffs them depending on their total wealth includ
 			arcyne_strike(H, L, held_weapon, impact_damage, def_zone, BCLASS_BLUNT, spell_name = "SUNSET")
 
 	return TRUE
+
+
+/obj/effect/temp_visual/lirvan_sunset_dragon //SPECIAL EFFECTS DONE DIRT CHEAP
+	name = "sunfall dragon"
+	icon = 'modular/icons/mob/96x96/ratwood_dragon.dmi'
+	icon_state = "dragon_shadow"
+	randomdir = FALSE
+	duration = 2 SECONDS
+	fade_time = 10
+	layer = MOB_LAYER - 0.1
+	plane = GAME_PLANE
+	pixel_x = -32
+	pixel_y = -32
+	alpha = 50
+
+/obj/effect/temp_visual/lirvan_sunset_dragon/Initialize(mapload)
+	. = ..()
+	add_filter("sunset_gold_outline", 1, list("type" = "outline", "color" = "#f5d96c", "size" = 1))
+	add_atom_colour("#f5d96c", FIXED_COLOUR_PRIORITY)
+
+/obj/effect/temp_visual/lirvan_sunset_dragon/proc/fade_out()
+	if(QDELETED(src))
+		return
+	animate(src, alpha = 0, time = 6)
+	QDEL_IN(src, 6)
 
 #undef LIRVAN_BLING_FILTER
