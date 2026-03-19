@@ -31,7 +31,7 @@
 	subclass_stashed_items = list(
 		"Tome of Psydon" = /obj/item/book/rogue/bibble/psy
 	)
-	extra_context = "This subclass can choose from multiple disciplines. The further your chosen discipline strays from unarmed combat, however, the greater your skills in fistfighting and wrestling will atrophy. Taking a Quarterstaff provides a minor bonus to Perception and Intelligence, but removes the 'Critical Resistance' trait."
+	extra_context = "This subclass can choose from multiple disciplines. The further your chosen discipline strays from unarmed combat, however, the greater your skills in fistfighting and wrestling will atrophy. Taking a Quarterstaff provides a minor bonus to Perception and Intelligence."
 
 /datum/outfit/job/roguetown/disciple
 	job_bitflag = BITFLAG_HOLY_WARRIOR
@@ -116,8 +116,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple
 
 	backpack_contents = list(/obj/item/roguekey/inquisitionmanor = 1,
-	/obj/item/paper/inqslip/arrival/ortho = 1,
-	/obj/item/roguegem/amethyst/naledi = 1) //Kept here for now, until we figure out how to make it better fit in overfilled hands.
+	/obj/item/paper/inqslip/arrival/ortho = 1)
 	belt = /obj/item/storage/belt/rogue/leather/rope/dark
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 	cloak = /obj/item/clothing/cloak/tabard/psydontabard/alt
