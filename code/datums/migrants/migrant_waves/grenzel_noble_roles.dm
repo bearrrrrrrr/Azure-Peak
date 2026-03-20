@@ -125,7 +125,7 @@
 	H.cmode_music = 'sound/music/combat_grenzelhoft.ogg'
 	H.grant_language(/datum/language/grenzelhoftian)
 
-	var/weapons = list("Sword & Shield","Mace & Shield","Spear","Crossbow", "Bow")
+	var/weapons = list("Zweihander","Kriegmesser & Buckler","Halberd","Partizan")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
