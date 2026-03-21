@@ -493,3 +493,8 @@
 	timer = 10 MINUTES
 	stressadd = 3
 	desc = span_boldred("I had terrible nightmares... there's a lingering buzzing in my mind.") + span_gamedeadsay("\nIn gi rum imus Noc te et con sumi...")
+
+/datum/stressevent/pallid_outdoors
+	timer = 2 MINUTES
+	stressadd = 3
+	desc = span_red("I long for the shelter of wall and roofs. The sun and moon are too bright for me to bear!")
