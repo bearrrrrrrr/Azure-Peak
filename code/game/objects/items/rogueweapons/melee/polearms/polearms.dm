@@ -1156,7 +1156,7 @@
 	force = 23
 	force_wielded = 30
 	sellprice = 50
-	max_integrity = 250 //equal to psydonite; putting it at half of this was a neat little experiment but agonizingly painful
+	max_integrity = 250 //equal to psydonite; putting it at half of this was a neat little experiment but agonizing
 
 
 /obj/item/rogueweapon/spear/partizan
