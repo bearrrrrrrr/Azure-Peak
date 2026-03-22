@@ -306,7 +306,8 @@
 						target = M
 						break
 					if(target)
-						if(target.Adjacent(src) || (CanReach(target, W) && used_intent.effective_range_type))
+						var/can_whiff_target_reach = !used_intent.tranged && used_intent.reach > 1 && CanReach(target, W)
+						if(target.Adjacent(src) || (CanReach(target, W) && used_intent.effective_range_type) || can_whiff_target_reach)
 							if(used_intent.cleave)
 								used_intent.cleave.show_cleave_visuals(src, T)
 							else
