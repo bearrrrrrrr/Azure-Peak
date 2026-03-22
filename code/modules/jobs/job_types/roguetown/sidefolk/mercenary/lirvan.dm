@@ -31,8 +31,7 @@
 		/datum/skill/misc/climbing = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/medicine = SKILL_LEVEL_NOVICE,
 		/datum/skill/craft/carpentry = SKILL_LEVEL_NOVICE, //pity. your staff is incredibly fragile
-		/datum/skill/craft/crafting = SKILL_LEVEL_NOVICE,
-		/datum/skill/combat/shields = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/polearms = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/swords = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/staves = SKILL_LEVEL_EXPERT //awww yeah
