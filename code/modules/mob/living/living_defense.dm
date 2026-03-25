@@ -237,7 +237,7 @@
 //proc to upgrade a simple pull into a more aggressive grab.
 /mob/living/proc/grippedby(mob/living/carbon/user, instant = FALSE)
 	var/clickcd = CLICK_CD_MELEE
-	if(M.mind && M != user)
+	if(mind && src != user)
 		clickcd = CLICK_CD_WRESTLING
 	user.changeNext_move(clickcd)
 	var/skill_diff = 0
