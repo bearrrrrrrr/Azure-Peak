@@ -112,7 +112,7 @@
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			pants = /obj/item/clothing/under/roguetown/trou/leather/mourning
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
-			shirt = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
+			shirt = /obj/item/clothing/suit/roguetown/armor/vestments_padded
 			cloak = /obj/item/clothing/cloak/raincloak/mortus
 			backr = /obj/item/rogueweapon/shovel/silver
 		if(/datum/patron/divine/pestra)
@@ -139,6 +139,7 @@
 			pants = /obj/item/clothing/under/roguetown/trou
 			cloak = /obj/item/clothing/cloak/templar/malumite
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+			shirt = /obj/item/clothing/suit/roguetown/armor/vestments_padded
 		if(/datum/patron/divine/ravox)
 			head = /obj/item/clothing/head/roguetown/roguehood
 			neck = /obj/item/clothing/neck/roguetown/psicross/ravox
