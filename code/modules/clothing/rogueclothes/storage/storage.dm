@@ -538,7 +538,8 @@
 // I Do Not 100% understand how this works. This is probably buggy as fuck.
 /obj/item/storage/hip/orestore/bronze/equipped(mob/user, slot)
 	. = ..()
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(on_user_moved))
+	// i set override to true bc it kept producing a runtime unless i did. assuming this is fine. idfk.
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(on_user_moved), TRUE)
 
 /obj/item/storage/hip/orestore/bronze/dropped(mob/user)
 	. = ..()
