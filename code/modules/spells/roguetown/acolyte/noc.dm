@@ -239,7 +239,7 @@ Somewhat fitting, considering the broadness of their domains. I also just think 
 		/obj/effect/proc_holder/spell/invoked/blink,
 	)
 	var/list/offensive_bundle = list(	//This is not meant to make them combat-capable. A weak offensive, and mostly defensive option.
-		/obj/effect/proc_holder/spell/invoked/projectile/arcynebolt, // PLACEHOLDER
+		/datum/action/cooldown/spell/projectile/arcynebolt, // PLACEHOLDER
 		/obj/effect/proc_holder/spell/self/conjure_armor/miracle,
 		/obj/effect/proc_holder/spell/invoked/conjure_weapon/miracle,
 		/obj/effect/proc_holder/spell/invoked/rebuke, // By points, this adds up to 8 points total. However it is the strongest Acolyte combo offensively.
@@ -288,13 +288,13 @@ Somewhat fitting, considering the broadness of their domains. I also just think 
 			var/choice = input(user, "Choose a spell! Choices remaining: [choice_count_visual]") as null|anything in spells
 			if(!isnull(choice))
 				var/picked_spell = spells[choice]
-				var/obj/effect/proc_holder/spell/new_spell = new picked_spell
+				var/datum/new_spell = new picked_spell
 				user?.mind.AddSpell(new_spell)
 				choice_count_visual--
 				spells.Remove(choice)
 	else
 		for(var/spell_type in spells)
-			var/obj/effect/proc_holder/spell/new_spell = new spell_type
+			var/datum/new_spell = new spell_type
 			user?.mind.AddSpell(new_spell)
 	if(!length(spells))
 		user.mind?.RemoveSpell(src.type)
@@ -401,7 +401,7 @@ Somewhat fitting, considering the broadness of their domains. I also just think 
 			int_bonus = assocskill
 		duration *= 2
 	if(GLOB.tod == "day")
-		to_chat(owner, span_warning("ASTRATA IS RISEN! My spell loses some of it's potency! (-1 TO STAT BOOST.)"))
+		to_chat(owner, span_warning("ASTRATA IS RISEN! My spell loses some of its potency! (-1 TO STAT BOOST.)"))
 		int_bonus--
 	if(int_bonus > 0)
 		effectedstats = list(STATKEY_INT = int_bonus)
