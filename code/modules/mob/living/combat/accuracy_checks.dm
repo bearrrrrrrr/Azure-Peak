@@ -16,6 +16,8 @@
 		return zone
 	if(zone == BODY_ZONE_CHEST)
 		return zone
+	if(target.stat >= UNCONSCIOUS)
+		return zone
 
 	var/chance2hit = 0
 
