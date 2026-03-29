@@ -1286,9 +1286,8 @@
 /obj/structure/fluff/psycross/attackby(obj/item/W, mob/user, params)
 	if(user.mind)
 		var/mob/living/living_user = user
-		// if there's no bishop inround, you can still get married... as long as there's an eoran.
-		// all ritualist-having roles are either patron locked or priesty enough that allowing them to marry makes sense, as long as they're eoran
-		if((user.mind.assigned_role == "Bishop") || (istype(living_user) && HAS_TRAIT(living_user, TRAIT_RITUALIST) && (living_user.patron.type == /datum/patron/divine/eora)))
+		// if there's no bishop inround, you can still get married... as long as there's an eoran. heretics can do it too!
+		if((user.mind.assigned_role == "Bishop") || (istype(living_user) && HAS_TRAIT(living_user, TRAIT_MARRIAGE_CAPABLE) && (living_user.patron.type == /datum/patron/divine/eora)))
 			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/apple))
 				var/marriage
 				var/obj/item/reagent_containers/food/snacks/grown/apple/A = W
