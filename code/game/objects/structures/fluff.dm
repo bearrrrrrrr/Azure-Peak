@@ -1149,6 +1149,16 @@
 	var/divine = TRUE
 	obj_flags = UNIQUE_RENAME | CAN_BE_HIT
 
+/obj/structure/fluff/psycross/get_mechanics_examine(mob/user)
+	. = ..()
+	var/mob/living/living_user = user
+	if(user.mind.assigned_role == "Bishop")
+		. += span_info("As the Bishop, you can marry two people by having them both bite an apple, then offering it to the cross.")
+		. += span_info("The second person to bite the apple will take the last name of whoever bit it first.")
+	else if(istype(living_user) && HAS_TRAIT(living_user, TRAIT_MARRIAGE_CAPABLE) && (living_user.patron.type == /datum/patron/divine/eora))
+		. += span_info("As an Eoran, you can marry two people by having them both bite an apple, then offering it to the cross.")
+		. += span_info("The second person to bite the apple will take the last name of whoever bit it first.")
+
 /obj/structure/fluff/psycross/Initialize()
 	. = ..()
 	become_hearing_sensitive()
