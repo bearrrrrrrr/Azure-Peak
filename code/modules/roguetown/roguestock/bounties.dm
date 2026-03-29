@@ -1,6 +1,6 @@
 /datum/roguestock/bounty/treasure
 	name = "Collectable Treasures"
-	desc = "Treasures are minted for 80% of its value, which is deposited into the treasury. </br>Lesser weapons, clothes, and ores are excluded. </br> Insertions worth at least 30 mammons will always be depositable. </br> Statues, gemstones, utensils and rings will always deposit, regardless of value."
+	desc = "Treasures are minted for 80% of their value, which is deposited into the treasury. </br>Lesser weapons, clothes, and ores are excluded. </br> Insertions worth at least 30 mammons will always be depositable. </br> Statues, gemstones, utensils and rings will always deposit, regardless of value."
 	item_type = /obj
 	payout_price = 70
 	mint_item = TRUE
@@ -57,6 +57,14 @@
 		return FALSE
 	if(istype(I, /obj/item/clothing/mask/rogue/facemask/goldmaskc/triumph))
 		return FALSE
+	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/blackberry/skysugarbase))
+		return FALSE
+	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/skysugarslab))
+		return FALSE
+	if(istype(I, /obj/item/reagent_containers/powder/starsugar/skysugar))
+		return FALSE
+	if(istype(I, /obj/item/reagent_containers/food/snacks/allspice))
+		return FALSE
 	if(istype(I, /obj/item/rogueweapon/scabbard))
 		return FALSE // If you have to sell your decorated scabbards for ozium-money, you'll have to barter.
 	if(I.get_real_price() > 0)
@@ -87,6 +95,8 @@
 		if(istype(I, /obj/item/reagent_containers/glass/bucket/pot/teapot))
 			return TRUE
 		if(istype(I, /obj/item/tablecloth/silk)) //Standalone items that meet the price minimum can still be listed here, to 'brute-force' their redeemability in case of glitches.
+			return TRUE
+		if(istype(I, /obj/item/recipe_book/survival)) //Encourages less littering, and diagetically teaches new players how the Stockpile works. Gives five mammons or less.
 			return TRUE
 	if(I.get_real_price() >= 30) //The numerical value here determines how much mammons an item needs to be worth, at the minimum, to be automatically accepted into the Stockpile.
 		return TRUE

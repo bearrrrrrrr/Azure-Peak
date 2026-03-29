@@ -60,6 +60,22 @@
 		else
 			to_chat(src, "Your character information will no longer be viewable when masked.")
 
+/client/verb/toggle_instruments()
+	set category = "Options"
+	set name = "Toggle Instrument Sounds"
+	if(prefs)
+		prefs.toggles ^= SOUND_INSTRUMENTS
+		prefs.save_preferences()
+	to_chat(src, "You will[(prefs.toggles & SOUND_INSTRUMENTS) ? "" : " no longer"] hear instrument-played songs.")
+
+/client/verb/toggle_midis()
+	set category = "Options"
+	set name = "Toggle Admin Midis"
+	if(prefs)
+		prefs.toggles ^= SOUND_MIDI
+		prefs.save_preferences()
+	to_chat(src, "You will[prefs.toggles & SOUND_MIDI ? "" : " no longer"] hear admin-played sounds.")
+
 /client/verb/mute_animal_emotes()
 	set category = "Options"
 	set name = "Toggle Animal Noise Emotes"
@@ -95,7 +111,7 @@
 
 /client/verb/toggle_compliance_notifs() // The messages need to be on-by-default while this is in its early stages.
 	set category = "Options"
-	set name = "Compliance Notifs"
+	set name = "Toggle Compliance Notifs"
 	if(prefs)
 		prefs.compliance_notifs = !prefs.compliance_notifs
 		prefs.save_preferences()

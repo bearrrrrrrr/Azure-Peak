@@ -13,7 +13,7 @@
 	equip_sound = 'sound/blank.ogg'
 	content_overlays = FALSE
 	bloody_icon_state = "bodyblood"
-	experimental_inhand = FALSE
+	experimental_inhand = TRUE
 	component_type = /datum/component/storage/concrete/roguetown/belt
 	grid_width = 64
 	grid_height = 64
@@ -90,12 +90,18 @@
 /obj/item/storage/belt/rogue/leather/battleskirt/barbarian
 	color = "#48443b"
 
+/obj/item/storage/belt/rogue/leather/battleskirt/red
+	color = CLOTHING_RED
+
 /obj/item/storage/belt/rogue/leather/battleskirt/faulds
 	name = "belt with faulds"
 	desc = "A fine leather strap notched with holes for a buckle to secure itself, notched above a halved military skirt."
 	icon_state = "faulds"
 	sewrepair = FALSE
 	detail_tag = "_belt"
+
+/obj/item/storage/belt/rogue/leather/battleskirt/faulds/red
+	color = CLOTHING_RED
 
 /obj/item/storage/belt/rogue/leather/battleskirt/breechcloth
 	name = "belt with breechcloth"
@@ -112,6 +118,9 @@
 	flags_inv = HIDECROTCH
 	sewrepair = FALSE
 	detail_tag = "_belt"
+
+/obj/item/storage/belt/rogue/leather/battleskirt/breechcloth/red
+	color = CLOTHING_RED
 
 /obj/item/storage/belt/rogue/leather/steel
 	name = "steel belt"
@@ -428,10 +437,10 @@
 		knives += K
 	update_icon()
 
-/obj/item/storage/belt/rogue/leather/exoticsilkbelt
-	name = "exotic silk belt"
+/obj/item/storage/belt/rogue/leather/silkbelt
+	name = "giltsilk belt"
 	desc = "A gold adorned belt with the softest of silks barely concealing one's bits."
-	icon_state = "exoticsilkbelt"
+	icon_state = "silkbelt"
 	var/max_storage = 5
 	sewrepair = TRUE
 
@@ -496,6 +505,7 @@
 	item_flags = ABSTRACT
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	no_effect = TRUE
+	experimental_inhand = FALSE
 
 /obj/item/clothing/wall_grab/dropped(mob/living/carbon/human/user)
 	. = ..()
@@ -550,3 +560,15 @@
 	alternate_worn_layer = UNDER_CLOAK_LAYER
 	strip_delay = 20
 	component_type = /datum/component/storage/concrete/roguetown/zig_bandolier
+
+/obj/item/storage/belt/rogue/leather/suspenders
+	name = "suspenders"
+	desc = "A pair of suspenders which go over the shoulders. Used for keeping one's pants in place in an admittably fashionable style."
+	icon_state = "suspenders"
+	alternate_worn_layer = ARMOR_LAYER
+
+/obj/item/storage/belt/rogue/leather/cloth_belt
+	name = "cloth belt"
+	desc = "This belt has been sewn out of cloth, as opposed to tied. Which makes it superior. Obviously."
+	icon_state = "clothsash"
+	salvage_result = /obj/item/natural/cloth

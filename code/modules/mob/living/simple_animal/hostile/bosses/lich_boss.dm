@@ -186,7 +186,7 @@
 	damage_type = BURN
 	nodamage = FALSE
 	speed = 0.3
-	flag = "magic"
+	flag = "fire"
 	light_color = "#ffffff"
 /obj/projectile/magic/lich/lightning/on_hit(target)
 	. = ..()
@@ -256,7 +256,6 @@
 	new /obj/item/roguekey/mage/lich(T)
 	return ..()
 
-
 /mob/living/simple_animal/hostile/retaliate/rogue/boss/lich/simple_limb_hit(zone)
 	if(!zone)
 		return ""
@@ -307,7 +306,7 @@
 	blade_class = BCLASS_CUT
 	hitsound = 'sound/combat/hits/bladed/genchop (1).ogg'
 	chargetime = 20
-	penfactor = 25
+	penfactor = PEN_MEDIUM
 	swingdelay = 3
 	candodge = TRUE
 	canparry = TRUE

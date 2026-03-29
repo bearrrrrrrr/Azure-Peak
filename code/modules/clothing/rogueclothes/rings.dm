@@ -52,6 +52,12 @@
 	sellprice = 33
 	is_silver = FALSE //Temporary measure to prevent people from easily metachecking vampyres. Replace with a more sophisticated alternative if-or-when available.
 
+/obj/item/clothing/ring/silver/cleric
+	name = "clerical silver ring"
+	desc = "A ring of silvered glimmerance, detailed with the etchings of a faith-militance's creed. In the closing daes of Psydonia's ancient calamity, such jewelry was worn \
+	by the first crusaders; those who had been endowed with the power to invoke the miracles of His tenmost angels. Nowadaes, it is worn by their innumerable descendants in veneration."
+	sellprice = 25
+
 /obj/item/clothing/ring/gold
 	name = "gold ring"
 	desc = "A ring of golden beauty."
@@ -323,41 +329,6 @@
 	icon_state = "ring_duel"
 	sellprice = 10
 
-/obj/item/clothing/ring/fate_weaver
-	name = "fate weaver"
-	desc = "An arcyne creation first theorized by malcontents with the resolution of Xylix's plays. It protects it's wearer by tugging things gently toward less fatal potentials."
-	icon_state = "ring_s"
-	max_integrity = 50
-	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET | COVERAGE_HEAD_NOSE | NECK | HANDS | FEET //field covers the whole body
-	armor = ARMOR_FATEWEAVER //even protection against most damage types
-	blade_dulling = DULLING_BASHCHOP
-	slot_flags = ITEM_SLOT_RING
-	blocksound = PLATEHIT
-	break_sound = 'sound/foley/breaksound.ogg'
-	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
-	armor_class = ARMOR_CLASS_LIGHT
-	unenchantable = TRUE
-
-/obj/item/clothing/ring/fate_weaver/proc/dispel()
-	if(!QDELETED(src))
-		src.visible_message(span_warning("The [src]'s borders begin to shimmer and fade, before it vanishes entirely!"))
-		qdel(src)
-
-/obj/item/clothing/ring/fate_weaver/obj_break()
-	. = ..()
-	if(!QDELETED(src))
-		dispel()
-
-/obj/item/clothing/ring/fate_weaver/attack_hand(mob/user)
-	. = ..()
-	if(!QDELETED(src))
-		dispel()
-
-/obj/item/clothing/ring/fate_weaver/dropped()
-	. = ..()
-	if(!QDELETED(src))
-		dispel()
-
 /////////////////////////
 // Wedding Rings/Bands //
 /////////////////////////
@@ -457,28 +428,6 @@
 	icon_state = "bs_ring_diamond"
 	desc = "A mythical blacksteel ring with a polished Dorpel set into it."
 	sellprice = 370
-
-////////////////////////
-// Triumph Exclusive! //
-////////////////////////
-
-//Purchasable via Triumphs. Blacklisted from the Stockpile and fitted with a reduced saleprice.
-/obj/item/clothing/ring/diamond/triumph
-	name = "ornate dorpel ring"
-	icon_state = "g_newring_diamond"
-	desc = "A ring of royal splendor, crested with a magnificently-cut dorpel. Its prismesque reflections remind you of a dream, from long ago; a ship, sailing across a sea of rainbowed phlogiston, to a castle far beyond the clouds.."
-	sellprice = 99
-	smeltresult = /obj/item/clothing/ring/signet/triumph
-
-/obj/item/clothing/ring/signet/triumph
-	name = "ornate signet ring"
-	desc = "A ring of opulent gold, bearing the symbol of an aristocratic household. By dipping it in melted redtallow, it can seal writs of religious importance - a matter better known to the Inquisition, rather than the Church or Crown."
-	sellprice = 77 
-
-/obj/item/clothing/ring/gold/triumph
-	name = "ornate gold ring"
-	desc = "A ring of golden beauty, who's story could only be retold by a lonesome tongue."
-	sellprice = 33
 
 /////////////////////////
 // Stat-Boosting Rings //

@@ -112,7 +112,9 @@
 	var/nodamage = FALSE //Determines if the projectile will skip any damage inflictions
 	var/flag = "piercing" //Defines what armor to use when it hits things. Setting this to "blunt" might result in unexpected behavior (i.e. knockout on hit, figure out the root causes and excise it)
 	///How much armor this projectile pierces.
-	var/armor_penetration = 0
+	var/armor_penetration = PEN_NONE
+	/// Multiplier for integrity damage dealt to armor. 1 is default. Higher = harder on armor.
+	var/intdamfactor = 1
 	var/projectile_type = /obj/projectile
 	var/range = 50 //This will de-increment every step. When 0, it will deletze the projectile.
 	var/decayedRange			//stores original range
@@ -156,6 +158,13 @@
 	var/bonus_accuracy = 0 //bonus accuracy that cannot be affected by range drop off.
 
 	var/target_z = 0
+
+	/// Min tile distance for full damage/AP.
+	var/min_range = 0
+	/// Max tile distance for full damage/AP.
+	var/max_range = 0
+	/// Falloff factor for damage. Multiplicative.
+	var/dam_falloff_factor = 1
 
 /obj/projectile/proc/handle_drop()
 	return
@@ -202,6 +211,19 @@
 	if(range <= 0 && loc)
 		on_range()
 
+/obj/projectile/proc/check_range(turf/T)
+	if(!starting)
+		return FALSE
+	if(!istype(T))
+		T = get_turf(src)
+	if(!istype(T))
+		return FALSE
+	if(T.z != starting.z)
+		return FALSE
+	var/distance = get_dist(T, starting)
+	if((min_range && distance < min_range) || (max_range && distance > max_range))
+		return TRUE
+
 /obj/projectile/proc/on_range() //if we want there to be effects when they reach the end of their range
 //	on_hit(get_turf(src))
 	Bump(get_turf(src))
@@ -225,6 +247,7 @@
 /obj/projectile/proc/on_hit(atom/target, blocked = FALSE)
 	if(fired_from)
 		SEND_SIGNAL(fired_from, COMSIG_PROJECTILE_ON_HIT, firer, target, Angle)
+	SEND_SIGNAL(src, COMSIG_PROJECTILE_SELF_ON_HIT, firer, target, Angle)
 	var/turf/target_loca = get_turf(target)
 
 	var/hitx
@@ -284,6 +307,10 @@
 		log_combat(firer, L, "shot", src, reagent_note)
 	else
 		L.log_message("has been shot by [firer] with [src]", LOG_ATTACK, color="orange")
+
+	if((min_range || max_range) && !check_range(target_loca) && isliving(target))
+		var/obj/effect/temp_visual/dir_setting/attack_effect/atk_effrange = new(target_loca, target.dir)
+		atk_effrange.icon_state = "effrange"
 
 	return BULLET_ACT_HIT
 
@@ -405,7 +432,11 @@
 #define DO_NOT_QDEL 2		//Pass through.
 #define FORCE_QDEL 3		//Force deletion.
 
-/obj/projectile/proc/process_hit(turf/T, atom/target, qdel_self, hit_something = FALSE)		//probably needs to be reworked entirely when pixel movement is done.
+/obj/projectile/proc/process_hit(turf/T, atom/target, qdel_self, hit_something = FALSE) 	//probably needs to be reworked entirely when pixel movement is done.
+	if(check_range(T))
+		if(damage)
+			damage = round(damage * dam_falloff_factor)
+
 	if(QDELETED(src) || !T || !target)		//We're done, nothing's left.
 		if((qdel_self == FORCE_QDEL) || ((qdel_self == QDEL_SELF) && !temporary_unstoppable_movement && !CHECK_BITFIELD(movement_type, UNSTOPPABLE)))
 			qdel(src)
@@ -414,7 +445,9 @@
 	if(!prehit(target))
 		return process_hit(T, select_target(T), qdel_self, hit_something)		//Hit whatever else we can since that didn't work.
 	SEND_SIGNAL(target, COMSIG_PROJECTILE_PREHIT, args)
+
 	var/result = target.bullet_act(src, def_zone)
+
 	if(result == BULLET_ACT_FORCE_PIERCE)
 		if(!CHECK_BITFIELD(movement_type, UNSTOPPABLE))
 			temporary_unstoppable_movement = TRUE
@@ -495,6 +528,7 @@
 	last_process = world.time
 	if(!loc || !fired || !trajectory)
 		fired = FALSE
+		qdel(src)
 		return PROCESS_KILL
 	if(paused || !isturf(loc))
 		last_projectile_move += world.time - last_process		//Compensates for pausing, so it doesn't become a hitscan projectile when unpaused from charged up ticks.
@@ -735,6 +769,8 @@
 				return FALSE
 	return TRUE
 
+#define BUCKLE_PENALTY 0.5
+
 //Spread is FORCED!
 /obj/projectile/proc/preparePixelProjectile(atom/target, atom/source, params, spread = 0)
 	var/turf/curloc = get_turf(source)
@@ -760,6 +796,14 @@
 	trajectory_ignore_forcemove = FALSE
 	starting = start_loc
 	original = target
+
+	// mounted penalty
+	if(isliving(source))
+		var/mob/living/shooter = source
+		if(shooter.buckled)
+			accuracy = max(5, accuracy * BUCKLE_PENALTY)
+			bonus_accuracy = max(0, bonus_accuracy * BUCKLE_PENALTY)
+
 	if(targloc || !params)
 		yo = targloc.y - curloc.y
 		xo = targloc.x - curloc.x
@@ -778,6 +822,8 @@
 	else
 		stack_trace("WARNING: Projectile [type] fired without either mouse parameters, or a target atom to aim at!")
 		qdel(src)
+
+#undef BUCKLE_PENALTY
 
 /proc/calculate_projectile_angle_and_pixel_offsets(mob/user, params)
 	var/list/mouse_control = params2list(params)
@@ -829,15 +875,20 @@
 /obj/projectile/Destroy()
 	if(hitscan)
 		finalize_hitscan_and_generate_tracers()
+	permutated = null
+	firer = null
+	fired_from = null
+	original = null
+	starting = null
 	STOP_PROCESSING(SSprojectiles, src)
 	cleanup_beam_segments()
-	qdel(trajectory)
+	QDEL_NULL(trajectory)
 	return ..()
 
 /obj/projectile/proc/cleanup_beam_segments()
 	QDEL_LIST_ASSOC(beam_segments)
 	beam_segments = list()
-	qdel(beam_index)
+	QDEL_NULL(beam_index)
 
 /obj/projectile/proc/finalize_hitscan_and_generate_tracers(impacting = TRUE)
 	if(trajectory && beam_index)

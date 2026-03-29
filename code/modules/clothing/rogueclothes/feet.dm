@@ -10,7 +10,7 @@
 	bloody_icon_state = "shoeblood"
 	equip_delay_self = 30
 	resistance_flags = FIRE_PROOF
-	experimental_inhand = FALSE
+	experimental_inhand = TRUE
 	salvage_amount = 0
 	salvage_result = null
 
@@ -53,9 +53,23 @@
 	name = "decrepit boots"
 	desc = "Frayed bronze greaves, shingled atop boots of rotted leather. The toebones of its former legionnaire remain within, rattling about with every step taken."
 	max_integrity = 40
-	prevent_crits = PREVENT_CRITS_NONE
 	icon_state = "ancientboots"
+	smeltresult = /obj/item/ingot/aaslag
 	color = "#bb9696"
+
+/obj/item/clothing/shoes/roguetown/boots/paalloy
+	name = "ancient boots"
+	desc = "Polished gilbranze sabatons, curved around to loosely mimic the calves of another. </br>It looks chivalry is dead, after all.. and walking, no less!"
+	icon_state = "ancientboots"
+	color = null
+	blocksound = PLATEHIT
+	resistance_flags = FIRE_PROOF
+	max_integrity = ARMOR_INT_SIDE_STEEL
+	armor = ARMOR_PLATE
+	pickup_sound = 'sound/foley/equip/equip_armor_plate.ogg'
+	equip_sound = 'sound/foley/equip/equip_armor_plate.ogg'
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/aaslag
 
 /obj/item/clothing/shoes/roguetown/boots/psydonboots
 	name = "psydonic leather boots"
@@ -63,7 +77,7 @@
 	icon_state = "psydonboots"
 	item_state = "psydonboots"
 	sewrepair = TRUE
-	armor = ARMOR_LEATHER_GOOD
+	armor = ARMOR_LEATHER
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
 
@@ -91,7 +105,7 @@
 /obj/item/clothing/shoes/roguetown/boots/nobleboot/steppesman
 	name = "aavnic riding boots"
 	desc = "A pair of sturdy riding boots with an iron heel and brass spurs."
-	armor = ARMOR_LEATHER_GOOD
+	armor = ARMOR_LEATHER
 	max_integrity = ARMOR_INT_SIDE_HARDLEATHER
 
 /obj/item/clothing/shoes/roguetown/shortboots
@@ -171,7 +185,14 @@
 	desc = "Frayed bronze platforms, curled about to cradle the feet. The beaches that these sandals once treaded are no more; pearly sands, long since turnt to glass from the Comet Syon's impact."
 	icon_state = "ancientsandals"
 	color = "#bb9696"
-	prevent_crits = PREVENT_CRITS_NONE
+
+/obj/item/clothing/shoes/roguetown/sandals/paalloy
+	name = "ancient sandals"
+	desc = "Polished gilbranze platforms, laced with bog-reeds to remain secured beneath skeletal soles. A thousand yils later, and they still clack-and-clop like new."
+	icon_state = "ancientsandals"
+	color = null
+	max_integrity = 100			//Half that of iron boots
+	armor = ARMOR_LEATHER			//Better than regular leather.
 
 /obj/item/clothing/shoes/roguetown/shalal
 	name = "babouche"
@@ -203,7 +224,7 @@
 	icon_state = "alboots"
 	item_state = "alboots"
 	max_integrity = 100			//Half that of iron boots
-	armor = ARMOR_LEATHER_GOOD			//Better than regular leather.
+	armor = ARMOR_LEATHER			//Better than regular leather.
 	color = null
 
 /obj/item/clothing/shoes/roguetown/boots/leather/reinforced/short
@@ -220,7 +241,7 @@
 	item_state = "fencerboots"
 	blocksound = SOFTHIT
 	max_integrity = ARMOR_INT_SIDE_HARDLEATHER
-	armor = ARMOR_LEATHER_GOOD
+	armor = ARMOR_LEATHER
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
@@ -235,7 +256,7 @@
 	icon_state = "grenzelboots"
 	item_state = "grenzelboots"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
-	armor = ARMOR_LEATHER_GOOD
+	armor = ARMOR_LEATHER
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
@@ -245,7 +266,6 @@
 	name = "woad elven boots"
 	desc = "The living trunks still blossom in the spring. They let water through, but it is never cold."
 	armor = ARMOR_BLACKOAK //Resistant to blunt and stab, but very weak to slash.
-	prevent_crits = PREVENT_CRITS_ALL
 	max_integrity = ARMOR_INT_SIDE_IRON
 	resistance_flags = FIRE_PROOF
 	blocksound = SOFTHIT
@@ -274,6 +294,7 @@
 	pickup_sound = 'sound/foley/equip/equip_armor_plate.ogg'
 	equip_sound = 'sound/foley/equip/equip_armor_plate.ogg'
 	anvilrepair = /datum/skill/craft/armorsmithing
+	sewrepair = FALSE
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/shoes/roguetown/boots/armor/ComponentInitialize()
@@ -287,7 +308,7 @@
 	item_state = "goldgreaves"
 	body_parts_covered = FEET | LEGS
 	armor_class = ARMOR_CLASS_HEAVY //Ceremonial. Heavy is the head that bares the burden.
-	armor = ARMOR_GOLD //Renders its wearer completely invulnerable to damage. The caveat is, however..
+	armor = ARMOR_INDESTRUCTIBLE //Renders its wearer completely invulnerable to damage. The caveat is, however..
 	max_integrity = ARMOR_INT_SIDE_GOLD // ..is that it's extraordinarily fragile. To note, this is lower than even Decrepit-tier armor.
 	anvilrepair = null
 	smeltresult = /obj/item/ingot/gold
@@ -309,15 +330,14 @@
 	icon_state = "bronzegreaves"
 	body_parts_covered = FEET | LEGS
 	smeltresult = /obj/item/ingot/bronze
-	armor = ARMOR_PLATE_BRONZE
+	armor = ARMOR_PLATE
 	max_integrity = ARMOR_INT_SIDE_BRONZE
-	prevent_crits = PREVENT_CRITS_ALL
 
 /obj/item/clothing/shoes/roguetown/boots/armor/graggar
 	name = "vicious boots"
 	desc = "Fluted sabatons, dusted with the bonedust of a thousand crushed skulls. Spit this final act, thine embodiment of sin - why would you ever want for something else, when you are God?"
 	max_integrity = ARMOR_INT_SIDE_ANTAG
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 	icon_state = "graggarplateboots"
 
 /obj/item/clothing/shoes/roguetown/boots/armor/graggar/Initialize()
@@ -330,7 +350,7 @@
 	name = "gilded boots"
 	desc = "Gilded tombs do worm enfold."
 	icon_state = "matthiosboots"
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 
 /obj/item/clothing/shoes/roguetown/boots/armor/matthios/Initialize()
 	. = ..()
@@ -349,7 +369,7 @@
 	icon_state = "zizoboots"
 	chunkcolor = "#363030"
 	material_category = ARMOR_MAT_PLATE
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 
 /obj/item/clothing/shoes/roguetown/boots/armor/zizo/Initialize()
 	. = ..()
@@ -508,7 +528,7 @@
 
 /obj/item/clothing/shoes/roguetown/anklets
 	name = "golden anklets"
-	desc = "Luxurious anklets made of the finest gold. They leave the feet bare while adding an exotic flair."
+	desc = "Luxurious anklets made of the finest gold. They leave the feet bare while adding a silky flair."
 	gender = PLURAL
 	icon_state = "anklets"
 	item_state = "anklets"
@@ -523,7 +543,8 @@
 	icon_state = "eastsandals"
 	item_state = "eastsandals"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
-	armor = ARMOR_LEATHER_GOOD
+	armor = ARMOR_LEATHER
+	sewrepair = TRUE
 
 /obj/item/clothing/shoes/roguetown/armor/rumaclan/shitty
 	armor = ARMOR_CLOTHING
@@ -583,7 +604,7 @@
 	item_state = "gold_horseshoes"
 	max_integrity = ARMOR_INT_LEG_LEATHER
 	sewrepair = FALSE
-	armor = ARMOR_PLATE_BAD // these are awful!
+	armor = ARMOR_PLATE // these are awful!
 	smeltresult = /obj/item/ingot/gold
 
 /obj/item/clothing/shoes/courtphysician

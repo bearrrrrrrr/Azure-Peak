@@ -100,6 +100,16 @@
 	if(trait_capped_level && enough_sleep_xp_to_advance(skill, trait_capped_level - mind.current.get_skill_level(skill)))
 		amt = 0
 
+		// Notifying you on a cooldown if you actually hit the cap
+		var/skillname = skillref.name ? skillref.name : "ERROR"
+		var/captimer = LAZYACCESS(L.mob_timers, "skillcap_[skillname]")
+
+		if(!captimer || world.time > (captimer + SKILLCAP_NOTIF_COOLDOWN))
+			L.mob_timers["skillcap_[skillname]"] = world.time
+			to_chat(L, span_warning("I can't learn anything more about [skillname]."))
+			if(show_xp)
+				L.balloon_alert(L, "<font color = '#bb2b2b'>Skill cap!</font>")
+
 	var/capped_pre = enough_sleep_xp_to_advance(skill, 2)
 	var/can_advance_pre = enough_sleep_xp_to_advance(skill, 1)
 
@@ -319,16 +329,8 @@
 /datum/sleep_adv/proc/finish()
 	if(!mind.current)
 		return
-	if(mind.has_changed_spell)
-		mind.has_changed_spell = FALSE
-		to_chat(mind.current, span_smallnotice("I feel like I can change my spells again."))
-	if(mind.has_rituos)
-		mind.has_rituos = FALSE
-		to_chat(mind.current, span_smallnotice("The toil of invoking Her Lesser Work has fled my feeble form. I can continue my transfiguration..."))
-	if (mind.rituos_spell)
-		to_chat(mind.current, span_warning("My glimpse of [mind.rituos_spell.name] flees my slumbering mind..."))
-		mind.RemoveSpell(mind.rituos_spell)
-		mind.rituos_spell = null
+	if(mind.aspect_resets_used > 0)
+		mind.aspect_resets_used = 0
 	to_chat(mind.current, span_notice("...and that's all I dreamt of."))
 	if(HAS_TRAIT(mind.current, TRAIT_STUDENT))
 		REMOVE_TRAIT(mind.current, TRAIT_STUDENT, TRAIT_GENERIC)
