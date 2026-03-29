@@ -1287,11 +1287,9 @@
 	if(user.mind)
 		var/mob/living/living_user = user
 		// if there's no bishop inround, you can still get married... as long as there's an eoran.
-		if((user.mind.assigned_role == "Bishop") || (istype(living_user) && HAS_TRAIT(living_user, TRAIT_CLERGY) && (living_user.patron.type == /datum/patron/divine/eora)))
+		// all ritualist-having roles are either patron locked or priesty enough that allowing them to marry makes sense, as long as they're eoran
+		if((user.mind.assigned_role == "Bishop") || (istype(living_user) && HAS_TRAIT(living_user, TRAIT_RITUALIST) && (living_user.patron.type == /datum/patron/divine/eora)))
 			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/apple))
-				if(!istype(get_area(user), /area/rogue/indoors/town/church/chapel))
-					to_chat(user, span_warning("I need to do this in the chapel."))
-					return FALSE
 				var/marriage
 				var/obj/item/reagent_containers/food/snacks/grown/apple/A = W
 				//The MARRIAGE TEST BEGINS
