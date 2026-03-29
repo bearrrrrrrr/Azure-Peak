@@ -40,16 +40,15 @@
 	if(!(target.mobility_flags & MOBILITY_STAND))
 		chance2hit += 30
 
-	if(!(user.mobility_flags & MOBILITY_STAND) && (zone in list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_PRECISE_L_FOOT)))
-		chance2hit += 5
+	if(target.has_status_effect(/datum/status_effect/debuff/exposed) || target.has_status_effect(/datum/status_effect/debuff/vulnerable))
+		chance2hit += 20
 
-//this shouldn't really give a bonus at all...? why was this an autohit? 'ohh it's easier when they don't parry' it's not like perception actively beats parries...??
-	if(target.dir == turn(get_dir(target, user), 180))
+	if(!(user.mobility_flags & MOBILITY_STAND) && (zone in list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_PRECISE_L_FOOT)))
 		chance2hit += 5
 
 	chance2hit += accuracy_bonus
 
-	chance2hit = CLAMP(chance2hit, 5, 93)
+	chance2hit = CLAMP(chance2hit, 5, 95)
 
 	if(prob(chance2hit))
 		return zone
