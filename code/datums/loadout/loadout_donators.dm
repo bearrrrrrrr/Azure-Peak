@@ -212,10 +212,10 @@
 	path = /obj/item/enchantingkit/shudderfly_dagger
 	ckeywhitelist = list("shudderfly")
 
-/datum/loadout_item/donator/maesune/merchant_garb
+/datum/loadout_item/donator/maesune
 	name = "Donator Item - Mercantile Union's Garb"
 	path = /obj/item/clothing/suit/roguetown/shirt/maesune
-	ckeywhitelist = list("maesune", "koruu", "inverserun", "ryan180602")
+	ckeywhitelist = list("maesune", "koruu", "inverserun", "vaki ova", "ryan180602")
 
 /datum/loadout_item/donator/maesune/shield
 	name = "Donator Kit - Silver Shield"
