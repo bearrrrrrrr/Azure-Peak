@@ -2388,8 +2388,8 @@
 		addtimer(CALLBACK(offered_to, PROC_REF(stop_offering_item)), 0.6 SECONDS)
 		self.marriedto = other.real_name
 		other.marriedto = self.real_name
-		to_chat(self, span_notice("[other] is my beloved spouse! Time may pass, but our love endures."))
-		to_chat(other, span_notice("[self] is my beloved spouse! Time may pass, but our love endures."))
+		to_chat(self, span_notice("[other] is my beloved spouse! Time passes, but our love endures."))
+		to_chat(other, span_notice("[self] is my beloved spouse! Time passes, but our love endures."))
 	else
 		visible_message(
 			span_notice("[src] offers [offered_item] to [offered_to] with an outstretched hand."), \
