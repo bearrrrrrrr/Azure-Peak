@@ -371,10 +371,10 @@
 	name = "azurian estoc"
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "estoc_triumph"
-	desc = "A deviation from the traditional longsword, meant to pierce maille or find the \
-	gaps in an opponent's plate armor. This edgeless blade is almost exclusively half-sworded on \
-	foot, or as a lance from saigaback. Wrapped around the grip is a roll of leather, dyed in \
-	Azuria's stormier hues; an unfetterable connection to the Peak's history."
+	desc = "A deviation from the traditional longsword, meant to pierce maille or find the gaps in an \
+	opponent's plate armor. This edgeless blade is almost exclusively half-sworded on foot, or as a lance \
+	from saigaback. Wrapped around the grip is a roll of leather, dyed in Azuria's stormier hues; an unfetterable \
+	connection to the Peak's history."
 
 /obj/item/rogueweapon/sword/long/ap/triumph //Alternate variants for the Estoc series.
 	name = "kriegstecher"
