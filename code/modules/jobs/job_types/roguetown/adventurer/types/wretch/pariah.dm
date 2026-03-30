@@ -45,7 +45,7 @@
 	subclass_stashed_items = list(
         "Sewing Kit" =  /obj/item/repair_kit,
     )
-	extra_context = "This subclass is race-restricted to the Elves, Half-Elves, and Dark Elves."
+	extra_context = "This class is restricted to the Elf, Half-Elf, and Dark Elf species."
 
 
 /datum/outfit/job/roguetown/wretch/pariah
