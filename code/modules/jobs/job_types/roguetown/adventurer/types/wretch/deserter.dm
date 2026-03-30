@@ -55,6 +55,7 @@
 
 		var/weapons = list(
 			"Estoc",
+			"Longsword, Piercing",
 			"Mace + Shield",
 			"Flail + Shield",
 			"Longsword + Shield",
@@ -72,6 +73,9 @@
 			if("Estoc")
 				r_hand = /obj/item/rogueweapon/estoc
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
+			if("Longsword, Piercing")
+				beltr = /obj/item/rogueweapon/scabbard/sword
+				r_hand = /obj/item/rogueweapon/sword/long/ap
 			if("Longsword + Shield")
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/long
