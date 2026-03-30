@@ -1260,17 +1260,17 @@
 // SLING
 
 /datum/anvil_recipe/weapons/iron/slingbullets
-	name = "Sling Bullets, Iron (x10)"
+	name = "Sling Bullets, Iron (x20)"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/ammo_casing/caseless/rogue/sling_bullet/iron
-	createditem_num = 10
+	createditem_num = 20
 	i_type = "Ammo"
 
 /datum/anvil_recipe/weapons/bronze/slingbullets
-	name = "Sling Bullets, Bronze (x10)"
+	name = "Sling Bullets, Bronze (x20)"
 	req_bar = /obj/item/ingot/bronze
 	created_item = /obj/item/ammo_casing/caseless/rogue/sling_bullet/bronze
-	createditem_num = 10
+	createditem_num = 20
 	i_type = "Ammo"
 
 /datum/anvil_recipe/weapons/aalloy/slingbullets
@@ -1288,10 +1288,10 @@
 	i_type = "Ammo"
 
 /datum/anvil_recipe/weapons/steel/slingbullets
-	name = "Sling Bullets, Steel (x5)"
+	name = "Steel Scattershot (x20)"
 	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/ammo_casing/caseless/rogue/sling_bullet/steel
-	createditem_num = 5
+	created_item = /obj/item/ammo_casing/caseless/rogue/sling_bullet/scattershot
+	createditem_num = 20
 	i_type = "Ammo"
 
 // UNIQUE
