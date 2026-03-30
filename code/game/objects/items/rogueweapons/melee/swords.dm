@@ -191,6 +191,15 @@
 	)
 	wdefense = 3
 
+/obj/item/rogueweapon/sword/long/ap/getonmobprop(tag)
+	. = ..()
+	if(tag)
+@@ -385,31 +384,31 @@
+			if("wielded")
+				return list("shrink" = 0.6, "sx" = 3, "sy" = 5, "nx" = -3, "ny" = 5, "sx" = 8, "sy" = -2, "nx" = -6, "ny" = -1, "wx" = -9, "wy" = 4, "ex" = 9, "ey" = 1, "wy" = -2,	"ex" = 8, "ey" = -1, "northabove" = 0, "southabove" = 1, "eastabove" = 1, "westabove" = 0, "nturn" = 0, "sturn" = 0, "wturn" = 0, "eturn" = 15, "nflip" = 8, "nturn" = 60, "sturn" = 30, "wturn" = -30, "eturn" = 22, "nflip" = 10, "sflip" = 0, "wflip" = 8, "eflip" = 0)
+			if("onback")
+				return list("shrink" = 0.6,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
+
 /obj/item/rogueweapon/sword/long/broadsword
 	name = "broadsword"
 	desc = "A lethal and well-balanced weapon. The broadsword - better known as a 'hand-and-a-halfer' - has dutifully served the \
