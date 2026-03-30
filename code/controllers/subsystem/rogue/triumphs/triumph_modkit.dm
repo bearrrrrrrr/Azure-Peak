@@ -380,7 +380,7 @@
 	name = "kriegstecher"
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "aplongsword_triumph"
-	sheathe_icon = "stecher"
+	sheathe_icon = "aplongsword"
 	desc = "A sword possessed of a quite long and tapered blade that is intended to be thrust between the \
 	gaps in an opponent's armor. These are often produced without a cutting edge, especially in munitions grade \
 	examples as weary armorers try and prevent their levies from dulling swords on chopping firewood."
