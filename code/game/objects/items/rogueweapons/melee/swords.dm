@@ -194,7 +194,7 @@
 /obj/item/rogueweapon/sword/long/ap/getonmobprop(tag)
 	. = ..()
 	if(tag)
-@@ -385,31 +384,31 @@
+		switch(tag)
 			if("wielded")
 				return list("shrink" = 0.6, "sx" = 3, "sy" = 5, "nx" = -3, "ny" = 5, "sx" = 8, "sy" = -2, "nx" = -6, "ny" = -1, "wx" = -9, "wy" = 4, "ex" = 9, "ey" = 1, "wy" = -2,	"ex" = 8, "ey" = -1, "northabove" = 0, "southabove" = 1, "eastabove" = 1, "westabove" = 0, "nturn" = 0, "sturn" = 0, "wturn" = 0, "eturn" = 15, "nflip" = 8, "nturn" = 60, "sturn" = 30, "wturn" = -30, "eturn" = 22, "nflip" = 10, "sflip" = 0, "wflip" = 8, "eflip" = 0)
 			if("onback")
