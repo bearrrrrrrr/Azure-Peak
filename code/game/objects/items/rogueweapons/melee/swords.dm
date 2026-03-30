@@ -173,9 +173,8 @@
 
 /obj/item/rogueweapon/sword/long/ap
 	name = "stecher"
-	desc = "A unique longsword from the highest plateaus of the Azure Peak, sacrificing its cutting edge for a piercing tip that can easily \ 
-	penetrate maille. Tracing its roots to the late fourteenth century, this noble sidearm - borne from Grenzelhoftian imitations of the \
-	Otavan estoc - is proudly displayed on Azuria's official coat-of-arms."
+	desc = "A unique longsword from the highest plateaus of the Azure Peak, sacrificing its cutting edge for a piercing tip that can easily penetrate maille. Tracing its roots to the \
+	late fourteenth century, this noble sidearm - borne from Grenzelhoftian imitations of the Otavan estoc - is proudly displayed on Azuria's official coat-of-arms."
 	icon_state = "aplongsword"
 	sheathe_icon = "aplongsword"
 	force = 20
