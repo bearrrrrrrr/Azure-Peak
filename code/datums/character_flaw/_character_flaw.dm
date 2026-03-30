@@ -53,6 +53,7 @@ GLOBAL_LIST_INIT(averse_factions, list(
 	var/name
 	var/desc
 	var/ephemeral = FALSE // This flaw is currently disabled and will not process
+	var/needs_extra_vice = FALSE
 	/// For voyeur vice examines only. Format is "[name] is " + this + "...", leave blank to use the flaw's name.
 	/// Intended for addiction types only.
 	var/voyeur_descriptor	
@@ -418,6 +419,7 @@ GLOBAL_LIST_INIT(averse_factions, list(
 	desc = "Something in my past has made me a target. I'm always looking over my shoulder.	\
 	\nTHIS IS A DIFFICULT FLAW, YOU WILL BE HUNTED BY ASSASSINS AND HAVE ASSASINATION ATTEMPTS MADE AGAINST YOU WITHOUT ANY ESCALATION. \
 	EXPECT A MORE DIFFICULT EXPERIENCE. PLAY AT YOUR OWN RISK."
+	needs_extra_vice = TRUE
 	var/logged = FALSE
 
 /datum/charflaw/hunted/flaw_on_life(mob/user)
