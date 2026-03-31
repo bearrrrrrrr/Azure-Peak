@@ -198,7 +198,7 @@
 	resistance_flags = FIRE_PROOF
 	icon_state = "easttats"
 	armor = ARMOR_PLATE
-	body_parts_covered = COVERAGE_FULL
+	body_parts_covered = FULL_BODY
 	body_parts_inherent = FULL_BODY
 	icon = 'icons/roguetown/clothing/shirts.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
