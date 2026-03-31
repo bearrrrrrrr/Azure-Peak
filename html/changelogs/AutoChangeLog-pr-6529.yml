@@ -1,4 +1,0 @@
-author: "bearrrrrrrr"
-delete-after: True
-changes:
-  - bugfix: "afterimage no longer stops movement"
