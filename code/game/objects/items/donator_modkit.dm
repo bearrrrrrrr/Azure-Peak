@@ -319,6 +319,14 @@
 	)
 	result_item = /obj/item/rogueweapon/sword/long/drd
 
+//DRD21 - Shield
+/obj/item/enchantingkit/weapon/drd_shield
+	name = "'House Woerden shield' morphing elixir"
+	target_items = list(
+		/obj/item/rogueweapon/shield/tower/metal
+	)
+	result_item = /obj/item/rogueweapon/drd/shield
+
 //Lmwevil - Beak Mask
 /obj/item/enchantingkit/lmwevil_brassbeak
 	name = "brass beak mask morphing elixir"
