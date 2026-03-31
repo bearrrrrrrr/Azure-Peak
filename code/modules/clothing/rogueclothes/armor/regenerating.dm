@@ -199,12 +199,12 @@
 	icon_state = "easttats"
 	armor = ARMOR_PLATE
 	body_parts_covered = COVERAGE_FULL
-	body_parts_inherent = COVERAGE_FULL
+	body_parts_inherent = FULL_BODY
 	icon = 'icons/roguetown/clothing/shirts.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_shirts.dmi'
 	allowed_race = NON_DWARVEN_RACE_TYPES
-	max_integrity = 250
+	max_integrity = 300
 
 	repairmsg_begin = "The tattoos begin to slowly mend their abuse..."
 	repairmsg_continue = "The tattoos mend some of their abuse..."
@@ -212,7 +212,7 @@
 	repairmsg_end = "The tattoos flow more calmly, as they finish resting and regain their strength."
 
 	interrupt_damount = 20
-	repair_time = 35 SECONDS
+	repair_time = 30 SECONDS
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/gladiator
 	name = "gladiator's skin"
