@@ -523,7 +523,7 @@
 
 /datum/crafting_recipe/roguetown/sewing/abyssortemplar
 	name = "tabard, abyssorite templar"
-	result = list(/obj/item/clothing/cloak/templar/abyssorite)
+	result = list(/obj/item/clothing/cloak/tabard/abyssorite)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3

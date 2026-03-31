@@ -156,7 +156,7 @@
 			helmets += list("Old Astratan Helm" = /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm)
 		if(/datum/patron/divine/abyssor)
 			H.equip_to_slot_or_del(new /obj/item/clothing/neck/roguetown/psicross/abyssor, SLOT_RING, TRUE)
-			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/templar/abyssorite, SLOT_CLOAK, TRUE)
+			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/tabard/abyssorite, SLOT_CLOAK, TRUE)
 			H.adjust_skillrank(/datum/skill/labor/fishing, 2, TRUE)
 			H.grant_language(/datum/language/abyssal)
 			ADD_TRAIT(H, TRAIT_WATERBREATHING, TRAIT_GENERIC)

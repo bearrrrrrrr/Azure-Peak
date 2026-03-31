@@ -228,7 +228,7 @@
 	icon_state = "astratatabard"
 	resistance_flags = FIRE_PROOF
 
-/obj/item/clothing/cloak/templar/abyssorite
+/obj/item/clothing/cloak/tabard/abyssorite
 	name = "abyssorite tabard"
 	desc = "A tabard worn by Abyssorite devouts. It reeks of brine."
 	color = null
