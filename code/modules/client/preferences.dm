@@ -1781,16 +1781,18 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						to_chat(user, "<font color='red'><b>Your classes have been reset.</b></font>")
 
 				if ("titles")
-					var/titles_input = tgui_input_list(user, "Choose your character's titles", "TITLES", GLOB.titles_list)
-					if(titles_input)
-						titles_pref = titles_input
-						to_chat(user, "<font color='red'>Your character's titles are now [titles_pref].</font>")
+					if(titles_pref == TITLES_M)
+						titles_pref = TITLES_F
+					else
+						titles_pref = TITLES_M
+					to_chat(user, "<font color='red'>Your character's titles are now [titles_pref].</font>")
 
 				if ("clothespref")
-					var/clothespref_input = tgui_input_list(user, "Choose your character's clothing preference", "CLOTHING", GLOB.clothespref_list)
-					if(clothespref_input)
-						clothes_pref = clothespref_input
-						to_chat(user, "<font color='red'>Your character's titles are now [clothespref_input].</font>")
+					if(clothes_pref == CLOTHES_M)
+						clothes_pref = CLOTHES_F
+					else
+						clothes_pref = CLOTHES_M
+					to_chat(user, "<font color='red'>Your character's titles are now [clothes_pref].</font>")
 				// LETHALSTONE EDIT: add voice type selection
 				if ("voicetype")
 					var voicetype_input = tgui_input_list(user, "Choose your character's voice type", "VOICE TYPE", GLOB.voice_types_list)
