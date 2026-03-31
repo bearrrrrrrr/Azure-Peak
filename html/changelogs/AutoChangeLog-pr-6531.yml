@@ -1,0 +1,4 @@
+author: "WeNeedMorePhoron"
+delete-after: True
+changes:
+  - bugfix: "Kazengunese and Lingyuese (Ranesheni + Celestial) are mutually intelligible again (after being broken for 1 month)"
