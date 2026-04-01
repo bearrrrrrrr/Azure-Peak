@@ -202,12 +202,12 @@
 	name = "power strike"
 	desc = "Heft your nine-pound iron swords backwards and slam it down into your opponent for a devastating blow... As long as you land it. Keeping the attack ready costs stamina."
 	attack_verb = list("power-strikes")
-	chargetime = 5
-	swingdelay = 14
+	chargetime = 7
+	swingdelay = 9
 	min_intent_damage = 30
 	max_intent_damage = 32
 	penfactor = PEN_MEDIUM
-	chargedrain = 1
+	chargedrain = 1.2
 
 /datum/intent/sword/cut/long
 	clickcd = CLICK_CD_QUICK // Longsword 2H cut — faster than default, no extra damage
