@@ -1,7 +1,7 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/april_smg
 	name = "AK47"
 	desc = "Ancient Kazegun (weapon), Yil Fourty-Seven. Blessed by Astrata. Inverted solar flare deleting my ops."
-	icon = 'icons/aprilfools/fallout13.dmi'
+	icon = 'icons/aprilfools/wawa.dmi'
 	icon_state = "ak47"
 	item_state = "ak47"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/april_smg
