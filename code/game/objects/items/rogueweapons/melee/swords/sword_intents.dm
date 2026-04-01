@@ -27,6 +27,13 @@
 	clickcd = 9
 	damfactor = 1
 
+/datum/intent/sword/cut/short/banded
+	name = "flurry"
+	desc = "Swing your sword wildly without much purpose to deal a static amount of damage."
+	clickcd = 6		//Faster than a sabre
+	damfactor = 2.17	//Base damage of 15
+	max_intent_damage = 16 //Never better than ANY real sword
+
 /datum/intent/sword/cut/broadsword
 	name = "cut with half-sworded technique"
 	damfactor = 0.8 //Allows for utility-based carving with the broadswords. Technically combat viable, though you should probably take a Longsword if you're strictly using a Broadsword for cuts.
@@ -189,6 +196,17 @@
 
 /datum/intent/sword/chop/long
 	reach = 2
+
+/datum/intent/sword/chop/powerstrike
+	name = "power strike"
+	desc = "Heft your nine-pound iron swords backwards and slam it down into your opponent for a devastating blow... As long as you land it. Keeping the attack ready costs stamina."
+	attack_verb = list("power-strikes")
+	chargetime = 5
+	swingdelay = 14
+	min_intent_damage = 30
+	max_intent_damage = 32
+	penfactor = PEN_MEDIUM
+	chargedrain = 1
 
 /datum/intent/sword/cut/long
 	clickcd = CLICK_CD_QUICK // Longsword 2H cut — faster than default, no extra damage
