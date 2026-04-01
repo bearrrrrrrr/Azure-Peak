@@ -33,6 +33,7 @@
 	clickcd = 6		//Faster than a sabre
 	damfactor = 2.17	//Base damage of 15
 	max_intent_damage = 16 //Never better than ANY real sword
+	min_intent_damage = 7.5	//I've decided after testing that even with the big sharpness buff you'll still get cucked out of your damage pretty fast. This is a stopgap that leaves you at ~50% minimum damage.
 
 /datum/intent/sword/cut/broadsword
 	name = "cut with half-sworded technique"
