@@ -6,7 +6,7 @@
 	item_state = "ak47"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/april_smg
 	w_class = WEIGHT_CLASS_NORMAL
-	force = 8
+	force = 50
 	randomspread = 10
 	spread = 5
 	fire_sound = 'sound/aprilfoolsgun.ogg'
