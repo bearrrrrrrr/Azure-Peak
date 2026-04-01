@@ -1262,6 +1262,7 @@
 #include "code\game\objects\items\rogueweapons\ranged\bows.dm"
 #include "code\game\objects\items\rogueweapons\ranged\runicflask.dm"
 #include "code\game\objects\items\rogueweapons\ranged\crossbows.dm"
+#include "code\game\objects\items\rogueweapons\ranged\fallout13.dm"
 #include "code\game\objects\items\rogueweapons\ranged\slings.dm"
 #include "code\game\objects\items\spell_implements\implement_recipes.dm"
 #include "code\game\objects\items\spell_implements\wand.dm"
