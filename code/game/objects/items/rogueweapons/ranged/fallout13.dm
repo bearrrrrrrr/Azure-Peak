@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/april_smg
 	name = "AK47"
-	desc = "Ancient Kazegun (weapon), Yil Fourty-Seven. Blessed by Astrata. Inverted solar flare deleting my ops."
+	desc = "Ancient Kazengun (weapon), Yil Fourty-Seven. Blessed by Astrata. Inverted solar flare deleting my opps."
 	icon = 'icons/aprilfools/wawa.dmi'
 	icon_state = "ak47"
 	item_state = "ak47"
