@@ -190,7 +190,7 @@
 
 /obj/item/rogueweapon/eirenxiv/eirensword
 	name = "stygian longsword"
-	desc = "A finely crafted steel longsword, its design perfectly combining elegance and practicality. Quenched in white oil, refined by the dwarves of Hammerhold, the blade holds a darker hue than normal."
+	desc = "A finely crafted steel longsword, its design perfectly combining elegance and practicality. Quenched in white oil, refined by the dwarves of Hammerhold, the blade holds a darker hue than usual."
 	icon_state = "eirensword"
 	icon = 'icons/obj/items/donor_weapons_64.dmi'
 	sheathe_icon = "eirensword"
