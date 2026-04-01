@@ -200,7 +200,7 @@
 
 /datum/intent/sword/chop/powerstrike
 	name = "power strike"
-	desc = "Heft your nine-pound iron swords backwards and slam it down into your opponent for a devastating blow... As long as you land it. Keeping the attack ready costs stamina."
+	desc = "Heft your nine-pound iron sword backwards and slam it down into your opponent for a devastating blow... As long as you land it. Keeping the attack ready costs stamina."
 	attack_verb = list("power-strikes")
 	chargetime = 7
 	swingdelay = 9
