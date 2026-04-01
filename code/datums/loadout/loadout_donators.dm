@@ -160,7 +160,7 @@
 	path = /obj/item/enchantingkit/ryan_psyhelm
 
 /datum/loadout_item/donator/koruu
-	name = "Donator Kit - Well-Worn Bamboo Hat"
+	name = "Donator Item - Well-Worn Bamboo Hat"
 	path = /obj/item/clothing/head/roguetown/mentorhat/koruu
 	ckeywhitelist = list("koruu", "painfeeler", "poots13", "vakiova", "maesune")
 
@@ -237,4 +237,9 @@
 	name = "Donator Kit - Blacksteel Longsword"
 	path = /obj/item/enchantingkit/weapon/noire_flsword
 	ckeywhitelist = list("nerocavalier")
+
+/datum/loadout_item/donator/walkthewaste
+	name = "Donator Item - Worn Bamboo Hat"
+	path = /obj/item/clothing/head/roguetown/mentorhat/walkthewaste
+	ckeywhitelist = list("walkthewaste")
 

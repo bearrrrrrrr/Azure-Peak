@@ -470,3 +470,7 @@
 	icon_state = "flsword"
 	icon = 'icons/obj/items/donor_weapons_64.dmi'
 	bigboy = TRUE
+
+//WALKTHEWASTE
+/obj/item/clothing/head/roguetown/mentorhat/walkthewaste
+	armor = ARMOR_CLOTHING
