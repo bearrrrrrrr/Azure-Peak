@@ -546,6 +546,7 @@
 /datum/anvil_recipe/armor/iron/todd
 	name = "Banded Helmet, Iron (+1 Metal Scrap Kit, +2 Bones)"
 	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/repair_kit/metal/bad, /obj/item/natural/bone, /obj/item/natural/bone)
 	created_item = /obj/item/clothing/head/roguetown/helmet/sallet/iron/banded
 
 /datum/anvil_recipe/armor/iron/sallet/visor
