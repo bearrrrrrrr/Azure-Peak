@@ -105,7 +105,7 @@
 /datum/loadout_item/donator/eiren6
 	name = "Donator Kit - Stygian Longsword"
 	path = /obj/item/enchantingkit/weapon/eirensword
-	ckeywhitelist = list("eirenxiv")
+	ckeywhitelist = list("eirenxiv", "muhsollini")
 
 /datum/loadout_item/donator/waff
 	name = "Donator Kit - Weeper's Lathe"
