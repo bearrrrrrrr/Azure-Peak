@@ -8,6 +8,7 @@
 	category_tags = list(CTAG_WRETCH)
 	traits_applied = list(TRAIT_CICERONE, TRAIT_NOSTINK, TRAIT_MEDICINE_EXPERT, TRAIT_ALCHEMY_EXPERT)
 	maximum_possible_slots = 1 //They spawn with killer's ice lol I'm limiting this shit 
+	extra_context = "This subclass has a choice of starting with a poisonable dagger and a bow and poison arrows, or a rapier and the ability to dodge well."
 	subclass_stats = list(
 		STATKEY_INT = 4,
 		STATKEY_PER = 3,
@@ -47,7 +48,7 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/heavy
 	backpack_contents = list(
 		/obj/item/storage/belt/rogue/pouch/coins/poor = 1,
-		/obj/item/reagent_containers/glass/bottle/rogue/poison = 1, 
+		/obj/item/reagent_containers/glass/bottle/rogue/poison = 1,
 		/obj/item/reagent_containers/glass/bottle/rogue/stampoison = 1,
 		/obj/item/recipe_book/alchemy = 1,
 		/obj/item/flashlight/flare/torch/lantern/prelit = 1,
