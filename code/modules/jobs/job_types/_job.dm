@@ -716,7 +716,7 @@
 							advdat += "[cf.name]<br>"
 							found_issue = TRUE
 			if(found_issue)
-				dat += "<b>[subclass::name]</b><br>"
+				dat += "<font color = '#e4e1e1'><b>[subclass::name]</b></font><br>"
 				dat += advdat
 		var/datum/browser/popup = new(usr, "subclassslots", "<div style='text-align: center'>Subclass Incompatibilities</div>", nwidth = 200, nheight = 300)
 		popup.set_content(dat.Join())
