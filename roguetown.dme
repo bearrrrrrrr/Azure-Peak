@@ -2732,6 +2732,7 @@
 #include "code\modules\spells\components\conjured_item.dm"
 #include "code\modules\spells\components\fit_clothing.dm"
 #include "code\modules\spells\pantheon\divine\necra.dm"
+#include "code\modules\spells\pantheon\divine\undivided.dm"
 #include "code\modules\spells\pantheon\inhumen\baotha.dm"
 #include "code\modules\spells\pantheon\inhumen\graggar.dm"
 #include "code\modules\spells\pantheon\inhumen\matthios.dm"
