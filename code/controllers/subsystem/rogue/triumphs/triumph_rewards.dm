@@ -8,7 +8,8 @@
 
 /obj/item/reagent_containers/glass/bottle/alchemical/tripot
 	name = "vial of distilled triumphance"
-	desc = "The fruits of your labor, distilled into a sparkling pittance that shimmers with Azurian light. Sipping this tincture will lightly amplify all of your characteristics for a week's tyme."
+	desc = "The fruits of your labor, distilled into a sparkling pittance that shimmers with Azurian light. Sipping this \
+	tincture will lightly amplify all of your characteristics for a week's tyme, as long as you down it all in one gulp."
 	list_reagents = list(/datum/reagent/buff/tri = 10)
 
 /datum/reagent/buff/tri //Keep this restricted to the TRI-locked alchemic reward.
