@@ -120,6 +120,12 @@
 		if(/datum/patron/divine/malum)
 			neck = /obj/item/clothing/neck/roguetown/psicross/malum
 			cloak = /obj/item/clothing/cloak/templar/malumite
+	// Patron dagger + sheath in satchel
+	var/patron_dagger = get_templar_patron_dagger(H)
+	if(patron_dagger)
+		backpack_contents += patron_dagger
+		backpack_contents += /obj/item/rogueweapon/scabbard/sheath
+
 	head = /obj/item/clothing/head/roguetown/headband/monk
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/cloth/monk
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/black
@@ -325,6 +331,11 @@
 		if(/datum/patron/old_god)
 			wrists = /obj/item/clothing/neck/roguetown/psicross
 			cloak = /obj/item/clothing/cloak/tabard/crusader/psydon
+	// Patron dagger in satchel
+	var/patron_dagger = get_templar_patron_dagger(H)
+	if(patron_dagger)
+		backpack_contents += patron_dagger
+
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	pants = /obj/item/clothing/under/roguetown/chainlegs
@@ -344,16 +355,13 @@
 	switch(H.patron?.type)
 		if(/datum/patron/divine/astrata) //Unique patron weapons, more can be added here if wanted.
 			weapons += "Solar Judgement"
-			weapons += "Dawnbringers"
 		if(/datum/patron/divine/undivided)
 			weapons += "Decablade"
-			weapons += "Dawn & Dusk"
 		if(/datum/patron/divine/noc)
 			weapons += "Moonlight Khopesh"
 			weapons += "Moonlight Kriegmesser"
 		if(/datum/patron/divine/necra)
 			weapons += "Swift End"
-			weapons += "Osteotomes"
 		if(/datum/patron/divine/pestra)
 			weapons += "Plaguebringer Sickles"
 			weapons += "Lance of Boils"
@@ -361,22 +369,17 @@
 		if(/datum/patron/divine/malum)
 			weapons += "Forgefiend"
 			weapons += "Kargrund Maul"
-			weapons += "Embertongues"
 		if(/datum/patron/divine/dendor)
 			weapons += "Summer Scythe"
-			weapons += "Briarfangs"
 		if(/datum/patron/divine/xylix)
 			weapons += "Cackle Lash"
-			weapons += "Devilsknives"
 		if(/datum/patron/divine/ravox)
 			weapons += "Duel Settler"
 			weapons += "Censure"
-			weapons += "Echoes of Triumph"
 		if(/datum/patron/divine/eora)
-			weapons += "Heartstring & Misericorde"
+			weapons += "The Heartstring"
 		if(/datum/patron/divine/abyssor)
 			weapons += "Tidecleaver"
-			weapons += "Riptide Fangs"
 	var/weapon_choice = input(H,"Choose your WEAPON.", "TAKE UP YOUR GOD'S ARMS") as anything in weapons
 	switch(weapon_choice)
 		if("Longsword")
@@ -470,67 +473,13 @@
 			H.put_in_hands(new /obj/item/rogueweapon/scabbard/gwstrap(H), FALSE)
 			H.adjust_skillrank(/datum/skill/combat/swords, SKILL_LEVEL_NOVICE, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate/silver, SLOT_ARMOR, TRUE)
-		if("Heartstring & Misericorde")
+		if("The Heartstring")
 			H.put_in_hands(new /obj/item/rogueweapon/sword/rapier/eora(H))
 			H.adjust_skillrank(/datum/skill/combat/swords, SKILL_LEVEL_NOVICE, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate/silver, SLOT_ARMOR, TRUE)
 		if("Tidecleaver")
 			H.put_in_hands(new /obj/item/rogueweapon/stoneaxe/battle/abyssoraxe(H))
 			H.adjust_skillrank(/datum/skill/combat/axes, SKILL_LEVEL_NOVICE, TRUE)
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate/silver, SLOT_ARMOR, TRUE)
-		if("Dawnbringers")
-			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/astrata(H))
-			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/astrata(H))
-			ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
-			H.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate/silver, SLOT_ARMOR, TRUE)
-		if("Twilight Fangs")
-			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/throwingknife/steel/noc(H))
-			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/throwingknife/steel/noc(H))
-			ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
-			H.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate/silver, SLOT_ARMOR, TRUE)
-		if("Osteotomes")
-			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/necra_osteotome(H))
-			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/necra_osteotome(H))
-			ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
-			H.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate/silver, SLOT_ARMOR, TRUE)
-		if("Embertongues")
-			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/malum(H))
-			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/malum(H))
-			ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
-			H.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate/silver, SLOT_ARMOR, TRUE)
-		if("Briarfangs")
-			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/dendor(H))
-			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/dendor(H))
-			ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
-			H.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate/silver, SLOT_ARMOR, TRUE)
-		if("Devilsknives")
-			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/devilsknife(H))
-			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/devilsknife(H))
-			ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
-			H.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate/silver, SLOT_ARMOR, TRUE)
-		if("Echoes of Triumph")
-			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/ravox(H))
-			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/ravox(H))
-			ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
-			H.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate/silver, SLOT_ARMOR, TRUE)
-		if("Riptide Fangs")
-			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/abyssor(H))
-			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/abyssor(H))
-			ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
-			H.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate/silver, SLOT_ARMOR, TRUE)
-		if("Dawn & Dusk")
-			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/astrata(H))
-			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/throwingknife/steel/noc(H))
-			ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
-			H.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/plate/silver, SLOT_ARMOR, TRUE)
 
 	// -- Start of section for god specific bonuses --

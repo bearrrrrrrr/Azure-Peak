@@ -1,11 +1,35 @@
+/proc/get_templar_patron_dagger(mob/living/carbon/human/H)
+	switch(H.patron?.type)
+		if(/datum/patron/divine/astrata)
+			return /obj/item/rogueweapon/huntingknife/idagger/steel/astrata
+		if(/datum/patron/divine/noc)
+			return /obj/item/rogueweapon/huntingknife/idagger/steel/noc_twilight
+		if(/datum/patron/divine/necra)
+			return /obj/item/rogueweapon/huntingknife/idagger/steel/necra_osteotome
+		if(/datum/patron/divine/ravox)
+			return /obj/item/rogueweapon/huntingknife/idagger/steel/ravox
+		if(/datum/patron/divine/malum)
+			return /obj/item/rogueweapon/huntingknife/idagger/steel/malum
+		if(/datum/patron/divine/dendor)
+			return /obj/item/rogueweapon/huntingknife/idagger/steel/dendor
+		if(/datum/patron/divine/abyssor)
+			return /obj/item/rogueweapon/huntingknife/idagger/steel/abyssor
+		if(/datum/patron/divine/eora)
+			return /obj/item/rogueweapon/huntingknife/idagger/steel/eora_misericorde
+		if(/datum/patron/divine/pestra)
+			return /obj/item/rogueweapon/huntingknife/idagger/steel/pestrasickle
+		if(/datum/patron/divine/xylix)
+			return /obj/item/rogueweapon/huntingknife/idagger/steel/devilsknife
+		if(/datum/patron/divine/undivided)
+			return /obj/item/rogueweapon/huntingknife/idagger/steel
+	return null
+
 /obj/item/rogueweapon/huntingknife/idagger/steel/astrata
 	name = "dawnbringer"
 	desc = "A blade forged in the name of the Sun Tyrant. Radiant, sharp, and imbued with a glimmering sheen.\
 	For when Her order demands it."
 	icon = 'icons/roguetown/weapons/templar_daggers32.dmi'
 	icon_state = "astrata_dagger"
-	force = 22
-	max_integrity = 200
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/ravox
 	name = "echo of triumph"
@@ -15,8 +39,6 @@
 	Broken, Reforged, Tempered."
 	icon = 'icons/roguetown/weapons/templar_daggers32.dmi'
 	icon_state = "ravox_dagger"
-	force = 22
-	max_integrity = 200
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/malum
 	name = "embertongue"
@@ -24,8 +46,6 @@
 	a true sign of the mastery of the smith. Surely, Malum looks favorably upon such a blade."
 	icon = 'icons/roguetown/weapons/templar_daggers32.dmi'
 	icon_state = "malum_dagger"
-	force = 22
-	max_integrity = 200
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/dendor
 	name = "briarfang"
@@ -34,8 +54,6 @@
 	and its blade sturdy as steel. There might be a method to madness, after all."
 	icon = 'icons/roguetown/weapons/templar_daggers32.dmi'
 	icon_state = "dendor_dagger"
-	force = 22
-	max_integrity = 200
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/abyssor
 	name = "riptide fang"
@@ -43,8 +61,6 @@
 	around its bone. Sharp, and curved, able to butcher and flense with ease. A practical tool, and deadly weapon at once."
 	icon = 'icons/roguetown/weapons/templar_daggers32.dmi'
 	icon_state = "abyssor_dagger"
-	force = 22
-	max_integrity = 200
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/necra_osteotome
 	name = "osteotome"
@@ -52,48 +68,20 @@
 	A reminder of mortality."
 	icon = 'icons/roguetown/weapons/templar_daggers32.dmi'
 	icon_state = "necra_dagger"
-	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/necra)
-	force = 17
-	max_integrity = 200
-	smeltresult = /obj/item/ingot/silver
-	is_silver = TRUE
 
-/obj/item/rogueweapon/huntingknife/idagger/steel/necra_osteotome/ComponentInitialize()
-	AddComponent(\
-		/datum/component/silverbless,\
-		pre_blessed = BLESSING_NONE,\
-		silver_type = SILVER_TENNITE,\
-		added_force = 0,\
-		added_blade_int = 50,\
-		added_int = 50,\
-		added_def = 2,\
-	)
-
-/obj/item/rogueweapon/huntingknife/throwingknife/steel/noc
+/obj/item/rogueweapon/huntingknife/idagger/steel/noc_twilight
 	name = "twilight fang"
-	desc = "A large tossblade with the profile of a rondel dagger. A rondel is not oft thrown, but this blade is unnaturally light when hurled, yet heavy and stiff when wielded.\
-	Noc's faithful find it suits them well"
+	desc = "A large blade with the profile of a rondel dagger. A rondel is not oft thrown, but this blade is unnaturally light when hurled, yet heavy and stiff when wielded.\
+	Noc's faithful find it suits them well."
 	icon = 'icons/roguetown/weapons/templar_daggers32.dmi'
 	icon_state = "noc_dagger"
-	item_state = "bone_dagger"
-	force = 22
-	throwforce = 28
-	throw_speed = 4
-	max_integrity = 200
-	armor_penetration = PEN_MEDIUM
-	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 30, "embedded_fall_chance" = 5)
 
-/obj/item/rogueweapon/huntingknife/idagger/steel/parrying/eora
+/obj/item/rogueweapon/huntingknife/idagger/steel/eora_misericorde
 	name = "misericorde"
 	desc = "A parrying dagger created to be used in the free hand and deliver mercy to the foes you've bested.\
 	Eora's love protects; her grace absolves."
 	icon = 'icons/roguetown/weapons/templar_daggers32.dmi'
 	icon_state = "eora_dagger"
-	sheathe_icon = "spdagger"
-	force = 10
-	throwforce = 10
-	wdefense = 9
-	max_integrity = 200
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/devilsknife
 	name = "devilsknife"
@@ -101,5 +89,3 @@
 	These are simple reproductions, with jingling bells attached to the blades."
 	icon = 'icons/roguetown/weapons/templar_daggers32.dmi'
 	icon_state = "devilsknife"
-	force = 22
-	max_integrity = 200
