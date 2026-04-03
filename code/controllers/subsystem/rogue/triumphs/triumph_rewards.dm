@@ -18,14 +18,15 @@
 	scent_description = "memories of a former triumph"
 
 /datum/reagent/buff/tri/on_mob_life(mob/living/carbon/M)
-	M.apply_status_effect(/datum/status_effect/buff/alch/tripot)
+	if(volume > 10)  //Ensures that, no matter what, you can only buff one person from one vial. 
+		M.apply_status_effect(/datum/status_effect/buff/alch/tripot)
 	return ..()
 
 /datum/status_effect/buff/alch/tripot
 	id = "tripot" //Triumph-exclusive. Shouldn't be craftable or obtainable under any other circumstance.
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/tripot
 	effectedstats = list(STATKEY_STR = 1, STATKEY_PER = 1, STATKEY_INT = 1, STATKEY_CON = 1, STATKEY_WIL = 1, STATKEY_SPD = 1, STATKEY_LCK = 1)
-	duration = 777 MINUTES
+	duration = INFINITE
 
 /atom/movable/screen/alert/status_effect/buff/alch/tripot
 	name = "Triumphance"
