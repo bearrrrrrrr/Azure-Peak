@@ -152,10 +152,14 @@
 	armor = owner.getarmor(zone_precise, acheck_dflag)
 	if((owner.mind || HAS_TRAIT(owner, TRAIT_CRIT_THRESHOLD)) && (get_damage() <= (max_damage * CRIT_DISMEMBER_DAMAGE_THRESHOLD))) //No crits unless the limb is at 75%+ damage.
 		do_crit = FALSE
-	if(do_crit && ishuman(owner)) // Armor with integrity prevents crits
+	if(do_crit && ishuman(owner)) // Armor with integrity above 25% prevents crits
 		var/mob/living/carbon/human/H = owner
-		if(H.get_best_worn_armor(zone_precise, acheck_dflag))
+		var/obj/item/clothing/worn_armor = H.get_best_worn_armor(zone_precise, acheck_dflag)
+		if(worn_armor && worn_armor.obj_integrity > (worn_armor.max_integrity * 0.25))
 			do_crit = FALSE
+			if(crit_message)
+				owner.balloon_alert_to_viewers("<font color = '#bb2b2b'>crit stopped!</font>")
+				owner.visible_message(span_combatprimary("[worn_armor] absorbs what could have been a critical hit!"))
 	if(user)
 		if(user.goodluck(2))
 			dam += 10
