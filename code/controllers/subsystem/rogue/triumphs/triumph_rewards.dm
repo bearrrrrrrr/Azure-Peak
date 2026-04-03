@@ -26,7 +26,7 @@
 	id = "tripot" //Triumph-exclusive. Shouldn't be craftable or obtainable under any other circumstance.
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/tripot
 	effectedstats = list(STATKEY_STR = 1, STATKEY_PER = 1, STATKEY_INT = 1, STATKEY_CON = 1, STATKEY_WIL = 1, STATKEY_SPD = 1, STATKEY_LCK = 1)
-	duration = INFINITE
+	duration = 777 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/alch/tripot
 	name = "Triumphance"
