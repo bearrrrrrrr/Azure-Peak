@@ -378,7 +378,6 @@
 
 /obj/item/rogueweapon/sword/long/triumph
 	name = "valorian longsword"
-	alt_grips = null
 	desc = "A lethal and perfectly balanced weapon, the longsword is the protagonist of endless tales and myths \
 	all across Psydonia. This particular variant has a stouter crossguard and wider blade; a prevaling design \
 	from the preceding century, oft-mantled in the homes of now-retired adventurers."
