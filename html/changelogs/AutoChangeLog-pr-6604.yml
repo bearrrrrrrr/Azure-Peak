@@ -1,0 +1,4 @@
+author: "Ollanius"
+delete-after: True
+changes:
+  - bugfix: "Crackerdough should now produce a unique smell when baked, instead of printing 'smell'."
