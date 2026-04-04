@@ -24,14 +24,14 @@
 	charge_drain = 0
 	charge_slowdown = CHARGING_SLOWDOWN_NONE
 	charge_sound = 'sound/magic/charging.ogg'
-	cooldown_time = 16 SECONDS
+	cooldown_time = 12 SECONDS
 
 	associated_skill = /datum/skill/magic/arcane
 	spell_tier = 2
 	spell_impact_intensity = SPELL_IMPACT_LOW
 	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
 
-	var/max_range = 5
+	var/max_range = 4
 	var/strike_damage = 40
 	var/empower_cost = 3
 
