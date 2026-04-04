@@ -1107,7 +1107,7 @@
 							span_userdanger("My body is too burnt to go on!"))
 					balloon_alert_to_viewers("<font color='#bb2b2b'>burnt down!</font>")
 					playsound(src, 'sound/health/burning.ogg', 60, TRUE)
-				else
+				else if(health <= HEALTH_THRESHOLD_FULLCRIT)
 					visible_message(span_danger("<b>[src] collapses, broken and bloodied!</b>"), \
 						span_userdanger("My bones are shattered... I cannot go on."))
 					balloon_alert_to_viewers("<font color='#bb2b2b'>beaten down!</font>")
