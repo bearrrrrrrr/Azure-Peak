@@ -264,7 +264,7 @@
 
 /obj/item/clothing/shoes/roguetown/grenzelhoft/freifechter
 	name = "fencing boots"
-	desc = "A pair of snugly fitted boots, favored by duelists for their balance of agility and control. Reinforced along the toes and ankles, they offer a measure of protection against missteps and glancing blows during close exchanges."
+	desc = "A pair of lightweight snugly fitting boots. They're reinforced along the toes and ankles and offer a measure of protection against missteps and glancing blows during close exchanges, often favoured by duelists and other itinerant swordsmen."
 	icon_state = "freiboots"
 	item_state = "freiboots"
 	max_integrity = ARMOR_INT_SIDE_HARDLEATHER + 50
