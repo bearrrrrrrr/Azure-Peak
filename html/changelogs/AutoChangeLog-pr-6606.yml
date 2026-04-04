@@ -1,4 +1,0 @@
-author: "WeNeedMorePhoron"
-delete-after: True
-changes:
-  - balance: "Casting any of the new spells break invisibility as per behaviors before"

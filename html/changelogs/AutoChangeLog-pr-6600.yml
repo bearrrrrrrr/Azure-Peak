@@ -1,4 +1,0 @@
-author: "WeNeedMorePhoron"
-delete-after: True
-changes:
-  - rscadd: "Cryomancy spells now extinguishes fire on structure / object and Fulgurmancy spells now set structure / objects on fire"
