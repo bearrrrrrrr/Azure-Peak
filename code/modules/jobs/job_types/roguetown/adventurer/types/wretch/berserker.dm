@@ -92,8 +92,25 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/falx
+		
+		
+		var/techniques = list("Dropkick - Pushback + Extra Damage", "Chokeslam - Stamina Damage", "Stunner - Dazed Debuff", "Headbutt - Vulnerable Debuff") // cool wrestling moves
+		var/technique_choice = input(H,"Choose your TECHNIQUE.", "TOSS THEM.") as anything in techniques
+		switch(technique_choice)
+			if("Dropkick - Pushback + Extra Damage")
+				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/dropkick)
+			if("Chokeslam - Stamina Damage")
+				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/chokeslam)
+			if("Stunner - Dazed Debuff")
+				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/stunner)
+			if("Headbutt - Vulnerable Debuff")
+				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/headbutt)
+		
 		var/helmets = list("Berserker's Volfskulle Bascinet","Steel Kettle + Wildguard")
 		var/helmet_choice = input(H, "Choose your HELMET.", "STEEL YOURSELF.") as anything in helmets
+
+
+		
 		switch(helmet_choice)
 			if("Berserker's Volfskulle Bascinet")
 				head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/berserker //Pseudoantagonistic-exclusive. Light AC with an on-wear trait for HELMBITING.
