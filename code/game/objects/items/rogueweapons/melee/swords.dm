@@ -173,6 +173,7 @@
 
 /obj/item/rogueweapon/sword/long/ap
 	name = "stecher"
+	alt_grips = null
 	desc = "A unique longsword from the highest plateaus of the Azure Peak, sacrificing its cutting edge for a piercing tip that can easily penetrate maille. Tracing its roots to the \
 	late fourteenth century, this noble sidearm - borne from Grenzelhoftian imitations of the Otavan estoc - is proudly displayed on Azuria's official coat-of-arms."
 	icon_state = "aplongsword"
@@ -208,6 +209,7 @@
 
 /obj/item/rogueweapon/sword/long/broadsword/bronze
 	name = "spatha"
+	alt_grips = null
 	desc = "A hero needn't speak - for when they are gone, the world will speak for them."
 	icon_state = "spatha"
 	sheathe_icon = "gladius"
@@ -219,6 +221,7 @@
 
 /obj/item/rogueweapon/sword/long/broadsword/steel
 	name = "steel broadsword"
+	alt_grips = null
 	desc = "A lethal and well-balanced weapon. The broadsword - better known as a 'hand-and-a-halfer' - has dutifully served the \
 	swordsmen of Psydonia in their clashes against man-and-monster alike since time immemmorial. Valoria's watchmen are renowned for \
 	their use of these steel-bladed iterations: an expensive necessity, in order to lay their undying besiegers to rest for good."
@@ -249,6 +252,7 @@
 
 /obj/item/rogueweapon/sword/long/training
 	name = "training sword"
+	alt_grips = null
 	desc = "Swords like these, with blunted tips and dull edges, are often used for practice without much risk of injury."
 	force = 7
 	force_wielded = 15
@@ -261,6 +265,7 @@
 
 /obj/item/rogueweapon/sword/long/church
 	name = "see longsword"
+	alt_grips = null
 	desc = "A blessed longsword, wielded by the Holy See's templars in their stalwart defense against evil. Originating in the wake of the Celestial Empire's collapse, legends say that it is the grandfather to longswords all across Psydonia: the triumph of an ancient Malumite priest, stricken with divine inspiration in humenity's darkest hour. Centuries later, it still remains the ideal choice for skewering infidels and monsters alike. </br>'I am the holder of light, in the dark abyss..' </br>'..I am the holder of order and ward against vileness..' </br>'..let the Gods guide my hand, and let the Inhumen cower before me.'"
 	icon_state = "churchsword"
 	max_blade_int = 250
@@ -268,6 +273,7 @@
 
 /obj/item/rogueweapon/sword/long/undivided
 	name = "decablade"
+	alt_grips = null
 	desc = "A blessed longsword, held by the Holy See's templars in their stalwart defense against evil. The golden crossguard bares the winged motif of an angel, and psalms from the Pantheon's holy tome have been meticulously carved along the blade's edge. </br>'With a drop of holy Eclipsum, doth the blade rise..' </br>'..gilded, gleaming, radiant heat, warm my soul, immolate my enemies..' </br>'..and let me vanquish all those who would dare to Divide us, once more.'"
 	icon_state = "seeblade"
 	sheathe_icon = "eclipsum"
@@ -278,6 +284,7 @@
 
 /obj/item/rogueweapon/sword/long/crusader
 	name = "\"Adjudicator\""
+	alt_grips = null
 	desc = "A blessed longsword of Ravox, held by the devout crusaders in service to the Divine Ten against the encroaching darkness. The crossguard bears motif of the Justicar, and psalms from the Pantheon's holy tome have been meticulously carved along the blade's edge. </br>'...And upon the Lands came the DIVINE. In PSYDON's absence, so came the TRUE GODS from their rest. So were THEIR gifts spread across the breadth of the world.' </br>'...It was the Justicar's hand that stayed the blade, for He objected to the execution, and demanded that Justice overcome where Vengeance reigned.'</br>Many tales surround this mythical blade - the demise of the Dark Star and the Mad Duke are often cited as to have been result of such - with little evidence to support these claims."
 	icon_state = "seemasterblade"
 	sheathe_icon = "eclipsum"
@@ -293,6 +300,7 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_UNDIVIDED, "SWORD")
 
 /obj/item/rogueweapon/sword/long/death
+	alt_grips = null
 	color = CLOTHING_BLACK
 
 /obj/item/rogueweapon/sword/long/getonmobprop(tag)
@@ -320,12 +328,14 @@
 
 /obj/item/rogueweapon/sword/long/etruscan/freifechter
 	name = "psydonic reformist longsword"
+	alt_grips = null
 	desc = "A newly-smithed longsword with a reverse hilt in the shape of a reformist psydonian cross. It has the same kind of hand protection of an Etruscan longsword. The cross is upright when the weapon is sheathed, bronze pommel reflecting sunlight directly - and it becomes inverted when drawn, a symbol of distress. Ad pacem servandam."
 	sheathe_icon = "reform"
 	icon_state = "reformistsword"
 
 /obj/item/rogueweapon/sword/long/fencerguy
 	name = "grenzelhoftian longsword"
+	alt_grips = null
 	desc = "A masterfully smithed, perfectly-balanced longsword that makes it easy for even a beginner to perform basic fencing maneuvers."
 	icon_state = "germanlong"
 	max_blade_int = 275
@@ -335,6 +345,7 @@
 
 /obj/item/rogueweapon/sword/long/zizo
 	name = "avantyne longsword"
+	alt_grips = null
 	desc = "A wicked, unconventional, and otherwordly blade that was created by no swordsmith - a manifestation of hate for the state of this world that follows no design principles but spite and anger."
 	icon_state = "zizosword"
 	sheathe_icon = "zizosword"
@@ -351,6 +362,7 @@
 
 /obj/item/rogueweapon/sword/long/heirloom
 	name = "old longsword"
+	alt_grips = null
 	desc = "A very old steel longsword that has since become a showpiece. Perhaps a family relic, or the weapon of a dead knight."
 	force = 20
 	force_wielded = 32
@@ -370,6 +382,7 @@
 
 /obj/item/rogueweapon/sword/long/judgement
 	name = "\"Judgement\""
+	alt_grips = null
 	desc = "A noble longsword, and the cherished heirloom of Azuria's royal bloodline. Its blade is made from Aavnr's finest Vyšvou steel - held from an ornate carved ivory grip from the region's \"Mamük\" megafauna, and decorated with heraldric engravings of silver. ‎</br>‎‎ </br>'When you stand before thine lord, you cannot say, '..but I was told by others to do thus..', or that, '..virtue was not convenient at the time.' This will not suffice. Remember that.'"
 	icon_state = "judgement"
 	item_state = "judgement"
@@ -438,6 +451,7 @@
 
 /obj/item/rogueweapon/sword/long/marlin
 	name = "shalal saber"
+	alt_grips = null
 	desc = "A large yet surprisingly agile curved blade meant to be wielded in two hands. It has a similar composition to northwestern Psydonian longswords, but it's notably lighter."
 	force = 26
 	force_wielded = 31
@@ -602,6 +616,7 @@
 
 /obj/item/rogueweapon/sword/long/oldpsysword
 	name = "enduring longsword"
+	alt_grips = null
 	desc = "A steel longsword with an angled crossguard. The lesser clerics of the Psydonic Orders oft-carry these blades, and - though it may not carry the bite of silver - it still humbles men and monsters alike with a well-poised strike."
 	icon_state = "opsysword"
 	sheathe_icon = "opsysword"
@@ -609,6 +624,7 @@
 
 /obj/item/rogueweapon/sword/long/psysword
 	name = "psydonic longsword"
+	alt_grips = null
 	desc = "A finely made longsword, plated in a ceremonial veneer of ornate silver - made for felling men and monsters alike. </br>'Psydon will deliver those who were mindful of Him to their place of ultimate triumph. No evil will touch them, nor will they grieve.'"
 	icon_state = "psysword"
 	sheathe_icon = "psysword"
@@ -644,6 +660,7 @@
 
 /obj/item/rogueweapon/sword/long/silver
 	name = "silver longsword"
+	alt_grips = null
 	desc = "A longsword with a blade of pure silver. The weight doesn't just burden your hand, but your very soul as well; an unspoken oath, to stand against the horrors that lurk within the nite. </br>'Swing with precision and purpose, levyman o' the Gods. The nite is long and many-an-evil cur would engineer civilization's destruction, while Astrata's gaze leers elsewhere. So long as you wield this sword, you have a duty that beckons.'"
 	icon_state = "silverlongsword"
 	sheathe_icon = "psysword"
@@ -720,6 +737,7 @@
 
 /obj/item/rogueweapon/sword/long/greatkhopesh
 	name = "apophis" //Kriegmesser analogue.
+	alt_grips = null
 	desc = "The Khopesh's older brother. One would be mistaken for thinking it was designed to be wielded in both hands; for the strength of these \
 	ancient legionnaires, prodigious as it were, allowed them to effortlessly wield it alongside their towering greatshields."
 	wdefense = 3
@@ -1530,6 +1548,7 @@
 
 /obj/item/rogueweapon/sword/long/rhomphaia
 	name = "rhomphaia"
+	alt_grips = null
 	desc = "An ancient two-handed sword similar to the falx, with a less pronounced curve. Once known for cutting through helmet - metallurgy has improved since then, but it can chop through light armor with ease."
 	force = 25
 	force_wielded = 30
@@ -1564,6 +1583,7 @@
 
 /obj/item/rogueweapon/sword/long/oathkeeper
 	name = "Oathkeeper"
+	alt_grips = null
 	desc = "An ornate golden longsword with a ruby embedded in the hilt, given to the Knight Commander for their valiant service to the crown."
 	sellprice = 140
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/strike)
@@ -1591,6 +1611,7 @@
 
 /obj/item/rogueweapon/sword/long/hand
 	name = "Azurefyre"
+	alt_grips = null
 	desc = "The Blade fit for the Hand, wielded in service to the crown and never mistaken for another."
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	icon = 'icons/roguetown/weapons/special/hand64.dmi'
@@ -1600,6 +1621,7 @@
 
 /obj/item/rogueweapon/sword/long/holysee
 	name = "eclipsum sword"
+	alt_grips = null
 	desc = "A masterworked longsword, forged from the same divine alloy that decorates the Bishop's hip. As your fingers curl around the shaft, a blessed sensation rolls through your very soul: the resolve to stand against evil, and the determination to see it vanquished from this world. </br>'..blessed to hold strength and bring hope, whether it be during the dae or the nite..'"
 	icon_state = "eclipsum"
 	force = 35
@@ -1755,6 +1777,7 @@
 
 /obj/item/rogueweapon/sword/long/dec
 	name = "decorated longsword"
+	alt_grips = null
 	desc = "A valuable ornate longsword made for the purpose of ceremonial fashion, with a fine leather grip and a carefully engraved golden crossguard. \
 	Its blade bears twin inscriptions on either side. One reads, \"THY KINGDOM COME\" while the obverse reads, \"THY WILL BE DONE\"."
 	icon_state = "declongsword"
@@ -1945,6 +1968,7 @@
 
 /obj/item/rogueweapon/sword/long/shotel
 	name = "steel shotel"
+	alt_grips = null
 	icon_state = "shotel_steel"
 	desc = "A long curved blade of Ranesheni Design."
 	possible_item_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop/long) //Shotels get 2 tile reach.
@@ -2093,6 +2117,7 @@
 
 /obj/item/rogueweapon/sword/long/elvish
 	name = "elvish longsword"
+	alt_grips = null
 	desc = "A mighty Elvish longsword, well-balanced and efficient, favored for both offense and defense."
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "elflongsword"
