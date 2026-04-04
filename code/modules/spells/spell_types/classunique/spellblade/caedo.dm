@@ -20,7 +20,7 @@
 
 	charge_required = TRUE
 	weapon_cast_penalized = FALSE
-	charge_time = 1
+	charge_time = CHARGETIME_POKE
 	charge_drain = 0
 	charge_slowdown = CHARGING_SLOWDOWN_NONE
 	charge_sound = 'sound/magic/charging.ogg'
@@ -31,7 +31,7 @@
 	spell_impact_intensity = SPELL_IMPACT_LOW
 	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
 
-	var/max_range = 4
+	var/max_range = 5
 	var/strike_damage = 40
 	var/empower_cost = 3
 
