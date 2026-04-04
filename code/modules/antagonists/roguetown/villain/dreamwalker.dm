@@ -558,6 +558,7 @@
 
 /obj/item/rogueweapon/greatsword/bsword/dreamscape/active
 	name = "otherworldly sword"
+	alt_grips = null
 	desc = "A strange sword made out of a strange reflective metal. It oozes sickening sludge."
 	icon_state = "dreamswordactive"
 	max_integrity = 500
