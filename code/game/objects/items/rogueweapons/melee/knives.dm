@@ -403,7 +403,7 @@
 
 /obj/item/rogueweapon/huntingknife/combat/fencerguy
 	name = "grenzelhoftian seax"
-	desc = "A finely crafted seax, reworked in the Grenzelhoftian tradition to favor precision over brute force. Though modest in reach, it excels in the hands of a disciplined duelist."
+	desc = "A fine traditional Grenzelhoftian seax built to favor precision over brute force. Though modest in reach, it excels in the hands of a disciplined duelist."
 	possible_item_intents = list(/datum/intent/dagger/cut/heavy, /datum/intent/dagger/chop/cleaver, /datum/intent/dagger/sucker_punch, /datum/intent/dagger/thrust/weak)
 	icon_state = "germancombat"
 	icon = 'icons/roguetown/weapons/daggers32.dmi'
