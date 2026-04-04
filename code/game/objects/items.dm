@@ -147,7 +147,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/wielded = FALSE
 	var/altgripped = FALSE
 	/// Ordered alternate grip states cycled by right-click while the item is held.
-	var/list/alt_grips = null
+	var/list/alt_grips
 	/// Currently applied alternate grip state datum.
 	var/datum/alt_grip/current_alt_grip
 	/// 1-based index into alt_grips for the currently applied state.

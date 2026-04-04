@@ -185,7 +185,6 @@
 
 /obj/item/rogueweapon/sword/long/hag
 	max_blade_int = 220
-	alt_grips = null
 	name = "gnarled longsword"
 	desc = "A large sword made out of gnarled, twisted wood. It's like it was grown that way, and you can swear you see the branches moving."
 	icon_state = "hagsword"

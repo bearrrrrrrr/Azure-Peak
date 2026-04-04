@@ -450,7 +450,6 @@
 
 /obj/item/rogueweapon/sword/long/dakken_longsword
 	name = "avantyne threaded longsword"
-	alt_grips = null
 	desc = "'Threads of dark metal wind through what was formerly a simple steel blade. Cracks and chips are filled in as the weapon of war is reshaped into a symbol of faith.'"
 	icon = 'icons/obj/items/donor_weapons_64.dmi'
 	icon_state = "alloyblongsword"
@@ -465,7 +464,6 @@
 //DRD21
 /obj/item/rogueweapon/sword/long/drd
 	name = "ornate basket-hilted longsword"
-	alt_grips = null
 	desc = "A longsword, fitten with a basket-hilt. The grip is made out of a fine green-stained leather, with a piece of spiral-cared walnut connecting it to a lion-shaped pommel. A purple glowing rune sits atop the blade."
 	icon_state = "drd_lsword"
 	icon = 'icons/obj/items/donor_weapons_64.dmi'

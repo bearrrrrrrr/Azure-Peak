@@ -51,7 +51,6 @@
 
 /obj/item/rogueweapon/greatsword/elfgsword
 	name = "elven kriegsmesser"
-	alt_grips = null
 	desc = "An elegant greatsword, crested with a glistening blade that - in spite of its intimidating length - is mysteriously light. Unlike most elven masterworks, the grip is dressed in rosaleather; a foreboding symbol, christening it as a weapon of war against those who'd threaten elvekind."
 	icon_state = "elfkriegmesser"
 	item_state = "elfkriegmesser"
@@ -76,7 +75,6 @@
 
 /obj/item/rogueweapon/greatsword/iron
 	name = "iron greatsword"
-	alt_grips = null
 	desc = "A massive sword of iron, requiring both hands to properly wield. Heftier and less sturdier than its steel equivalent - but it still does the job."
 	icon_state = "igsw"
 	max_blade_int = 200
@@ -87,7 +85,6 @@
 
 /obj/item/rogueweapon/greatsword/aalloy
 	name = "decrepit greatsword"
-	alt_grips = null
 	desc = "A massive blade, wrought in frayed bronze. It is too big to be called a sword; massive, thick, heavy, and far too rough. Indeed, this blade was more like a heap of raw metal."
 	force = 10
 	force_wielded = 25
@@ -102,14 +99,12 @@
 
 /obj/item/rogueweapon/greatsword/paalloy
 	name = "ancient greatsword"
-	alt_grips = null
 	desc = "A massive blade, forged from polished gilbronze. Your kind will discover your true nature, in wrath and ruin. You will take to the stars and burn them out, one by one. Only when the last star turns to dust, will you finally realize that She was trying to save you from Man's greatest foe; oblivion."
 	icon_state = "ancient_gsw"
 	smeltresult = /obj/item/ingot/aaslag
 
 /obj/item/rogueweapon/greatsword/zwei
 	name = "claymore"
-	alt_grips = null
 	desc = "This is much longer than a common greatsword, and well balanced too!"
 	icon_state = "claymore"
 	smeltresult = /obj/item/ingot/iron
@@ -121,7 +116,6 @@
 
 /obj/item/rogueweapon/greatsword/grenz
 	name = "steel zweihander"
-	alt_grips = null
 	icon_state = "steelzwei"
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 3
@@ -132,7 +126,6 @@
 
 /obj/item/rogueweapon/greatsword/grenz/flamberge
 	name = "steel flamberge"
-	alt_grips = null
 	desc = "A close relative of the Grenzelhoftian \"zweihander\", favored by Otavan nobility. The name comes from its unique, flame-shaped blade; a labor only surmountable by Psydonia's finest weaponsmiths."
 	icon_state = "steelflamberge"
 	max_blade_int = 180
@@ -181,7 +174,6 @@
 
 /obj/item/rogueweapon/greatsword/silver
 	name = "silver greatsword"
-	alt_grips = null
 	desc = "A greatsword with a massive blade of pure silver. Such is favored amongst the Order of Syonica's paladins: a faith-militance that seeks to safeguard those who've taken pilgrimage towards Azuria. </br>'There is no fate, but what we make for ourselves. It is not the will of gods that will determine Psydonia's fate.. but instead, the hope of its children.'"
 	icon_state = "silverexealt"
 	force = 8
@@ -204,7 +196,6 @@
 
 /obj/item/rogueweapon/greatsword/psygsword
 	name = "psydonic greatsword"
-	alt_grips = null
 	desc = "It is said that a Psydonian smith was guided by Saint Malum himself to forge such a formidable blade, and given the task to slay a daemon preying on the Otavan farmlands. The design was retrieved, studied, and only a few replicas made - for they believe it dulls its edge."
 	icon_state = "silverexealt"
 	force = 8
@@ -289,7 +280,6 @@
 
 /obj/item/rogueweapon/greatsword/bsword/psy/relic
 	name = "Creed"
-	alt_grips = null
 	desc = "Psydonian prayers and Tennite smiths, working as one to craft a weapon to slay the Four. A heavy and large blade, favored by Saint Ravox, to lay waste to those who threaten His flock. The crossguard's psycross reflects even the faintest of Noc's light. You're the light - show them the way."
 	icon_state = "psybroadsword"
 	is_silver = TRUE
@@ -317,7 +307,6 @@
 
 /obj/item/rogueweapon/greatsword/bsword/psy/unforgotten
 	name = "unforgotten blade"
-	alt_grips = null
 	desc = "High Inquisitor Archibald once recorded an expedition of seven brave Adjudicators into Gronnian snow-felled wastes to root out evil. Its leader, Holy Ordinator Guillemin, was said to have held on for seven daes and seven nights against darksteel-clad heretics before Psydon acknowledged his endurance. Nothing but his blade remained - his psycross wrapped around its hilt in rememberance."
 	icon_state = "forgottenblade"
 	is_silver = TRUE

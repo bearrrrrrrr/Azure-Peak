@@ -596,7 +596,6 @@
 
 /obj/item/rogueweapon/sword/long/martyr
 	force = 30
-	alt_grips = null
 	force_wielded = 36
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/chop)
