@@ -262,6 +262,13 @@
 	salvage_result = /obj/item/natural/hide/cured
 	sewrepair = TRUE
 
+/obj/item/clothing/shoes/roguetown/grenzelhoft/freifechter
+	name = "fencing boots"
+	desc = "Boots of Grenzelhoft design, with a short cut and a snug fit. They look like they were made for dueling."
+	icon_state = "freiboots"
+	item_state = "freiboots"
+	max_integrity = ARMOR_INT_SIDE_HARDLEATHER + 50
+
 /obj/item/clothing/shoes/roguetown/boots/elven_boots
 	name = "woad elven boots"
 	desc = "The living trunks still blossom in the spring. They let water through, but it is never cold."
