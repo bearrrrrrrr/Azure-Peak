@@ -165,7 +165,7 @@
 /datum/status_effect/buff/recuperation/other
 	duration = 10 SECONDS
 
-/datum/status_effect/buff/recuperation/eoram
+/datum/status_effect/buff/recuperation/eoran
 	duration = 1 MINUTES
 	healing_on_tick = 2
 	outline_colour = "#EEBBBB"
