@@ -123,15 +123,12 @@
 	name = "Aquatic Compulsion"
 	desc = "Compel a fish to leap out from targeted water tile and towards you."
 	overlay_state = "aqua"
-	releasedrain = 15
+	releasedrain = 20
 	chargedrain = 0
-	chargetime = 0.5 SECONDS
-	range = 3
+	range = 5
 	movement_interrupt = FALSE
 	chargedloop = null
 	sound = 'sound/foley/bubb (5).ogg'
-	invocations = list("Splash forth.")
-	invocation_type = "shout"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
 	recharge_time = 10 SECONDS
@@ -146,7 +143,7 @@
 		"dangerFishingMod" = 0.1,
 		"ceruleanFishingMod" = 0 // 1 on cerulean aril, 0 on everything else
 	)
-	
+/*
 /obj/effect/proc_holder/spell/invoked/aquatic_compulsion/cast(list/targets, mob/user = usr)
 	. = ..()
 	if(isturf(targets[1]))
@@ -154,24 +151,12 @@
 		var/A = getfishingloot(user, fishingMods, T, 0.5)
 		if(A)
 			var/atom/movable/AF = new A(T)
-
-			var/turf/target_turf = get_step(get_turf(user), turn(get_dir(T, get_turf(user)), 180)) || get_turf(user)
-
 			if(istype(AF, /obj/item/reagent_containers/food/snacks/fish))
 				var/obj/item/reagent_containers/food/snacks/fish/F = AF
 				F.sinkable = FALSE
-				animate(F, pixel_x = (target_turf.x - T.x) * 32, pixel_y = (target_turf.y - T.y) * 32, time = 5)
-				spawn(5)
-					F.forceMove(target_turf)
-					F.pixel_x = 0
-					F.pixel_y = 0
+				F.throw_at(get_turf(user), 5, 1, null)
 			else
-				animate(AF, pixel_x = (target_turf.x - T.x) * 32, pixel_y = (target_turf.y - T.y) * 32, time = 5)
-				spawn(5)
-					AF.forceMove(target_turf)
-					AF.pixel_x = 0
-					AF.pixel_y = 0
-
+				AF.throw_at(get_turf(user), 5, 1, null)
 			record_featured_stat(FEATURED_STATS_FISHERS, user)
 			record_round_statistic(STATS_FISH_CAUGHT)
 			playsound(T, 'sound/foley/footsteps/FTWAT_1.ogg', 100)
@@ -181,6 +166,95 @@
 		else
 			revert_cast()
 			return FALSE
+	revert_cast()
+	return FALSE
+*/
+
+/proc/abyssor_fish_arc(atom/movable/AF, turf/T, mob/user)
+	var/turf/user_turf = get_turf(user)
+	var/dir_to_water = get_dir(user_turf, T)
+	var/turf/target_turf = get_step(user_turf, dir_to_water) || user_turf
+
+	var/dist = max(1, get_dist(T, target_turf))
+
+	if(dist <= 1)
+		AF.forceMove(target_turf)
+		AF.pixel_x = 0
+		AF.pixel_y = 0
+		AF.pixel_z = 0
+		return
+
+	var/dx = (target_turf.x - T.x) * 32
+	var/dy = (target_turf.y - T.y) * 32
+
+	var/time_total = max(3, dist * 2)
+
+	var/arc_height = clamp(dist * 10 + rand(-4, 8), 12, 48)
+
+	// boost arc for east/west travel so it’s visible
+	if(abs(dx) > abs(dy))
+		arc_height *= 1.3
+
+	// slight sideways wobble for natural motion
+	var/wobble_x = rand(-4, 4)
+	var/wobble_y = rand(-4, 4)
+
+	animate(AF,
+		pixel_x = dx + wobble_x,
+		pixel_y = dy + wobble_y,
+		pixel_z = arc_height,
+		time = time_total,
+		easing = SINE_EASING)
+
+	animate(AF,
+		pixel_z = 0,
+		time = time_total,
+		easing = SINE_EASING)
+
+	spawn(time_total)
+		if(!AF)
+			return
+		AF.forceMove(target_turf)
+		AF.pixel_x = 0
+		AF.pixel_y = 0
+		AF.pixel_z = 0
+		
+/obj/effect/proc_holder/spell/invoked/aquatic_compulsion/cast(list/targets, mob/user = usr)
+	. = ..()
+
+	if(isturf(targets[1]))
+		var/turf/T = targets[1]
+
+		var/A = getfishingloot(user, fishingMods, T, 0.5)
+		if(A)
+			var/atom/movable/AF = new A(T)
+			if(!AF)
+				return FALSE
+
+			AF.pixel_x = 0
+			AF.pixel_y = 0
+			AF.pixel_z = 0
+
+			if(istype(AF, /obj/item/reagent_containers/food/snacks/fish))
+				var/obj/item/reagent_containers/food/snacks/fish/F = AF
+				F.sinkable = FALSE
+				spawn(1)
+					abyssor_fish_arc(F, T, user)
+			else
+				spawn(1)
+					abyssor_fish_arc(AF, T, user)
+
+			record_featured_stat(FEATURED_STATS_FISHERS, user)
+			record_round_statistic(STATS_FISH_CAUGHT)
+			playsound(T, 'sound/foley/footsteps/FTWAT_1.ogg', 100)
+			teleport_to_dream(user, 10000, 1)
+			user.visible_message("<font color='yellow'>[user] makes a beckoning gesture at [T]!</font>")
+			return TRUE
+
+		else
+			revert_cast()
+			return FALSE
+
 	revert_cast()
 	return FALSE
 
