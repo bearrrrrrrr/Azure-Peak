@@ -172,13 +172,22 @@
 
 /proc/abyssor_fish_arc(atom/movable/AF, turf/T, mob/user)
 	var/turf/user_turf = get_turf(user)
-	var/dir_to_water = get_dir(user_turf, T)
+
+	var/dx_dir = T.x - user_turf.x
+	var/dy_dir = T.y - user_turf.y
+
+	var/dir_to_water
+	if(abs(dx_dir) > abs(dy_dir))
+		dir_to_water = (dx_dir > 0) ? EAST : WEST
+	else
+		dir_to_water = (dy_dir > 0) ? NORTH : SOUTH
+
 	var/turf/target_turf = get_step(user_turf, dir_to_water) || user_turf
 
 	var/dist = max(1, get_dist(T, target_turf))
 
 	if(dist <= 1)
-		AF.forceMove(target_turf)
+		AF.forceMove(user_turf)
 		AF.pixel_x = 0
 		AF.pixel_y = 0
 		AF.pixel_z = 0
@@ -187,29 +196,35 @@
 	var/dx = (target_turf.x - T.x) * 32
 	var/dy = (target_turf.y - T.y) * 32
 
-	var/time_total = max(3, dist * 2)
+	var/time_total = max(4, dist * 2)
+	var/time_up = round(time_total * 0.35)
+	var/time_down = time_total - time_up
 
 	var/arc_height = clamp(dist * 10 + rand(-4, 8), 12, 48)
 
-	// boost arc for east/west travel so it’s visible
 	if(abs(dx) > abs(dy))
 		arc_height *= 1.3
 
-	// slight sideways wobble for natural motion
 	var/wobble_x = rand(-4, 4)
 	var/wobble_y = rand(-4, 4)
 
-	animate(AF,
-		pixel_x = dx + wobble_x,
-		pixel_y = dy + wobble_y,
-		pixel_z = arc_height,
-		time = time_total,
-		easing = SINE_EASING)
+	AF.pixel_x = 0
+	AF.pixel_y = 0
+	AF.pixel_z = 0
 
 	animate(AF,
+		pixel_x = (dx * 0.5) + wobble_x,
+		pixel_y = (dy * 0.5) + wobble_y,
+		pixel_z = arc_height,
+		time = time_up,
+		easing = QUAD_EASING|EASE_OUT)
+
+	animate(
+		pixel_x = dx,
+		pixel_y = dy,
 		pixel_z = 0,
-		time = time_total,
-		easing = SINE_EASING)
+		time = time_down,
+		easing = QUAD_EASING|EASE_IN)
 
 	spawn(time_total)
 		if(!AF)
@@ -218,7 +233,7 @@
 		AF.pixel_x = 0
 		AF.pixel_y = 0
 		AF.pixel_z = 0
-		
+
 /obj/effect/proc_holder/spell/invoked/aquatic_compulsion/cast(list/targets, mob/user = usr)
 	. = ..()
 
