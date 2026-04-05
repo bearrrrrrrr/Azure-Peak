@@ -223,7 +223,7 @@
 	var/mob/living/carbon/human/H = user
 	var/turf/T = targets[1]
 
-	to_chat(user, "CAST START")
+//	to_chat(user, "CAST START")
 
 	if(channeling)
 //		to_chat(user, "FAIL: already channeling")
