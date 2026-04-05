@@ -146,7 +146,7 @@
 		"dangerFishingMod" = 0.1,
 		"ceruleanFishingMod" = 0 // 1 on cerulean aril, 0 on everything else
 	)
-
+	
 /obj/effect/proc_holder/spell/invoked/aquatic_compulsion/cast(list/targets, mob/user = usr)
 	. = ..()
 	if(isturf(targets[1]))
@@ -154,12 +154,24 @@
 		var/A = getfishingloot(user, fishingMods, T, 0.5)
 		if(A)
 			var/atom/movable/AF = new A(T)
+
+			var/turf/target_turf = get_step(get_turf(user), turn(get_dir(T, get_turf(user)), 180)) || get_turf(user)
+
 			if(istype(AF, /obj/item/reagent_containers/food/snacks/fish))
 				var/obj/item/reagent_containers/food/snacks/fish/F = AF
 				F.sinkable = FALSE
-				F.throw_at(get_turf(user), 5, 1, null)
+				animate(F, pixel_x = (target_turf.x - T.x) * 32, pixel_y = (target_turf.y - T.y) * 32, time = 5)
+				spawn(5)
+					F.forceMove(target_turf)
+					F.pixel_x = 0
+					F.pixel_y = 0
 			else
-				AF.throw_at(get_turf(user), 5, 1, null)
+				animate(AF, pixel_x = (target_turf.x - T.x) * 32, pixel_y = (target_turf.y - T.y) * 32, time = 5)
+				spawn(5)
+					AF.forceMove(target_turf)
+					AF.pixel_x = 0
+					AF.pixel_y = 0
+
 			record_featured_stat(FEATURED_STATS_FISHERS, user)
 			record_round_statistic(STATS_FISH_CAUGHT)
 			playsound(T, 'sound/foley/footsteps/FTWAT_1.ogg', 100)
