@@ -47,6 +47,15 @@
 
 	if(!(user.mobility_flags & MOBILITY_STAND) && (zone in list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_PRECISE_L_FOOT)))
 		chance2hit += 5
+	if(HAS_TRAIT(user, TRAIT_GUIDANCE))
+		chance2hit += FULL_GUIDANCE_ACCURACY
+	else if(HAS_TRAIT(user, TRAIT_LESSER_GUIDANCE))
+		chance2hit += LESSER_GUIDANCE_ACCURACY
+
+	if(HAS_TRAIT(user, TRAIT_REVERSE_GUIDANCE))
+		chance2hit -= FULL_GUIDANCE_ACCURACY
+	else if(HAS_TRAIT(user, TRAIT_LESSER_REVERSE_GUIDANCE))
+		chance2hit -= LESSER_GUIDANCE_ACCURACY
 
 	chance2hit += accuracy_bonus
 
@@ -80,8 +89,8 @@
 	if(used_intent)
 		if(used_intent.blade_class == BCLASS_STAB)
 			bonus += 10
-		if(used_intent.blade_class == BCLASS_HALFSWORD)
-			bonus += 20	//Double that of stab
+		if(used_intent.blade_class == BCLASS_PICK)
+			bonus += 15
 		if(used_intent.blade_class == BCLASS_CUT)
 			bonus += 6
 		if((used_intent.blade_class == BCLASS_BLUNT || used_intent.blade_class == BCLASS_SMASH) && check_zone(zone) != zone)	//A mace can't hit the eyes very well
