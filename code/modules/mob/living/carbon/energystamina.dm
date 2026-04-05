@@ -24,7 +24,7 @@
 	update_health_hud()
 
 /mob/living/proc/calculate_stamina()
-	max_stamina = WILLPOWER_STARTING_STAMINA + (STAWIL - 10) * WILLPOWER_MODIFIER
+	max_stamina = WILLPOWER_STARTING_STAMINA + ((STAWIL - 10) * WILLPOWER_MODIFIER)
 
 /mob/living/proc/update_energy()
 	calculate_energy()
