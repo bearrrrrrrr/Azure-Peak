@@ -305,7 +305,7 @@
 		revert_cast()
 		return FALSE
 
-	var/cost = devotion_cost + (streak * min(1, miracleskill/2))
+	var/cost = devotion_cost + (streak * (miracleskill/2))
 	H.devotion.devotion -= cost
 	to_chat(user, "Devotion spent: [cost], remaining: [H.devotion.devotion]")
 
@@ -358,7 +358,7 @@
 			to_chat(user, "BREAK: spawn failed")
 			break
 
-		var/cost2 = devotion_cost + (streak * min(1, miracleskill/2))
+		var/cost2 = devotion_cost + (streak * (miracleskill/2))
 		H.devotion.devotion -= cost2
 		to_chat(user, "Devotion spent: [cost2], remaining: [H.devotion.devotion]")
 
