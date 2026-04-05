@@ -1070,12 +1070,12 @@
 
 /datum/intent/sword/cut/sabre/master
 	name = "pokrajać"
-	desc = "Perform a masterful wide-arc cut that's strong enough to penetrate heavy armour."
+	desc = "Perform a masterful wide-arc cut that's strong enough to penetrate gambesons and light leathers."
 	attack_verb = list("masterfully cuts", "deftly slits", "quarts")
 	clickcd = 7
 	damfactor = 1.25
-	penfactor = PEN_HEAVY
-	max_intent_damage = 29.7
+	penfactor = PEN_MEDIUM
+	max_intent_damage = 25
 
 /datum/intent/effect/daze/freisabre
 	name = "uszkodzić"
@@ -1087,7 +1087,7 @@
 	damfactor = 1.25
 	clickcd = 12
 	recovery = 8
-	swingdelay = 3
+	swingdelay = 8
 	canparry = TRUE
 	candodge = FALSE
 
