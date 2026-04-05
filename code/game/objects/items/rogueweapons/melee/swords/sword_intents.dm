@@ -91,7 +91,7 @@
 /datum/intent/sword/strike
 	name = "pommel strike"
 	icon_state = "instrike"
-	attack_verb = list("bashes", "clubs")
+	attack_verb = list("strikes")
 	animname = "strike"
 	blade_class = BCLASS_BLUNT
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
@@ -101,6 +101,11 @@
 	damfactor = NONBLUNT_BLUNT_DAMFACTOR
 	item_d_type = "blunt"
 	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
+
+/datum/intent/sword/strike/bash
+	name = "pommel swing"
+	icon_state = "inbash"
+	attack_verb = list("bashes", "clubs")
 
 // Freifechter Longsword intents //
 /datum/intent/sword/cut/master
@@ -292,16 +297,6 @@
 /datum/intent/sword/chop/cleave/prewarning()
 	if(mastermob)
 		playsound(mastermob, pick('sound/combat/rend_start.ogg'), 100, FALSE)
-
-/datum/intent/sword/bash
-	name = "pommel bash"
-	blade_class = BCLASS_BLUNT
-	icon_state = "inbash"
-	attack_verb = list("bashes", "strikes")
-	penfactor = PEN_NONE
-	damfactor = NONBLUNT_BLUNT_DAMFACTOR
-	item_d_type = "blunt"
-	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
 
 // GREATSWORDS
 /datum/intent/sword/cut/zwei
