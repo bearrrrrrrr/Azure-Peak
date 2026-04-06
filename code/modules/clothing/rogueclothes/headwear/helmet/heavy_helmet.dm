@@ -1039,7 +1039,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/elven_helm
 	name = "woad elven helm"
-	desc = "A helm of thickly woven trunk, kept alive by ancient song and crowned with living leaves of endless verdure."
+	desc = "A helm of thickly woven trunk, kept alive by ancient song and shaped to guard both face and spirit. Living fibers tighten and shift with each movement, as if the forest itself resists every blow struck against it. It is not merely worn - it watches alongside its bearer."
 	allowed_race = list(/datum/species/elf/wood, /datum/species/human/halfelf, /datum/species/elf/dark)
 	body_parts_covered = FULL_HEAD|NECK
 	armor = ARMOR_BLACKOAK //Resistant to blunt & stab, but very weak to slash.
