@@ -486,7 +486,7 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/blackoak
 	name = "woad recurve bow"
 	desc = "A medium length composite bow of glued horn, wood, and sinew with fine shooting characteristics. Hewn from a living Black Oak branch, it carries the quiet strength of untouched groves; unyielding, unbroken, and fiercely guarded from the hands of Man."
-	icon_state = "recurve_blackoak"
+	icon_state = "blackoakrecurve_bow"
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/short
 	name = "short bow"
