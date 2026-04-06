@@ -96,6 +96,10 @@
 	if (stamina >= (max_stamina * 0.7)) // if you've spent 70% of your max fatigue, the base amount you lose is doubled
 		nutrition_amount *= 2
 
+	if (STASTR >= 11) // 5% increased nutrition loss for every STR above 11. the gainz don't come cheap
+		var/swole_malus = (10 - STASTR) * 0.05
+		nutrition_amount *= (1 + swole_malus)
+
 	if (nutrition >= NUTRITION_LEVEL_WELL_FED) // we've only just eaten recently so just flat out reduce the total loss by half
 		nutrition_amount *= 0.5
 
