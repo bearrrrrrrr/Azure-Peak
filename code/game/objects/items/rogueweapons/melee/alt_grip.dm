@@ -468,7 +468,6 @@
 /datum/alt_grip/mordhau/broadsword
 	grip_intents = list(
 		SWORD_BASH,
-		/datum/intent/sword/cut/broadsword,
 		/datum/intent/effect/daze
 	)
 	onmobprop_overrides = list(
