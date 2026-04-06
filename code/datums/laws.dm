@@ -69,12 +69,16 @@
 
 			GLOB.laws_of_the_land = clean_laws
 
+			var/mob/living/carbon/human/ruler = ui.user
+			var/ruler_title = ruler.get_role_title()
+			var/ruler_name = ruler.real_name
+
 			if(length(GLOB.laws_of_the_land))
 				var/list/law_lines = list()
 				for(var/i in 1 to length(GLOB.laws_of_the_land))
 					law_lines += "[i]. [GLOB.laws_of_the_land[i]]"
 				var/law_text = jointext(law_lines, "\n")
-				priority_announce("The laws of the land have changed.\n\n[law_text]", change_announcement_text, pick('sound/misc/new_law.ogg', 'sound/misc/new_law2.ogg'), "Captain")
+				priority_announce("[ruler_title] [ruler_name] has modified the laws of the land.\n\n[law_text]", change_announcement_text, pick('sound/misc/new_law.ogg', 'sound/misc/new_law2.ogg'), "Captain")
 			else
 				priority_announce("All laws of the land have been purged!", purge_announcement_text, 'sound/misc/lawspurged.ogg', "Captain")
 
