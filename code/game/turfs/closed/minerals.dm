@@ -208,12 +208,17 @@
 	if(prob(30))
 		new /obj/item/natural/stone(src)
 	if (mineralType && (mineralAmt > 0))
+		var/autodestroy = FALSE
+		var/held = user.get_active_held_item()
+		if(istype(held, /obj/item/rogueweapon/pick))
+			var/obj/item/rogueweapon/pick/P = held
+			autodestroy = P.auto_boulder
 		if(prob(33)) //chance to spawn ore directly
 			new mineralType(src)
 		if(rockType) //always spawn at least 1 rock
-			new rockType(src)
+			new rockType(src, autodestroy)
 			if(prob(23))
-				new rockType(src)
+				new rockType(src, autodestroy)
 		SSblackbox.record_feedback("tally", "ore_mined", mineralAmt, mineralType)
 	else if(user?.goodluck(2))
 		var/newthing = pickweight(list(/obj/item/natural/rock/salt = 2, /obj/item/natural/rock/iron = 1, /obj/item/natural/rock/coal = 2))
