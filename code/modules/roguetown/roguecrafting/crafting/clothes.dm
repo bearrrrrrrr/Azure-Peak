@@ -303,7 +303,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/survival/autumnwoadhelmet
-	name = "autumnwoad elven helmet, imbuement"
+	name = "autumnwoad elven helm, imbuement"
 	category = "Clothes"
 	result = /obj/item/clothing/head/roguetown/helmet/heavy/elven_helm/autumn
 	reqs = list(
