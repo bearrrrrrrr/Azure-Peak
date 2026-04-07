@@ -110,7 +110,7 @@
 	if(used_weapon)
 		if(used_weapon.associated_skill == /datum/skill/combat/unarmed)
 			allow_unarmed_fallback = TRUE
-	else if(!used_weapon)	//We have nothing.
+	else	//We have nothing.
 		allow_unarmed_fallback = TRUE
 
 	if(highest_defense > 0 && (!allow_unarmed_fallback || highest_defense >= unarmed_defense))
