@@ -396,7 +396,7 @@
 	)
 	result_item = /obj/item/rogueweapon/nerocavalier/flsword
 
-/datum/loadout_item/donator/aisuwand
-    name = "Donator Kit - Crystalline Wand"
-    path = /obj/item/enchantingkit/aisuwand
-    ckeywhitelist = list("aisu9")
+/obj/item/enchantingkit/aisuwand
+    name = "Crystalline Wand morphing elixir"
+    target_items = list(/obj/item/rogueweapon/wand)
+    result_item = /obj/item/rogueweapon/wand/aisu
