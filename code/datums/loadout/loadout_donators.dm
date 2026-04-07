@@ -272,3 +272,8 @@
 	name = "Donator Item - Sandlash"
 	path = /obj/item/enchantingkit/sci_sand
 	ckeywhitelist = list("scidragon")
+
+/obj/item/enchantingkit/aisuwand
+    name = "Crystalline Wand morphing elixir"
+    target_items = list(/obj/item/rogueweapon/wand)
+    result_item = /obj/item/rogueweapon/wand/aisu
