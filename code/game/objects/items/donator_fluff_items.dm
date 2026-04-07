@@ -546,3 +546,10 @@
 /obj/item/rogueweapon/sword/sabre/shamshir/dono_scidragon_sand/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/ignitable/fluff/sci_sand)
+
+/obj/item/rogueweapon/wand/aisu
+    base_implement_name = "crystalline wand"
+    name = "guiding wand"
+    desc = "A crystalline wand, born from a single tear and weeks of prayers and enchantments, Oh my guiding Moonlight!"
+    icon_state = "aisuwand"
+    icon = 'icons/obj/items/donor_weapons.dmi'
