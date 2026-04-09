@@ -278,3 +278,12 @@
     path = /obj/item/enchantingkit/aisuwand
     ckeywhitelist = list("aisu9")
 
+/datum/loadout_item/donator/regnum
+	name = "Donator Item - Regnum"
+	path = /obj/item/enchantingkit/weapon/regnum
+	ckeywhitelist = list("nauticall")
+
+/datum/loadout_item/donator/aeternum
+	name = "Donator Item - Aeternum"
+	path = /obj/item/enchantingkit/weapon/aeternum
+	ckeywhitelist = list("nauticall")
