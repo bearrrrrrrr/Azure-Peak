@@ -336,14 +336,6 @@
 	icon_state = "elven_barbute_winged"
 	item_state = "elven_barbute_winged"
 
-/obj/item/clothing/head/roguetown/helmet/elvenbarbute/blackoak
-	desc = "An elven barbute with a thin gold plating designed for Elven Woodland guardians."
-	color = COLOR_ASSEMBLY_GOLD
-
-/obj/item/clothing/head/roguetown/helmet/elvenbarbute/winged/blackoak
-	desc = "A winged version of the elven barbute with a thin gold plating designed for Elven Woodland guardians."
-	color = COLOR_ASSEMBLY_GOLD
-
 /obj/item/clothing/head/roguetown/helmet/bascinet
 	name = "bascinet"
 	desc = "A steel bascinet helmet, and the basis for many-a-visored greathelm. Though it lacks a visor, it still protects the head and ears."
