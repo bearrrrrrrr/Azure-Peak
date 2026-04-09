@@ -547,6 +547,22 @@
 	. = ..()
 	AddComponent(/datum/component/ignitable/fluff/sci_sand)
 
+/obj/item/rogueweapon/wand/aisu
+    base_implement_name = "crystalline wand"
+    name = "crystalline wand"
+    desc = "A crystalline wand, born from a single tear and weeks of prayers and enchantments, Oh my guiding Moonlight!"
+    icon_state = "aisuwand"
+    icon = 'icons/obj/items/donor_weapons.dmi'
+
+/obj/item/rogueweapon/wand/aisu/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.6,"sx" = -14,"sy" = -8,"nx" = 15,"ny" = -7,"wx" = -10,"wy" = -5,"ex" = 7,"ey" = -6,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -13,"sturn" = 110,"wturn" = -60,"eturn" = -30,"nflip" = 1,"sflip" = 1,"wflip" = 8,"eflip" = 1)
+			if("onbelt")
+				return list("shrink" = 0.5,"sx" = -4,"sy" = -6,"nx" = 5,"ny" = -6,"wx" = 0,"wy" = -6,"ex" = -1,"ey" = -6,"nturn" = 100,"sturn" = 156,"wturn" = 90,"eturn" = 180,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+
 //NAUTICALL
 /obj/item/rogueweapon/example/regnum
 	name = "Regnum"

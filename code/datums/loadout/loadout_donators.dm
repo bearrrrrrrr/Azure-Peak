@@ -273,6 +273,11 @@
 	path = /obj/item/enchantingkit/sci_sand
 	ckeywhitelist = list("scidragon")
 
+/datum/loadout_item/donator/aisuwand
+    name = "Donator Kit - Crystalline Wand"
+    path = /obj/item/enchantingkit/aisuwand
+    ckeywhitelist = list("aisu9")
+
 /datum/loadout_item/donator/regnum
 	name = "Donator Item - Regnum"
 	path = /obj/item/enchantingkit/weapon/regnum
