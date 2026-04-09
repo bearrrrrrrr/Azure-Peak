@@ -395,3 +395,22 @@
 		/obj/item/rogueweapon/sword/long
 	)
 	result_item = /obj/item/rogueweapon/nerocavalier/flsword
+
+/obj/item/enchantingkit/weapon/regnum
+	name = "'Regnum' morphing elixir"
+	target_items = list(
+		/obj/item/rogueweapon/sword/long,
+		/obj/item/rogueweapon/sword/long/judgement
+	)
+	result_item = /obj/item/rogueweapon/sword/long/regnum
+
+/obj/item/enchantingkit/weapon/aeternum
+	name = "'Aeternum' morphing elixir"
+	target_items = list(
+		/obj/item/rogueweapon/greatsword,
+		/obj/item/rogueweapon/greatsword/zwei,
+		/obj/item/rogueweapon/greatsword/grenz,
+		/obj/item/rogueweapon/greatsword/grenz/flamberge,
+		/obj/item/rogueweapon/greatsword/grenz/flamberge/blacksteel
+	)
+	result_item = /obj/item/rogueweapon/greatsword/grenz/flamberge/aeternum
