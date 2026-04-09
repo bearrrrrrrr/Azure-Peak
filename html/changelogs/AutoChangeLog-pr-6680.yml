@@ -1,0 +1,5 @@
+author: "nauticall"
+delete-after: True
+changes:
+  - rscadd: "Added donor weapons Regnum & Aeternum."
+  - image: "Added a two-handed wielded sprite for Judgement."
