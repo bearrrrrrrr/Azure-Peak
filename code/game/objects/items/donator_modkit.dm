@@ -395,3 +395,8 @@
 		/obj/item/rogueweapon/sword/long
 	)
 	result_item = /obj/item/rogueweapon/nerocavalier/flsword
+
+/obj/item/enchantingkit/aisuwand
+    name = "Crystalline Wand morphing elixir"
+    target_items = list(/obj/item/rogueweapon/wand)
+    result_item = /obj/item/rogueweapon/wand/aisu
