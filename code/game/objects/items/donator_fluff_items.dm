@@ -548,7 +548,7 @@
 	AddComponent(/datum/component/ignitable/fluff/sci_sand)
 
 //NAUTICALL
-/obj/item/rogueweapon/sword/long/regnum
+/obj/item/rogueweapon/example/regnum
 	name = "Regnum"
 	desc = "<i>'In war, the moral is to the physical as three is to one.'</i> <br> \
 	An armor-piercing longsword. The finest steel, wrapped in the finest leather. Its rear-biased weight distribution makes it more of a scalpel than a slasher, while its sharp taper implies its purpose of skewering enemies with graceful precision. \
@@ -558,19 +558,7 @@
 	sheathe_icon = "regnum"
 	bigboy = TRUE
 
-/obj/item/rogueweapon/sword/long/regnum/getonmobprop(tag)
-	. = ..()
-	if(tag)
-		switch(tag)
-			if("gen")
-				return list("shrink" = 0.6,"sx" = -10,"sy" = -8,"nx" = 13,"ny" = -8,"wx" = -8,"wy" = -7,"ex" = 7,"ey" = -8,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 90,"sturn" = -90,"wturn" = -80,"eturn" = 81,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
-			if("wielded")
-				return list("shrink" = 0.7,"sx" = 5,"sy" = -2,"nx" = -6,"ny" = -2,"wx" = -6,"wy" = -2,"ex" = 7,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -28,"sturn" = 29,"wturn" = -35,"eturn" = 32,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
-			if("onbelt")
-				return list("shrink" = 0.5,"sx" = -4,"sy" = -6,"nx" = 5,"ny" = -6,"wx" = 0,"wy" = -6,"ex" = -1,"ey" = -6,"nturn" = 100,"sturn" = 156,"wturn" = 90,"eturn" = 180,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
-
-
-/obj/item/rogueweapon/greatsword/grenz/flamberge/aeternum
+/obj/item/rogueweapon/example/aeternum
 	name = "Aeternum"
 	desc = "<i>'Lay by your pleading, law lies a-bleeding / Burn all your studies down, and throw away your reading; small power the word has, and can afford us / Not half so many privileges as the sword has.'</i> <br> \
 	A bespoke polished montante. Austere yet ornate, formal yet functional. Like its smaller sibling, it comes with hardware of real gold and a handgrip of supple red leather. Where most monarchs' blades are meant for ceremony, this one tells a \

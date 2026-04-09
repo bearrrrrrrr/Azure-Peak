@@ -402,7 +402,7 @@
 		/obj/item/rogueweapon/sword/long,
 		/obj/item/rogueweapon/sword/long/judgement
 	)
-	result_item = /obj/item/rogueweapon/sword/long/regnum
+	result_item = /obj/item/rogueweapon/example/regnum
 
 /obj/item/enchantingkit/weapon/aeternum
 	name = "'Aeternum' morphing elixir"
@@ -413,4 +413,4 @@
 		/obj/item/rogueweapon/greatsword/grenz/flamberge,
 		/obj/item/rogueweapon/greatsword/grenz/flamberge/blacksteel
 	)
-	result_item = /obj/item/rogueweapon/greatsword/grenz/flamberge/aeternum
+	result_item = /obj/item/rogueweapon/example/aeternum
