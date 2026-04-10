@@ -77,7 +77,7 @@
 	icon_state = "psydonboots"
 	item_state = "psydonboots"
 	sewrepair = TRUE
-	max_integrity = 125		//45 extra hp. stop footfragging my orthos. 
+	ARMOR_INT_SIDE_HARDLEATHER for 250 //170 extra hp. stop footfragging my orthos. 
 	armor = ARMOR_LEATHER
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
