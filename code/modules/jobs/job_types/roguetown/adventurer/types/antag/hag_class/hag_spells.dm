@@ -47,7 +47,7 @@
 	. = ..() 
 
 	var/datum/component/hag_curio_tracker/H = user.GetComponent(/datum/component/hag_curio_tracker)
-	if(!H || !length(H.stored_materials))
+	if(!H || !length(H.stored_materials) && !length(H.prepared_boons))
 		. += span_info("Spiritual Veil: Empty")
 		return
 
@@ -64,7 +64,7 @@
 		var/found_any = FALSE
 		for(var/path in H.prepared_boons)
 			if(H.prepared_boons[path] > 0)
-				. += span_info("- [initial(path:name)]: [H.prepared_boons[path]]")
+				. += span_info("- [initial(path:name)]: [H.prepared_boons[path]] - worth: [path:points] points")
 				found_any = TRUE
 		if(!found_any)
 			. += span_info("- None ready.")
@@ -295,7 +295,8 @@
 		revert_cast()
 		return FALSE
 
-	for(var/i in 1 to 3)
+	// Up to the same max amount of people as a tier 3 hag can bless.
+	for(var/i in 1 to 5)
 		var/prompt = "Choose member #[i] to bind (Cancel to finalize coven with [coven_members.len] members)"
 		var/target_name = tgui_input_list(user, prompt, "Coven Link", sort_list(possible))
 
