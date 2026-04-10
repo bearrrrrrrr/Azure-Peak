@@ -60,14 +60,26 @@
 			var/limit = H.material_limits[path] || "?"
 			. += span_info("- [name]: [count]/[limit]")
 	if(length(H.prepared_boons))
-		. += "<br><span class='notice'><b>Manifestable Blessings:</b></span>"
 		var/found_any = FALSE
+		var/boon_html = "<br><span class='notice'><b>Manifestable Blessings:</b></span>"
+		boon_html += "<details><summary><i>View Prepared Pacts</i></summary>"
+
 		for(var/path in H.prepared_boons)
-			if(H.prepared_boons[path] > 0)
-				. += span_info("- [initial(path:name)]: [H.prepared_boons[path]] - worth: [path:points] points")
-				found_any = TRUE
+			var/amt = H.prepared_boons[path]
+			if(amt <= 0)
+				continue
+
+			found_any = TRUE
+			var/boon_name = initial(path:name)
+			var/boon_desc = initial(path:desc)
+			var/boon_points = initial(path:points)
+			boon_html += "<details style='margin-left: 2px;'><summary><b>[boon_name]</b> ([amt]) - [boon_points] pts</summary><div style='margin-left: 10px; font-size: 0.9em;'>[boon_desc]</div></details>"
+
 		if(!found_any)
-			. += span_info("- None ready.")
+			boon_html += span_info("- None ready.")
+		
+		boon_html += "</details>"
+		. += boon_html
 
 /obj/effect/proc_holder/spell/invoked/transmutation_rite
 	name = "Transmutation"
