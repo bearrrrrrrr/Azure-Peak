@@ -113,7 +113,7 @@
 	icon_state = "incutmaster"
 	desc = "Strike the opponent with the true edge of the sword and penetrate lighter armour. A cut so perfect requires precision and time."
 	attack_verb = list("masterfully tears", "artfully slits", "adroitly hacks")
-	damfactor = 1.15
+	damfactor = 1.2
 	penfactor = PEN_LIGHT // Master cut — cuts are for damaging armor, not penning it. Leave pen to the stabbin'
 	max_intent_damage = 36
 	min_intent_damage = 31
@@ -124,7 +124,7 @@
 	icon_state = "instabmaster"
 	desc = "Enter a long guard and thrust forward with your entire upper body while advancing, maximizing the effectiveness of the thrust."
 	attack_verb =  list("skillfully perforates", "artfully punctures", "deftly sticks")
-	damfactor = 1.15
+	damfactor = 1.2
 	max_intent_damage = 36 //they do the same damage. one is for bleeding, the other is for critfishing. feels weird but they get a lot of toys
 
 /datum/intent/effect/daze/longsword/clinch

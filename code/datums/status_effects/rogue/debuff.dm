@@ -533,7 +533,7 @@
 	id = "zorn ort"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/dazed/longsword2h
 	effectedstats = list(STATKEY_PER = -4, STATKEY_LCK = -3)
-	duration = 18 SECONDS
+	duration = 16 SECONDS
 	status_type = STATUS_EFFECT_REFRESH
 
 /atom/movable/screen/alert/status_effect/debuff/dazed/longsword2h
