@@ -1,4 +1,4 @@
-#define STAM_DRAIN_PER_STR_DIFF_HEAVY_BAL -2
+#define STAM_DRAIN_PER_STR_DIFF_HEAVY_BAL -4
 
 // Unarmed base weapon defense equivalents — fed into the same (skill * 20) + (wdef * 10) formula as weapons
 #define UNARMED_BASE_WDEF_BARE 2		// Bare fists — still bad, but not hopeless
