@@ -642,18 +642,19 @@
 /datum/alt_grip/halfsword/frei
 	trait_applied = list(TRAIT_LONGSWORDSMAN)
 	additive_var_overrides = list(
-		"wdefense" = 2 
+		"wdefense" = 3 
 	)
 	grip_intents = list(
 		/datum/intent/sword/thrust/long/halfsword/frei,
-		/datum/intent/effect/daze/longsword2h
+		/datum/intent/effect/daze/longsword2h,
+		/datum/intent/shield/block
 	)
 
 /datum/alt_grip/roof_guard
 	name = "roof guard"
 	two_handed = TRUE
 	additive_var_overrides = list(
-		wdefense = -2 //HOWEVER. this gives me the idea that using roof guard will reduce your parry by a good amount. usually, it'll be mostly offset by your master skills - but it'll still bring you from 90% to 80% parry against an expert opponent.
+		wdefense = -1 //HOWEVER. this gives me the idea that using roof guard will reduce your parry by a little. glass cannon mode against swift players kind of
 	)
 	trait_applied = list(TRAIT_LONGSWORDSMAN)
 	grip_intents = list(
