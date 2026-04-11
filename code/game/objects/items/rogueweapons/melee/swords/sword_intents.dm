@@ -192,7 +192,7 @@
 /datum/intent/sword/strike/bad
 	damfactor = 0.5
 
-/datum/intent/sword/strike/master 
+/datum/intent/sword/strike/master //unused
 	name = "ganvale"
 	desc = "Hit your opponent with your sword's special crossguard, dealing slightly more damage than a regular sword's bash."
 	attack_verb = list("deftly slams")
