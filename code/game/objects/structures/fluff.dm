@@ -1336,7 +1336,7 @@
 								thebride = C
 						//WE FOUND THEM LETS GET THIS SHOW ON THE ROAD!
 						if(!thegroom || !thebride)
-							to_chat(user, span_warn("nonexistent"))
+							to_chat(user, span_warn("This apple has not yet been marked by two souls."))
 							return
 						//Alright now for the boring surname formatting.
 						var/surname2use
