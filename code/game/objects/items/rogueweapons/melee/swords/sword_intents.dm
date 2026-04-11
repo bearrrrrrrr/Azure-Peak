@@ -167,7 +167,7 @@
 
 /datum/intent/effect/daze/longsword
 	name = "durchlauffen"
-	desc = "Quickly flip your weapon around to the blunt end and slam an opponent in the throat, mouth, or nose, affecting their ability to breathe properly. Slow, and can be cancelled by being hit, but applies a long-lasting debuff. Can only be performed two handed."
+	desc = "Quickly flip your weapon around to the blunt end and slam an opponent in the throat, mouth, or nose, affecting their ability to breathe properly. Slow, and can be cancelled by being hit, but applies a long-lasting debuff. Can only be performed in roof guardw."
 	attack_verb = list("masterfully pummels")
 	intent_effect = /datum/status_effect/debuff/dazed/longsword
 	target_parts = list(BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_NECK)

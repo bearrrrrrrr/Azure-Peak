@@ -538,7 +538,7 @@
 
 /atom/movable/screen/alert/status_effect/debuff/dazed/longsword2h
 	name = "CAN'T FUCKING SEE"
-	desc = "WHAT THE HELL DID THEY DO TO ME?! I NEED TO ATTACK THEM WHILE THEY'RE SWINGING SO THEY CAN'T POKE MY EYES!!"
+	desc = "WHAT THE HELL DID THEY DO TO ME?! I NEED TO RIPOSTE THEM WHILE THEY'RE SWINGING SO THEY CAN'T POKE MY EYES!!"
 	icon_state = "mstrike"
 
 /datum/status_effect/debuff/dazed/freisabre
