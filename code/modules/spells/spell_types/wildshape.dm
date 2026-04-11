@@ -1,6 +1,6 @@
 /obj/effect/proc_holder/spell/self/wildshape
 	name = "Beast Form"
-	desc = "Take on the form of one of Dendor's sacred beasts, destroying all man-made weapons and armor in the process."
+	desc = "Take on the form of one of Dendor's sacred beasts."
 	overlay_state = "tamebeast"
 	clothes_req = FALSE
 	human_req = FALSE
