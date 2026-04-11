@@ -4,7 +4,12 @@
 	wildshape_untransform(TRUE, gibbed)
 
 //Will drop or destroy items depending on their allowed status within the proc
-/mob/living/carbon/human/proc/wildshape_drop_destroy_items()
+/mob/living/carbon/human/proc/wildshape_drop_items()
+
+	var/list/disallowed_equipment_Type = list(	/obj/item/storage,
+											/obj/item/rogueweapon,
+											)
+
 	var/list/allowed_equipment_Type = list(	/obj/item/rogueweapon/woodstaff,
 											/obj/item/storage/belt
 											)
@@ -12,18 +17,12 @@
 	drop_all_held_items() //Drop what were in your hands
 
 	for(var/obj/item/I in src)
-		if(is_type_in_list(I, allowed_equipment_Type))
+		if(is_type_in_list(I, allowed_equipment_Type)) //Allow items of allowed type no matter what
 			continue
-		if(istype(I, /obj/item/storage)) //Drops storage bags
+		if(is_type_in_list(I, disallowed_equipment_Type)) //Drops all items of the disallowed type
 			dropItemToGround(I)
-		else if(istype(I, /obj/item/rogueweapon/scabbard)) //Break sheated weapons
-			var/obj/item/rogueweapon/scabbard/scab = I
-			if(scab.hol_comp.sheathed && !is_type_in_list(scab.hol_comp.sheathed, allowed_equipment_Type))
-				scab.hol_comp.sheathed.force_obj_break()
-		else if(istype(I, /obj/item/rogueweapon))
-			I.force_obj_break()
-		else if(I.has_armor_value()) //Break armor
-			I.force_obj_break()
+		else if(I.has_armor_value()) //Drop armor
+			dropItemToGround(I)
 
 /mob/living/carbon/human/proc/wildshape_transformation(shapepath)
 	if(!mind)
@@ -35,7 +34,7 @@
 	dropItemToGround(stored_neck)
 	dropItemToGround(stored_ring)
 
-	wildshape_drop_destroy_items()
+	wildshape_drop_items()
 
 	regenerate_icons()
 	icon = null
@@ -133,7 +132,7 @@
 	dropItemToGround(stored_neck)
 	dropItemToGround(stored_ring)
 
-	wildshape_drop_destroy_items()
+	wildshape_drop_items()
 
 	icon = null
 	invisibility = INVISIBILITY_MAXIMUM
