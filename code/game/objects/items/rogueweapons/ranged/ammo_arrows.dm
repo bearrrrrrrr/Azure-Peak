@@ -88,6 +88,8 @@
 	range = 15
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	embedchance = 25
+	intdamfactor = 1.25 // Attempt to make it so that arrows do more damage to armor
+	// Without instantly killing people when armor breaks
 	woundclass = BCLASS_PIERCE
 	flag = "piercing"
 	speed = 0.4
