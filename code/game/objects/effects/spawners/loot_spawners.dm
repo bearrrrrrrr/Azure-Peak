@@ -9,6 +9,14 @@
 	name = "low tier general loot spawner"
 	icon_state = "genlow"
 	lootcount = 1
+	loot_value = LOOT_VALUE_GENERAL_LOW
+	junk_loot = list(
+		/obj/item/ash = 5,
+		/obj/item/natural/glass_shard = 5,
+		/obj/item/natural/stone = 3,
+		/obj/item/candle/yellow = 3,
+		/obj/item/natural/feather = 3,
+	)
 	loot = list(
 		//mats
 		/obj/item/natural/bundle/stick = 4,
@@ -149,6 +157,14 @@
 	name = "mid tier general loot spawner"
 	icon_state = "genmid"
 	lootcount = 1
+	loot_value = LOOT_VALUE_GENERAL_MID
+	junk_loot = list(
+		/obj/item/ash = 5,
+		/obj/item/natural/glass_shard = 5,
+		/obj/item/natural/stone = 3,
+		/obj/item/candle/yellow = 3,
+		/obj/item/natural/feather = 3,
+	)
 	loot = list(
 		//mats
 		/obj/item/natural/hide/cured = 2,
@@ -308,6 +324,14 @@
 	name = "high tier general loot spawner"
 	icon_state = "genhi"
 	lootcount = 1
+	loot_value = LOOT_VALUE_GENERAL_HI
+	junk_loot = list(
+		/obj/item/ash = 3,
+		/obj/item/natural/glass_shard = 3,
+		/obj/item/candle/yellow = 3,
+		/obj/item/rope = 3,
+		/obj/item/rope/chain = 3,
+	)
 	loot = list(
 		//mats
 		/obj/item/natural/hide/cured = 2,
@@ -446,16 +470,19 @@
 	name = "low tier general loot spawnerx3"
 	icon_state = "genlowx3"
 	lootcount = 3
+	loot_value = LOOT_VALUE_GENERAL_LOW * 3
 
 /obj/effect/spawner/lootdrop/general_loot_mid/x3
 	name = "mid tier general loot spawnerx3"
 	icon_state = "genmidx3"
 	lootcount = 3
+	loot_value = LOOT_VALUE_GENERAL_MID * 3
 
 /obj/effect/spawner/lootdrop/general_loot_hi/x3
 	name = "high tier general loot spawnerx3"
 	icon_state = "genhix3"
 	lootcount = 3
+	loot_value = LOOT_VALUE_GENERAL_HI * 3
 
 /*
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
