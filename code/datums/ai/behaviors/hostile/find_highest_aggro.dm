@@ -223,6 +223,8 @@
 
 /// Helper proc to find if a mob is hiding in something
 /datum/ai_behavior/find_aggro_targets/proc/find_hiding_location(mob/living/source, mob/living/target)
+	if(!target)
+		return null
 	// Check if target is inside something
 	if(istype(target.loc, /obj/item) || istype(target.loc, /obj/structure) || istype(target.loc, /obj/machinery))
 		return target.loc
