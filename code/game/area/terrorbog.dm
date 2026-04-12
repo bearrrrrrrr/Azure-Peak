@@ -72,6 +72,7 @@
 	droning_sound_dusk = null
 	droning_sound_night = null
 	deathsight_message = "a wretched, fetid bog"
+	loot_budget = LOOT_BUDGET_BOGMANFORT
 
 /area/rogue/indoors/shelter/bog/skeletonfort
 	icon_state = "bog"
@@ -79,6 +80,7 @@
 	droning_sound_dusk = null
 	droning_sound_night = null
 	deathsight_message = "a wretched, fetid bog"
+	loot_budget = LOOT_BUDGET_SKELETONFORT
 
 /area/rogue/indoors/shelter/bog_hag
 	name = "Hag hut"

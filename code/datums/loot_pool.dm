@@ -139,6 +139,7 @@ GLOBAL_LIST_EMPTY(loot_spawners_poolless)
 	GLOB.loot_spawners_pending.Cut()
 
 	// Fire poolless spawners normally - clear ref before qdel
+	// Skip logging for town/shelter/shop areas since those are intentionally poolless
 	while(length(poolless_spawners))
 		var/obj/effect/spawner/lootdrop/spawner = poolless_spawners[length(poolless_spawners)]
 		poolless_spawners.len--
@@ -146,7 +147,12 @@ GLOBAL_LIST_EMPTY(loot_spawners_poolless)
 		var/turf/T = get_turf(spawner)
 		var/area_desc = A ? "[A.type] ([A.name])" : "NO AREA"
 		var/coords = T ? "([T.x],[T.y],[T.z])" : "(?,?,?)"
-		GLOB.loot_spawners_poolless += "[spawner.type] at [coords] in [area_desc]"
+		// Only log spawners in non-town, non-hag areas (those are intentionally poolless)
+		var/should_log = TRUE
+		if(istype(A, /area/rogue/indoors/town) || istype(A, /area/rogue/under/town) || istype(A, /area/rogue/indoors/shelter/bog_hag))
+			should_log = FALSE
+		if(should_log)
+			GLOB.loot_spawners_poolless += "[spawner.type] at [coords] in [area_desc]"
 		spawner.spawn_loot()
 		qdel(spawner)
 		CHECK_TICK

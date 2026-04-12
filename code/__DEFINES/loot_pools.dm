@@ -11,13 +11,13 @@
 #define LOOT_BUDGET_GETHSMANE			250
 #define LOOT_BUDGET_GETHSMANE_INNER		400
 #define LOOT_BUDGET_FISHMAN_DUNGEON		400
-#define LOOT_BUDGET_HIS_VAULT			3500
+#define LOOT_BUDGET_HIS_VAULT			4000
 #define LOOT_BUDGET_FORSAKEN_CATHEDRAL	200
 #define LOOT_BUDGET_TEMPLE_SHATTERED	400
 #define LOOT_BUDGET_ORC_DUNGEON			300
 #define LOOT_BUDGET_DRAGON_DEN			600
 #define LOOT_BUDGET_GOBLIN_FORT			300
-#define LOOT_BUDGET_NECRAN_LABYRINTH	1200
+#define LOOT_BUDGET_NECRAN_LABYRINTH	1500
 #define LOOT_BUDGET_LICH_ARENA			1200
 #define LOOT_BUDGET_UNDEAD_MANOR		400
 #define LOOT_BUDGET_DUKE_COURT			400
@@ -39,8 +39,10 @@
 #define LOOT_BUDGET_BANDIT_CAMP			300
 #define LOOT_BUDGET_MINOTAUR_CAVE       200
 #define LOOT_BUDGET_TARICHEA			200
-#define LOOT_BUDGET_TARICHEA_MANOR      550
+#define LOOT_BUDGET_TARICHEA_MANOR      750
 #define LOOT_BUDGET_ARAIGNEE 		    300
+#define LOOT_BUDGET_BOGMANFORT          800
+#define LOOT_BUDGET_SKELETONFORT        600
 
 // ---- Spawner Loot Values (mammons) ----
 // Expected mammon value of what each spawner category rolls.
@@ -99,6 +101,10 @@
 #define LOOT_VALUE_CHEST				80
 #define LOOT_VALUE_CHEST_LOCKED			120
 #define LOOT_VALUE_CHEST_INDESTRUCTIBLE	150
+
+// Gem and special loot spawners
+#define LOOT_VALUE_RANDOM_GEM			56	// actual weighted avg ~56 from gem sellprices
+#define LOOT_VALUE_SPIDER_CAVE_LOOT		80	// steel/plate armor and weapons
 
 // Potion spawners
 #define LOOT_VALUE_POTION_VITALS		20
