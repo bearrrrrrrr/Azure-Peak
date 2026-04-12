@@ -24,6 +24,7 @@
 		"MATTHIOS IS MY LORD!",
 	)
 	storyteller = /datum/storyteller/matthios
+	crafting_recipes = list(/datum/crafting_recipe/roguetown/structure/matthios_cross_stone, /datum/crafting_recipe/roguetown/structure/matthios_cross_meat)
 
 // When near coin of at least 100 mammon, zchurch, bad-cross, or ritual talk
 /datum/patron/inhumen/matthios/can_pray(mob/living/follower)
