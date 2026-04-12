@@ -18,22 +18,14 @@
 		/obj/item/natural/glass_shard = 5,
 		/obj/item/natural/stone = 3,
 	)
-	/// Whether this chest has been processed by the loot pool
-	var/pool_processed = FALSE
 
 /obj/structure/closet/crate/chest/loot_chest/Initialize()
 	. = ..()
 	// Defer loot generation to the pool system
 	GLOB.loot_chests_pending += src
 
-/// Called by the pool when this chest wins the budget lottery
-/obj/structure/closet/crate/chest/loot_chest/proc/do_pool_spawn()
-	pool_processed = TRUE
-	generate_loot()
-
 /// Called by the pool when this chest loses the budget lottery
 /obj/structure/closet/crate/chest/loot_chest/proc/spawn_junk()
-	pool_processed = TRUE
 	if(!junk_loot || !length(junk_loot))
 		return
 	var/junk_type = pickweight(junk_loot)
