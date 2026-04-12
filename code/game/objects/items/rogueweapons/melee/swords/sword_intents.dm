@@ -204,8 +204,8 @@
 	target_parts = list(BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_NECK)
 	damfactor = 0.3
 	clickcd = 20
-	swingdelay = 1.3 SECONDS
-	swingdelay_type = SWINGDELAY_CANCEL //that debuff is fucking terrifying, and this should mostly be used when you have a big opening or are confident in your ability to dodge multiple attacks
+	swingdelay = 10
+	swingdelay_type = SWINGDELAY_CANCEL //that debuff is fucking terrifying, and this should mostly be used when you have a big opening or are confident in your ability to dodge one or more attacks.
 
 /datum/intent/effect/daze/longsword2h
 	name = "zorn ort"
@@ -216,7 +216,7 @@
 	blade_class = BCLASS_STAB
 	damfactor = 0.7 //they're stabbing you and it's going to hurt a little
 	clickcd = 20
-	swingdelay = 1.3 SECONDS
+	swingdelay = 10
 	swingdelay_type = SWINGDELAY_PENALTY //less scary but still debilitating debuff. you should be riposting against these on reaction if you can
 
 // A weaker strike for sword with high damage so that it don't end up becoming better than mace
