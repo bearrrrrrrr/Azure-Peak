@@ -37,11 +37,6 @@
 /obj/item/alch/waterdust,
 /turf/open/floor/rogue/tile/masonic/spiral,
 /area/rogue/under/tomb/indoors/magic)
-"cc" = (
-/obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/rogue/meat/sausage,
-/turf/open/floor/rogue/tile/checker,
-/area/rogue/under/tomb/indoors/magic)
 "cx" = (
 /obj/structure/chair/bench/coucha/r,
 /obj/structure/trap/chill,
@@ -688,7 +683,7 @@
 /area/rogue/under/tomb/indoors/magic)
 "AR" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/rogue/breadslice,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/food,
 /turf/open/floor/rogue/tile/checker,
 /area/rogue/under/tomb/indoors/magic)
 "Ba" = (
@@ -2146,7 +2141,7 @@ Bk
 hK
 fB
 uv
-cc
+AR
 TF
 CI
 PP

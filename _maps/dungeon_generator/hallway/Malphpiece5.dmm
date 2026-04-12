@@ -34,8 +34,8 @@
 "m" = (
 /obj/structure/fluff/walldeco/bigpainting,
 /obj/structure/table/vtable,
-/obj/item/reagent_containers/food/snacks/rogue/cheddarwedge/aged,
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/food,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/food,
 /obj/item/rogueweapon/huntingknife/idagger/silver,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/tomb/cave)
@@ -106,8 +106,8 @@
 /obj/structure/table/vtable/v2,
 /obj/item/reagent_containers/glass/bottle/rogue/whitewine,
 /obj/item/reagent_containers/glass/cup/silver,
-/obj/item/reagent_containers/food/snacks/rogue/cheddarwedge/aged,
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/food,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/food,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/tomb/cave)
 "R" = (

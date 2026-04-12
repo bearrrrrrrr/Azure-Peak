@@ -370,7 +370,7 @@
 /turf/open/floor/rogue/grasscold,
 /area/rogue/under/tomb/wilds)
 "RK" = (
-/obj/item/rogueweapon/mace/woodclub,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/weapons,
 /turf/open/floor/rogue/grasscold,
 /area/rogue/under/tomb/wilds)
 "Sc" = (
