@@ -32,7 +32,8 @@
 
 /mob/living/carbon/human/species/skeleton/after_creation()
 	..()
-	AddComponent(/datum/component/ai_aggro_system)
+	if(ai_controller)
+		AddComponent(/datum/component/ai_aggro_system)
 	if(dna && dna.species)
 		dna.species.species_traits |= NOBLOOD
 		dna.species.soundpack_m = new /datum/voicepack/skeleton()
