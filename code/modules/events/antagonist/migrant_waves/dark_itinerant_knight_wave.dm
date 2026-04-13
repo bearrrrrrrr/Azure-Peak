@@ -20,6 +20,7 @@
 	weight = 8
 	roles = list(
 		/datum/migrant_role/dark_itinerant_knight = 1,
+		/datum/migrant_role/dark_itinerant_squire = 1,
 	)
 	greet_text = "These lands have insulted once more Zizo, you are here to remind them of her prowess."
 
