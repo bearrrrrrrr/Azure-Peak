@@ -233,6 +233,9 @@
 /datum/ai_behavior/find_aggro_targets/finish_action(datum/ai_controller/controller, succeeded, ...)
 	. = ..()
 	if(succeeded)
+		var/mob/living/pawn = controller.pawn
+		if(pawn)
+			pawn.cmode = TRUE
 		var/datum/proximity_monitor/field = controller.blackboard[BB_FIND_TARGETS_FIELD(type)]
 		qdel(field) // autoclears so it's fine
 		controller.CancelActions() // Cancel any further queued actions so they setup again with new target
