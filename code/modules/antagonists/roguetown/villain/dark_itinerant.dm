@@ -64,6 +64,7 @@
 	H.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/weaponsmithing, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/armorsmithing, 2, TRUE)
+
 	H.change_stat(STATKEY_STR, 1)
 	H.change_stat(STATKEY_PER, 2)
 	H.change_stat(STATKEY_CON, 2)
@@ -71,6 +72,7 @@
 	H.change_stat(STATKEY_SPD, 1) // 9 weighted
 	if(H.mind)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/mindlink)
+
 	var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in list("Crossbow", "Bow", "Sling")
 	var/armor_choice = input(H, "Choose your armor.", "TAKE UP ARMS") as anything in list("Light Armor", "Medium Armor")
 	H.set_blindness(0)
@@ -83,7 +85,8 @@
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 		if("Sling")
 			beltr = /obj/item/quiver/sling/iron
-			r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/sling 
+			r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
+
 	switch(armor_choice)
 		if("Light Armor")
 			pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
@@ -136,6 +139,7 @@
 	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
+
 	H.change_stat(STATKEY_STR, 2)
 	H.change_stat(STATKEY_PER, 2)
 	H.change_stat(STATKEY_INT, 3)
@@ -145,6 +149,7 @@
 	if(H.mind)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/mindlink)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/convertrole/zizosquire)
+
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
