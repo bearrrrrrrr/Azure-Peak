@@ -84,7 +84,6 @@
 		if("Sling")
 			beltr = /obj/item/quiver/sling/iron
 			r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/sling 
-
 	switch(armor_choice)
 		if("Light Armor")
 			pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
