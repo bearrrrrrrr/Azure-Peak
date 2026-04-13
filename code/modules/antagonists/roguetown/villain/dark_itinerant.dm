@@ -102,7 +102,7 @@
 /datum/outfit/job/dark_itinerant_knight/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/blacksteel/modern
-	neck = /obj/item/clothing/neck/roguetown/gorget/steel
+	neck = /obj/item/clothing/neck/roguetown/bevor
 	gloves = /obj/item/clothing/gloves/roguetown/plate/blacksteel/modern
 	pants = /obj/item/clothing/under/roguetown/platelegs/blacksteel/modern
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
