@@ -691,7 +691,7 @@
 	flags_cover = HEADCOVERSEYES
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES
 	block2add = FOV_BEHIND
-	smelt_bar_num = 2
+	smelt_bar_num = 1
 	stack_fovs = TRUE
 	icon_state = "ibandedhelm"
 	item_state = "ibandedhelm"

@@ -73,7 +73,7 @@
 	item_state = "ibandedarmor"
 	armor_class = ARMOR_CLASS_HEAVY
 	body_parts_covered = CHEST | ARMS | LEGS | GROIN
-	smelt_bar_num = 2
+	smelt_bar_num = 1
 	drop_sound = 'sound/foley/dropsound/scrap_drop.ogg'
 	pickup_sound = 'sound/foley/equip/scrap_equip.ogg'
 	equip_sound = 'sound/foley/equip/scrap_equip.ogg'
