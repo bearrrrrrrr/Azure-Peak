@@ -164,7 +164,7 @@
 	if(!..())
 		return
 	if((user.patron?.type) != /datum/patron/divine/xylix)
-		to_chat(user,span_warning("Everytime I'm about to get it, it turns into something else."))
+		to_chat(user,span_warning("Every time I'm about to get it, it turns into something else."))
 		return
 	if(!HAS_TRAIT(user, TRAIT_RITUALIST))
 		to_chat(user,span_warning("I don't know the proper rites for this..."))
@@ -1339,6 +1339,8 @@
 		playsound(target, 'sound/magic/undivided_solemnity.ogg', 90, FALSE, -1)
 		to_chat(target, span_boldred("I can do no HARM."))
 		ADD_TRAIT(target, TRAIT_PACIFISM, TRAIT_RITUAL)
+		to_chat(target, span_boldred("My body is susceptible to CRITICAL STRIKES."))
+		ADD_TRAIT(target, TRAIT_CRITICAL_WEAKNESS, TRAIT_RITUAL)
 
 //UNDIVIDED
 /obj/structure/ritualcircle/undivided
@@ -1491,7 +1493,7 @@
 	if(!..())
 		return
 	if((user.patron?.type) != /datum/patron/inhumen/zizo)
-		to_chat(user,span_warning("I don't know the proper rites for this..."))
+		to_chat(user,span_warning("Touching it sends a cold shock up my arm. I shouldn't be trying to use this..."))
 		return
 	if(!HAS_TRAIT(user, TRAIT_RITUALIST))
 		to_chat(user,span_warning("I don't know the proper rites for this..."))
@@ -1592,7 +1594,7 @@
 	if(!..())
 		return
 	if((user.patron?.type) != /datum/patron/inhumen/matthios)
-		to_chat(user,span_warning("I don't know the proper rites for this..."))
+		to_chat(user,span_warning("Somehow, I get the feeling touching this will take something from me..."))
 		return
 	if(!HAS_TRAIT(user, TRAIT_RITUALIST))
 		to_chat(user,span_warning("I don't know the proper rites for this..."))
@@ -1753,7 +1755,7 @@
 	if(!..())
 		return
 	if((user.patron?.type) != /datum/patron/inhumen/graggar)
-		to_chat(user,span_warning("I don't know the proper rites for this..."))
+		to_chat(user,span_warning("I hear a distant war cry in the back of my mind as I touch this..."))
 		return
 	if(!HAS_TRAIT(user, TRAIT_RITUALIST))
 		to_chat(user,span_warning("I don't know the proper rites for this..."))
