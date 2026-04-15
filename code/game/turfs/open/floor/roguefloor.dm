@@ -446,7 +446,7 @@
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	tiled_dirt = FALSE
 	landsound = 'sound/foley/jumpland/dirtland.wav'
-	slowdown = 2
+	slowdown = 1
 	smooth = SMOOTH_TRUE
 	canSmoothWith = list(/turf/open/floor/rogue/grass,
 						/turf/open/floor/rogue/grassred,
@@ -471,7 +471,7 @@
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	tiled_dirt = FALSE
 	landsound = 'sound/foley/jumpland/dirtland.wav'
-	slowdown = 2
+	slowdown = 1
 	smooth = SMOOTH_TRUE
 	canSmoothWith = list(/turf/open/floor/rogue/grass,
 						/turf/open/floor/rogue/grassred,
@@ -592,7 +592,7 @@
 		muddy = TRUE
 		icon_state = "mud[rand (1,3)]"
 		name = "mud"
-		slowdown = 2
+		slowdown = 1
 		footstep = FOOTSTEP_MUD
 		barefootstep = FOOTSTEP_MUD
 		heavyfootstep = FOOTSTEP_MUD
