@@ -500,3 +500,33 @@
       BASH. Removed BASH and replaced with STRIKE on a couple other weapons
   string-thing:
   - rscadd: added divine blast to druid characters on spawn.
+2026-04-14:
+  CODEATHON1243:
+  - bugfix: fixed eora ritual. oops.
+  FreeStylaLT:
+  - bugfix: Fixed the blacksteel pick having an incorrect amount of required ingots
+      for its smithing recipe.
+  Quinalion:
+  - bugfix: Fixed deranged knight outfit
+  WeNeedMorePhoron:
+  - rscadd: Donators that are added manually to the donator list get a 3 TRIUMPHS
+      discount on loadout menu items
+  - rscadd: Donators' examine panel get a nice little heart icon.
+  - bugfix: Bobcat, Badger and Raccoon should no longer go invisible
+  - bugfix: AI probably a bit more fair when it comes to detecting you in stealth
+  - bugfix: AI should no longer stand up while unconscious
+  - bugfix: AI turns on Cmode properly and will dodge and parry again.
+  - balance: You no longer faint in and out of consciousness at low blood level before
+      you reach the bled out condition (Also fixes AI spam)
+  - bugfix: You can test Tomb of Alotheos / Matthios on Roguetest by running the options
+      that is not labeled "No Dungeons" now.
+2026-04-15:
+  7erracotta:
+  - qol: the nipple piercings for vermin kin is fixed
+  FreeStylaLT:
+  - rscdel: Removed half-elves from Anthrax merc class race eligibility.
+  KatTheFox:
+  - bugfix: rings and ring-slot amulets are no longer invisible for women specifically
+  - rscadd: Added iron scissors to arcyne forge
+  UEDCommander:
+  - bugfix: Fixed matthiosite crafting recepies being redefined twice
