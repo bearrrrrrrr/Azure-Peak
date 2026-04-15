@@ -9,14 +9,13 @@
 	category_tags = list(CTAG_WRETCH)
 	traits_applied = list(TRAIT_STRONGBITE, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_NOPAINSTUN, TRAIT_BLOOD_RESISTANCE, TRAIT_RAGE)
 	extra_context = "This subclass gains access to the RAGE ability."
-	// Literally same stat spread as Atgervi Shaman
+	// total of 6 because int gets nuked by 2 similar to barbarian, still better then adv barb for +1 spd and wil diff
 	subclass_stats = list(
 		STATKEY_STR = 3,
 		STATKEY_CON = 2,
-		STATKEY_WIL = 1,
+		STATKEY_WIL = 2,
 		STATKEY_SPD = 1,
-		STATKEY_INT = -1,
-		STATKEY_PER = -1
+		STATKEY_INT = -2,
 	)
 	subclass_skills = list(
 		/datum/skill/combat/maces = SKILL_LEVEL_JOURNEYMAN,
@@ -38,6 +37,9 @@
         "Sewing Kit" =  /obj/item/repair_kit,
     )
 
+/datum/outfit/job/roguetown/wretch/berserker
+	var/subclass_selected
+
 /datum/outfit/job/roguetown/wretch/berserker/pre_equip(mob/living/carbon/human/H)
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
 	gloves = /obj/item/clothing/gloves/roguetown/plate
@@ -47,7 +49,7 @@
 	backr = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/hip/headhook //Standard iron version. More-so for style than substance.
-	neck = /obj/item/clothing/neck/roguetown/leather
+	neck = /obj/item/clothing/neck/roguetown/coif/heavypadding //Used to be a reinforced leather coif, but crit resist kinda leaves your head open to shit
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 	backpack_contents = list(
 		/obj/item/rogueweapon/huntingknife/combat = 1, //Steel variant of the hunting knife. Pseudoantagonist-tier, plus an avenue to hack limbs with.
@@ -59,41 +61,49 @@
 		)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 	if(H.mind)
-		var/weapons = list("Discipline - Unarmed","Discipline - Bodybuilder","Katar","Knuckledusters","Punch Dagger","Battle Axe","Grand Mace","Falx")
-		var/weapon_choice = input(H, "Choose your WEAPON.", "SPILL THEIR ENTRAILS.") as anything in weapons
 		H.set_blindness(0)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/rage)
-		switch(weapon_choice)
-			if("Discipline - Unarmed")
-				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_MASTER, TRUE)
-				ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
-				armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/berserker
-			if("Discipline - Bodybuilder") //its really not that good
-				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
-				r_hand = /obj/item/rogueweapon/greatsword/paalloy
-				armor = /obj/item/clothing/suit/roguetown/armor/manual/pushups/leather/good
-				backl = /obj/item/rogueweapon/scabbard/gwstrap
-			if("Katar")
-				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_MASTER, TRUE)
-				beltr = /obj/item/rogueweapon/katar
-			if("Knuckledusters")
-				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_MASTER, TRUE)
-				r_hand = /obj/item/clothing/gloves/roguetown/knuckles
-			if("Punch Dagger")
-				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_MASTER, TRUE)
-				beltr = /obj/item/rogueweapon/katar/punchdagger
-			if("Battle Axe")
-				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_EXPERT, TRUE)
-				beltr = /obj/item/rogueweapon/stoneaxe/battle
-			if("Grand Mace")
-				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
-				beltr = /obj/item/rogueweapon/mace/goden/steel
-			if("Falx")
-				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
-				beltr = /obj/item/rogueweapon/scabbard/sword
-				r_hand = /obj/item/rogueweapon/sword/falx
-		
-		
+		// Main Category Choice
+		var/list/main_choices = list("Unarmed Master", "Martial Expert")
+		var/category_choice = input(H, "Choose your WEAPON.", "SPILL THEIR ENTRAILS.") as anything in main_choices
+		switch(category_choice)
+			if("Unarmed Master")
+				var/list/unarmed_options = list("Discipline - Unarmed", "Katar", "Knuckledusters", "Punch Dagger", )
+				var/weapon_choice = input(H, "Choose how you PUNCH.", "BREAK THEIR BONES.") as anything in unarmed_options
+				switch(weapon_choice)
+					if("Discipline - Unarmed")
+						H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_MASTER, TRUE)
+						ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
+						armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/berserker
+					if("Katar")
+						H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_MASTER, TRUE)
+						beltr = /obj/item/rogueweapon/katar
+					if("Knuckledusters")
+						H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_MASTER, TRUE)
+						r_hand = /obj/item/clothing/gloves/roguetown/knuckles
+					if("Punch Dagger")
+						H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_MASTER, TRUE)
+						beltr = /obj/item/rogueweapon/katar/punchdagger
+			if("Martial Expert")
+				var/list/martial_options = list("Discipline - Bodybuilder", "Battle Axe", "Grand Mace", "Falx")
+				var/weapon_choice = input(H, "Choose your WEAPON of war.", "SPILL THEIR ENTRAILS.") as anything in martial_options
+				switch(weapon_choice)
+					if("Discipline - Bodybuilder")
+						H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
+						r_hand = /obj/item/rogueweapon/greatsword/paalloy
+						armor = /obj/item/clothing/suit/roguetown/armor/manual/pushups/leather/good
+						backl = /obj/item/rogueweapon/scabbard/gwstrap
+					if("Battle Axe")
+						H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_EXPERT, TRUE)
+						beltr = /obj/item/rogueweapon/stoneaxe/battle
+					if("Grand Mace")
+						H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
+						beltr = /obj/item/rogueweapon/mace/goden/steel
+					if("Falx")
+						H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
+						beltr = /obj/item/rogueweapon/scabbard/sword
+						r_hand = /obj/item/rogueweapon/sword/falx
+
 		var/techniques = list("Dropkick - Pushback + Extra Damage", "Chokeslam - Stamina Damage", "Stunner - Dazed Debuff", "Headbutt - Vulnerable Debuff") // cool wrestling moves
 		var/technique_choice = input(H,"Choose your TECHNIQUE.", "TOSS THEM.") as anything in techniques
 		switch(technique_choice)
