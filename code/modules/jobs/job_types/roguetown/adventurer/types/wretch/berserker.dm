@@ -9,11 +9,11 @@
 	category_tags = list(CTAG_WRETCH)
 	traits_applied = list(TRAIT_STRONGBITE, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_NOPAINSTUN, TRAIT_BLOOD_RESISTANCE, TRAIT_RAGE)
 	extra_context = "This subclass gains access to the RAGE ability."
-	// total of 6 because int gets nuked by 2 similar to barbarian, still better then adv barb for +1 spd and wil diff
+	// total of 5 because int gets nuked by 2 similar to barbarian, still better then adv barb for +1
 	subclass_stats = list(
 		STATKEY_STR = 3,
 		STATKEY_CON = 2,
-		STATKEY_WIL = 2,
+		STATKEY_WIL = 1,
 		STATKEY_SPD = 1,
 		STATKEY_INT = -2,
 	)
@@ -47,8 +47,7 @@
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
 	backr = /obj/item/storage/backpack/rogue/satchel
-	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/storage/hip/headhook //Standard iron version. More-so for style than substance.
+	belt = /obj/item/storage/belt/rogue/leather/rope // more wild look + aura
 	neck = /obj/item/clothing/neck/roguetown/coif/heavypadding //Used to be a reinforced leather coif, but crit resist kinda leaves your head open to shit
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 	backpack_contents = list(
@@ -63,13 +62,12 @@
 	if(H.mind)
 		H.set_blindness(0)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/rage)
-		// Main Category Choice
-		var/list/main_choices = list("Unarmed Master", "Martial Expert")
-		var/category_choice = input(H, "Choose your WEAPON.", "SPILL THEIR ENTRAILS.") as anything in main_choices
+		var/list/main_choices = list("Unarmed Master", "Martial Expert") // Unarmed focuses on master punching and wrestling moves, Martial gives you two expert weapon skills to be flexible
+		var/category_choice = input(H, "Choose your TOOLS FOR BATTLE.", "SMASH OR SLASH!!") as anything in main_choices
 		switch(category_choice)
-			if("Unarmed Master")
+			if("Unarmed Master") //still incredibly strong btw, apply punch to skull
 				var/list/unarmed_options = list("Discipline - Unarmed", "Katar", "Knuckledusters", "Punch Dagger", )
-				var/weapon_choice = input(H, "Choose how you PUNCH.", "BREAK THEIR BONES.") as anything in unarmed_options
+				var/weapon_choice = input(H, "Choose how you PUNCH!", "BREAK THEIR BONES.") as anything in unarmed_options
 				switch(weapon_choice)
 					if("Discipline - Unarmed")
 						H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_MASTER, TRUE)
@@ -84,12 +82,24 @@
 					if("Punch Dagger")
 						H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_MASTER, TRUE)
 						beltr = /obj/item/rogueweapon/katar/punchdagger
-			if("Martial Expert")
-				var/list/martial_options = list("Discipline - Bodybuilder", "Battle Axe", "Grand Mace", "Falx")
-				var/weapon_choice = input(H, "Choose your WEAPON of war.", "SPILL THEIR ENTRAILS.") as anything in martial_options
+				var/techniques = list("Dropkick - Pushback + Extra Damage", "Chokeslam - Stamina Damage", "Stunner - Dazed Debuff", "Headbutt - Vulnerable Debuff") // cool wrestling moves
+				var/technique_choice = input(H,"Choose your TECHNIQUE.", "TOSS THEM.") as anything in techniques
+				switch(technique_choice)
+					if("Dropkick - Pushback + Extra Damage")
+						H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/dropkick)
+					if("Chokeslam - Stamina Damage")
+						H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/chokeslam)
+					if("Stunner - Dazed Debuff")
+						H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/stunner)
+					if("Headbutt - Vulnerable Debuff")
+						H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/headbutt)
+			if("Martial Expert") // designed to compete with unarmed by giving you alternatives to approaching fights- only expert 
+				var/list/martial_options = list("Discipline - Bodybuilder", "Battle Axe", "Grand Mace", "Longsword")
+				var/weapon_choice = input(H, "Choose your WEAPONS of WAR!", "SPILL THEIR ENTRAILS.") as anything in martial_options
 				switch(weapon_choice)
-					if("Discipline - Bodybuilder")
+					if("Discipline - Bodybuilder") //Actually not a meme anymore
 						H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
+						H.adjust_skillrank_up_to(/datum/skill/misc/athletics, SKILL_LEVEL_MASTER, TRUE) //they need this to actually do pushups, it's the only way they can fix their armor
 						r_hand = /obj/item/rogueweapon/greatsword/paalloy
 						armor = /obj/item/clothing/suit/roguetown/armor/manual/pushups/leather/good
 						backl = /obj/item/rogueweapon/scabbard/gwstrap
@@ -99,28 +109,25 @@
 					if("Grand Mace")
 						H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
 						beltr = /obj/item/rogueweapon/mace/goden/steel
-					if("Falx")
+					if("Longsword") //Swapped out the falx for this, it's a primary weapon afterall
 						H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 						beltr = /obj/item/rogueweapon/scabbard/sword
 						r_hand = /obj/item/rogueweapon/sword/falx
+				var/list/sidearm_options = list("Iron Arming Sword", "Iron Axe", "Mace")
+				var/sidearm_choice = input(H, "Choose your secondary WEAPON!", "SPILL THEIR ENTRAILS.") as anything in sidearm_options
+				switch(sidearm_choice)
+					if("Iron Arming Sword")
+						H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
+						beltl = /obj/item/rogueweapon/sword/iron
+					if("Iron Axe")
+						H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_EXPERT, TRUE)
+						beltl = /obj/item/rogueweapon/stoneaxe/woodcut
+					if("Mace")
+						H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
+						beltl = /obj/item/rogueweapon/mace
 
-		var/techniques = list("Dropkick - Pushback + Extra Damage", "Chokeslam - Stamina Damage", "Stunner - Dazed Debuff", "Headbutt - Vulnerable Debuff") // cool wrestling moves
-		var/technique_choice = input(H,"Choose your TECHNIQUE.", "TOSS THEM.") as anything in techniques
-		switch(technique_choice)
-			if("Dropkick - Pushback + Extra Damage")
-				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/dropkick)
-			if("Chokeslam - Stamina Damage")
-				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/chokeslam)
-			if("Stunner - Dazed Debuff")
-				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/stunner)
-			if("Headbutt - Vulnerable Debuff")
-				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/headbutt)
-		
 		var/helmets = list("Berserker's Volfskulle Bascinet","Steel Kettle + Wildguard")
 		var/helmet_choice = input(H, "Choose your HELMET.", "STEEL YOURSELF.") as anything in helmets
-
-
-		
 		switch(helmet_choice)
 			if("Berserker's Volfskulle Bascinet")
 				head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/berserker //Pseudoantagonistic-exclusive. Light AC with an on-wear trait for HELMBITING.
