@@ -8,10 +8,15 @@
 /datum/virtue/origin/azuria
 	name = "Azurian"
 	origin_name = "Azuria"
-	desc = "I originate from the settled lands of Azuria, an independent domain sandwiched between Otava and Grenzelhoft. Famed for its delicious waffles and many ancient ruins, it is neither prosperous nor well-respected.<br>"
+	desc = "I originate from the settled lands of Azuria, an independent kingdom sandwiched between Otava and Grenzelhoft. Famed for its delicious waffles and ancient ruins, the Duchy is uniquely situated at the forefront of many worldly affairs - both past and present.<br>"
 	restricted = FALSE
 	added_languages = list(/datum/language/oldazurian)
-	origin_desc = "PING THE LORE TEAM TO ADD THIS"
+	origin_desc = "Originally unsettled, Azuria's forested plateaus bore witness to the greatest miracle in history; the Comet Syon, which saved the world from complete \
+	destruction. The missile's resting place - just off Azuria's coast - established the locale as a holy site for worshippers of both Psydon and the Pantheon, which \
+	eventually led to a Church-funded displacement of its ancestral elven inhabitants. The recent surge of villainous monsters and misfortune is said to be attributed \
+	to such injustices; a belated curse from Dendor's scornful hand. </br> Azuria houses a uniquely diverse culture, borne from generations-upon-generations of pilgrims \
+	from all over the world. Likewise, the lesser kingdom's proximity to the Comet Syon has spawned a deluge of anomalous quirks in both the land and its people; a facet \
+	that has drawn the attention of both opportunistic villains and desperate heroes."
 
 /datum/virtue/origin/grenzelhoft
 	name = "Grenzelhoftian"
@@ -184,6 +189,15 @@
 	Now, centuries after Zizo's ascendance, Lirvas has become one of the few places no adventurer dares travel to. To describe the kingdom as \
 	a hierarchy would hardly be apt; it stands proudly with different rings of social status, shrinking gradually in size as one climbs to the top. \
 	In Lirvas, wealth is everything in determining which ring you stand on, and how hard it is to climb higher."
+
+/datum/virtue/origin/valoria
+	name = "Valorian"
+	origin_name = "Valoria"
+	desc = "I originate from the mountainous tundras of Valoria, a lesser domain known for both its non-conforming Psydonic sects and deliciously spiced handpies.<br>"
+	origin_desc = "One of many lesser kingdoms dotted across the world, Valoria happens to be one of the few - of relative note - that is still ruled by \ 
+	a lineage of Psydonic crusader-kings. Once predominately inhabited by Man, it has recently seen a massive surge of Mer; most humorously, in the form \
+	of husbands and wives that've been romanced-from-abroad by Valoria's returning crusaders. Such a quirk has made Valoria the butt of many jokes, much to \
+	Grenzelhoft's delight and Otava's ire. Even so, however, none can deny the virtuousness and chivalriousness that seems to be inherent to all of its people."
 
 /datum/virtue/origin/racial/underdark
 	name = "Underdweller"
