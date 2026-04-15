@@ -504,7 +504,7 @@ Intermingleance with Otavan refugees and Ranesheni freemen, throughout the centu
 		<p><strong> Arcyne </strong> - Magicka. A blessing of Noc, which allows for the manipulation of Psydonia's latent energies. </p>
 		<p><strong> Leyline </strong> - Channels of pure magicka, running across Psydonia like the arteries in a body. Most arcyne acts draw from these veins. </p>
 		<p><strong> Phlogiston </strong> - The star-speckled space that cradles the Sun, the Moon, Psydonia, and all the various astralities surrounding them. </p>
-		<p><strong> Murderwoods </strong> - Azuria's northern forests, better known in the current dae as the 'Grove'. Temperate, but teeming with brigandry.</p>
+		<p><strong> Murderwood </strong> - Azuria's northern forests, better known in the current dae as the 'Grove'. Temperate, but teeming with brigandry.</p>
 		<p><strong> Terrorbog </strong> - Azuria's western swamps, notoriously difficult to traverse and hazardous to even the most well-seasoned Adventurers.</p>
 		<p><strong> Coast </strong> - Azuria's eastern coastline. It usually refers to its most popular point of entry, sandwiched between the Grove and Hamlet.</p>
 		<p><strong> Hamlet </strong> - The northernmost point of Azuria's reach; a former settlement that has recently fallen to ducal neglect.</p>
