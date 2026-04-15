@@ -72,13 +72,14 @@
 					if("Discipline - Unarmed")
 						H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_MASTER, TRUE)
 						ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
+						gloves = /obj/item/clothing/gloves/roguetown/bandages/weighted // apperantly normal barb gets em so for consistency sake
 						armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/berserker
 					if("Katar")
 						H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_MASTER, TRUE)
 						beltr = /obj/item/rogueweapon/katar
 					if("Knuckledusters")
 						H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_MASTER, TRUE)
-						r_hand = /obj/item/clothing/gloves/roguetown/knuckles
+						gloves = /obj/item/clothing/gloves/roguetown/knuckles
 					if("Punch Dagger")
 						H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_MASTER, TRUE)
 						beltr = /obj/item/rogueweapon/katar/punchdagger
