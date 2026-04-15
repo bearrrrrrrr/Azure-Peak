@@ -329,12 +329,32 @@
 	armor = ARMOR_PLATE
 	clothing_flags = 0
 	block2add = FOV_BEHIND
+	detail_tag = "_detail"
+	detail_color = "#FFFFFF"
+
+/obj/item/clothing/head/roguetown/helmet/elvenbarbute/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
 
 /obj/item/clothing/head/roguetown/helmet/elvenbarbute/winged
 	name = "winged elven barbute"
 	desc = "A winged version of the elven barbute. They have always been known for their vanity."
 	icon_state = "elven_barbute_winged"
 	item_state = "elven_barbute_winged"
+
+/obj/item/clothing/head/roguetown/helmet/elvenbarbute/winged/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
 
 /obj/item/clothing/head/roguetown/helmet/bascinet
 	name = "bascinet"
