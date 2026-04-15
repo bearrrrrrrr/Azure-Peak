@@ -194,10 +194,10 @@
 	name = "Valorian"
 	origin_name = "Valoria"
 	desc = "I originate from the mountainous tundras of Valoria, a lesser domain known for both its non-conforming Psydonic sects and deliciously spiced handpies.<br>"
-	origin_desc = "One of many lesser kingdoms dotted across the world, Valoria happens to be one of the few - of relative note - that is still ruled by \ 
-	a lineage of Psydonic crusader-kings. Once predominately inhabited by Man, it has recently seen a massive surge of Mer; most humorously, in the form \
-	of husbands and wives that've been romanced-from-abroad by Valoria's returning crusaders. Such a quirk has made Valoria the butt of many jokes, much to \
-	Grenzelhoft's delight and Otava's ire. Even so, however, none can deny the virtuousness and chivalriousness that seems to be inherent to all of its people."
+	origin_desc = "One of many lesser kingdoms dotted across the world, Valoria happens to be one of the few - of relative note - that is still ruled by a lineage of \
+	Psydonic crusader-kings. Once predominately inhabited by Man, it has recently seen a massive surge of Mer; most humorously, in the form of husbands and wives \
+	that've been romanced-from-abroad by Valoria's returning crusaders. Such a quirk has made Valoria the butt of many jokes, much to Grenzelhoft's delight and \
+	Otava's ire. Even so, however, none can deny the virtuousness and chivalriousness that seems to be inherent to all of its people."
 
 /datum/virtue/origin/racial/underdark
 	name = "Underdweller"
