@@ -63,7 +63,7 @@
 		H.set_blindness(0)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/rage)
 		var/list/main_choices = list("Unarmed Master", "Martial Expert") // Unarmed focuses on master punching and wrestling moves, Martial gives you two expert weapon skills to be flexible
-		var/category_choice = input(H, "Choose your TOOLS FOR BATTLE.", "SMASH OR SLASH!!") as anything in main_choices
+		var/category_choice = input(H, "Choose your MEANS OF VIOLENCE.", "SMASH OR SLASH!!") as anything in main_choices
 		switch(category_choice)
 			if("Unarmed Master") //still incredibly strong btw, apply punch to skull
 				var/list/unarmed_options = list("Discipline - Unarmed", "Katar", "Knuckledusters", "Punch Dagger", )
