@@ -81,7 +81,7 @@
 			if (lore_blurb)
 				dat += "<br><i><b>Lore inspiration:</b> [lore_blurb]</i>"
 		dat += "<br><b>Examine settings:</b> <a href='?_src_=familiar_prefs;preference=familiar_examine;task=select;planar_origin=[planar_origin]'>Open</a>"
-	dat += "<br><br><i>Press this button to send a hint to all arcyne users, once per round, that you are available and wish to be summoned.</i> <a href='?_src_=familiar_prefs;preference=pulse'>Pulse</a>"
+	dat += "<br><br><i>Press this button to send a hint to all arcyne users, once per round, that you are available and wish to be summoned:</i> <a href='?_src_=familiar_prefs;preference=pulse'>Pulse</a>"
 	var/datum/browser/popup = new(client?.mob, "Familiar Preferences", "<center>Familiar Preferences</center>", 900, 900)
 	popup.set_window_options("can_close=1")
 	popup.set_content(dat.Join())
