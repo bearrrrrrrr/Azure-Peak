@@ -82,8 +82,8 @@
 
 /datum/outfit/job/roguetown/warden/warden/pre_equip(mob/living/carbon/human/H)
 	..()
-	r_hand = /obj/item/rogueweapon/huntingknife/idagger/warden_machete
 	backpack_contents = list(
+		/obj/item/rogueweapon/huntingknife/idagger/warden_machete = 1,
 		/obj/item/storage/keyring/warden = 1,
 		/obj/item/flashlight/flare/torch/lantern/prelit = 1,
 		/obj/item/rogueweapon/scabbard/sheath = 1,
