@@ -23,6 +23,10 @@
 	if(!isturf(loc))
 		spawn_loot()
 		return INITIALIZE_HINT_QDEL
+	// Spawners created after map init (e.g. from butchering) resolve immediately - loot pools have already processed
+	if(!mapload)
+		spawn_loot()
+		return INITIALIZE_HINT_QDEL
 	GLOB.loot_spawners_pending += src
 	return INITIALIZE_HINT_LATELOAD
 
