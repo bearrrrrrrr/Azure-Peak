@@ -9,8 +9,8 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ACCEPTED_RACES
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "Typically a denizen of the sparsely populated Azurian woods, you are a volunteer with the Wardens; a fraternity of rangers who keep a vigil over the untamed wilderness. \
-				While you may not be a professional soldier of the Watch, you nevertheless serve as the first line of defense against outside threats and an early warning of problems to come. \
+	tutorial = "You are a volunteer with the Wardens; a fraternity of rangers who keep a vigil over Azuria's untamed wilderness. \
+				While you may not be a professional soldier, you nevertheless serve as the first line of defense against outside threats and an early warning of problems to come. \
 				Obey your Sergeant-at-Arms, the Marshal, and the Crown. Serve their will, and you will receive that which a Warden covets most - freedom and safety."
 
 	display_order = JDO_WARDEN
@@ -33,7 +33,6 @@
 	cloak = /obj/item/clothing/cloak/wardencloak
 	backr = /obj/item/storage/backpack/rogue/satchel
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/warden
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/jackchain
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/rogueweapon/stoneaxe/woodcut/wardenpick
@@ -95,20 +94,22 @@
 	H.set_blindness(0)
 
 	if(H.mind)
-		var/armor_options = list("Ranger - Dodge Expert, Padded Gambeson", "Sentinel - Maille Training, Iron Hauberk")
-		var/armor_choice = input(H, "Choose your ARMOR.", "EVADE OR ENDURE, LEST THE FORESTS DRAG YOU DOWN.") as anything in armor_options
-		switch(armor_choice)//Like skirmisher, you are not getting both
-			if("Ranger - Dodge Expert, Padded Gambeson")
+		var/armor_options = list("Ranger - Dodge Expert, Padded Gambeson + Bracers", "Sentinel - Maille Training, Iron Hauberk + Jackchains")
+		var/armor_choice = input(H, "Choose your ARMOR.", "EVADE OR ENDURE.") as anything in armor_options
+		switch(armor_choice) //Like Skirmisher, you are not getting both. Choose wisely.
+			if("Ranger - Dodge Expert, Padded Gambeson + Bracers")
 				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
-			if("Sentinel - Maille Training, Iron Hauberk")
+ 				wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			if("Sentinel - Maille Training, Iron Hauberk + Jackchains")
 				shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/iron
+				wrists = /obj/item/clothing/wrists/roguetown/bracers/jackchain
 				ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
-		var/weapon_options = list("Warden's Longbow + 20 Broadhead Arrows", "Spearhunter - Spear + Sling, +I STR / -I SPD")
-		var/weapon_choice = input(H, "Choose your SPECIALITY.", "ADOPT YOUR FORM FOR THE HUNT-TO-COME.") as anything in weapon_options
+		var/weapon_options = list("Bowhunter - Warden's Longbow + 20 Broadheads", "Spearhunter - Spear + Sling, +I STR / -I SPD")
+		var/weapon_choice = input(H, "Choose your SPECIALITY.", "PROFESS YOUR FOOTWORK.") as anything in weapon_options
 		switch(weapon_choice)
-			if("Bowhunter - Warden's Longbow + 20 Broadhead Arrows")
+			if("Bowhunter - Warden's Longbow + 20 Broadheads")
 				beltr = /obj/item/quiver/arrows
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/warden
 			if("Spearhunter - Spear + Sling, +I STR / -I SPD")
@@ -127,7 +128,7 @@
 			"Path of the Rous"		= /obj/item/clothing/head/roguetown/helmet/sallet/warden/rat,
 			"None"
 		)
-		var/helmchoice = input(H, "Choose your HELMET.", "FOLLOW THE PATH OF YOUR SPIRITBEASTE.") as anything in helmets
+		var/helmchoice = input(H, "Choose your HELMET.", "FOLLOW THE PATH.") as anything in helmets
 		if(helmchoice != "None")
 			head = helmets[helmchoice]
 
@@ -136,7 +137,7 @@
 			"Antlered Shroud"		= /obj/item/clothing/head/roguetown/roguehood/warden/antler,
 			"None"
 		)
-		var/hoodchoice = input(H, "Choose your SHROUD.", "DO NOT GIFT THEM THE GLIMMER OF YOUR EYE.") as anything in hoods
+		var/hoodchoice = input(H, "Choose your SHROUD.", "LEST THEY SEE YOUR EYES.") as anything in hoods
 		if(hoodchoice != "None")
 			mask = hoods[hoodchoice]
 	if(H.mind)
