@@ -233,11 +233,12 @@
 					if(has_flaw(/datum/charflaw/addiction/paranoid))
 						. += span_nicegreen("[m1] is the kind who sticks to their own. I understand.")
 						user.sate_addiction(/datum/charflaw/addiction/paranoid)
-					else if(pflaw.check_faction(src))
-						. += span_nicegreen("One of my own.")
-						user.sate_addiction(/datum/charflaw/addiction/paranoid)
-					else
-						user.add_stress(/datum/stressevent/paracrowd)
+					else if(pflaw)
+						if(pflaw.check_faction(src))
+							. += span_nicegreen("One of my own.")
+							user.sate_addiction(/datum/charflaw/addiction/paranoid)
+						else
+							user.add_stress(/datum/stressevent/paracrowd)
 
 			if(has_flaw(/datum/charflaw/addiction/masochist) && user.has_flaw(/datum/charflaw/addiction/sadist))
 				. += span_secradio("[m1] marked by scars inflicted for pleasure. A delectable target for my urges.")
