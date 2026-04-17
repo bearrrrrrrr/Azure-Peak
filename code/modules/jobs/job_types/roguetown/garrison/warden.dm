@@ -99,15 +99,15 @@
 		switch(armor_choice) //Like Skirmisher, you are not getting both. Choose wisely.
 			if("Ranger - Dodge Expert, Padded Gambeson + Bracers")
 				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+				wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
- 				wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			if("Sentinel - Maille Training, Iron Hauberk + Jackchains")
-				shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/iron
 				wrists = /obj/item/clothing/wrists/roguetown/bracers/jackchain
+				shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/iron
 				ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 		var/weapon_options = list("Bowhunter - Warden's Longbow + 20 Broadheads", "Spearhunter - Spear + Sling, +I STR / -I SPD")
-		var/weapon_choice = input(H, "Choose your SPECIALITY.", "PROFESS YOUR FOOTWORK.") as anything in weapon_options
+		var/weapon_choice = input(H, "Choose your SPECIALITY.", "PREPARE FOR THE HUNT.") as anything in weapon_options
 		switch(weapon_choice)
 			if("Bowhunter - Warden's Longbow + 20 Broadheads")
 				beltr = /obj/item/quiver/arrows
