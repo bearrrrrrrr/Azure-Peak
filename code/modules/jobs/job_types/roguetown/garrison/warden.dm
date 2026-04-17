@@ -117,6 +117,8 @@ extra_context = "Wardens receive a boost to Perception, Willpower, and Speed whe
 				r_hand = /obj/item/rogueweapon/spear
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				l_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
+				H.change_stat(STATKEY_SPD, -1)
+				H.change_stat(STATKEY_STR, 1)
 
 		var/helmets = list(
 			"Path of the Antelope" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/antler,
