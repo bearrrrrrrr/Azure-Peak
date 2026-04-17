@@ -45,7 +45,8 @@
 
 /datum/advclass/warden/warden
 	name = "Warden"
-	tutorial = "You are a Warden; a guerilla beneath the Crown's command, a ranger of Azuria's sparsely populated woods, and the first line of defense against whatever"
+	tutorial = "You are a Warden; a guerilla beneath the Crown's command, a ranger of Azuria's sparsely populated woods, and the first line of defense against whatever foulness befalls this fief."
+	extra_context = "Wardens receive a boost to Perception, Willpower, and Speed when traveling within the 'Azurian Grove' biome. When outside this biome, their statblock - compared to the Man-at-Arms - is slightly reduced."
 	outfit = /datum/outfit/job/roguetown/warden/warden
 	category_tags = list(CTAG_WARDEN)
 	subclass_stats = list(
@@ -79,8 +80,6 @@
 		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/medicine = SKILL_LEVEL_NOVICE,
 	)
-
-extra_context = "Wardens receive a boost to Perception, Willpower, and Speed when traveling within the 'Azurian Grove' biome. When outside this biome, their statblock - compared to the Man-at-Arms - is slightly reduced."
 
 /datum/outfit/job/roguetown/warden/warden/pre_equip(mob/living/carbon/human/H)
 	..()
