@@ -144,7 +144,8 @@
 				"Volf-Face Helm"		= /obj/item/clothing/head/roguetown/helmet/heavy/volfplate,
 				"None"
 			)
-		
+			if(istype(H.patron, /datum/patron/divine/noc))
+				helmets += list("Greatplumed Owl Armet" = /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/owl)
 			var/helmchoice = input(H, "Choose your Helm.", "LIGHT SHINES THROUGH") as anything in helmets
 			if(helmchoice != "None")
 				head = helmets[helmchoice]
