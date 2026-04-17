@@ -34,7 +34,7 @@ GLOBAL_LIST_EMPTY(players_in_dream)
 			effective_probability *= 5
 
 		// Look kids, if you want accurate probability, don't use fractional numbers. Pickweight is safer and more accurate than prob() here.
-		var/list/options = list("teleport" = effective_probability, "no_teleport" = max(0, base_probability - effective_probability))
+		var/list/options = list("teleport" = effective_probability, "no_teleport" = max(1, base_probability - effective_probability))
 		if(pickweight(options) == "no_teleport")
 			return
 
