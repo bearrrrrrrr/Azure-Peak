@@ -1,4 +1,0 @@
-author: "KatTheFox"
-delete-after: True
-changes:
-  - bugfix: "rings and ring-slot amulets are no longer invisible for women specifically"
