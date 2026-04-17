@@ -417,22 +417,11 @@ Mostly known for its exportation of the fogbeast: a prized hybrid of the saiga a
 	</details>
 
 	<details>
-		<summary><strong> BLACKSTONE </strong></summary>
-		<br>
-		<em>The Crater, Hole of Naught But Dust-And-Echoes</em>
-		<br><br>
-		While not originally named 'Blackstone', this fief was retroactively termed as such following a minor incident which - involving the accidental collision of two Syonic fragments in transit - had resulted it being completely vaporized. 
-<br><br>
-The remaining crater had left a curious surprise, however, for its survivors: a glassy surface, not unlike obsidian, that seems to glimmer with unnatural energy. As of now, a sect of the Holy Psydonic Inquisition garrisons the crater.
-		<br>
-	</details>
-
-	<details>
-		<summary><strong> ROTWOOD </strong></summary>
+		<summary><strong> ROTWOAD </strong></summary>
 		<br>
 		<em>The Vale, Laborers of the Terrorbog</em>
 		<br><br>
-		Originally formed as a camp for those overlooking the Terrorbog, the 'Rotwood Vale' - as it's most commonly known as now - has since grown into a lesser kingdom, renowned for hosting some of Psydonia's most battle-hardened Wardens. 
+		Originally formed as a camp for those overlooking the Terrorbog, the 'Rotwoad Vale' - as it's most commonly known as now - has since grown into a lesser kingdom, renowned for hosting some of Psydonia's most battle-hardened Wardens. 
 <br><br>
 Their proximity to the Terrorbog, however, means that they're also oft-beleaguered by deadly plagues: a matter that has only served to further enforce the unusually high level of segregation between the noblemen and their peasantry.
 		<br>
@@ -463,9 +452,9 @@ Intermingleance with Otavan refugees and Ranesheni freemen, throughout the centu
 	<details>
 		<summary><strong> RUDMARSCH </strong></summary>
 		<br>
-		<em>The Reach, Fallen Kingdom of Sanguine Fields</em>
+		<em>The Reach, Fallen Kingdom of Crimson Fields</em>
 		<br><br>
-		Colloquially known as the 'Scarlet Reach', this lesser kingdom once had the misfortune of being in the middle of a century-long war between Grenzelhoft and Otava. While the fighting has long since ceased, its fields have forever retained an unnaturally red hue. 
+		Colloquially known as the 'Sanguine Reach', this lesser kingdom once had the misfortune of being in the middle of a century-long war between Grenzelhoft and Otava. While the fighting has long since ceased, its fields have forever retained an unnaturally red hue. 
 <br><br>
 		Now, there is nothing left. 
 <br><br>
@@ -497,7 +486,7 @@ Intermingleance with Otavan refugees and Ranesheni freemen, throughout the centu
 		<p><strong> Underworld </strong> - Hell. A spiteful inversion of reality, created by the Archdevil. It is the home of devils, demons, and taxmen. </p>
 		<p><strong> Holy See </strong> - The premiere worshippers of the Pantheon, and the governing body of the Church. Ruled by a Pope.</p>
 		<p><strong> Ecclesial </strong> - A splinter-faction of the Holy See, which has instead embraced the Ascendants. Sporadically present in hidden enclaves. </p>
-		<p><strong> Orthodoxy </strong> - The Holy See's eternal rival, whom gives praise to the ancient God of Psydon. Ruled by an Archbishop.</p>
+		<p><strong> Orthodoxy </strong> - The Holy See's eternal rival, whom gives praise to the ancient God of Psydon. Ruled by the High Scholar of Otava.</p>
 		<p><strong> Inquisition </strong> - The militant arm of the Orthodoxy, notorious for hunting both nitebeasts and suspected worshippers with overzealous impunity. </p>
 		<p><strong> Duchy </strong> - Azuria's royal family, and the rulers of the Azure Peak. Traditionally helmed by a Grand Duke or Grand Duchess. </p>
 		<p><strong> Alotheos </strong> - A labyrinthian tomb, located within Azuria. Though its origins aren't known, its said to hold untold riches within. </p>
@@ -521,7 +510,7 @@ Intermingleance with Otavan refugees and Ranesheni freemen, throughout the centu
 		<p><strong> Deadite </strong> - Luxless corpses, resurrected through unholy means. Interchangeably used to describe both zombies and skeletons. </p>
 		<p><strong> Nitebeast </strong> - Monsters who rely on night-and-darkness to prowl. Primarily references werewolves, but can reference vampires as well. </p>
 		<p><strong> Lycker </strong> - Vampires. These luxless revenants are said to drink the blood of the living, and are empowered with unholy magicks. </p>
-		<p><strong> Gnoll </strong> - Lesser nitebeasts, borne of Graggar's malice towards the worthiest - or most valuable - prey. </p>
+		<p><strong> Gnoll </strong> - Lesser nitebeasts, borne of Graggar's malice towards the worthiest - or most valuable - prey. Like verevolves, they were once men; unlike them, they embrace their inhumenity. </p>
 		<p><strong> Verevolf </strong> - Greater nitebeasts, said to've been caused by Dendor's curses. When nite comes, even the meekest blightee turns into a fierce beast. </p>
 		<p><strong> Lich </strong> - Necromancers, ancient and well-versed in unholy magicka. They serve as the self-proclaimed lieutenants of Zizo, and are one of Azuria's gravest threats. </p>
 		<p><strong> Vampyre-Lord </strong> - Lords of lyckerdom, thought only to be restricted to the legends of antiquity. Should one resurface, terrible events are surely to follow. </p>
