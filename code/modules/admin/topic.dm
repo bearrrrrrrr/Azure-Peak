@@ -1418,6 +1418,13 @@
 							if(faction_override && ismob(O))
 								var/mob/spawned_mob = O
 								spawned_mob.faction = list(faction_override)
+							if((href_list["dust_on_death"] || href_list["dust_leave_head"] || href_list["dust_delete_gear"]) && isliving(O))
+								var/mob/living/living_mob = O
+								ADD_TRAIT(living_mob, TRAIT_DUSTABLE, TRAIT_GENERIC)
+								if(href_list["dust_leave_head"])
+									ADD_TRAIT(living_mob, TRAIT_DUST_LEAVE_HEAD, TRAIT_GENERIC)
+								if(href_list["dust_delete_gear"])
+									ADD_TRAIT(living_mob, TRAIT_DUST_DELETE_GEAR, TRAIT_GENERIC)
 							if(where == "inhand" && isliving(usr) && isitem(O))
 								var/mob/living/L = usr
 								var/obj/item/I = O
