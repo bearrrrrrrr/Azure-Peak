@@ -10,7 +10,7 @@
 	allowed_races = ACCEPTED_RACES
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	tutorial = "You are a volunteer with the Wardens; a fraternity of rangers who keep a vigil over Azuria's untamed wilderness. \
-				While you may not be a professional soldier, you nevertheless serve as the first line of defense against outside threats and an early warning of problems to come. \
+				While you may not be a professional soldier, you nevertheless serve the Duchy as the first line of defense against outside threats. \
 				Obey your Sergeant-at-Arms, the Marshal, and the Crown. Serve their will, and you will receive that which a Warden covets most - freedom and safety."
 
 	display_order = JDO_WARDEN
