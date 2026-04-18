@@ -56,8 +56,8 @@
 		STATKEY_SPD = 1 //(2 with buff)
 	)//8 points weighted, look at their buff to understand as to why.
 	subclass_skills = list(
-		/datum/skill/combat/bows = SKILL_LEVEL_MASTER,
-		/datum/skill/combat/slings = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/bows = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/slings = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/axes = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/polearms = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
@@ -106,17 +106,19 @@
 				shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/iron
 				ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
-		var/weapon_options = list("Bowhunter - Warden's Longbow + 20 Broadheads", "Spearhunter - Spear + Sling, +I STR / -I SPD")
+		var/weapon_options = list("Bowhunter - Blackhorn Bow + 20 Broadheads", "Spearhunter - Spear + Sling, +I STR / -I SPD")
 		var/weapon_choice = input(H, "Choose your SPECIALITY.", "JACK OF MANY TRADES, MASTER OF NONE.") as anything in weapon_options
 		switch(weapon_choice)
-			if("Bowhunter - Warden's Longbow + 20 Broadheads")
+			if("Bowhunter - Blackhorn Bow + 20 Broadheads")
 				beltr = /obj/item/quiver/arrows
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/warden
+				H.adjust_skillrank_up_to(/datum/skill/combat/bows, SKILL_LEVEL_MASTER, TRUE)
 			if("Spearhunter - Spear + Sling, +I STR / -I SPD")
 				beltr = /obj/item/quiver/sling/iron
 				r_hand = /obj/item/rogueweapon/spear
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				l_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
+				H.adjust_skillrank_up_to(/datum/skill/combat/slings, SKILL_LEVEL_EXPERT, TRUE)
 				H.change_stat(STATKEY_SPD, -1)
 				H.change_stat(STATKEY_STR, 1)
 
