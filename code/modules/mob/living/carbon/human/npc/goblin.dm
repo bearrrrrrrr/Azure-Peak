@@ -327,7 +327,7 @@ GLOBAL_LIST_INIT(goblin_pyromancer_aggro, list(
 		H.STAINT = 8
 	else
 		H.STAINT = 4
-	var/loadout = rand(1,9)
+	var/loadout = rand(1,8)
 	switch(loadout)
 		if(1) //tribal spear
 			r_hand = /obj/item/rogueweapon/spear/stone
@@ -392,13 +392,6 @@ GLOBAL_LIST_INIT(goblin_pyromancer_aggro, list(
 			H.STAPER += 3
 			H.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 			H.upgrade_ai_controller(/datum/ai_controller/human_npc/archer)
-		if(9) // bottle bomber
-			r_hand = /obj/item/rogueweapon/huntingknife/stoneknife
-			neck = /obj/item/storage/belt/rogue/pouch/bombs
-			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
-			H.name = "goblin pyromancer"
-			H.real_name = "goblin pyromancer"
-			SEND_SIGNAL(H, COMSIG_MOB_MODIFY_AGGRO_LINES, GLOB.goblin_pyromancer_aggro, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
