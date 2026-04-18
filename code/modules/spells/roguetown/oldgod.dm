@@ -427,7 +427,9 @@
 	var/mob/living/carbon/human/H = user
 	to_chat(H, span_info("I take a moment to collect myself..."))
 
-	while(do_after(H, 50))
+	for(var/i in 1 to 10)
+		if(!do_after(H, 50))
+			break
 		var/brute = H.getBruteLoss()
 		var/burn = H.getFireLoss()
 		var/conditional_buff = FALSE
@@ -533,7 +535,9 @@
 	var/mob/living/carbon/human/H = user
 	to_chat(H, span_info("I take a moment to collect myself..."))
 
-	while(do_after(H, 50))
+	for(var/i in 1 to 10)
+		if(!do_after(H, 50))
+			break
 		var/brute = H.getBruteLoss()
 		var/burn = H.getFireLoss()
 		var/conditional_buff = FALSE
@@ -639,7 +643,9 @@
 	var/mob/living/carbon/human/H = user
 	to_chat(H, span_info("I take a moment to collect myself..."))
 
-	while(do_after(H, 50))
+	for(var/i in 1 to 10)
+		if(!do_after(H, 50))
+			break
 		var/brute = H.getBruteLoss()
 		var/burn = H.getFireLoss()
 		var/conditional_buff = FALSE
