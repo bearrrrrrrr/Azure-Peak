@@ -355,20 +355,20 @@ Though similar in size to Azuria, its self-contained nature means that it is mor
 		<br>
 		<em>The Republic, Cultivators of the Weeping God's Order</em>
 		<br><br>
-		Valoria is a lesser kingdom that straddles the western coasts, just a stone's throw away from Lyndvhar. They practice an optimistic variant of the Orthodoxy, and - though largely independent from Otava's influence - often helps out whenever the Archbishop calls for holy warfare. 
+		Valoria is a lesser kingdom that straddles the western coasts, just a stone's throw away from Zyndvhartia. They practice an optimistic variant of the Orthodoxy, and - though largely independent from Otava's influence - often helps out whenever the Archbishop calls for holy warfare. 
 <br><br>
 Residing within Valoria's walls is the Order of the Silver Psycross: a faith-militance that's renowned for its intoxicating mirth, adherence to chivalry, and remarkably delicious handpies. 
 		<br>
 	</details>
 
 	<details>
-		<summary><strong> LYNDVHAR </strong></summary>
+		<summary><strong> ZYNDVHARTIA </strong></summary>
 		<br>
 		<em>The Port, Receiver of Psydonia's Merchant-Fleets</em>
 		<br><br>
-		Lyndvhar might be similar in size to Azuria, but has a far more vital presence in Psydonia's economic affairs. Due to their positioning on the western coast, they're considered the closest - and most neutral - port for nearly every major kingdom with a mercantile fleet. 
+		Zyndvhartia might be similar in size to Azuria, but has a far more vital presence in Psydonia's economic affairs. Due to their positioning on the western coast, they're considered the closest - and most neutral - port for nearly every major kingdom with a mercantile fleet. 
 <br><br>
-Fried salmoncakes, jellied eels, and pints of Fjall-iced liquor keep Lyndvhar's dockworkers strong: both when laboring at the harbor, and when rioting against nobility after a particularly close game of lampternball.
+Fried salmoncakes, jellied eels, and pints of Fjall-iced liquor keep Zyndvhartia's dockworkers strong: both when laboring at the harbor, and when rioting against nobility after a particularly close game of lampternball.
 		<br>
 	</details>
 
@@ -413,17 +413,6 @@ Though a force of Psydonic crusaders had managed to stop the ritual before its c
 		Kaizoku occupies a smaller series of isles that're at the edge of known civilization, and - if the scholars are to be believed - is an ancestral relative to the twinned-empires of Kazengun and Lingyue. It is perpetually shrouded in fog, so thick that only its well-accustomed sailors could ever hope to safely navigate through it.
 <br><br>
 Mostly known for its exportation of the fogbeast: a prized hybrid of the saiga and horse, and the favored steed of Kingsfield's stout-postured knight-commander.
-		<br>
-	</details>
-
-	<details>
-		<summary><strong> ROTWOAD </strong></summary>
-		<br>
-		<em>The Vale, Laborers of the Terrorbog</em>
-		<br><br>
-		Originally formed as a camp for those overlooking the Terrorbog, the 'Rotwoad Vale' - as it's most commonly known as now - has since grown into a lesser kingdom, renowned for hosting some of Psydonia's most battle-hardened Wardens. 
-<br><br>
-Their proximity to the Terrorbog, however, means that they're also oft-beleaguered by deadly plagues: a matter that has only served to further enforce the unusually high level of segregation between the noblemen and their peasantry.
 		<br>
 	</details>
 
