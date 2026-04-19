@@ -82,9 +82,9 @@
 
 /mob/living/simple_animal/pet/familiar/death(gibbed)
 	. = ..(gibbed)
-	var/obj/item/magic/familiar_vestige/vestige = new /obj/item/magic/familiar_vestige(loc)
+	var/obj/item/magic/familiar/familiar_vestige/vestige = new /obj/item/magic/familiar/familiar_vestige(loc)
 	vestige.stored_familiar = src
-	src.loc = vestige
+	src.forceMove(vestige)
 	vestige.desc = "The vestige of [src.name], a fallen [GLOB.familiar_display_names[src.type]]. Likely worth a lot to the magos that summoned [src.p_them()]!"
 
 /mob/living/simple_animal/pet/familiar/proc/TryAddFlight()
