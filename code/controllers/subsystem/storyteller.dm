@@ -660,6 +660,14 @@ SUBSYSTEM_DEF(gamemode)
 			to_chat(world, span_reallybig("[initialized_storyteller.name] is ascendant!"))
 			to_chat(world, "<br>")
 
+	// If an admin force-starts the round while the storyteller vote is still running,
+	// resolve it now so selected_storyteller reflects the votes cast so far.
+	if(SSvote.mode == "storyteller")
+		SSvote.result()
+		for(var/client/C in SSvote.voting)
+			C << browse(null, "window=vote;can_close=0;size=[SSvote.vote_width]x[SSvote.vote_height]")
+		SSvote.reset()
+
 	if(!current_storyteller || current_storyteller.type != selected_storyteller)
 		init_storyteller()
 	if(!ispath(roundstart_storyteller, /datum/storyteller))
