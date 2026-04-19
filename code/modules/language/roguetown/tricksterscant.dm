@@ -8,7 +8,7 @@
 	flags = TONGUELESS_SPEECH | SIGNLANG
 	space_chance = 66
 	default_priority = 80
-	icon_state = "thief"
+	icon_state = "xylix"
 	spans = list(SPAN_PAPYRUS)
 	signlang_verb = list(
 		"scrunches their nose",
