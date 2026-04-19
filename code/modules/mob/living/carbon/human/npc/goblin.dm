@@ -384,14 +384,13 @@ GLOBAL_LIST_INIT(goblin_pyromancer_aggro, list(
 			neck = /obj/item/quiver/sling/stone
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
 			H.adjust_skillrank(/datum/skill/combat/slings, 2, TRUE)
-		if(8) // bow archer variant 2 (no armor, faster)
+		if(8) // bottle bomber
 			r_hand = /obj/item/rogueweapon/huntingknife/stoneknife
-			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-			backl = /obj/item/quiver/stonearrows
-			H.STASTR -= 2
-			H.STAPER += 3
-			H.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
-			H.upgrade_ai_controller(/datum/ai_controller/human_npc/archer)
+			neck = /obj/item/storage/belt/rogue/pouch/bombs
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
+			H.name = "goblin pyromancer"
+			H.real_name = "goblin pyromancer"
+			SEND_SIGNAL(H, COMSIG_MOB_MODIFY_AGGRO_LINES, GLOB.goblin_pyromancer_aggro, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
