@@ -173,9 +173,9 @@
 		if("Woad Elven Barbute")
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/elven_helm/light, SLOT_HEAD, TRUE)
 		if("Elven Barbute")
-			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/elvenbarbute, SLOT_HEAD, TRUE)
+			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/elvenbarbute/blackoak, SLOT_HEAD, TRUE)
 		if("Winged Elven Barbute")
-			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/elvenbarbute/winged, SLOT_HEAD, TRUE)
+			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/elvenbarbute/winged/blackoak, SLOT_HEAD, TRUE)
 
 /datum/advclass/mercenary/blackoak_adept
 	name = "Black Oaken Adept"
@@ -349,11 +349,11 @@
 	var/helmets = list("Woad Elven Barbute", "Elven Barbute", "Winged Elven Barbute")
 	var/helmet_choice = input(H, "Choose your HELMET.", "LEAVES OVER STEEL.") as anything in helmets
 	switch(helmet_choice)
-		if("Elven Barbute")
-			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/elvenbarbute, SLOT_HEAD, TRUE)
-		if("Winged Elven Barbute")
-			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/elvenbarbute/winged, SLOT_HEAD, TRUE)
 		if("Woad Elven Barbute")
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/heavy/elven_helm/light, SLOT_HEAD, TRUE)
+		if("Elven Barbute")
+			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/elvenbarbute/blackoak, SLOT_HEAD, TRUE)
+		if("Winged Elven Barbute")
+			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/elvenbarbute/winged/blackoak, SLOT_HEAD, TRUE)
 
 	H.merctype = 2
