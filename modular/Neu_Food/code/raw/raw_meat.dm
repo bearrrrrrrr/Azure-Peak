@@ -204,6 +204,25 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/rat/fried
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/rat/fried
 
+/* ............. Bear Meat ................*/
+/obj/item/reagent_containers/food/snacks/rogue/meat/steak/bear
+	name = "raw bear meat"
+	desc = "Grow some hair on yer chest lad!"
+	icon_state = "bear"
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef
+	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/bear/fried
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/bear/fried
+
+/* ............. Troll Meat ................*/
+/obj/item/reagent_containers/food/snacks/rogue/meat/steak/troll
+	name = "troll blubber"
+	desc = "A rancid reddish blubber. It squelches under the merest touch, wobbling back into shape. It doesn't seem... Quite dead, as it continues to shift even after being sliced free."
+	icon_state = "troll"
+	slice_path = null
+	rotprocess = SHELFLIFE_EXTREME
+	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/troll/fried
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/steak/troll/fried
+
 /* ............. fish chop ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/fish
 	name = "fish filet"
