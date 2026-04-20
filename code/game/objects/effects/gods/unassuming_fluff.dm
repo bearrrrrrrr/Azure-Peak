@@ -73,6 +73,8 @@ GLOBAL_LIST_EMPTY(players_in_dream)
 	user.add_stress(/datum/stressevent/dream_horror)
 	user.blind_eyes(2)
 	user.AddComponent(/datum/component/dream_echo, original_turf)
+	if(!HAS_TRAIT(user, TRAIT_DARKVISION))
+		ADD_TRAIT(user, TRAIT_DARKVISION, CULT_TRAIT)
 
 	// Spawn weapons
 	if (weapons) 
@@ -90,6 +92,7 @@ GLOBAL_LIST_EMPTY(players_in_dream)
 
 	GLOB.players_in_dream -= user
 	user.remove_stress(/datum/stressevent/dream_horror)
+	REMOVE_TRAIT(user, TRAIT_DARKVISION, CULT_TRAIT)
 	user.blind_eyes(2)
 	do_teleport(user, original_turf)
 	qdel(user.GetComponent(/datum/component/dream_echo))
