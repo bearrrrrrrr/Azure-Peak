@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(droning)
 /datum/controller/subsystem/droning/proc/area_entered(area/area_entered, client/entering)
 	if(!area_entered || !entering)
 		return
-	if(listener && listener.prefs && listener.prefs.stopdroning)
+	if(entering && entering.prefs && entering.prefs.stopdroning)
 		return
 /*
 	if(HAS_TRAIT(entering.mob, TRAIT_LEAN) && !area_entered.droning_sound)
