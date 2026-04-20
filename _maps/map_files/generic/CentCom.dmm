@@ -691,11 +691,6 @@
 "bX" = (
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue)
-"ci" = (
-/obj/effect/decal/cleanable/dirt/cobweb,
-/obj/effect/decal/remains/bear,
-/turf/open/floor/rogue/dirt,
-/area/rogue/underworld/dream)
 "cj" = (
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison,
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison,
@@ -794,6 +789,11 @@
 /obj/structure/fluff/statue/knight/r,
 /turf/open/water/pond,
 /area/rogue/indoors/ravoxarena)
+"hB" = (
+/obj/effect/decal/remains/bear,
+/obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/underworld/dream)
 "hK" = (
 /turf/open/floor/rogue/underworld/space/sparkle_quiet/dense,
 /area/rogue)
@@ -1301,15 +1301,6 @@
 /obj/item/rogueweapon/shield/tower,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
-"vr" = (
-/obj/effect/wisp/prestidigitation{
-	desc = "A small, fiery ball of light made up of mystical energy.";
-	name = "Will-o'-the-wisp";
-	pixel_x = -11;
-	pixel_y = -9
-	},
-/turf/open/floor/rogue/underworld/space/sparkle_quiet/dense,
-/area/rogue)
 "vM" = (
 /obj/effect/landmark/start/haglate,
 /turf/open/floor/rogue/twig,
@@ -1452,15 +1443,6 @@
 /obj/structure/fluff/statue/gargoyle/moss/candles,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/underworld/dream)
-"Bw" = (
-/obj/effect/wisp/prestidigitation{
-	desc = "A small, fiery ball of light made up of mystical energy.";
-	name = "Will-o'-the-wisp";
-	pixel_x = 16;
-	pixel_y = 10
-	},
-/turf/open/floor/rogue/underworld/space/sparkle_quiet/dense,
-/area/rogue)
 "By" = (
 /turf/open/floor/rogue/tile/bfloorz,
 /area/rogue/indoors/eventarea)
@@ -1598,6 +1580,10 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/underworld/dream)
+"DY" = (
+/obj/effect/decal/cleanable/dirt/cobweb,
+/turf/open/floor/rogue/dirt,
+/area/rogue/underworld/dream)
 "Ee" = (
 /obj/item/hag_catalyst/synth_base,
 /turf/open/floor/rogue/twig,
@@ -1710,6 +1696,15 @@
 "Hy" = (
 /turf/open/floor/rogue/tile/masonic/spiral,
 /area/rogue/indoors/eventarea)
+"Hz" = (
+/obj/effect/wisp/prestidigitation{
+	desc = "A small, fiery ball of light made up of mystical energy.";
+	name = "Will-o'-the-wisp";
+	pixel_x = 12;
+	pixel_y = 9
+	},
+/turf/open/floor/rogue/underworld/space/sparkle_quiet/dense,
+/area/rogue)
 "HI" = (
 /obj/structure/table/church,
 /obj/effect/landmark/underworldstrands,
@@ -15619,8 +15614,8 @@ rQ
 rQ
 rQ
 rQ
-bX
-bX
+rQ
+rQ
 bX
 bX
 bX
@@ -15749,24 +15744,24 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
-Re
-Re
 Re
 hK
 bX
 bX
 bX
 bX
+xI
+xI
+lv
+lv
+lv
 bX
 bX
-bX
-bX
-bX
-bX
-bX
-bX
-bX
+xI
+xI
 bX
 bX
 bX
@@ -15879,9 +15874,9 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
-Re
-Re
 hK
 Re
 hK
@@ -15889,15 +15884,15 @@ Re
 bX
 bX
 bX
+hB
+eI
 bX
-bX
-bX
-bX
-bX
-bX
-bX
-bX
-bX
+lv
+lv
+lv
+vm
+eI
+eI
 bX
 bX
 bX
@@ -16009,9 +16004,9 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
-Re
-Re
 Re
 hK
 Re
@@ -16025,9 +16020,9 @@ bX
 bX
 bX
 bX
-bX
-bX
-bX
+vm
+eI
+lv
 bX
 bX
 bX
@@ -16139,9 +16134,9 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
-Re
-Re
 hK
 Re
 hK
@@ -16149,11 +16144,11 @@ Re
 hK
 Re
 hK
+hK
 bX
 bX
 bX
-ci
-xI
+DY
 lv
 lv
 lv
@@ -16269,19 +16264,19 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
 Re
 Re
 Re
-Re
-Re
 hK
 Re
 hK
+Re
 Vr
 Db
 Ei
-bX
 bX
 xI
 to
@@ -16399,19 +16394,19 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
-Re
-Re
 hK
 Re
 hK
 Re
 hK
 Re
+hK
 hK
 Vr
 Ei
-PO
 bX
 lv
 bX
@@ -16529,15 +16524,16 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
 Re
 Re
 Re
-Re
-Re
 hK
 Re
 hK
+Re
 Vr
 hK
 Ei
@@ -16549,8 +16545,7 @@ rZ
 rZ
 rZ
 rZ
-rZ
-xI
+PO
 lv
 lv
 vm
@@ -16659,9 +16654,9 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
-Re
-Re
 hK
 Re
 hK
@@ -16670,9 +16665,9 @@ hK
 Re
 hK
 Vr
+Vr
 Ei
 rZ
-rZ
 PO
 PO
 PO
@@ -16680,7 +16675,7 @@ PO
 PO
 rZ
 rZ
-xI
+PO
 eI
 bX
 tp
@@ -16789,19 +16784,19 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
 Re
 Re
 Re
-Re
-Re
-Bw
+hK
 Re
 hK
+Re
 Vr
 hK
 Ei
-rZ
 PO
 PO
 Yz
@@ -16919,19 +16914,19 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
-Re
-Re
 hK
 Re
 hK
 Re
 hK
 Re
+hK
 hK
 Vr
 Ei
-rZ
 PO
 eI
 Rc
@@ -17049,19 +17044,19 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
 Re
 Re
 Re
-Re
-Re
 hK
 Re
 hK
+Re
 Vr
 hK
 Ei
-rZ
 PO
 lx
 lv
@@ -17179,19 +17174,19 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
-Re
-Re
 hK
 Re
 hK
 Re
-hK
+Hz
 Re
+hK
 hK
 CV
 Ei
-rZ
 PO
 YF
 lv
@@ -17309,19 +17304,19 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
 Re
 Re
 Re
-Re
+hK
 Re
 hK
 Re
-vr
 Vr
 hK
 Ei
-rZ
 PO
 PO
 xI
@@ -17439,19 +17434,19 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
-Re
-Re
 hK
 Re
 hK
 Re
 hK
 Re
+hK
 hK
 Vr
 Ei
-rZ
 rZ
 PO
 PO
@@ -17569,19 +17564,19 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
 Re
 Re
 Re
-Re
-Re
 hK
 Re
 hK
+Re
 Vr
 hK
 Ei
-rZ
 rZ
 rZ
 PO
@@ -17699,19 +17694,19 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
-Re
-Re
 hK
 Re
 hK
 Re
 hK
 Re
+hK
 hK
 Vr
 Ei
-rZ
 rZ
 rZ
 rZ
@@ -17829,19 +17824,19 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
 Re
 Re
 Re
-Re
-Re
 hK
 Re
 hK
+Re
 Vr
 hK
 Ei
-PO
 SW
 bX
 bX
@@ -17959,19 +17954,19 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
-Re
-Re
 hK
 Re
 hK
 Re
 hK
 Re
+hK
 hK
 Vr
 Ei
-PO
 bX
 bX
 bX
@@ -18089,19 +18084,19 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
 Re
 Re
 Re
-Re
-Re
 hK
 Re
 hK
+Re
 Vr
 Db
 Ei
-bX
 bX
 Bz
 DX
@@ -18219,9 +18214,9 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
-Re
-Re
 hK
 Re
 hK
@@ -18229,7 +18224,7 @@ Re
 hK
 Re
 hK
-bX
+hK
 bX
 bX
 bX
@@ -18349,9 +18344,9 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
-Re
-Re
 Re
 hK
 Re
@@ -18479,9 +18474,9 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
-Re
-Re
 hK
 Re
 hK
@@ -18609,9 +18604,9 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
 bX
-Re
-Re
 Re
 hK
 bX
@@ -18739,8 +18734,8 @@ rQ
 rQ
 rQ
 rQ
-bX
-bX
+rQ
+rQ
 bX
 bX
 bX
