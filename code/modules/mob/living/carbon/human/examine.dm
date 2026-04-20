@@ -840,10 +840,12 @@
 	if((user != src) && isliving(user))
 		var/mob/living/L = user
 		var/final_str = STASTR
+		var/final_con = STACON
 		if(HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
 			final_str = L.STASTR - rand(1,2)
+			final_con = L.STACON - rand(1,2)
 		var/strength_diff = final_str - L.STASTR
-		var/con_diff = STACON - L.STACON
+		var/con_diff = final_con - L.STACON
 
 		var/str_desc
 		var/str_extreme = FALSE
