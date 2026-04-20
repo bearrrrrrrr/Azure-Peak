@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(droning)
 /datum/controller/subsystem/droning/proc/area_entered(area/area_entered, client/entering)
 	if(!area_entered || !entering)
 		return
-	if(listener?.prefs?.stopdroning)
+	if(listener && listener.prefs && listener.prefs.stopdroning)
 		return
 /*
 	if(HAS_TRAIT(entering.mob, TRAIT_LEAN) && !area_entered.droning_sound)
@@ -35,7 +35,7 @@ SUBSYSTEM_DEF(droning)
 	if(!area_player || !listener)
 		return
 	
-	if(listener?.prefs?.stopdroning)
+	if(listener && listener.prefs && listener.prefs.stopdroning)
 		return
 	
 	if(SSticker.current_state >= GAME_STATE_FINISHED) //stop drones in round end
@@ -112,7 +112,7 @@ SUBSYSTEM_DEF(droning)
 /datum/controller/subsystem/droning/proc/last_phase(area/area_player, client/listener, shouldskip = FALSE)
 	if(!area_player || !listener)
 		return
-	if(listener?.prefs?.stopdroning)
+	if(listener && listener.prefs && listener.prefs.stopdroning)
 		return
 	if(!listener?.droning_sound)
 		shouldskip = TRUE
