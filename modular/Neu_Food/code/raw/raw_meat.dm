@@ -7,7 +7,7 @@
 	icon_state = "meatslab"
 	slice_batch = TRUE // so it takes more time, changed from FALSE
 	filling_color = "#8f433a"
-	rotprocess = SHELFLIFE_SHORT
+	rotprocess = SHELFLIFE_DECENT
 	chopping_sound = TRUE
 	foodtype = MEAT
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
