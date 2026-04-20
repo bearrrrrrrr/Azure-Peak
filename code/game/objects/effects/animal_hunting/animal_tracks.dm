@@ -44,6 +44,7 @@
 	. += span_info("Buy hunting maps to improve odds at finding certain animals.")
 	. += span_info("Higher hunting skill spawns better animals more often.")
 	. += span_info("If you see a white stag, think twice before attacking. Maybe just run, to be safe.")
+	. += span_info("Right click your eyeball to get directions to the nearest track you are tracking, provided it is on screen.")
 
 /obj/effect/hunting_track/examine(mob/user)
 	. = ..()
