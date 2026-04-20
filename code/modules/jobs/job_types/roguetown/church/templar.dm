@@ -118,7 +118,7 @@
 		if(/datum/patron/divine/ravox)
 			mask = /obj/item/clothing/head/roguetown/roguehood/ravox
 			neck = /obj/item/clothing/neck/roguetown/psicross/ravox
-			cloak = /obj/item/clothing/suit/roguetown/shirt/robe/ravox
+			cloak = /obj/item/clothing/cloak/templar/ravox
 		if(/datum/patron/divine/malum)
 			mask = /obj/item/clothing/head/roguetown/roguehood
 			neck = /obj/item/clothing/neck/roguetown/psicross/malum
