@@ -2019,6 +2019,29 @@
 	REMOVE_TRAIT(owner, TRAIT_GRABIMMUNE, TRAIT_STATUS_EFFECT)
 	. = ..()
 
+/atom/movable/screen/alert/status_effect/buff/vheslyn_dodge_roll
+	name = "Dodge Roll"
+	desc = "Nothing can hold me for this moment."
+	icon_state = "daggerdash"
+
+/datum/status_effect/buff/vheslyn_dodge_roll
+	id = "vheslyn_dodge_roll"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/vheslyn_dodge_roll
+	status_type = STATUS_EFFECT_UNIQUE
+	duration = 1 SECONDS
+	mob_effect_icon_state = "eff_daggerboost"
+	mob_effect_layer = MOB_EFFECT_LAYER_DBOOST
+
+/datum/status_effect/buff/vheslyn_dodge_roll/on_apply()
+	owner.pass_flags |= PASSMOB
+	ADD_TRAIT(owner, TRAIT_GRABIMMUNE, TRAIT_STATUS_EFFECT)
+	. = ..()
+
+/datum/status_effect/buff/vheslyn_dodge_roll/on_remove()
+	owner.pass_flags &= ~PASSMOB
+	REMOVE_TRAIT(owner, TRAIT_GRABIMMUNE, TRAIT_STATUS_EFFECT)
+	. = ..()
+
 /datum/status_effect/buff/dagger_boost
 	id = "dagger_boost"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/dagger_boost

@@ -6,11 +6,17 @@
 	associated_faith = /datum/faith/accelerationism
 	preference_accessible = TRUE
 	undead_hater = TRUE
+	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison					= CLERIC_ORI,
+					/obj/effect/proc_holder/spell/self/vheslyn_dodge_roll					= CLERIC_T0,
+	)
+	traits_tier = list(TRAIT_NOPAIN = CLERIC_T2,
+				   TRAIT_NOPAINSTUN = CLERIC_T2,
+	)
 	confess_lines = list(
 		"HELL IS REAL. LET CHAOS BE MYNE LAMPTERN.",
 	)
 
-/datum/patron/archdevil/can_pray(mob/living/follower)
+/datum/patron/vheslyn/can_pray(mob/living/follower)
 	. = ..()
 	. = FALSE
 	to_chat(follower, span_danger("... NOTHING RESPONDS."))
