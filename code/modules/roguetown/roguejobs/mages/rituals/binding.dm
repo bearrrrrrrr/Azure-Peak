@@ -199,6 +199,7 @@
 	to_chat(fam, span_warning("You feel your link with [user.name] break, you are free."))
 
 	fam.familiar_summoner = null
+	GLOB.character_ckey_list -= fam.real_name
 
 	user.mind?.RemoveSpell(/datum/action/cooldown/spell/message_familiar)
 	fam.mind?.RemoveSpell(/datum/action/cooldown/spell/message_summoner)
