@@ -27,13 +27,18 @@
 
 /obj/item/magic/familiar
 	resistance_flags = INDESTRUCTIBLE
+	var/mob/living/simple_animal/pet/familiar/stored_familiar
+
+/obj/item/magic/familiar/dropped(mob/user, silent)
+	. = ..()
+	if(stored_familiar)
+		stored_familiar.reset_perspective()
 
 // vestige - needed to revive a familiar. sort of like a carbon's head, but magic-style
 /obj/item/magic/familiar/familiar_vestige
 	name = "Planar Vestige"
 	icon_state = "abberant"
 	desc = "The vestige of a planar creature, departed from this plane. Likely worth a lot to the magos that summoned them!"
-	var/mob/living/simple_animal/pet/familiar/stored_familiar
 
 // familiar (item form): familiars can transform into this for portability and sovl
 /obj/item/magic/familiar/familiar_spirit

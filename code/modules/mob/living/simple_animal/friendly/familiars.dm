@@ -70,6 +70,10 @@
 	. = ..()
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living, extinguish_mob)), 1 SECONDS)
 
+// if they are within the orb, they should not be able to commit recursion
+/mob/living/simple_animal/pet/familiar/restrained(ignore_grab)
+	return !isturf(src.loc)
+
 /mob/living/simple_animal/pet/familiar/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NOFALLDAMAGE1, TRAIT_GENERIC)

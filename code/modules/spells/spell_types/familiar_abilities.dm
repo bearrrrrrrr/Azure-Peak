@@ -298,6 +298,8 @@
 		"Spoon" = /obj/item/kitchen/spoon/iron,
 		"Needle" = /obj/item/needle/thorn
 	)
+	cooldown_time = 30 SECONDS
+	charge_required = FALSE
 
 /datum/action/cooldown/spell/arcyne_forge/elemental/cast(atom/cast_on)
 	. = ..()
@@ -307,9 +309,10 @@
 
 	// We're an item. Stop being an item.
 	if(conjured_item && !QDELETED(conjured_item))
-		H.loc = get_turf(H)
-		QDEL_NULL(conjured_item)
+		revert()
 		return FALSE // we don't want to add a cooldown for this case
+	else if (!isturf(H.loc))
+		return FALSE // no casting this from the orb
 
 	var/choice = tgui_input_list(H, "Choose what to conjure", "Earthen Forge", conjure_options)
 	if(!choice)
@@ -330,9 +333,13 @@
 	// Conjured glow
 	R.AddComponent(/datum/component/conjured_item, GLOW_COLOR_EARTHEN)
 	RegisterSignal(R, COMSIG_ITEM_BROKEN, PROC_REF(revert))
+	RegisterSignal(R, COMSIG_ITEM_DROPPED, PROC_REF(revert_perspective))
 	H.forceMove(R)
 	conjured_item = R
 	return TRUE
+
+/datum/action/cooldown/spell/arcyne_forge/elemental/proc/revert_perspective()
+	owner.reset_perspective()
 
 /datum/action/cooldown/spell/arcyne_forge/elemental/proc/revert()
 	if(conjured_item)
@@ -343,7 +350,8 @@
 	name = "Greater Earthen Shaping"
 	desc = "Shape a weapon or tool of your choice out of raw earth. Conjured items have halved durability.\n\
 	Only one conjured item can exist at a time - conjuring a new one destroys the old."
-
+	cooldown_time = 5 MINUTES
+	charge_required = TRUE
 
 /datum/action/cooldown/spell/arcyne_forge/elemental/t2/cast(atom/cast_on)
 	. = ..()
