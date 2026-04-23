@@ -2789,6 +2789,7 @@
 #include "code\modules\spells\components\arcyne_conduit.dm"
 #include "code\modules\spells\components\conjured_item.dm"
 #include "code\modules\spells\components\fit_clothing.dm"
+#include "code\modules\spells\pantheon\archdevil.dm"
 #include "code\modules\spells\pantheon\divine\necra.dm"
 #include "code\modules\spells\pantheon\divine\undivided.dm"
 #include "code\modules\spells\pantheon\inhumen\_inhumen_spell_items.dm"
