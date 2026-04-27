@@ -61,7 +61,7 @@
 	range = 5
 	icon = 'icons/obj/magic_projectiles.dmi'
 	icon_state = "stygian"
-	damage = 35
+	damage = 42
 	damage_type = BRUTE
 	woundclass = BCLASS_STAB
 	armor_penetration = PEN_LIGHT
@@ -74,7 +74,7 @@
 
 /obj/projectile/energy/stygian/arc
 	name = "arced stygian harpe"
-	damage = 26
+	damage = 32
 	arcshot = TRUE
 
 /obj/projectile/energy/stygian/on_hit(target)
