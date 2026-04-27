@@ -53,6 +53,15 @@
 	/// Icon to use as a 32x32 preview in crafting menus and such
 	var/icon_state_preview
 
+	var/attacked_sound = 'sound/blank.ogg'
+	var/component_block = FALSE
+	var/object_slowdown = 0
+	/// Extra AI pathfinding cost for this object. Higher values make NPCs avoid this tile.
+	var/ai_path_weight = 0
+	var/weatherproof = FALSE
+	var/weather = FALSE
+	var/fire_burn_start //make us not burn that long
+
 	vis_flags = VIS_INHERIT_PLANE
 
 /obj/vv_edit_var(vname, vval)
