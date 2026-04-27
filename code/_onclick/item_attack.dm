@@ -540,7 +540,7 @@
 	if(newforce > 1)
 		I.take_damage(1, BRUTE, I.d_type)
 
-	if((obj_flags & CLAMP_BREAK))
+	if((obj_flags & CLAMP_BREAK) && !density && !anchored)
 		var/sfx = 'sound/items/hit_normalobj.ogg'
 		if(isclothing(src))	// Lazy check for fluffy sparks
 			var/obj/item/clothing/CL = src
