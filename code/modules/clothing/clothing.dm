@@ -369,7 +369,7 @@
 	if(throw_on_break)
 		if(ishuman(loc))
 			var/mob/living/carbon/human/H = loc
-			var/throwprob = 80 + ((10 - H.STALUC) * 20)	// More FOR we have the less likely it is to happen.
+			var/throwprob = 30 + ((10 - H.STALUC) * 5)	// More FOR we have the less likely it is to happen.
 			if(!prob(throwprob))
 				return
 			H.dropItemToGround(src, silent = TRUE)
