@@ -317,7 +317,9 @@
 /obj/effect/proc_holder/spell/invoked/appraise/secular
 	name = "Secular Appraise"
 	range = 2
-	associated_skill = /datum/skill/misc/reading // idk reading is like Accounting right
+	associated_skill = /datum/skill/misc/reading
+	action_icon = 'icons/mob/actions/matthiosmiracles.dmi'
+	overlay_icon = 'icons/mob/actions/matthiosmiracles.dmi'
 	miracle = FALSE
 	devotion_cost = 0 //Merchants are not clerics
 
@@ -736,6 +738,18 @@
 /obj/effect/proc_holder/spell/invoked/barter/proc/process_barter(mammon, mob/user, turf/target_turf)
 	playsound(target_turf, 'sound/effects/matth_barter.ogg', 100, TRUE)
 	budget2change(mammon, user, putinhands = FALSE, custom_turf = target_turf)
+
+/obj/effect/proc_holder/spell/invoked/barter/secular
+	name = "Secular Barter"
+	desc = "Your contacts allow you to find a buyer for most items, though it at a lesser rate than reputable merchants"
+	action_icon = 'icons/mob/actions/antiquarianspells.dmi'
+	overlay_icon = 'icons/mob/actions/antiquarianspells.dmi'
+	overlay_state = "secularbarter"
+	range = 1
+	associated_skill = /datum/skill/misc/reading
+	miracle = FALSE
+	devotion_cost = 0
+	chargetime = 0 SECONDS
 
 //T3 COUNT WEALTH, HURT TARGET/APPLY EFFECTS BASED ON AMOUNT OF WEALTH. AT 500+, OLD STYLE CHURNS THE TARGET.
 
