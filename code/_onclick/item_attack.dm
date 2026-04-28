@@ -511,19 +511,21 @@
 /obj/attacked_by(obj/item/I, mob/living/user)
 	user.changeNext_move(CLICK_CD_INTENTCAP)
 
-	if(I.damtype == BURN && obj_flags & CLAMP_BREAK)
+	if(I.damtype == BURN && (obj_flags & CLAMP_BREAK))
 		var/do_melt = FALSE
+		var/need_scrap = FALSE
 		if(obj_broken)
 			do_melt = TRUE
 		if(isitem(src))
 			var/obj/item/I = src
 			if(I.anvilrepair && I.smeltresult == /obj/item/ingot/iron)
 				do_melt = TRUE
+				need_scrap = TRUE
 		if(do_melt)
 			user.visible_message(span_warningbig("[user] begins melting and deforming \the [src] with [I]!"))
 			if(do_after(user, 8 SECONDS, TRUE, same_direction = TRUE, no_interrupt = TRUE))
 				user.visible_message(span_warning("[user] destroys \the [src] with [I]!"))
-				obj_destruction(BRUTE)	// If it weren't for scrap this'd be BURN.
+				obj_destruction(need_scrap ? BRUTE : BURN)
 				return
 
 	var/newforce = get_complex_damage(I, user, blade_dulling)
