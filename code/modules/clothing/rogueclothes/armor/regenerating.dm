@@ -43,6 +43,17 @@
 	. = ..()
 	if(auto_repair_mode)
 		setup_auto_repair()
+	addtimer(CALLBACK(src, PROC_REF(check_owner)), 5 SECONDS)
+
+/obj/item/clothing/suit/roguetown/armor/regenerating/proc/check_owner()
+	if(!ishuman(loc))
+		return
+	var/mob/living/L = loc
+	RegisterSignal(L, COMSIG_MOB_ITEM_BEING_ATTACKED, PROC_REF(process_attack))
+
+/obj/item/clothing/suit/roguetown/armor/regenerating/proc/process_attack(mob/living/parent, mob/living/target, mob/user, obj/item/I)
+	var/wait_time = relative_repair_mode ? relative_repair_interval : repair_time
+	reptimer = addtimer(CALLBACK(src, PROC_REF(armour_regen)), wait_time, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir, armor_penetration)
 	..()
