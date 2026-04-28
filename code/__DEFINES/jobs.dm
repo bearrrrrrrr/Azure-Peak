@@ -234,6 +234,7 @@
 	"Steward", \
 	"Guildsman", \
 	"Guildmaster", \
+	"Bishop", \
 	"Martyr", \
 )
 
