@@ -70,7 +70,7 @@
 	accuracy = 65
 	flag = "piercing"
 	hitsound = 'sound/combat/hits/bladed/genstab (1).ogg'
-	var/reduced_damage = 19
+	var/reduced_damage = 23
 
 /obj/projectile/energy/stygian/arc
 	name = "arced stygian harpe"
