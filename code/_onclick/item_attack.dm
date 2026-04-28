@@ -510,12 +510,22 @@
 
 /obj/attacked_by(obj/item/I, mob/living/user)
 	user.changeNext_move(CLICK_CD_INTENTCAP)
-	if(I.damtype == BURN && obj_broken && user.cmode)
-		user.visible_message(span_warningbig("[user] begins melting and deforming [src] with [I]!"))
-		if(do_after(user, 8 SECONDS, TRUE, same_direction = TRUE, no_interrupt = TRUE))
-			user.visible_message(span_warning("[user] melts [src] with [I]!"))
-			obj_destruction(BURN)
-			return
+
+	if(I.damtype == BURN && obj_flags & CLAMP_BREAK)
+		var/do_melt = FALSE
+		if(obj_broken)
+			do_melt = TRUE
+		if(isitem(src))
+			var/obj/item/I = src
+			if(I.anvilrepair && I.smeltresult == /obj/item/ingot/iron)
+				do_melt = TRUE
+		if(do_melt)
+			user.visible_message(span_warningbig("[user] begins melting and deforming \the [src] with [I]!"))
+			if(do_after(user, 8 SECONDS, TRUE, same_direction = TRUE, no_interrupt = TRUE))
+				user.visible_message(span_warning("[user] destroys \the [src] with [I]!"))
+				obj_destruction(BRUTE)	// If it weren't for scrap this'd be BURN.
+				return
+
 	var/newforce = get_complex_damage(I, user, blade_dulling)
 	if(!(obj_flags & CLAMP_BREAK))
 		newforce *= user.used_intent.demolition_mod
@@ -540,7 +550,7 @@
 	if(newforce > 1)
 		I.take_damage(1, BRUTE, I.d_type)
 
-	if((obj_flags & CLAMP_BREAK) && !density && !anchored)
+	if((obj_flags & CLAMP_BREAK) && !density && !anchored && isturf(loc))
 		var/sfx = 'sound/items/hit_normalobj.ogg'
 		if(isclothing(src))	// Lazy check for fluffy sparks
 			var/obj/item/clothing/CL = src
