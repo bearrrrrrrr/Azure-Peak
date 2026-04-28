@@ -71,7 +71,7 @@
 	ricochet_incidence_leeway = 40
 	ricochet_decay_chance = 1
 	ricochet_decay_damage = 1
-	var/reduced_damage = 9
+	var/reduced_damage = 11
 
 /obj/projectile/magic/gravel_blast/arc
 	name = "arced gravel shot"
