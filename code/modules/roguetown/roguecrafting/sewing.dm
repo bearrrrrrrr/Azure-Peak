@@ -123,7 +123,7 @@
 
 /datum/crafting_recipe/roguetown/sewing/physmask
 	name = "plague mask, physicker's"
-	category = "Coifs"
+	category = "Masks"
 	result = list(/obj/item/clothing/neck/roguetown/collar/surgcollar)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/bouquet/calendula = 1,
@@ -132,12 +132,11 @@
 
 /datum/crafting_recipe/roguetown/sewing/feldmask
 	name = "plague mask, feldsher's"
-	category = "Coifs"
+	category = "Masks"
 	result = list(/obj/item/clothing/neck/roguetown/collar/feldcollar)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/bouquet/calendula = 1,
 				/obj/item/natural/bone = 1)
-		)
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/sewing/nurseveil
