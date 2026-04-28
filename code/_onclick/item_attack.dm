@@ -517,8 +517,8 @@
 		if(obj_broken)
 			do_melt = TRUE
 		if(isitem(src))
-			var/obj/item/I = src
-			if(I.anvilrepair && I.smeltresult == /obj/item/ingot/iron)
+			var/obj/item/IS = src
+			if(IS.anvilrepair && IS.smeltresult == /obj/item/ingot/iron)
 				do_melt = TRUE
 				need_scrap = TRUE
 		if(do_melt)
