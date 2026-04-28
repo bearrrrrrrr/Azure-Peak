@@ -381,7 +381,7 @@
 			var/dist = rand(1, 3)
 			var/current_turf = get_turf(H)
 			var/target_turf = get_ranged_target_turf(current_turf, turndir, dist)
-			throw_at(target_turf, dist, 12, H, FALSE)
+			throw_at(target_turf, dist, 6, H, FALSE)
 
 /obj/item/clothing/obj_fix(mob/user, full_repair = TRUE)
 	..()
