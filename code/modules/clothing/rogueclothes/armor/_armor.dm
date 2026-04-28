@@ -77,10 +77,12 @@
 
 	var/attachment_component = /datum/component/storage/concrete/roguetown/armor
 
-/obj/item/clothing/suit/roguetown/armor/ComponentInitialize()
+/obj/item/clothing/suit/roguetown/armor/Initialize()
 	. = ..()
 	if(attachment_component)
 		AddComponent(attachment_component)
+
+/obj/item/clothing/suit/roguetown/armor/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
 
 /obj/item/clothing/suit/roguetown/armor/get_examine_name(mob/user)
