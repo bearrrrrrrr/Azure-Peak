@@ -54,16 +54,16 @@
 	sellprice = 20
 	craftdiff = 3
 
-/datum/crafting_recipe/roguetown/leather/heavyglovesfeld
-	name = "heavy leather gloves, feldsher's"
-	result = /obj/item/clothing/gloves/roguetown/angle/feld
-	reqs = list(/obj/item/natural/fur = 1)
-	sellprice = 30
-	craftdiff = 4
-
 /datum/crafting_recipe/roguetown/leather/heavyglovesphys
 	name = "heavy leather gloves, physicker's"
 	result = /obj/item/clothing/gloves/roguetown/angle/phys
+	reqs = list(/obj/item/natural/fur = 1)
+	sellprice = 30
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/leather/heavyglovesfeld
+	name = "heavy leather gloves, feldsher's"
+	result = /obj/item/clothing/gloves/roguetown/angle/feld
 	reqs = list(/obj/item/natural/fur = 1)
 	sellprice = 30
 	craftdiff = 4
