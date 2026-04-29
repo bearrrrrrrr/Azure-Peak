@@ -39,6 +39,9 @@
 	var/interrupt_dflag
 	var/interrupt_ddir
 
+	/// Regen cost vars
+	var/blue_to_integ_ratio 1
+
 /obj/item/clothing/suit/roguetown/armor/regenerating/Initialize(mapload)
 	. = ..()
 	if(auto_repair_mode)
@@ -52,8 +55,9 @@
 	RegisterSignal(L, COMSIG_MOB_ITEM_BEING_ATTACKED, PROC_REF(process_attack))
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/proc/process_attack(mob/living/parent, mob/living/target, mob/user, obj/item/I)
-	var/wait_time = relative_repair_mode ? relative_repair_interval : repair_time
-	reptimer = addtimer(CALLBACK(src, PROC_REF(armour_regen)), wait_time, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
+	if(user.mind)
+		var/wait_time = relative_repair_mode ? relative_repair_interval : repair_time
+		reptimer = addtimer(CALLBACK(src, PROC_REF(armour_regen)), wait_time, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir, armor_penetration)
 	..()
@@ -101,6 +105,11 @@
 		next_tick_time = repair_time
 
 	obj_integrity = min(obj_integrity + repair_amount, max_integrity)
+
+	if(ishuman(loc))
+		var/mob/living/L = loc
+		var/energycost = blue_to_integ_ratio * repair_amount
+		L.energy_add(-energycost)
 
 	// Fix armor so it can still be interrupted from regenerating
 	if(obj_broken && obj_integrity > 0)
