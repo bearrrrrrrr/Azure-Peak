@@ -18,7 +18,7 @@
 		if(obj_integrity > break_threshold)
 			if((obj_integrity - damage_amount) <= break_threshold)
 				obj_integrity = break_threshold
-		if(obj_broken || obj_integrity == break_threshold)	// We're either broken or we will be broken
+		if(obj_broken || (integrity_failure && obj_integrity == break_threshold))	// We're either broken or we will be broken
 			if(damage_type != BURN)
 				damage_amount = 1
 	obj_integrity = max(obj_integrity - damage_amount, 0)

@@ -39,7 +39,7 @@
 
 	var/drag_slowdown // Amont of multiplicative slowdown applied if pulled. >1 makes you slower, <1 makes you faster.
 
-	var/blade_dulling = DULLING_BASHCHOP
+	var/blade_dulling = FALSE
 
 	var/debris = null
 	var/static_debris = null
