@@ -363,6 +363,13 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 						message_admins(span_danger("<B>Notice: </B></span><span class='notice'>[key_name_admin(src)] has the same [matches] as [key_name_admin(C)] (no longer logged in). "))
 						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(C)] (no longer logged in).")
 
+	if(!BC_IsKeyAllowedToConnect(ckey))
+		src << "Sorry, but the server is currently only accepting whitelisted players.  Please see the discord to be whitelisted."
+		message_admins("[ckey] was denied a connection due to not being whitelisted.")
+		log_admin("[ckey] was denied a connection due to not being whitelisted.")
+		qdel(src)
+		return 0
+
 	var/reconnecting = FALSE
 	if(GLOB.player_details[ckey])
 		reconnecting = TRUE
@@ -463,12 +470,6 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		var/area/joined_area = get_area(mob.loc)
 		if(joined_area)
 			joined_area.reconnect_game(mob)
-	else if(!BC_IsKeyAllowedToConnect(ckey))
-		src << "Sorry, but the server is currently only accepting whitelisted players.  Please see the discord to be whitelisted."
-		message_admins("[ckey] was denied a connection due to not being whitelisted.")
-		log_admin("[ckey] was denied a connection due to not being whitelisted.")
-		qdel(src)
-		return 0
 
 	add_verbs_from_config()
 	var/cached_player_age = set_client_age_from_db(tdata) //we have to cache this because other shit may change it and we need it's current value now down below.
