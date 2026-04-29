@@ -366,22 +366,24 @@
 		if(armorlist[x] > 0)
 			armorlist[x] = 0
 	..()
-	if(throw_on_break)
+	if(throw_on_break && !HAS_TRAIT(src, TRAIT_NODROP))
 		if(ishuman(loc))
 			var/mob/living/carbon/human/H = loc
-			var/throwprob = 30 + ((10 - H.STALUC) * 5)	// More FOR we have the less likely it is to happen.
+			var/max_range = (H.mind ? 2 : 3)
+			var/throwprob = (H.mind ? 30 : 80) + ((10 - H.STALUC) * 5)	// More FOR we have the less likely it is to happen.
 			if(!prob(throwprob))
 				return
-			H.dropItemToGround(src, silent = TRUE)
-			H.update_fov_angles()
-			if(material_category == ARMOR_MAT_PLATE || material_category == ARMOR_MAT_CHAINMAIL)
-				do_sparks(2, TRUE, get_turf(H))
-			var/turnangle = (prob(10) ? 180 : prob(50) ? 270 : 90)
-			var/turndir = turn(H.dir, turnangle)
-			var/dist = rand(1, 3)
-			var/current_turf = get_turf(H)
-			var/target_turf = get_ranged_target_turf(current_turf, turndir, dist)
-			throw_at(target_turf, dist, 6, H, FALSE)
+			if(H.dropItemToGround(src, silent = TRUE))
+				H.update_fov_angles()
+				if(material_category == ARMOR_MAT_PLATE || material_category == ARMOR_MAT_CHAINMAIL)
+					do_sparks(2, TRUE, get_turf(H))
+				var/turnangle = (prob(10) ? 180 : prob(50) ? 270 : 90)
+				var/turndir = turn(H.dir, turnangle)
+				var/dist = rand(1, max_range)
+				var/current_turf = get_turf(H)
+				var/target_turf = get_ranged_target_turf(current_turf, turndir, dist)
+				playsound(get_turf(H), 'sound/misc/obj_toss.ogg', 100, TRUE)
+				throw_at(target_turf, dist, 6, H, FALSE)
 
 /obj/item/clothing/obj_fix(mob/user, full_repair = TRUE)
 	..()
