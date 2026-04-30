@@ -40,7 +40,7 @@
 	var/interrupt_ddir
 
 	/// Regen cost vars
-	var/blue_to_integ_ratio = 1
+	var/blue_to_integ_ratio = 0.5
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/Initialize(mapload)
 	. = ..()
