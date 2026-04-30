@@ -129,6 +129,7 @@
 				/obj/item/bouquet/calendula = 1,
 				/obj/item/natural/bone = 1)
 	craftdiff = 3
+	bypass_dupe_test = TRUE
 
 /datum/crafting_recipe/roguetown/sewing/feldmask
 	name = "plague mask, feldsher's"
@@ -138,6 +139,7 @@
 				/obj/item/bouquet/calendula = 1,
 				/obj/item/natural/bone = 1)
 	craftdiff = 4
+	bypass_dupe_test = TRUE
 
 /datum/crafting_recipe/roguetown/sewing/nurseveil
 	name = "nurse's veil, improvised"
