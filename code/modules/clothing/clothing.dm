@@ -369,8 +369,10 @@
 	if(throw_on_break && !HAS_TRAIT(src, TRAIT_NODROP))
 		if(ishuman(loc))
 			var/mob/living/carbon/human/H = loc
+			if(!H.get_tempo_bonus(TEMPO_TAG_EQUIPTOSS))
+				return
 			var/max_range = (H.mind ? 2 : 3)
-			var/throwprob = (H.mind ? 30 : 80) + ((10 - H.STALUC) * 5)	// More FOR we have the less likely it is to happen.
+			var/throwprob = (H.mind ? 8 : 80) + ((10 - H.STALUC))	// More FOR we have the less likely it is to happen.
 			if(!prob(throwprob))
 				return
 			if(H.dropItemToGround(src, silent = TRUE))

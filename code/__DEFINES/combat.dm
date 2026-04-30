@@ -401,6 +401,7 @@ GLOBAL_LIST_INIT(shove_disarming_types, typecacheof(list(
 	#define TEMPO_DODGE_LOSS_LESS 1
 	#define TEMPO_DODGE_LOSS_NONE 2
 #define TEMPO_TAG_BINDABLE "defbindable"
+#define TEMPO_TAG_EQUIPTOSS "equiptoss"
 
 /*
 Medical defines
