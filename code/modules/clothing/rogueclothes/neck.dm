@@ -938,8 +938,8 @@
 	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_JINGLE_BELLS)
 
 /obj/item/clothing/neck/roguetown/collar/feldcollar
-	name = "feldcollar"
-	desc = "A sturdy collar made of leather, commonly worn by field workers."
+	name = "feldsher's collar"
+	desc = "Dilligence pays dividends. An errant stroke of the scalpel is all it takes to lose everything, after all."
 	icon_state = "feldcollar"
 	item_state = "feldcollar"
 	resistance_flags = FIRE_PROOF
@@ -948,8 +948,8 @@
 	body_parts_covered = NECK|FACE
 
 /obj/item/clothing/neck/roguetown/collar/surgcollar
-	name = "surgcollar"
-	desc = "A specialized collar designed for medical practitioners, with reinforced padding."
+	name = "physicker's collar"
+	desc = "Medicine is more of an art than anything else; and what better canvas to practice one's brushstrokes on, than the body itself?"
 	icon_state = "surgcollar"
 	item_state = "surgcollar"
 	resistance_flags = FIRE_PROOF
