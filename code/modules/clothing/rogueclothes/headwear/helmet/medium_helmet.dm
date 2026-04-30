@@ -729,7 +729,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/headcage
 	name = "headcage"
-	desc = "Bars ensnare the practicioner's head; a cumbersome yet clever compromise, to ward off bites from snarling deadites."
+	desc = "Bars ensnare the practicioner's head; a cumbersome yet clever compromise, to ward off festering bites from snarling deadites."
 	icon_state = "headcage"
 	item_state = "headcage"
 	smelt_bar_num = 2
