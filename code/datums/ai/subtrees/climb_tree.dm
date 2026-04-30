@@ -10,7 +10,6 @@
 		return
 	var/turf/my_turf = get_turf(pawn)
 	var/turf/their_turf = get_turf(target)
-	// Target must be exactly one z-level above us, on a transparent turf, with a branch.
 	if(!their_turf || their_turf.z != my_turf.z + 1)
 		return
 	if(!istransparentturf(their_turf))
@@ -18,11 +17,9 @@
 	var/obj/structure/flora/newbranch/the_branch = locate() in their_turf
 	if(!the_branch)
 		return
-	// Trunk sits one z below the branch, opposite the branch's outward dir.
 	var/obj/structure/flora/newtree/the_tree = locate() in get_step_multiz(the_branch, REVERSE_DIR(the_branch.dir)|DOWN)
 	if(!the_tree)
 		return
-	// Trunk must be on our z so we can walk up to it.
 	if(the_tree.z != my_turf.z)
 		return
 	controller.set_blackboard_key(BB_TREE_CLIMB_TARGET_TRUNK, the_tree)
@@ -47,13 +44,10 @@
 	if(!trunk || QDELETED(trunk))
 		finish_action(controller, FALSE, trunk_key)
 		return
-	// Pawn's tile-above must be openspace for attack_hand to climb. If we're adjacent to the
-	// trunk but standing on a tile with a solid ceiling, walk one more step (around the trunk).
 	var/turf/above = get_step_multiz(pawn, UP)
 	if(!istype(above, /turf/open/transparent/openspace))
 		finish_action(controller, FALSE, trunk_key)
 		return
-	// Halt pathing so attack_hand's do_after isn't interrupted.
 	controller.ai_movement.stop_moving_towards(controller)
 	walk(pawn, 0)
 	trunk.attack_hand(pawn)
