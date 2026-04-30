@@ -1,0 +1,6 @@
+author: "WeNeedMorePhoron"
+delete-after: True
+changes:
+  - rscadd: "Hearth is now climbable for an AI"
+  - rscadd: "AI will now default to climbing before destroying an obstacle"
+  - rscadd: "All lights are by default, destructible instead of indestructible."
