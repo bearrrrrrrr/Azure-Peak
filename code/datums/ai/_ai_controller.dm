@@ -338,9 +338,10 @@ have ways of interacting with a specific atom and control it. They posses a blac
 
 	if(new_z)
 		GLOB.ai_controllers_by_zlevel[new_z] += src
-		var/new_level_clients = SSmobs.clients_by_zlevel[new_z].len
-		if(new_level_clients)
-			set_ai_status(AI_STATUS_IDLE)
+		// Re-evaluate AI status based on aggro/clients on the new z-level instead of
+		// unconditionally idling. Idling here would put a pursuing NPC to sleep right
+		// after they climb stairs/ladders/trees to chase a target.
+		reset_ai_status()
 
 ///Abstract proc for initializing the pawn to the new controller
 /datum/ai_controller/proc/TryPossessPawn(atom/new_pawn)
