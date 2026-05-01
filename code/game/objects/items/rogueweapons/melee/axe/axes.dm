@@ -309,7 +309,7 @@
 	damfactor = 0.8
 	demolition_mod = 1.3
 
-/datum/intent/axe/chop/long/bronze
+/datum/intent/axe/chop/long
 	reach = 2
 	damfactor = 1
 	demolition_mod = 1.5
@@ -522,7 +522,7 @@
 	force = 15
 	force_wielded = 30
 	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/axe/cut/long/bronze, /datum/intent/axe/chop/long/bronze, /datum/intent/axe/chop/heavy, /datum/intent/axe/sweep)
+	gripped_intents = list(/datum/intent/axe/cut/long/bronze, /datum/intent/axe/chop/long, /datum/intent/axe/chop/heavy, /datum/intent/axe/sweep)
 	name = "bronze greataxe"
 	desc = "A massive staff with a bronze axhead mantled onto the wood. It splits and carves from afar with lethal force; be it lumber or limbs."
 	icon_state = "bronzegreataxe"
