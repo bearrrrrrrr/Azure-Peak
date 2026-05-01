@@ -3,7 +3,7 @@
 
 #define CORPSE_ROT_START_TIME 5 MINUTES
 #define CORPSE_SKELETONIZE_TIME 12 MINUTES
-#define CORPSE_DUST_TIME 15 MINUTES
+#define CORPSE_DUST_TIME 20 MINUTES
 
 #define SIMPLE_CORPSE_ROT_START 8 MINUTES
 #define SIMPLE_CORPSE_DUST_TIME 15 MINUTES
@@ -120,7 +120,7 @@
 
 	if(dustme)
 		qdel(src)
-		return C.dust(drop_items=TRUE)
+		return C.dust(drop_items=FALSE)
 
 	if(findonerotten)
 		var/turf/open/T = C.loc
