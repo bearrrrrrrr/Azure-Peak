@@ -186,8 +186,8 @@
 	sort_category = "Shirts"
 
 /datum/loadout_item/fancymaiddress
-	name = "Valorian Maid dress"
-	path = /obj/item/clothing/suit/roguetown/shirt/dress/fancymaid
+	name = "Valorian Maid Dress"
+	path = /obj/item/clothing/suit/roguetown/shirt/dress/maidfancy
 	sort_category = "Shirts"
 
 /datum/loadout_item/maiddress
