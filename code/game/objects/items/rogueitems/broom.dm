@@ -26,6 +26,9 @@
 				return list("shrink" = 0.5,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 
 /obj/item/broom/attack_obj(obj/O, mob/living/user)
+	if(istype(T, /obj/structure/spider/stickyweb))
+		//where tf is the damage structure code aaa 1 sec
+
 	if(do_after(user, 15, target = O))
 		user.visible_message("<span class='notice'>[user] dutifully sweeps \the [O.name].</span>", "<span class='notice'>I dutifully sweep \the [O.name].</span>")
 		playsound(user, "clothwipe", 100, TRUE)		
@@ -37,8 +40,7 @@
 		return
 	if(istype(T, /turf/open/water))
 		return
-
-	if(do_after(user, 25, target = T))
+	if(do_after(user, 20, target = T))
 		user.visible_message("<span class='notice'>[user] dutifully sweeps \the [T.name].</span>", "<span class='notice'>I dutifully sweep \the [T.name].</span>")
 		playsound(user, 'sound/items/broom_sweep.ogg', 150, TRUE)
 		broom_fu(T, user)
@@ -70,19 +72,16 @@
 	var/count = 0
 	var/flufftext = FALSE
 
-	for(var/atom/A in range(1, T))
+	for(var/atom/movable/A in range(1, T))
 		if(count >= 10)
 			break
 		if(A.loc == T) 
 			continue
-		if(istype(A, /obj/item/natural/stone) || istype(A, /obj/item/scrap) || istype(A, /obj/item/paper/crumpled) || istype(A, /obj/item/grown/log/tree/stick) || istype(A, /obj/item/ash) || istype(A, /obj/item/natural/glass_shard) || istype(A, /obj/item/ammo_casing))
+		if(istype(A, /obj/item/natural/stone) || istype(A, /obj/item/scrap) || istype(A, /obj/item/paper/crumpled) || istype(A, /obj/item/grown/log/tree/stick) || istype(A, /obj/item/ash) || istype(A, /obj/item/natural/glass_shard) || istype(A, /obj/item/natural/cloth) || istype(A, /obj/item/natural/fibers) || istype(A, /obj/item/natural/silk) || istype(A, /obj/item/ammo_casing) || istype(A, /obj/item/rogueweapon/huntingknife/throwingknife))
 			if(A.loc != T && !QDELETED(A))
 				A.forceMove(T)
 				count++
 				flufftext = TRUE
 
 	if(flufftext)
-		user.visible_message(
-			"<span class='notice'>[user] gathers the clutter into \the [T.name].</span>",
-			"<span class='notice'>I gather the clutter into \the [T.name].</span>"
-		)
+		user.visible_message("<span class='notice'>[user] gathers the clutter into \the [T.name].</span>", "<span class='notice'>I gather the clutter into \the [T.name].</span>")
