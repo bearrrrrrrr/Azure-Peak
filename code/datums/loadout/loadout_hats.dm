@@ -204,3 +204,12 @@
 	path = /obj/item/clothing/head/roguetown/jester
 	sort_category = "Hats"
 
+/datum/loadout_item/maidband
+	name = "maid headdress"
+	path = /obj/item/clothing/suit/roguetown/shirt/dress/maid
+	sort_category = "Hats"
+
+/datum/loadout_item/maidbandfancy
+	name = "valorian maid headdress"
+	path = /obj/item/clothing/suit/roguetown/shirt/dress/fancymaid
+	sort_category = "Hats"
