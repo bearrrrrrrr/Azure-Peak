@@ -28,9 +28,7 @@
 /obj/item/broom/attack_obj(obj/O, mob/living/user)
 	if(do_after(user, 15, target = O))
 		user.visible_message("<span class='notice'>[user] dutifully sweeps \the [O.name].</span>", "<span class='notice'>I dutifully sweep \the [O.name].</span>")
-		
-		playsound(user, "clothwipe", 100, TRUE)
-		
+		playsound(user, "clothwipe", 100, TRUE)		
 		broom_fu(O, user)
 
 // Even if there's nothing mechanically dirty about the floor, you can still sweep it! Anything to look busy. // added a few more to it cause why not
@@ -43,8 +41,8 @@
 	if(do_after(user, 25, target = T))
 		user.visible_message("<span class='notice'>[user] dutifully sweeps \the [T.name].</span>", "<span class='notice'>I dutifully sweep \the [T.name].</span>")
 		playsound(user, 'sound/items/broom_sweep.ogg', 150, TRUE)
-
 		broom_fu(T, user)
+		gather_clutter(T, user)
 
 // i should make this delete squires who try to steal your butter too it'll probably be funny
 /obj/item/broom/proc/broom_fu(atom/A, mob/living/user)
@@ -52,11 +50,7 @@
 		return
 	for(var/obj/effect/decal/cleanable/dirt/C in A)
 		qdel(C)
-	for(var/obj/item/scrap/C in A)
-		qdel(C)
 	for(var/obj/item/paper/crumpled/C in A)
-		qdel(C)
-	for(var/obj/item/grown/log/tree/stick/C in A)
 		qdel(C)
 	for(var/obj/item/ash/C in A)
 		qdel(C)
@@ -68,6 +62,27 @@
 		qdel(C)
 	for(var/obj/effect/decal/cleanable/debris/glassy/C in A)
 		qdel(C)
-	for(var/obj/effect/decal/cleanable/blood/O in A)
-		add_blood_DNA(O.return_blood_DNA())
+
+/obj/item/broom/proc/gather_clutter(turf/T, mob/living/user)
+	if(!T)
 		return
+
+	var/count = 0
+	var/flufftext = FALSE
+
+	for(var/atom/A in range(1, T))
+		if(count >= 10)
+			break
+		if(A.loc == T) 
+			continue
+		if(istype(A, /obj/item/natural/stone) || istype(A, /obj/item/scrap) || istype(A, /obj/item/paper/crumpled) || istype(A, /obj/item/grown/log/tree/stick) || istype(A, /obj/item/ash) || istype(A, /obj/item/natural/glass_shard) || istype(A, /obj/item/ammo_casing))
+			if(A.loc != T && !QDELETED(A))
+				A.forceMove(T)
+				count++
+				flufftext = TRUE
+
+	if(flufftext)
+		user.visible_message(
+			"<span class='notice'>[user] gathers the clutter into \the [T.name].</span>",
+			"<span class='notice'>I gather the clutter into \the [T.name].</span>"
+		)
