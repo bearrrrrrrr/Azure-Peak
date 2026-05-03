@@ -136,7 +136,7 @@
 	unholy imbuement; for lux invigorates metal far greater than even the purest ores."
 	icon_state = "zizoplatelegs_med"
 	max_integrity = ARMOR_INT_LEG_STEEL_PLATE
-	armor_class = ARMOR_CLASS_LIGHT
+	armor_class = ARMOR_CLASS_MEDIUM
 	smeltresult = /obj/item/ingot/avantyne
 	armor = ARMOR_PLATE_BSTEEL
 
