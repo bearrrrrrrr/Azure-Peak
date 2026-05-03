@@ -66,7 +66,7 @@
 		H.mind.AddSpell(new /datum/action/cooldown/spell/gravemark)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/raise_undead_formation/necromancer)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/raise_undead_guard)
-		H.mind.AddSpell(new /datum/action/cooldown/spell/convert_heretic)
+		H.mind.AddSpell(new /datum/action/cooldown/spell/convert_heretic/free)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/lacrima/free)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/tame_undead)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/raise_deadite)
