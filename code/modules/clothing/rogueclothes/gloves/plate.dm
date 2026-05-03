@@ -110,19 +110,19 @@
 	armor_class = ARMOR_CLASS_MEDIUM
 	smeltresult = /obj/item/ingot/component/zizo
 
-/obj/item/clothing/gloves/roguetown/plate/avantyne/heavy
-	name = "avantyne plate gauntlets"
-	desc = "Unknowing truths, veiling the hands that prayed. Called forth from the edge of what should be known, in Her name."
-	icon_state = "zizogauntlets"
-	max_integrity = ARMOR_INT_SIDE_ANTAG
-	smeltresult = /obj/item/ingot/component/zizo
-
 /obj/item/clothing/gloves/roguetown/plate/zizo/Initialize()
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "ARMOR")
 
 /obj/item/clothing/gloves/roguetown/plate/zizo/dropped(mob/living/carbon/human/user)
 	return ..()
+
+/obj/item/clothing/gloves/roguetown/plate/zizo/heavy
+	name = "avantyne plate gauntlets"
+	desc = "Unknowing truths, veiling the hands that prayed. Called forth from the edge of what should be known, in Her name."
+	icon_state = "zizogauntlets"
+	max_integrity = ARMOR_INT_SIDE_ANTAG
+	smeltresult = /obj/item/ingot/component/zizo
 
 /obj/item/clothing/gloves/roguetown/plate/zizo/heavy/Initialize()
 	. = ..()
