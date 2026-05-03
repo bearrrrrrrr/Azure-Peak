@@ -1,4 +1,3 @@
-
 /datum/action/cooldown/spell/raise_undead_formation
 	name = "Raise Undead Formation"
 	desc = "Invoke forbidden magicka to summon a cohort of mindless, shambling skeletons.\nMindless skeletons can be given orders to guard, patrol, and attack by their summoner.\nThese skeletons are weaker than their more complex-jointed counterparts, but are harder to incapacitate."
@@ -14,6 +13,8 @@
 	associated_skill = /datum/skill/magic/arcane
 	cooldown_time = 20 SECONDS
 	zizo_spell = TRUE
+	invocation_type = INVOCATION_SHOUT
+	invocations = list("Evoca skeletos!")
 	var/cabal_affine = FALSE
 	var/is_summoned = FALSE
 	var/to_spawn = 4
