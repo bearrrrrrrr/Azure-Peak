@@ -111,7 +111,7 @@
 	armor_class = ARMOR_CLASS_MEDIUM
 	smeltresult = /obj/item/ingot/component/zizo
 
-/obj/item/clothing/gloves/roguetown/plate/avantyne/heavy
+/obj/item/clothing/gloves/roguetown/plate/zizo/heavy
 	name = "avantyne plate gauntlets"
 	desc = "Unknowing truths, veiling the hands that prayed. Called forth from the edge of what should be known, in Her name."
 	icon_state = "zizogauntlets"
