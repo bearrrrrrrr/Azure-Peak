@@ -104,7 +104,7 @@
 /datum/action/cooldown/spell/summon_bed
 	name = "Eora's Rest"
 	desc = "Summon a sacred Eoran bed to provide sanctuary and stabilize the wounded. \
-	You may only maintain one bed at a time; summoning a new one will cause the old one to vanish."
+	You may only maintain a limited amount of beds at a time depending on miracle skill. Summoning a new one will cause the oldest one to vanish."
 	button_icon = 'icons/mob/actions/eoramiracles.dmi'
 	button_icon_state = "eorabed" // Replace with your icon state
 	sound = 'sound/magic/holyshield.ogg'
