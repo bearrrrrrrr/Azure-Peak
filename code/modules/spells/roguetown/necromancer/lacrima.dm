@@ -1,43 +1,44 @@
-// T3 Lacrima (plunge your hand into someone's ribs to rip out their impure lux for your diabolical uses)
+// Plunge your hand into someone's ribs to rip out their impure lux for your diabolical uses
 
-/obj/effect/proc_holder/spell/invoked/lacrima
+/datum/action/cooldown/spell/lacrima
 	name = "Lacrima"
-	desc = "Requires an aggressive grab on a floored, living victim. Plunge your hand into their chest, shattering their ribs and will alike in order to forcefully tear the lux from their body."
+	desc = "Requires an aggressive grab on a floored, living victim. Plunge your hand into their chest, shattering their ribs and will alike to forcefully tear the lux from their body.\n \
+	Can also be cast while standing next to a PURE lux to perverse it into IMPURE lux."
 	button_icon = 'icons/mob/actions/zizomiracles.dmi'
 	button_icon_state = "zizograsp"
-	clothes_req = FALSE
-	chargedrain = 0
-	chargetime = 0
-	releasedrain = 5
-	miracle = TRUE
-	devotion_cost = 20
-	chargedloop = /datum/looping_sound/invokegen
+	charge_required = FALSE
+	click_to_activate = FALSE
+	primary_resource_type = SPELL_COST_DEVOTION
+	primary_resource_cost = 0
 	associated_skill = /datum/skill/magic/holy
-	invocations = list("Your lux belongs to the Dame!")
-	invocation_type = "shout"
+	associated_stat = null
+	invocation_type = INVOCATION_SHOUT
+	invocations = "Give your lux for the dame!"
+	zizo_spell = TRUE
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC
 
-/obj/effect/proc_holder/spell/invoked/lacrima/free
-	miracle = FALSE
+/datum/action/cooldown/spell/lacrima/free
+	primary_resource_type = SPELL_COST_NONE
 
-/obj/effect/proc_holder/spell/invoked/lacrima/cast(list/targets, mob/living/carbon/human/user)
-	if(!ishuman(user))
-		revert_cast()
+/datum/action/cooldown/spell/lacrima/cast(atom/cast_on)
+	. = ..()
+	if(!ishuman(owner))
 		return FALSE
 
-	if(user.pulling && ishuman(user.pulling) && user.grab_state >= GRAB_AGGRESSIVE)
-		lux_rip(user.pulling, user)
+	if(owner.pulling && ishuman(owner.pulling) && owner.grab_state >= GRAB_AGGRESSIVE)
+		lux_rip(owner.pulling, owner)
 		return TRUE
 
-	var/obj/item/reagent_containers/lux/nearby_lux = locate(/obj/item/reagent_containers/lux) in range(1, user)
+	var/obj/item/reagent_containers/lux/nearby_lux = locate(/obj/item/reagent_containers/lux) in range(1, owner)
 	if(nearby_lux && !istype(nearby_lux, /obj/item/reagent_containers/lux_impure))
-		perverse_lux(nearby_lux, user)
+		perverse_lux(nearby_lux, owner)
 		return TRUE
 
-	to_chat(user, span_warning("I need an aggressive grab on a floored victim, or be next to pure lux, to use Lacrima!"))
-	revert_cast()
+	to_chat(owner, span_warning("I need an aggressive grab on a floored victim, or be next to pure lux, to use Lacrima!"))
+	reset_spell_cooldown()
 	return FALSE
 
-/obj/effect/proc_holder/spell/invoked/lacrima/proc/lux_rip(mob/living/carbon/human/target, mob/living/carbon/human/user)
+/datum/action/cooldown/spell/lacrima/proc/lux_rip(mob/living/carbon/human/target, mob/living/carbon/human/user)
 	var/break_time = 100
 	var/tear_time = 50
 
@@ -56,7 +57,7 @@
 	if((target.mobility_flags & MOBILITY_STAND))
 		to_chat(user, span_info("My target must be lying down to have their lux torn."))
 		return
-	if(target.has_status_effect(/datum/status_effect/debuff/devitalised) || target.mob_biotypes & MOB_UNDEAD) //can't farm your skeletons
+	if(target.has_status_effect(/datum/status_effect/debuff/devitalised) || target.mob_biotypes & MOB_UNDEAD)
 		to_chat(user, span_notice("This one's lux is already disturbed!"))
 		return
 	else
@@ -90,7 +91,7 @@
 	stressadd = 30
 	timer = 5 MINUTES
 
-/obj/effect/proc_holder/spell/invoked/lacrima/proc/perverse_lux(obj/item/reagent_containers/lux/target, mob/living/carbon/human/user)
+/datum/action/cooldown/spell/lacrima/proc/perverse_lux(obj/item/reagent_containers/lux/target, mob/living/carbon/human/user)
 	var/perverse_time = 20
 
 	if(!target.Adjacent(user))

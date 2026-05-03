@@ -1,7 +1,7 @@
 /datum/action/cooldown/spell/convert_heretic
 	name = "Convert The Downtrodden"
 	desc = "Convert an soul excommunicated, cursed, or forced onto apotasy to your cause. Requires a willing participant, and takes a long time to cast."
-	button_icon = 'icons/mob/actions/zizomiracles.dmi'
+	button_icon = 'icons/mob/actions/roguespells.dmi'
 	button_icon_state = "convert_heretic"
 	invocations = list("Show this lost sheep the righteous path.")
 	invocation_type = INVOCATION_WHISPER
@@ -16,7 +16,8 @@
 	self_cast_possible = FALSE
 
 /datum/action/cooldown/spell/convert_heretic/free
-	miracle = FALSE
+	primary_resource_type = SPELL_COST_STAMINA
+	primary_resource_cost = 50
 
 /datum/action/cooldown/spell/convert_heretic/is_valid_target(atom/cast_on)
 	return ishuman(cast_on)

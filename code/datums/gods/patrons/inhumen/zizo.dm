@@ -12,6 +12,7 @@
 					/datum/action/cooldown/spell/raise_undead_formation/miracle 		= CLERIC_T2,
 					/datum/action/cooldown/spell/raise_undead_guard/miracle				= CLERIC_T2,
 					/datum/action/cooldown/spell/lacrima								= CLERIC_T2,
+					/datum/action/cooldown/spell/convert_heretic						= CLERIC_T2,
 					/datum/action/cooldown/spell/tame_undead/miracle					= CLERIC_T3,
 					/datum/action/cooldown/spell/rituos/miracle 						= CLERIC_T3,
 					/obj/effect/proc_holder/spell/invoked/resurrect/zizo				= CLERIC_T4

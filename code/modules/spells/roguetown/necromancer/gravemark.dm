@@ -1,9 +1,8 @@
-
 /datum/action/cooldown/spell/gravemark
 	name = "Gravemark"
 	desc = "Adjusts a chosen target's status, allowing you to denote them as an ally to the undead creechers under your command.\nMarked allies will not be targeted nor attacked by any undead creechers under your command.\nCasting the 'Gravemark' spell on them again will mark them as an enemy, causing all undead creechers under your command to become hostile against them."
-	button_icon = 'icons/mob/actions/zizomiracles.dmi'
-	button_icon_state = "raiseskele"
+	button_icon = 'icons/mob/actions/actions_cult.dmi'
+	button_icon_state = "cult_mark"
 	cast_range = 7
 	charge_required = FALSE
 	cooldown_time = 15 SECONDS

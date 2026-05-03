@@ -1,8 +1,8 @@
 /datum/action/cooldown/spell/minion_order
 	name = "Order Minions"
 	desc = "Cast on turf to head in that direction ignoring all else.\nCast on a minion to set to aggressive, cast on self to passive and follow, cast on target to focus them.\nDoes not work on greater skeletons."
-	button_icon = 'icons/mob/actions/zizomiracles.dmi'
-	button_icon_state = "skeleton_formation"
+	button_icon = 'icons/mob/actions/roguespells.dmi'
+	button_icon_state = "raiseskele"
 	cast_range = 12
 	associated_skill = /datum/skill/misc/athletics
 	charge_required = FALSE

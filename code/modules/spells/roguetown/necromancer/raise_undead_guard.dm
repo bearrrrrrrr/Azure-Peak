@@ -14,6 +14,8 @@
 	associated_skill = /datum/skill/magic/arcane
 	cooldown_time = 30 SECONDS
 	zizo_spell = TRUE
+	invocations = list("Convoca spectres custodes!")
+	invocation_type = INVOCATION_SHOUT
 
 /datum/action/cooldown/spell/raise_undead_guard/cast(atom/cast_on)
 	. = ..()
