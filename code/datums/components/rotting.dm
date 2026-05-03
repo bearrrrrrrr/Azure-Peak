@@ -6,6 +6,9 @@
 	var/last_process = 0
 	var/datum/looping_sound/fliesloop/soundloop
 
+/mob/living/carbon/human // i have FURY.
+	var/tmp/original_skin_tone
+
 /datum/component/rot/Initialize(new_amount)
 	..()
 	if(!isatom(parent))
@@ -126,7 +129,11 @@
 	if(shouldupdate)
 		if(findonerotten)
 			if(ishuman(C))
-				var/mob/living/carbon/human/H = C
+				var/mob/living/carbon/human/H = C			
+						
+				if(!H.original_skin_tone) // patchwork slop, the real fix is looking into generate_icon_render_key(), cause like 90% of this code, we have two different versions of it, one for mobliving other for moblivinghuman
+					H.original_skin_tone = H.skin_tone
+
 				H.skin_tone = "878f79" //elf ears
 			if(soundloop && soundloop.stopped && !is_zombie)
 				soundloop.start()

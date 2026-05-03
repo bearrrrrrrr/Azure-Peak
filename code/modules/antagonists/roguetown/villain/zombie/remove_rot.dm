@@ -81,4 +81,10 @@
 		bodypart.update_limb()
 		bodypart.update_disabled()
 
+		if(ishuman(target)) // more patchwork slop
+			var/mob/living/carbon/human/H = target
+			if(H.original_skin_tone)
+				H.skin_tone = H.original_skin_tone
+				H.original_skin_tone = null
+
 	target.update_body()
