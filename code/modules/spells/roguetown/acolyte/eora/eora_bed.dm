@@ -1,6 +1,6 @@
 /obj/structure/bed/rogue/eora
 	name = "flower bed"
-	desc = "A bed of flower petals that looks soft enough to sleep on!"
+	desc = "A bed of flower petals that looks soft enough to sleep on! Said to spare the dying from Necra's domain."
 	sleepy = 4
 	debris = null
 	max_integrity = 50
