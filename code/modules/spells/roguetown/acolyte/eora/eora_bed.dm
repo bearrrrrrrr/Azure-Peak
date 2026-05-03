@@ -38,8 +38,8 @@
 		return
 
 	var/mob/living/priority_target = null
-	var/max_oxy = 0 // Start below 0 to catch people even with 0 oxy loss
-	var/max_brute = 0 // Brute if oxy is 0.
+	var/max_oxy = -1 // Start below 0 to catch people even with 0 oxy loss
+	var/max_brute = -1 // Brute if oxy is 0.
 
 	for(var/datum/weakref/W in occupants)
 		var/mob/living/L = W.resolve()
@@ -98,6 +98,8 @@
 
 	owner.adjustOxyLoss(-oxy_healing_on_tick, 0)
 	owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, -0.5)
+	if(owner.blood_volume < BLOOD_VOLUME_NORMAL)
+		owner.blood_volume = min(owner.blood_volume+healing_on_tick, BLOOD_VOLUME_NORMAL)
 
 /datum/action/cooldown/spell/summon_bed
 	name = "Eora's Rest"
