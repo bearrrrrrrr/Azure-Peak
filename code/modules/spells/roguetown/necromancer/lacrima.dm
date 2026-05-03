@@ -13,7 +13,7 @@
 	associated_skill = /datum/skill/magic/holy
 	associated_stat = null
 	invocation_type = INVOCATION_SHOUT
-	invocations = "Give your lux for the dame!"
+	invocations = list("Give your lux for the dame!")
 	zizo_spell = TRUE
 	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC
 
