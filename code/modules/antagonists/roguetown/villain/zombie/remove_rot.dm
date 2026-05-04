@@ -75,16 +75,12 @@
 
 ///Cure bodyparts
 /proc/clean_body_parts(mob/living/carbon/target)
+	var/da_skin = getblock(target.dna.uni_identity, DNA_SKIN_TONE_BLOCK) // copied from mirror transform, think this is where we store skin data(???)
 	for (var/obj/item/bodypart/bodypart in target.bodyparts)
 		bodypart.rotted = FALSE
 		bodypart.skeletonized = FALSE
 		bodypart.update_limb()
 		bodypart.update_disabled()
 
-		if(ishuman(target)) // more patchwork slop
-			var/mob/living/carbon/human/H = target
-			if(H.original_skin_tone)
-				H.skin_tone = H.original_skin_tone
-				H.original_skin_tone = null
-
+	target.skin_tone = da_skin
 	target.update_body()
