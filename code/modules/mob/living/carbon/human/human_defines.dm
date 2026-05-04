@@ -82,7 +82,6 @@
 	var/static/list/can_ride_typecache = typecacheof(list(/mob/living/carbon/human))
 	var/lastpuke = 0
 	var/last_fire_update
-	var/account_id
 
 	canparry = TRUE
 	candodge = TRUE
@@ -180,6 +179,8 @@
 
 
 	var/list/charflaws = list()
+
+	var/list/feint_list = list()
 
 	// curse list and cooldown
 	var/list/curses = list()
