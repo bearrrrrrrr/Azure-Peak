@@ -82,5 +82,7 @@
 		bodypart.update_limb()
 		bodypart.update_disabled()
 
-	target.skin_tone = da_skin
+	if(ishuman(target)) // did you know drunk driving is safer if you do it in a car rather than a bike?
+		var/mob/living/carbon/human/H = target			
+		H.skin_tone = da_skin 
 	target.update_body()
