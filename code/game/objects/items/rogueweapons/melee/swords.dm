@@ -1613,8 +1613,8 @@
 	desc = "Graceful yet grotesque, this piercing shard of spite ignores the art of fencing in favor of the art of suffering. To wield it is to let your coldest grudges guide your hand."
 	icon_state = "zizorapier"
 	sheathe_icon = "zizorapier"
-	force = 27
-	max_blade_int = 275
+	force = 25
+	max_blade_int = 250
 	max_integrity = 225
 	smeltresult = /obj/item/ingot/avantyne
 
