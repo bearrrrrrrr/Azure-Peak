@@ -766,7 +766,7 @@
 	is_silver = TRUE
 	desc = "The bane of fields, the trimmer of grass, the harvester of wheat, and - depending on who you ask - the shepherd of souls to the afterlyfe. This one is made of silver."
 	icon_state = "silverpeasantscythe"
-	smeltresult = /obj/item/rogueore/silver
+	smeltresult = /obj/item/ingot/silver
 
 /obj/item/rogueweapon/scythe/silver/ComponentInitialize()
 	AddComponent(\
