@@ -8,6 +8,9 @@
 #define SIMPLE_CORPSE_ROT_START 8 MINUTES
 #define SIMPLE_CORPSE_DUST_TIME 15 MINUTES
 
+#define HUNT_CORPSE_ROT_START 20 MINUTES
+#define HUNT_CORPSE_DUST_TIME 35 MINUTES
+
 /datum/component/rot
 	var/amount = 0
 	var/last_process = 0
@@ -149,6 +152,10 @@
 		if(H.buried)
 			soundloop.stop()
 
+/datum/component/rot/simple
+	var/rot_start = SIMPLE_CORPSE_ROT_START
+	var/dust_time = SIMPLE_CORPSE_DUST_TIME
+
 /datum/component/rot/simple/process()
 	..()
 	var/mob/living/L = parent
@@ -158,15 +165,19 @@
 	// Player-controlled (or formerly player-controlled) creatures don't auto-decay.
 	if(L.mind || L.ckey)
 		return
-	if(amount > SIMPLE_CORPSE_ROT_START)
+	if(amount > rot_start)
 		if(soundloop && soundloop.stopped)
 			soundloop.start()
 		var/turf/open/T = get_turf(L)
 		if(istype(T))
 			T.pollute_turf(/datum/pollutant/rot, 5)
-	if(amount > SIMPLE_CORPSE_DUST_TIME)
+	if(amount > dust_time)
 		qdel(src)
 		return L.dust(drop_items=TRUE)
+
+/datum/component/rot/simple/hunt
+	rot_start = HUNT_CORPSE_ROT_START
+	dust_time = HUNT_CORPSE_DUST_TIME
 
 /datum/component/rot/gibs
 	amount = MIASMA_GIBS_MOLES
@@ -183,3 +194,5 @@
 #undef CORPSE_DUST_TIME
 #undef SIMPLE_CORPSE_ROT_START
 #undef SIMPLE_CORPSE_DUST_TIME
+#undef HUNT_CORPSE_ROT_START
+#undef HUNT_CORPSE_DUST_TIME
