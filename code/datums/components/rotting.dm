@@ -6,6 +6,9 @@
 	var/last_process = 0
 	var/datum/looping_sound/fliesloop/soundloop
 
+/mob/living/carbon/human
+	var/original_skin_tone
+
 /datum/component/rot/Initialize(new_amount)
 	..()
 	if(!isatom(parent))
@@ -126,8 +129,10 @@
 	if(shouldupdate)
 		if(findonerotten)
 			if(ishuman(C))
-				var/mob/living/carbon/human/H = C			
-				H.skin_tone = SKIN_COLOR_ROT // "878f79"
+				var/mob/living/carbon/human/H = C
+				if(!H.original_skin_tone) // let's have this here just in case
+					H.original_skin_tone = H.skin_tone
+				H.skin_tone = "878f79" // dont fix what's not broken
 			if(soundloop && soundloop.stopped && !is_zombie)
 				soundloop.start()
 		C.update_body()
