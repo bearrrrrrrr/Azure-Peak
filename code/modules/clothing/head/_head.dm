@@ -84,7 +84,8 @@
 /obj/item/clothing/head/get_mechanics_examine(mob/user)
 	. = ..()
 	if(attachment_component)
-		. += span_info("Shift-right-click to open the headwear's storage. This can be used to wear cosmetics over it or store smaller items.")
+		. += span_info("Shift + RMB will open aesthetic storage, allowing the user to layer extra decorations over \the [src].")
+		. += span_info("Alt + RMB allows the user to toggle aesthetic storage (Shift + RMB) items on or off.")
 
 /obj/item/clothing/head/ShiftRightClick(mob/user)
 	if(attachment_component)
