@@ -168,7 +168,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/dreamwalker
 	gloves = /obj/item/clothing/gloves/roguetown/plate/dreamwalker
 	head = /obj/item/clothing/head/roguetown/helmet/bascinet/dreamwalker
-	neck = /obj/item/clothing/neck/roguetown/bevor
+	neck = /obj/item/clothing/neck/roguetown/bevor/dreamwalker
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/dreamwalker
 	name = "otherworldly fullplate"
@@ -249,13 +249,12 @@
 /datum/component/dreamwalker_repair
 	/// List of dream items being repaired
 	var/list/repairing_items = list()
-	/// List of timers for broken items being fully repaired
-	var/list/repair_timers = list()
-	/// Processing interval
-	/// Careful touching this as setting it too low makes it REALLY hard to break items.
-	var/process_interval = 5 SECONDS
-	/// Time of last processing
-	var/last_process = 0
+	/// How much damage our items have taken
+	var/accumulated_damage = 0
+	/// How much damage it takes before we spawn a repair shard
+	var/shard_threshold = 100
+	/// How much damage our repair shard repairs
+	var/shard_repair_value = 50
 
 /datum/component/dreamwalker_repair/Initialize()
 	if(!ishuman(parent))
@@ -263,34 +262,6 @@
 	to_chat(parent, span_userdanger("Your body pulses with strange dream energies."))
 	RegisterSignal(parent, COMSIG_MOB_EQUIPPED_ITEM, .proc/on_item_equipped)
 	RegisterSignal(parent, COMSIG_MOB_DROPITEM, .proc/on_item_dropped)
-	// Register for processing
-	START_PROCESSING(SSprocessing, src)
-
-/datum/component/dreamwalker_repair/Destroy()
-	STOP_PROCESSING(SSprocessing, src)
-	// Clean up all timers
-	for(var/obj/item/I in repair_timers)
-		deltimer(repair_timers[I])
-	repair_timers = null
-	repairing_items = null
-	return ..()
-
-/datum/component/dreamwalker_repair/process(delta_time)
-	// Only process every x seconds
-	if(world.time < last_process + process_interval)
-		return
-
-	last_process = world.time
-
-	// Process all items in the repair list
-	for(var/obj/item/I in repairing_items)
-		if(I.obj_broken)
-			continue // Broken items are handled separately
-		if(I.obj_integrity < I.max_integrity)
-			I.obj_integrity = min(I.obj_integrity + I.max_integrity * 0.01, I.max_integrity) // Repair 1% of max integrity
-			I.update_icon()
-		if(I.blade_int < I.max_blade_int)
-			I.add_bintegrity(min(I.blade_int + I.max_blade_int * 0.01, I.max_blade_int), src.parent) // Sharpen 1% of max sharpness
 
 /datum/component/dreamwalker_repair/proc/on_item_equipped(mob/user, obj/item/source, slot)
 	SIGNAL_HANDLER
@@ -308,43 +279,177 @@
 	if(I in repairing_items)
 		return
 	repairing_items += I
-	RegisterSignal(I, COMSIG_ITEM_BROKEN, .proc/on_item_broken)
-
-	// If item is already broken, start full repair process
-	if(I.obj_broken)
-		start_full_repair(I)
+	RegisterSignal(I, COMSIG_OBJ_TAKE_DAMAGE, .proc/on_gear_damaged)
 
 /datum/component/dreamwalker_repair/proc/remove_item(obj/item/I)
 	if(I in repairing_items)
 		repairing_items -= I
-		UnregisterSignal(I, COMSIG_ITEM_BROKEN)
-		// Cancel any ongoing full repair
-		if(I in repair_timers)
-			deltimer(repair_timers[I])
-			repair_timers -= I
+		UnregisterSignal(I, COMSIG_OBJ_TAKE_DAMAGE)
 
-/datum/component/dreamwalker_repair/proc/on_item_broken(obj/item/source)
+/datum/component/dreamwalker_repair/proc/on_gear_damaged(obj/item/source, damage_amount)
 	SIGNAL_HANDLER
-	if(source in repairing_items)
-		source.visible_message(span_danger("The [source] shatters, but it seems strange energies are slowly bending the metal back into shape."))
-		start_full_repair(source)
+	accumulated_damage += damage_amount
 
-/datum/component/dreamwalker_repair/proc/start_full_repair(obj/item/I)
-	// Cancel any existing timer
-	if(I in repair_timers)
-		deltimer(repair_timers[I])
+	if(accumulated_damage >= shard_threshold)
+		spawn_shard()
+		accumulated_damage -= shard_threshold
 
-	// Set a timer to fully repair after 1 minute
-	repair_timers[I] = addtimer(CALLBACK(src, .proc/finish_full_repair, I), 1 MINUTES, TIMER_STOPPABLE)
+/datum/component/dreamwalker_repair/proc/spawn_shard(shard_duration = 10 SECONDS, shard_amount = shard_repair_value)
+	var/mob/living/L = parent
+	var/turf/center = get_turf(L)
+	if(!center)
+		return
 
-/datum/component/dreamwalker_repair/proc/finish_full_repair(obj/item/I)
-	// Check if the item is still in our inventory and broken
-	if(I && (I in repairing_items) && I.obj_broken)
-		I.visible_message(span_danger("The [I] melds back into a useable shape."))
-		I.obj_fix()
-		// Restore up to 25% of durability instead of all of it. This is slightly more as I.integrity_failure for MOST things.
-		I.obj_integrity *= 0.25
-		I.update_icon()
+	var/back_dir = REVERSE_DIR(L.dir)
+	var/side_dir = turn(L.dir, 90)
+	var/list/potential_tiles = list()
 
-	// Remove the timer reference
-	repair_timers -= I
+	var/turf/T_back = get_step(center, back_dir)
+	if(T_back)
+		potential_tiles += T_back
+		var/turf/TR = get_step(T_back, side_dir)
+		potential_tiles += TR
+		potential_tiles += get_step(TR, side_dir)
+		var/turf/TL = get_step(T_back, -side_dir)
+		potential_tiles += TL
+		potential_tiles += get_step(TL, -side_dir)
+		var/turf/T_far_back = get_step(T_back, back_dir)
+		if(T_far_back)
+			potential_tiles += T_far_back
+			potential_tiles += get_step(T_far_back, side_dir)
+			potential_tiles += get_step(T_far_back, -side_dir)
+
+	var/list/valid_tiles = list()
+	for(var/turf/T in potential_tiles)
+		if(is_tile_valid(T))
+			valid_tiles += T
+
+	// Fallback - just drop it at our feet
+	var/turf/chosen_spawn = length(valid_tiles) ? pick(valid_tiles) : center
+
+	// Create shard at Player's turf, tell it where to slide to
+	playsound(L, 'sound/combat/sharpness_loss1.ogg', 75, TRUE)
+	new /obj/effect/temp_visual/dream_shard(center, shard_duration, shard_amount, chosen_spawn)
+	
+	if(prob(40))
+		to_chat(L, span_notice("A shard of your dream-essence shatters onto the floor!"))
+
+/datum/component/dreamwalker_repair/proc/is_tile_valid(turf/T)
+	if(!T || istransparentturf(T) || T.density)
+		return FALSE
+
+	for(var/obj/O in T)
+		if(O.density)
+			return FALSE	
+	return TRUE
+
+/datum/component/dreamwalker_repair/proc/repair_from_shard(amount)
+	var/remaining_repair = amount
+	
+	// Continue repairing as long as we have juice and items to fix
+	while(remaining_repair > 0)
+		var/obj/item/most_broken = null
+		var/lowest_percent = 1
+
+		for(var/obj/item/I in repairing_items)
+			var/integrity_ratio = I.obj_integrity / I.max_integrity
+			if(integrity_ratio < lowest_percent)
+				lowest_percent = integrity_ratio
+				most_broken = I
+
+		if(!most_broken)
+			break // All items fully repaired
+
+		var/needed = most_broken.max_integrity - most_broken.obj_integrity
+		var/applied = min(remaining_repair, needed)
+		most_broken.obj_integrity += applied
+		// If this happens to repair a weapon, fix the blade completely.
+		if(most_broken.max_blade_int && most_broken.blade_int < most_broken.max_blade_int)
+			most_broken.blade_int = most_broken.max_blade_int
+		remaining_repair -= applied
+
+		// Handle broken state restoration
+		if(most_broken.obj_broken && most_broken.obj_integrity > 0)
+			most_broken.obj_fix(full_repair = FALSE)
+
+		most_broken.update_icon()
+
+		if(needed > applied) 
+			break // This item took all remaining repair but isn't full yet
+
+/datum/component/dreamwalker_repair/Destroy()
+	for(var/obj/item/I in repairing_items)
+		UnregisterSignal(I, COMSIG_OBJ_TAKE_DAMAGE)
+	repairing_items = null
+	return ..()
+
+/obj/effect/temp_visual/dream_shard
+	name = "dream shard"
+	desc = "A jagged fragment of iridescent reality. It pulses with restorative energy."
+	icon_state = "dream_shards"
+	layer = ABOVE_OBJ_LAYER
+	plane = GAME_PLANE
+	anchored = TRUE
+	// Gotta be able to attack it!
+	mouse_opacity = 1
+	duration = 5 SECONDS
+	var/repair_value = 50
+	var/health = 25
+	var/pickuppable = TRUE
+
+/obj/effect/temp_visual/dream_shard/Initialize(mapload, set_dur, amount, turf/target_turf)
+	if(amount)
+		repair_value = amount
+		health = amount * 0.5
+	if(set_dur)
+		duration = set_dur
+	if(target_turf)
+		pickuppable = FALSE
+		animate_shard(target_turf)
+	. = ..()
+
+/obj/effect/temp_visual/dream_shard/proc/animate_shard(turf/target_turf)
+	if(!istype(target_turf))
+		return
+
+	var/turf/current_turf = get_turf(src)
+	if(!current_turf || current_turf == target_turf)
+		return
+
+	var/target_x = (target_turf.x - current_turf.x) * 32
+	var/target_y = (target_turf.y - current_turf.y) * 32
+	animate(src, pixel_x = target_x, pixel_y = target_y, time = 5, easing = ELASTIC_EASING)
+	addtimer(CALLBACK(src, .proc/move_to_dest, target_turf), 5)
+
+/obj/effect/temp_visual/dream_shard/attackby(obj/item/I, mob/user, params)
+	if(HAS_TRAIT(user, TRAIT_DREAMWALKER))
+		consume_shard(user)
+		return
+
+	health -= I.force
+	user.visible_message(span_danger("[user] smashes the [src]!"))
+	if(health <= 0)
+		qdel(src)
+	return ..()
+
+/obj/effect/temp_visual/dream_shard/Crossed(atom/movable/AM)
+	if(ishuman(AM))
+		var/mob/living/carbon/human/H = AM
+		if(HAS_TRAIT(H, TRAIT_DREAMWALKER))
+			consume_shard(H)
+
+/obj/effect/temp_visual/dream_shard/proc/consume_shard(mob/living/carbon/human/H)
+	if(!pickuppable)
+		return FALSE
+	var/datum/component/dreamwalker_repair/DR = H.GetComponent(/datum/component/dreamwalker_repair)
+	if(DR)
+		DR.repair_from_shard(repair_value)
+		playsound(H, 'sound/magic/magic_nulled.ogg', 70, TRUE)
+		qdel(src)
+
+/obj/effect/temp_visual/dream_shard/proc/move_to_dest(turf/target_turf)
+	if(src && target_turf)
+		forceMove(target_turf)
+		pixel_x = 0
+		pixel_y = 0
+		pickuppable = TRUE
