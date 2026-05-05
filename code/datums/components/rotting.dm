@@ -6,9 +6,6 @@
 	var/last_process = 0
 	var/datum/looping_sound/fliesloop/soundloop
 
-/mob/living/carbon/human
-	var/original_skin_tone
-
 /datum/component/rot/Initialize(new_amount)
 	..()
 	if(!isatom(parent))
