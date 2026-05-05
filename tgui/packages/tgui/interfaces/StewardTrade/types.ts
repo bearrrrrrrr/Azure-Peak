@@ -51,6 +51,8 @@ export type EconomicEvent = {
   event_type: string; // ECON_EVENT_SHORTAGE | ECON_EVENT_OVERSUPPLY
   days_left: number;
   affected_goods: string[];
+  saturation_target: number;
+  saturation_progress: number;
 };
 
 export type BanditryProjection = {
