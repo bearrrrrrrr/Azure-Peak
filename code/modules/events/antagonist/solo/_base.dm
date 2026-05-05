@@ -109,66 +109,55 @@
 /datum/round_event/antagonist/solo/setup()
 	var/datum/round_event_control/antagonist/solo/cast_control = control
 	var/requested_antag_count = cast_control.get_antag_amount()
-	antag_count = requested_antag_count
+
 	antag_flag = cast_control.antag_flag
 	antag_datum = cast_control.antag_datum
 	restricted_roles = cast_control.restricted_roles
 	prompted_picking = cast_control.prompted_picking
+	
 	var/list/possible_candidates = cast_control.get_candidates()
-	var/list/candidates = list()
-	if(cast_control == SSgamemode.current_roundstart_event && length(SSgamemode.roundstart_antag_minds))
-		log_storyteller("Running roundstart antagonist assignment, event: [src], roundstart_antag_minds: [english_list(SSgamemode.roundstart_antag_minds)]")
-		for(var/datum/mind/antag_mind in SSgamemode.roundstart_antag_minds)
-			if(!antag_mind.current)
-				log_storyteller("Roundstart antagonist setup error: antag_mind([antag_mind]) in roundstart_antag_minds without a set mob")
-				continue
-			candidates += antag_mind.current
-			SSgamemode.roundstart_antag_minds -= antag_mind
-			log_storyteller("Roundstart antag_mind, [antag_mind]")
-
-	//guh
-	var/list/cliented_list = list()
-	for(var/mob/living/mob as anything in possible_candidates)
-		cliented_list += mob.client
-
-	while(length(possible_candidates) && length(candidates) < antag_count) //both of these pick_n_take from weighted_candidates so this should be fine
-		var/mob/picked_ckey = pick_n_take(possible_candidates)
-		var/client/picked_client = picked_ckey.client
-		if(QDELETED(picked_client))
-			continue
-		var/mob/picked_mob = picked_client.mob
-		picked_mob?.mind?.picking = TRUE
-		log_storyteller("Picked antag event mob: [picked_mob], special role: [picked_mob.mind?.special_role ? picked_mob.mind.special_role : "none"]")
-		candidates |= picked_mob
-
-	antag_count = min(antag_count, length(candidates))
-	if(antag_count <= 0)
-		message_admins("STORYTELLER:[cast_control.name] failed to spawn because it had no valid candidates at setup.")
-		log_storyteller("STORYTELLER:[cast_control.name] failed to spawn because it had no valid candidates at setup.")
-		return
-	if(antag_count < requested_antag_count)
-		message_admins("STORYTELLER:[cast_control.name] partially filled from [requested_antag_count] to [antag_count] due to limited valid candidates.")
-		log_storyteller("STORYTELLER:[cast_control.name] partially filled from [requested_antag_count] to [antag_count] due to limited valid candidates.")
-	else
-		message_admins("STORYTELLER:[cast_control.name] spawning [antag_count].")
-
 	var/list/picked_mobs = list()
-	for(var/i in 1 to antag_count)
-		if(!length(candidates))
-			message_admins("A roleset event got fewer antags then its antag_count and may not function correctly.")
-			break
 
-		var/mob/candidate = pick_n_take(candidates)
-		log_storyteller("Antag event spawned mob: [candidate], special role: [candidate.mind?.special_role ? candidate.mind.special_role : "none"]")
+	if(prompted_picking)
+		while(length(possible_candidates) && length(picked_mobs) < requested_antag_count)
+			var/mob/M = pick_n_take(possible_candidates)
 
+			if(!M || !M.client || QDELETED(M))
+				continue
+
+			var/ask_choice = tgui_alert(M, "Would you like to become a [cast_control.name]?", "Antagonist Offer", list("Yes", "No"), 20 SECONDS)
+
+			if(ask_choice == "Yes")
+				picked_mobs += M
+				message_admins("STORYTELLER: [key_name_admin(M)] accepted the [cast_control.name] offer.")
+			else
+				log_storyteller("[key_name(M)] declined the [cast_control.name] offer.")
+				continue
+
+	// instant pick
+	else
+		while(length(possible_candidates) && length(picked_mobs) < requested_antag_count)
+			var/mob/M = pick_n_take(possible_candidates)
+			if(M)
+				picked_mobs += M
+
+	if(!length(picked_mobs))
+		return // Event fails gracefully
+
+	for(var/mob/candidate in picked_mobs)
 		if(!candidate.mind)
 			candidate.mind = new /datum/mind(candidate.key)
 
-		setup_minds += candidate.mind
-		candidate.mind.special_role = antag_flag
-		candidate.mind.restricted_roles = restricted_roles
-		picked_mobs += WEAKREF(candidate.client)
+		var/mob/final_mob = candidate
+		if(isobserver(candidate))
+			final_mob = make_body(candidate)
 
+		if(final_mob)
+			final_mob.mind.special_role = antag_flag
+			final_mob.mind.restricted_roles = restricted_roles
+			setup_minds += final_mob.mind
+
+	antag_count = length(setup_minds)
 	setup = TRUE
 	if(LAZYLEN(extra_spawned_events))
 		var/event_type = pickweight(extra_spawned_events)
