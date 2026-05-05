@@ -44,16 +44,6 @@
 			update_icon()
 			return
 
-/obj/item/clothing/mask/rogue/MiddleClick(mob/user)
-	if(!ishuman(user))
-		return
-	to_chat(user, span_info("I [overarmor ? "wear \the [src] under my hair" : "wear \the [src] over my hair"]."))
-	if(flags_inv & HIDE_HEADTOP)
-		flags_inv &= ~HIDE_HEADTOP
-	else
-		flags_inv |= HIDE_HEADTOP
-	user.update_inv_head()
-
 /obj/item/clothing/mask/rogue/get_mechanics_examine()
 	. = ..()
 
