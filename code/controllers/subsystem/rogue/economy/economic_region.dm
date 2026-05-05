@@ -80,7 +80,7 @@ GLOBAL_LIST_INIT(economic_regions, init_economic_regions())
 		TRADE_GOOD_SILK = TG_DEMAND_SILK,
 		TRADE_GOOD_CALENDULA = TG_DEMAND_SPECIALTY_HERB,
 		TRADE_GOOD_POPPY = TG_DEMAND_SPECIALTY_HERB,
-		TRADE_GOOD_DENDOR_ESSENCE = 1, // literal: deliberately scarce, not category-bound
+		TRADE_GOOD_DENDOR_ESSENCE = 3, // literal: deliberately scarce, not category-bound
 		TRADE_GOOD_VISCERA = TG_DEMAND_SPECIALTY_HERB,
 		TRADE_GOOD_HIDE = TG_DEMAND_LEATHER,
 		TRADE_GOOD_FUR = TG_DEMAND_LEATHER,
