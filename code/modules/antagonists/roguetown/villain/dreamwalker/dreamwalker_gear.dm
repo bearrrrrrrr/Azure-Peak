@@ -370,7 +370,7 @@
 
 		// Handle broken state restoration
 		if(most_broken.obj_broken && most_broken.obj_integrity > 0)
-			most_broken.obj_fix(full_repair = FALSE)
+			most_broken.obj_fix(null, FALSE)
 
 		most_broken.update_icon()
 
