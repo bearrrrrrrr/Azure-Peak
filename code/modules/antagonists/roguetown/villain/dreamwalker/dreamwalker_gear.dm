@@ -266,7 +266,7 @@
 /datum/component/dreamwalker_repair/proc/on_item_equipped(mob/user, obj/item/source, slot)
 	SIGNAL_HANDLER
 	if(source.item_flags & DREAM_ITEM)
-		to_chat(parent, span_notice("the [source] pulses in your hands, dream energies passively repairing it."))
+		to_chat(parent, span_notice("the [source] pulses in your hands, dream energies swirling around it."))
 		add_item(source)
 
 /datum/component/dreamwalker_repair/proc/on_item_dropped(mob/user, obj/item/source)
