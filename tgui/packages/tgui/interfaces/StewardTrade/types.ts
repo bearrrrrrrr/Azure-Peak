@@ -156,6 +156,8 @@ export type TradeQuote = {
   warrant_remaining: number;
   warrant_ok: BooleanLike;
   can_afford: BooleanLike;
+  stockpile_amount: number;
+  stockpile_after: number;
 };
 
 export type PetitionCategory = {
