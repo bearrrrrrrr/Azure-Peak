@@ -230,9 +230,9 @@
 	var/player_count = override_player_count || length(GLOB.joined_player_list)
 	result["player_count"] = player_count
 
-	// Adventurer slots absorb whatever wretch headroom the pantheon gives up below the default cap of 10.
+	// Adventurer slots absorb the wretch headroom each pantheon forfeits below the original 15-slot ceiling (T2 garrison expansion + Eora's lower T1 cap).
 	var/cap = SSgamemode.current_storyteller?.wretch_slot_cap || 10
-	var/wretch_offset = max(0, 10 - cap) * 2
+	var/wretch_offset = max(0, 15 - cap)
 	result["wretch_offset"] = wretch_offset
 
 	var/slots = 20 + wretch_offset
