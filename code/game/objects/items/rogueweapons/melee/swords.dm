@@ -1617,7 +1617,7 @@
 	desc = "The mariner's special: A short, broad sabre with a slightly curved blade optimized for slashing."
 	icon_state = "cutlass"
 	force = 23
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop)
+	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/chop)
 	gripped_intents = null
 	wdefense = 6
 	wbalance = WBALANCE_SWIFT
