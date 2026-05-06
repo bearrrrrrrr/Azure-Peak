@@ -35,6 +35,7 @@
 	always_votable = TRUE
 	color_theme = "#80ced8"
 	preferred_gnoll_mode = GNOLL_SCALING_NONE
+	wretch_slot_cap = 0
 	guarantees_roundstart_roleset = FALSE
 	roundstart_prob = 0
 
@@ -464,12 +465,13 @@
 /datum/storyteller/zizo
 	name = "Zizo"
 	vote_desc = "Chaos reigns. Liches stir more readily than under any other god, and Deadites are far more vicious. Her favor shines upon corpses; be they holy, noble, or reanimated."
-	desc = "Magical, gamble, trickery, and unexpected events get weight bumps (1.2x to 1.5x). Lich is the only roundstart hard antag and gets a 1.5x weight bump - bandits, werewolves, and vampire lords cannot roll. High event cost variance. Flat gnoll spawn (15% chance, 2 cap)."
+	desc = "Magical, gamble, trickery, and unexpected events get weight bumps (1.2x to 1.5x). Lich is guaranteed roundstart - bandits, werewolves, and vampire lords cannot roll. High event cost variance. Flat gnoll spawn (15% chance, 2 cap). Wretch T2 garrison expansion can fire."
 	welcome_text = "A breeze of morbid air, ferrying the howls of the damned.."
 	weight = 4
 	always_votable = TRUE
 	color_theme = "#CC4444"
 	preferred_gnoll_mode = GNOLL_SCALING_FLAT
+	wretch_slot_cap = 15
 
 	tag_multipliers = list(
 		TAG_MAGICAL = 1.2,
@@ -515,12 +517,13 @@
 /datum/storyteller/baotha
 	name = "Baotha"
 	vote_desc = "Spice reigns. Occurrences are more erratic and negative. Her favor shines upon drunkards and addicts."
-	desc = "Insanity, magic, and disaster events get weight bumps (1.1x to 1.4x). Vampire Lord is the only roundstart hard antag and gets a 1.5x weight bump - bandits, liches, and werewolves cannot roll. All event tracks accelerated. Gnoll mode randomized."
+	desc = "Insanity, magic, and disaster events get weight bumps (1.1x to 1.4x). Vampire Lord is guaranteed roundstart - bandits, liches, and werewolves cannot roll. All event tracks accelerated. Gnoll mode randomized. Wretch T2 garrison expansion can fire."
 	welcome_text = "The sickly sweet aromas of liqour and spice fills the air.."
 	weight = 4
 	always_votable = TRUE
 	color_theme = "#9933FF"
 	preferred_gnoll_mode = GNOLL_SCALING_RANDOM
+	wretch_slot_cap = 15
 
 	tag_multipliers = list(
 		TAG_INSANITY = 1.4,
@@ -564,12 +567,13 @@
 /datum/storyteller/graggar
 	name = "Graggar"
 	vote_desc = " Inhumenity reigns. Gnolls and assassins prowl more eagerly than under any other god, and raids occur far more often. His favor shines upon bloodshed and cannibalism."
-	desc = "Battle, blood, and war events get weight bumps (1.2x to 1.6x). Gnoll and Assassin are the only roundstart hard antags and get a 1.5x weight bump. Raid track gains 2.5x faster. Dynamic gnoll scaling - packs grow with population."
+	desc = "Battle, blood, and war events get weight bumps (1.2x to 1.6x). Gnolls and Assassins are guaranteed roundstart. Raid track gains 2.5x faster. Dynamic gnoll scaling - packs grow with population. Wretch T2 garrison expansion can fire."
 	welcome_text = "Plumes of smoke are blown through the streets, reeking of ash and blood.."
 	weight = 4
 	always_votable = TRUE
 	color_theme = "#8B3A3A"
 	preferred_gnoll_mode = GNOLL_SCALING_DYNAMIC
+	wretch_slot_cap = 15
 
 	tag_multipliers = list(
 		TAG_BATTLE = 1.6,
@@ -610,12 +614,13 @@
 /datum/storyteller/matthios
 	name = "Matthios"
 	vote_desc = "Thievery reigns. Bandit incursions are far more common than under other gods. His favor shines upon thefts and offerings to a certain shrine."
-	desc = "Trade, corruption, and loot events get weight bumps (1.2x to 1.4x). Bandit is the only roundstart hard antag and gets a 1.5x weight bump - liches, werewolves, and vampire lords cannot roll. Antag track gains 1.5x faster. Gnoll mode randomized."
+	desc = "Trade, corruption, and loot events get weight bumps (1.2x to 1.4x). Bandits are guaranteed roundstart - liches, werewolves, and vampire lords cannot roll. Antag track gains 1.5x faster. Gnoll mode randomized. Wretch T2 garrison expansion can fire."
 	welcome_text = "The jingling of mammons, and the dripping of ink from freshly-signed bounties.."
 	weight = 4
 	always_votable = TRUE
 	color_theme = "#8B4513"
 	preferred_gnoll_mode = GNOLL_SCALING_RANDOM
+	wretch_slot_cap = 15
 
 	tag_multipliers = list(
 		TAG_TRADE = 1.4,

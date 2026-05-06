@@ -147,7 +147,9 @@
 	var/list/result = list()
 	var/player_count = override_player_count || length(GLOB.joined_player_list)
 	result["player_count"] = player_count
-	var/cap = SSgamemode.current_storyteller?.wretch_slot_cap || 10
+	var/cap = SSgamemode.current_storyteller?.wretch_slot_cap
+	if(isnull(cap))
+		cap = 10
 	result["cap"] = cap
 	if(is_storyteller_soft_antag_blocked())
 		result["tier1_slots"] = 0
@@ -230,8 +232,10 @@
 	var/player_count = override_player_count || length(GLOB.joined_player_list)
 	result["player_count"] = player_count
 
-	// Adventurer slots absorb the wretch headroom each pantheon forfeits below the original 15-slot ceiling (T2 garrison expansion + Eora's lower T1 cap).
-	var/cap = SSgamemode.current_storyteller?.wretch_slot_cap || 10
+	// Adventurer slots absorb the wretch headroom each pantheon forfeits below the original 15-slot ceiling.
+	var/cap = SSgamemode.current_storyteller?.wretch_slot_cap
+	if(isnull(cap))
+		cap = 10
 	var/wretch_offset = max(0, 15 - cap)
 	result["wretch_offset"] = wretch_offset
 

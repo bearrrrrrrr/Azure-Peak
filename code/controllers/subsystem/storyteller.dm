@@ -1027,8 +1027,17 @@ SUBSYSTEM_DEF(gamemode)
 	return STORYTELLER_FAVOR_NONE
 
 /datum/controller/subsystem/gamemode/proc/story_guarantee_flags(storyteller_type)
-	// Guarantees are intentionally empty - every god is now thematic-favored only.
-	// Kept as a proc so callers in storyteller_guaranteed_events() and elsewhere don't break.
+	if(!ispath(storyteller_type, /datum/storyteller))
+		return STORYTELLER_FAVOR_NONE
+	switch(storyteller_type)
+		if(/datum/storyteller/zizo)
+			return STORYTELLER_FAVOR_LICH
+		if(/datum/storyteller/baotha)
+			return STORYTELLER_FAVOR_VAMPIRE_LORD
+		if(/datum/storyteller/graggar)
+			return STORYTELLER_FAVOR_GNOLL | STORYTELLER_FAVOR_ASSASSIN
+		if(/datum/storyteller/matthios)
+			return STORYTELLER_FAVOR_BANDIT
 	return STORYTELLER_FAVOR_NONE
 
 /datum/controller/subsystem/gamemode/proc/story_favor_flags(storyteller_type)
