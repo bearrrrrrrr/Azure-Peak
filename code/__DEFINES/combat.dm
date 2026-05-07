@@ -403,6 +403,7 @@ GLOBAL_LIST_INIT(shove_disarming_types, typecacheof(list(
 	#define TEMPO_DODGE_LOSS_LESS 1
 	#define TEMPO_DODGE_LOSS_NONE 2
 #define TEMPO_TAG_BINDABLE "defbindable"
+#define TEMPO_TAG_EQUIPTOSS "equiptoss"
 
 #define TEMPO_FACTION_KEEP (1 << 0)
 #define TEMPO_FACTION_WRETCH (1 << 1)
