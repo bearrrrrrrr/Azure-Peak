@@ -208,7 +208,7 @@
 /datum/storyteller/xylix
 	name = "Xylix"
 	vote_desc = "Unpredictability reigns. Nothing is set in stone, yet everything is possible. His favor shines upon acts of chance and whimsy."
-	desc = "Forced events bypass population prerequisites and any event that's already fired this round drops to its full repetition penalty immediately. Intervention 1.75x; omens and raids suppressed to 0. All hard antags get a 1.5x weight bump. Gnoll mode randomized."
+	desc = "Forced events bypass population prerequisites and any event that's already fired this round drops to its full repetition penalty immediately. Intervention 1.75x; character injection, omens and raids suppressed to 0. All roundstart hard antags get a 1.5x weight bump. Gnoll mode randomized."
 	welcome_text = "\"..well, that's what happens out of too much spice and wine!\""
 	weight = 4
 	always_votable = TRUE
@@ -222,7 +222,7 @@
 		EVENT_TRACK_PERSONAL = 1.1,
 		EVENT_TRACK_MODERATE = 1,
 		EVENT_TRACK_INTERVENTION = 1.75,
-		EVENT_TRACK_CHARACTER_INJECTION = 1,
+		EVENT_TRACK_CHARACTER_INJECTION = 0,
 		EVENT_TRACK_OMENS = 0,
 		EVENT_TRACK_RAIDS = 0,
 	)
