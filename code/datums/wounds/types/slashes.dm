@@ -53,7 +53,7 @@
 	
 	can_sew = TRUE
 	can_cauterize = TRUE
-	severity_names = list(
+	severity_stages = list(
 		"light" = 3,
 		"deep" = 6,
 		"severe" = 10,
@@ -89,7 +89,7 @@
 	sew_threshold += (dam * SLASH_UPG_SEWRATE)
 	woundpain += (dam * SLASH_UPG_PAINRATE)
 	armor_check(armor, SLASH_ARMORED_BLEED_CLAMP)
-	update_name()
+	update_stage()
 	..()
 
 #undef SLASH_UPG_BLEEDRATE
@@ -207,7 +207,7 @@
 	mob_overlay = "cut"
 	can_sew = TRUE
 	can_cauterize = FALSE	//Ouch owie oof
-	severity_names = list(
+	severity_stages = list(
 		"light" = 3,
 		"deep" = 6,
 		"severe" = 10,
@@ -235,7 +235,7 @@
 	sew_threshold += (dam * LASHING_UPG_SEWRATE)
 	woundpain += (dam * LASHING_UPG_PAINRATE)
 	armor_check(armor, LASHING_ARMORED_BLEED_CLAMP)
-	update_name()
+	update_stage()
 	..()
 
 #undef LASHING_UPG_BLEEDRATE
@@ -257,7 +257,7 @@
 	mob_overlay = "cut"
 	can_sew = TRUE
 	can_cauterize = FALSE	//Ouch owie oof
-	severity_names = list(
+	severity_stages = list(
 		"light" = 3,
 		"deep" = 6,
 		"severe" = 10,
@@ -284,7 +284,7 @@
 	woundpain += (dam * PUNISH_UPG_PAINRATE)
 	passive_healing += PUNISH_UPG_SELFHEAL
 	armor_check(armor, PUNISH_ARMORED_BLEED_CLAMP)
-	update_name()
+	update_stage()
 	..()
 
 #undef PUNISH_UPG_BLEEDRATE

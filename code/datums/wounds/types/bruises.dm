@@ -49,7 +49,7 @@
 	can_sew = FALSE
 	can_cauterize = FALSE
 	passive_healing = 0.5
-	severity_names = list(
+	severity_stages = list(
 		"minor" = 20,
 		"moderate" = 60,
 		"big" = 100,
@@ -68,7 +68,7 @@
 	whp += (dam * BRUISE_UPG_WHPRATE)
 	woundpain += (dam * BRUISE_UPG_PAINRATE)
 	passive_healing += BRUISE_UPG_SELFHEAL
-	update_name()
+	update_stage()
 	..()
 
 #undef BRUISE_UPG_WHPRATE

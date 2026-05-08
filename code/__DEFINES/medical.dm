@@ -141,7 +141,5 @@
 
 /// Wound severity is determined by bleed rate (default)
 #define SEVERITY_TYPE_BLEED "bleed" 
-/// Wound severity is determined by pain value (alternative)
-#define SEVERITY_TYPE_PAIN "pain"
 /// Wound severity is determined by the wound's hp (alternative)
 #define SEVERITY_TYPE_WHP "whp"
