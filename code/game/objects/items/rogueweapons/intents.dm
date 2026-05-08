@@ -781,6 +781,48 @@
 	candodge = FALSE
 	canparry = FALSE
 
+/datum/intent/clean
+	name = "clean"
+	icon_state = "inclean"
+	no_attack = FALSE
+	candodge = TRUE
+	canparry = TRUE
+
+/datum/intent/voice
+	name = "voice"
+	icon_state = "invoice"
+	no_attack = TRUE
+	candodge = FALSE
+	canparry = FALSE
+
+/datum/intent/sense
+	name = "sense"
+	icon_state = "insense"
+	no_attack = TRUE
+	candodge = FALSE
+	canparry = FALSE
+
+/datum/intent/draw
+	name = "draw"
+	icon_state = "indraw"
+	no_attack = FALSE
+	candodge = TRUE
+	canparry = TRUE
+
+/datum/intent/spark
+	name = "spark"
+	icon_state = "inspark"
+	no_attack = FALSE
+	candodge = TRUE
+	canparry = TRUE
+
+/datum/intent/light
+	name = "light"
+	icon_state = "inlight"
+	no_attack = TRUE
+	candodge = FALSE
+	canparry = FALSE
+
 /datum/intent/effect
 	blade_class = BCLASS_EFFECT
 
