@@ -402,6 +402,8 @@
 		M.visible_message(span_warning("[M] is surrounded by a cloud of pestilent vermin!"), span_notice("You surround [M] in a cloud of pestilent vermin!"))
 		M.apply_status_effect(/datum/status_effect/buff/infestation/) //apply debuff
 		SEND_SIGNAL(src, COMSIG_INFESTATION_CHARGE_ADD, 10)
+		if(!M.mind)
+			M.visible_message(span_necrosis("The infestation contaminates [M] with a rapidly spreading disease."))
 		return TRUE
 	if(SSchimeric_tech.get_node_status("INFESTATION_ROT_SNACKS") && istype(target, /obj/item/reagent_containers/food/snacks))
 		var/obj/item/reagent_containers/food/snacks/snack = target
@@ -434,7 +436,7 @@
 		if(rotted_count <= 1)
 			snack.visible_message(span_warning("[snack] is swarmed by vermin and rapidly rots!"))
 		else
-			snack.visible_message(span_warning("some food is swarmed by vermin and rapidly rots!"))
+			snack.visible_message(span_warning("Some food is swarmed by vermin and rapidly rots!"))
 		SEND_SIGNAL(src, COMSIG_INFESTATION_CHARGE_ADD, total_charge)
 		return TRUE
 	revert_cast()
@@ -446,6 +448,7 @@
 	duration = 10 SECONDS
 	effectedstats = list(STATKEY_CON = -2)
 	var/static/mutable_appearance/rotten = mutable_appearance('icons/roguetown/mob/rotten.dmi', "rotten")
+	var/extended_duration = FALSE
 
 /datum/status_effect/buff/infestation/on_apply()
 	. = ..()
@@ -454,18 +457,32 @@
 	target.Jitter(20)
 	target.add_overlay(rotten)
 	target.update_vision_cone()
+	if(!target.mind)
+		target.change_stat(STATKEY_SPD, -5) // rot take them
 
 /datum/status_effect/buff/infestation/on_remove()
 	var/mob/living/target = owner
 	target.cut_overlay(rotten)
 	target.update_vision_cone()
+	if(!target.mind)
+		target.change_stat(STATKEY_SPD, 5) // rot take them
 	. = ..()
 
 /datum/status_effect/buff/infestation/tick()
 	var/mob/living/target = owner
 	var/mob/living/carbon/M = target
-	target.adjustToxLoss(2)
-	target.adjustBruteLoss(1)
+	if(!extended_duration && !target.mind) // 30 seconds on npc
+		duration += 20 SECONDS
+		extended_duration = TRUE
+	if(!target.mind) // so this does something vs deadites
+		target.adjustToxLoss(5)
+		target.adjustOxyLoss(5)
+		target.adjustCloneLoss(2)
+		target.adjustBruteLoss(2)
+		target.adjustFireLoss(2)
+	else
+		target.adjustToxLoss(2)
+		target.adjustBruteLoss(1)
 	var/prompt = pick(1,2,3)
 	var/message = pick(
 		"Ticks on my skin start to engorge with blood!",
