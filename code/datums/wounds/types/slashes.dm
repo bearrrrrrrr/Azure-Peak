@@ -54,8 +54,9 @@
 	can_sew = TRUE
 	can_cauterize = TRUE
 	severity_names = list(
-		"light" = 5,
-		"deep" = 10,
+		"light" = 3,
+		"deep" = 6,
+		"severe" = 10,
 		"gnarly" = 15,
 		"lethal" = 20,
 	)
@@ -207,8 +208,9 @@
 	can_sew = TRUE
 	can_cauterize = FALSE	//Ouch owie oof
 	severity_names = list(
-		"light" = 5,
-		"deep" = 10,
+		"light" = 3,
+		"deep" = 6,
+		"severe" = 10,
 		"gnarly" = 15,
 		"lethal" = 20,
 	)
@@ -256,8 +258,9 @@
 	can_sew = TRUE
 	can_cauterize = FALSE	//Ouch owie oof
 	severity_names = list(
-		"light" = 5,
-		"deep" = 10,
+		"light" = 3,
+		"deep" = 6,
+		"severe" = 10,
 		"gnarly" = 15,
 		"lethal" = 20,
 	)

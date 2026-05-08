@@ -52,8 +52,9 @@
 	severity_names = list(
 		"minor" = 20,
 		"moderate" = 60,
-		"big" = 120,
-		"massive" = 180
+		"big" = 100,
+		"massive" = 140,
+		"immense" = 180,
 	)
 
 //Bruise Omniwounds

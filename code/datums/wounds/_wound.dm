@@ -76,8 +76,10 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	var/bypass_bloody_wound_check = FALSE
 	/// Some wounds make no sense on a dismembered limb and need to go
 	var/qdel_on_droplimb = FALSE
-	/// Severity names, assoc list.
-	var/list/severity_names = list()
+	/// Severity names, assoc list with severity stages. Make sure this list has at least !!5!! entries.
+	var/list/severity_stages = list()
+	/// What do we use for our severity type? Default is bleed rate (usually up to 20 -- artery equi.)
+	var/severity_type = SEVERITY_TYPE_BLEED
 	/// Whether miracles heal it.
 	var/healable_by_miracles = TRUE
 
@@ -93,6 +95,11 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	owner = null
 	. = ..()
 	return QDEL_HINT_IWILLGC
+
+/datum/wound/New()
+	. = ..()
+	if(length(severity_names) && length(severity_names) < 5)
+		CRASH("[src] wound datum detected with severity stage list at less than 5. This will break severity scaling.")
 
 /// Description of this wound returned to the player when a bodypart is examined and such
 /datum/wound/proc/get_visible_name(mob/user)
@@ -433,6 +440,12 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 					playsound(owner, 'sound/combat/armored_wound.ogg', 100, TRUE)
 					owner.visible_message(span_crit("The wound tears open from [bodypart_owner.owner]'s <b>[bodyzone2readablezone(bodypart_to_zone(bodypart_owner))]</b>, the armor won't let it go any further!"))
 					is_armor_maxed = TRUE
+
+
+/datum/wound/dynamic/proc/update_severity()
+	if(bleed_rate)
+		switch(bleed_rate)
+
 
 #define CLOT_THRESHOLD_INCREASE_PER_HIT 0.1	//This raises the MINIMUM bleed the wound can clot to.
 #define CLOT_DECREASE_PER_HIT 0.05	//This reduces the amount of clotting the wound has.
