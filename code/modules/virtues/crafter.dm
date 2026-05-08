@@ -5,6 +5,7 @@
 #define SKILLED_PHYS "Physician Apprentice"
 #define SKILLED_FORESTER "Forester Apprentice"
 #define SKILLED_ARTIF "Artificer Apprentice"
+#define SKILLED_ENCHANT "Enchanter Apprentice"
 
 /datum/virtue/utility/skilled
 	name = "Skilled Apprentice"
@@ -28,7 +29,8 @@
 		SKILLED_HUNTER	= "Grants Expert Survivalist. Trapping, Tracking, Butchering, Sewing and Tanning raised to Apprentice.",
 		SKILLED_PHYS	= "Grants Expert Physicker and Alchemist. Alchemy and Medicine raised to Apprentice. Grants secular diagnose and a stashed medicine pouch.",
 		SKILLED_FORESTER= "Cooking, Athletics, Farming, Fishing, Lumberjacking raised to Apprentice. Stashed hoe.",
-		SKILLED_ARTIF	= "Grants Expert Forgehand. Carpentry, Masonry, Engineering, Smelting and Ceramics raised to Apprentice. Stashed Hammer, Chisel and Hand Saw."
+		SKILLED_ARTIF	= "Grants Expert Forgehand. Carpentry, Masonry, Engineering, Smelting and Ceramics raised to Apprentice. Stashed Hammer, Chisel and Hand Saw.",
+		SKILLED_ENCHANT = "Grants Expert Forgehand and Alchemist. Alchemy, Engineering, Smelting, Blacksmithing and Arcane raised to Apprentice. Stashed Pestle and Mortar."
 	)
 
 /datum/virtue/utility/skilled/on_load()
@@ -93,6 +95,15 @@
 				recipient.mind?.special_items["Hammer"] = /obj/item/rogueweapon/hammer/wood
 				recipient.mind?.special_items["Chisel"] = /obj/item/rogueweapon/chisel
 				recipient.mind?.special_items["Hand Saw"] = /obj/item/rogueweapon/handsaw
+			if(SKILLED_ENCHANT)
+				added_skills.Add(list(list(/datum/skill/craft/alchemy, 2, 2)))
+				added_skills.Add(list(list(/datum/skill/craft/blacksmithing, 2, 2)))
+				added_skills.Add(list(list(/datum/skill/craft/engineering, 2, 2)))
+				added_skills.Add(list(list(/datum/skill/craft/smelting, 2, 2)))
+				added_skills.Add(list(list(/datum/skill/magic/arcane, 2, 2)))
+				added_traits.Add(TRAIT_SMITHING_EXPERT, TRAIT_ALCHEMY_EXPERT)
+				recipient.mind?.special_items["Pestle"] = /obj/item/pestle
+				recipient.mind?.special_items["Mortar"] = /obj/item/reagent_containers/glass/mortar
 
 
 #undef SKILLED_BSMITH
@@ -101,6 +112,7 @@
 #undef SKILLED_PHYS
 #undef SKILLED_FORESTER
 #undef SKILLED_ARTIF
+#undef SKILLED_ENCHANT
 
 /datum/virtue/utility/apprentice
 	name = "Labourious Apprentice"
