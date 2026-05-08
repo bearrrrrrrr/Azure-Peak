@@ -646,7 +646,7 @@
 			var/stuntime = 0
 			for(var/obj/item/bodypart/c_BP in BPs_to_check)
 				if(c_BP.get_damage() >= c_BP.max_damage)	// We're some snowflake-ahh Absolver that does not accept regular wounds
-					if(!c_BP.dismember(skip_checks = TRUE) && !istype(c_BP, /obj/item/bodypart/head))	// Our limb can't fall off (or we don't want it to)
+					if(istype(c_BP, /obj/item/bodypart/head) || !c_BP.dismember(skip_checks = TRUE) )	// Our limb can't fall off (or we don't want it to)
 						stuntime += 5 SECONDS
 			if(stuntime)
 				C_caster.Knockdown(stuntime)
