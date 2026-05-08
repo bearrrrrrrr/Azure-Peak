@@ -351,7 +351,7 @@
 	action_icon = 'icons/mob/actions/pestraspells.dmi'
 	overlay_state = "infestation0"
 	releasedrain = 50
-	chargetime = 10
+	chargetime = 1 SECONDS
 	recharge_time = 20 SECONDS
 	range = 8
 	warnie = "spellwarning"
@@ -449,6 +449,8 @@
 	effectedstats = list(STATKEY_CON = -2)
 	var/static/mutable_appearance/rotten = mutable_appearance('icons/roguetown/mob/rotten.dmi', "rotten")
 	var/extended_duration = FALSE
+	var/next_spread = 0 // see I learned my lesson! :>
+	var/death_burst_done = FALSE
 
 /datum/status_effect/buff/infestation/on_apply()
 	. = ..()
@@ -459,6 +461,7 @@
 	target.update_vision_cone()
 	if(!target.mind)
 		target.change_stat(STATKEY_SPD, -5) // rot take them
+	next_spread = world.time + 5 SECONDS
 
 /datum/status_effect/buff/infestation/on_remove()
 	var/mob/living/target = owner
@@ -470,17 +473,49 @@
 
 /datum/status_effect/buff/infestation/tick()
 	var/mob/living/target = owner
-	var/mob/living/carbon/M = target
-	if(!extended_duration && !target.mind) // 30 seconds on npc
+	var/mob/living/carbon/C = target
+	if(!extended_duration && !target.mind) // 30 seconds on npc so we don't need to worry too much about upkeep and can focus on healing friends
 		duration += 20 SECONDS
-		extended_duration = TRUE
-	if(!target.mind) // so this does something vs deadites
-		target.adjustToxLoss(5)
-		target.adjustOxyLoss(5)
-		target.adjustCloneLoss(2)
-		target.adjustBruteLoss(2)
-		target.adjustFireLoss(2)
-	else
+		extended_duration = TRUE		
+	if(!target.mind) // technically speaking we're just turning the brain rot into actual body rot, rotception
+		target.adjustToxLoss(4)
+		target.adjustBruteLoss(1)
+		target.adjustOxyLoss(2)
+		target.adjustCloneLoss(2) // mostly to cover notox, nobreath and noblood cases for npcs
+
+		if(world.time >= next_spread)
+			next_spread = world.time + 5 SECONDS
+			
+			if(prob(25)) // I don't want this to be guaranteed or else it'll make pve boring
+				target.emote("cough")
+				var/turf/open/T = target.loc
+				if(istype(T))
+					T.pollute_turf(/datum/pollutant/rot, 5)
+
+				for(var/mob/living/carbon/M in range(2, target))
+					if(M == target)
+						continue
+					if(M.has_status_effect(/datum/status_effect/buff/infestation))
+						continue
+					if(prob(35))
+						M.visible_message(span_necrosis("[M] is engulfed by a cloud of pestilence!"), span_danger("The infestation spreads to me!"))
+						M.apply_status_effect(/datum/status_effect/buff/infestation)
+
+		if(target.stat == DEAD && !death_burst_done)
+			death_burst_done = TRUE
+			target.visible_message(span_userdanger("[target]'s corpse ruptures into a horrific cloud of rotting miasma!"))
+			var/turf/open/DT = target.loc
+			if(istype(DT))
+				DT.pollute_turf(/datum/pollutant/rot, 15)
+
+			for(var/mob/living/carbon/M in range(5, target))
+				if(M == target)
+					continue
+				if(M.has_status_effect(/datum/status_effect/buff/infestation))
+					continue
+				M.visible_message(span_necrosis("[target] is contaminated by [M]!"), span_danger("The plague-ridden miasma descends upon me!"))
+				M.apply_status_effect(/datum/status_effect/buff/infestation)
+	else // this is what happens to players only, i know i know, cry about it, me too :(
 		target.adjustToxLoss(2)
 		target.adjustBruteLoss(1)
 	var/prompt = pick(1,2,3)
@@ -502,8 +537,8 @@
 		"Lice suck my blood!",
 		"Crickets chirp in my ears!",
 		"Earwigs crawl into my ears!")
-	if(prompt == 1 && iscarbon(M))
-		M.add_nausea(pick(10,20))
+	if(prompt == 1 && iscarbon(C))
+		C.add_nausea(pick(10,20))
 		to_chat(target, span_warning(message))
 
 /atom/movable/screen/alert/status_effect/buff/infestation
