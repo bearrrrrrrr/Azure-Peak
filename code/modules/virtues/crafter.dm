@@ -22,6 +22,7 @@
 		SKILLED_PHYS,
 		SKILLED_FORESTER,
 		SKILLED_ARTIF,
+		SKILLED_ENCHANT
 	)
 	choice_tooltips = list(
 		SKILLED_BSMITH	= "Grants Expert Forgehand. Weaponsmithing, Armorsmithing, Blacksmithing and Smelting raised to Apprentice. Stashed Hammer and Tongs.",
