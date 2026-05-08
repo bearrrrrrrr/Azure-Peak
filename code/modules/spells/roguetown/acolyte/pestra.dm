@@ -455,6 +455,8 @@
 /datum/status_effect/buff/infestation/on_apply()
 	. = ..()
 	var/mob/living/target = owner
+	if(owner.stat == DEAD) // infinite corpse miasma explosions are cool but not the scope here, soz!
+		qdel(src)
 	to_chat(owner, span_danger("I am suddenly surrounded by a cloud of bugs!"))
 	target.Jitter(20)
 	target.add_overlay(rotten)
@@ -465,6 +467,8 @@
 
 /datum/status_effect/buff/infestation/on_remove()
 	var/mob/living/target = owner
+	if(owner.stat == DEAD)
+		return
 	target.cut_overlay(rotten)
 	target.update_vision_cone()
 	if(!target.mind)
@@ -478,33 +482,34 @@
 		duration += 20 SECONDS
 		extended_duration = TRUE		
 	if(!target.mind) // technically speaking we're just turning the brain rot into actual body rot, rotception
-		target.adjustToxLoss(4)
+		target.adjustToxLoss(3)
 		target.adjustBruteLoss(1)
 		target.adjustOxyLoss(2)
-		target.adjustCloneLoss(2) // mostly to cover notox, nobreath and noblood cases for npcs
+		if(!target.getToxLoss())
+			target.adjustBruteLoss(3)
+		if(!target.getOxyLoss())
+			target.adjustBruteLoss(2)
 
-		if(world.time >= next_spread)
+		if(world.time >= next_spread && !(HAS_TRAIT(target,TRAIT_NOBREATH)))
 			next_spread = world.time + 5 SECONDS
 			
-			if(prob(25)) // I don't want this to be guaranteed or else it'll make pve boring
-				target.emote("cough")
-				var/turf/open/T = target.loc
+			if(prob(15)) // I don't want this to be guaranteed or else it'll make pve boring
+				target.emote(pick("gag","cough","breathgasp"))
+				var/turf/open/T = get_turf(target)
 				if(istype(T))
 					T.pollute_turf(/datum/pollutant/rot, 5)
 
 				for(var/mob/living/carbon/M in range(2, target))
-					if(M == target)
+					if(M == target || M.has_status_effect(/datum/status_effect/buff/infestation) || M.mind)
 						continue
-					if(M.has_status_effect(/datum/status_effect/buff/infestation))
-						continue
-					if(prob(35))
+					if(!HAS_TRAIT(target,TRAIT_NOBREATH) && !target.mind)
 						M.visible_message(span_necrosis("[M] is engulfed by a cloud of pestilence!"), span_danger("The infestation spreads to me!"))
 						M.apply_status_effect(/datum/status_effect/buff/infestation)
 
 		if(target.stat == DEAD && !death_burst_done)
 			death_burst_done = TRUE
 			target.visible_message(span_userdanger("[target]'s corpse ruptures into a horrific cloud of rotting miasma!"))
-			var/turf/open/DT = target.loc
+			var/turf/open/DT = get_turf(target)
 			if(istype(DT))
 				DT.pollute_turf(/datum/pollutant/rot, 15)
 
@@ -513,9 +518,10 @@
 					continue
 				if(M.has_status_effect(/datum/status_effect/buff/infestation))
 					continue
-				M.visible_message(span_necrosis("[target] is contaminated by [M]!"), span_danger("The plague-ridden miasma descends upon me!"))
-				M.apply_status_effect(/datum/status_effect/buff/infestation)
-	else // this is what happens to players only, i know i know, cry about it, me too :(
+				if(!HAS_TRAIT(M,TRAIT_NOBREATH) && !M.mind)
+					M.visible_message(span_necrosis("[target] is contaminated by [M]!"), span_danger("The plague-ridden miasma descends upon me!"))
+					M.apply_status_effect(/datum/status_effect/buff/infestation)
+	else // i mean at least we got pestilent blade or something idk
 		target.adjustToxLoss(2)
 		target.adjustBruteLoss(1)
 	var/prompt = pick(1,2,3)
