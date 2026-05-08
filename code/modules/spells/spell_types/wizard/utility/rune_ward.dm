@@ -49,9 +49,9 @@
 
 /datum/action/cooldown/spell/touch/rune_ward/cast_on_hand_hit(obj/item/melee/new_touch_attack/hand, atom/victim, mob/living/carbon/caster, list/modifiers)
 	switch(caster.used_intent.type)
-		if(/datum/intent/draw)
+		if(/datum/intent/hand/draw)
 			return draw_rune(hand, victim, caster)
-		if(/datum/intent/clean)
+		if(/datum/intent/hand/clean)
 			return scrub_rune(hand, victim, caster)
 		if(/datum/intent/use)
 			return memorize_allies(caster)
@@ -223,7 +223,7 @@
 /obj/item/melee/new_touch_attack/rune_ward
 	name = "\improper inscribing hand"
 	desc = "Arcyne energy crackles at your fingertips, ready to inscribe wards. Touch yourself to dismiss."
-	possible_item_intents = list(/datum/intent/draw, /datum/intent/clean, /datum/intent/use)
+	possible_item_intents = list(/datum/intent/hand/draw, /datum/intent/hand/clean, /datum/intent/use)
 	icon = 'icons/mob/roguehudgrabs.dmi'
 	icon_state = "grabbing_greyscale"
 	color = "#FF8844"

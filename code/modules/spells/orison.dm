@@ -48,11 +48,11 @@
 
 /datum/action/cooldown/spell/touch/orison/cast_on_hand_hit(obj/item/melee/new_touch_attack/hand, atom/victim, mob/living/carbon/caster, list/modifiers)
 	switch(caster.used_intent.type)
-		if(/datum/intent/light)
+		if(/datum/intent/hand/light)
 			cast_light(hand, victim, caster)
 			qdel(hand)
 			return TRUE
-		if(/datum/intent/voice)
+		if(/datum/intent/hand/voice)
 			thaumaturgy(hand, victim, caster)
 			qdel(hand)
 			return TRUE
@@ -67,7 +67,7 @@
 /obj/item/melee/new_touch_attack/orison
 	name = "\improper lesser prayer"
 	desc = "Holy energy crackles at your fingertips, ready to serve you. Touch yourself to dismiss."
-	possible_item_intents = list(/datum/intent/light, /datum/intent/fill, /datum/intent/voice)
+	possible_item_intents = list(/datum/intent/hand/light, /datum/intent/fill, /datum/intent/hand/voice)
 	icon = 'icons/mob/roguehudgrabs.dmi'
 	icon_state = "grabbing_greyscale"
 	color = "#FFFFFF"
