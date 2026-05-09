@@ -26,6 +26,7 @@
 		/datum/mob_descriptor/face/chubby,
 		/datum/mob_descriptor/face/mousy,
 		/datum/mob_descriptor/face/full,
+		/datum/mob_descriptor/face/punchable,
 	)
 
 /datum/descriptor_choice/face_exp
@@ -61,7 +62,6 @@
 		/datum/mob_descriptor/face_exp/suave,
 		/datum/mob_descriptor/face_exp/humble,
 		/datum/mob_descriptor/face_exp/smug,
-		/datum/mob_descriptor/face_exp/punchable,
 	)
 
 /datum/descriptor_choice/body
