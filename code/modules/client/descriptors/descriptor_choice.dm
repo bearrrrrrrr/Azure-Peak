@@ -61,6 +61,7 @@
 		/datum/mob_descriptor/face_exp/suave,
 		/datum/mob_descriptor/face_exp/humble,
 		/datum/mob_descriptor/face_exp/smug,
+		/datum/mob_descriptor/face_exp/punchable,
 	)
 
 /datum/descriptor_choice/body
@@ -229,6 +230,8 @@
 		/datum/mob_descriptor/skin/dusky,
 		/datum/mob_descriptor/skin/irritated,
 		/datum/mob_descriptor/skin/ashen,
+		/datum/mob_descriptor/skin/pale,
+		/datum/mob_descriptor/skin/ravaged,
 	)
 
 /datum/descriptor_choice/scales
