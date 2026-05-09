@@ -51,6 +51,9 @@
 /datum/mob_descriptor/skin/pale
 	name = "Pale Skin"
 
+/datum/mob_descriptor/skin/ghoulish
+	name = "Ghoulish Skin"
+
 /datum/mob_descriptor/scales
 	abstract_type = /datum/mob_descriptor/scales
 	slot = MOB_DESCRIPTOR_SLOT_SKIN
