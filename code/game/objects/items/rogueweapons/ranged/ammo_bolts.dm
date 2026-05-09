@@ -135,6 +135,7 @@
 	embedchance = 100
 	poisontype = /datum/reagent/water/blessed
 	poisonamount = 5
+	is_silver_proj = TRUE //Uniquely deals a 'double whammy', in terms of both applying Sunder and some lingering post-impact damage.
 	npc_simple_damage_mult = 5 //175, compared to the regular bolt's 140. Slightly more damage, as to imitate its anti-unholy properties on mobs who aren't affected by any form of poison.
 
 /obj/projectile/bullet/reusable/bolt/blunt
@@ -294,8 +295,7 @@
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt/silver
 	embedchance = 100
 	npc_simple_damage_mult = 6 //..or 480 damage against a mindless mob. Only if you're desperate.
-	poisontype = /datum/reagent/water/blessed
-	poisonamount = 7
+	is_silver_proj = TRUE
 
 /obj/item/ammo_casing/caseless/rogue/heavy_bolt/silver
 	name = "heavy silver bolt"
@@ -314,8 +314,7 @@
 	icon_state = "silvheavybolt_proj"
 	hitsound = 'sound/combat/hits/hi_bolt (3).ogg'
 	speed = 0.8 //Same speed as a crossbow bolt. 
-	poisontype = /datum/reagent/water/blessed
-	poisonamount = 10
+	is_silver_proj = TRUE
 	npc_simple_damage_mult = 10 //..or 1000 damage against a mindless mob. If you're using this against one, you're either a fool or have no other choice left. Godspeed.
 
 // PYRO AMMO
