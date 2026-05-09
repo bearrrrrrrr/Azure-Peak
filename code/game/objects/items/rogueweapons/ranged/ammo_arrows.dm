@@ -223,10 +223,8 @@
 	damage = 60 //The rarest, but most powerful arrow subtype. Intended to be incredibly scarce, in practice - a 'silver bullet', to the most literal extent.
 	armor_penetration = PEN_HEAVY
 	embedchance = 100
-	poisontype = /datum/reagent/water/blessed
-	poisonamount = 7
 	npc_simple_damage_mult = 7 //..or 420 damage against a mindless mob. Strike true; reduce if these become craftable or more easily acquirable, through any means.
-
+	is_silver_proj = TRUE 
 
 /obj/item/ammo_casing/caseless/rogue/arrow/getonmobprop(tag)
 	. = ..()
