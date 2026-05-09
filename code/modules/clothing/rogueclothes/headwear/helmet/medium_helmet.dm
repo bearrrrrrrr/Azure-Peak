@@ -441,7 +441,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/attackby(obj/item/W, mob/living/user, params)
 	..()
-	if(istype(W, /obj/item/natural/feather) && !detail_tag)
+	if(istype(W, /obj/item/natural/cloth) && !detail_tag)
 		var/choice = input(user, "Choose a color.", "Plume") as anything in COLOR_MAP + pridelist
 		detail_color = COLOR_MAP[choice]
 		detail_tag = "_detail"
@@ -451,7 +451,7 @@
 		if(loc == user && ishuman(user))
 			var/mob/living/carbon/H = user
 			H.update_inv_head()
-	if(istype(W, /obj/item/natural/cloth) && !altdetail_tag)
+	if(istype(W, /obj/item/natural/feather) && !altdetail_tag)
 		var/choicealt = input(user, "Choose a color.", "Orle") as anything in COLOR_MAP + pridelist
 		user.visible_message(span_warning("[user] adds [W] to [src]."))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
