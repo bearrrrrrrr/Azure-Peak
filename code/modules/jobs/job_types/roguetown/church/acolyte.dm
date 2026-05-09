@@ -139,6 +139,7 @@
 			shoes = /obj/item/clothing/shoes/roguetown/sandals
 			cloak = /obj/item/clothing/cloak/templar/eoran
 			r_hand = /obj/item/rogueweapon/huntingknife/scissors
+			l_hand = /obj/item/needle/thorn
 			shirt = /obj/item/clothing/suit/roguetown/armor/vestments_padded
 			var/robes = list("Modest","Exposed")
 			var/robe_choice = input(H, "Choose your ROBES.", "TAKE UP ROBES.") as anything in robes
