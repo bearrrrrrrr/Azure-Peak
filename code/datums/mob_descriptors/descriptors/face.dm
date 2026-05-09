@@ -59,6 +59,9 @@
 /datum/mob_descriptor/face/full
 	name = "Full"
 
+/datum/mob_descriptor/face/punchable
+	name = "Punchable"
+
 /datum/mob_descriptor/face_exp
 	abstract_type = /datum/mob_descriptor/face_exp
 	suffix = "face"
@@ -153,6 +156,3 @@
 
 /datum/mob_descriptor/face_exp/smug
 	name = "Smug"
-
-/datum/mob_descriptor/face_exp/punchable
-	name = "Punchable"
