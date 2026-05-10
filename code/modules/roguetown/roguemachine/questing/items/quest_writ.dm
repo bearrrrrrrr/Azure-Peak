@@ -96,8 +96,15 @@ GLOBAL_LIST_EMPTY(quest_scrolls)
 		to_chat(user, span_warning("The magical energies prevent you from combining this with other scrolls."))
 		return
 	if(istype(P, /obj/item/clothing/ring/signet))
-		stamp_with_signet(P, user)
-		return
+		var/obj/item/clothing/ring/signet/S = P
+		if(S.tallow_color != "green")
+			to_chat(user, span_warning("Only a signet ring bearing the green tallow of the Crown can stamp this contract."))
+			return
+		else
+			S.tallowed = FALSE
+			S.update_icon()
+			stamp_with_signet(P, user)
+			return
 	..()
 
 /obj/item/quest_writ/proc/stamp_with_signet(obj/item/clothing/ring/signet/ring, mob/living/carbon/human/user)

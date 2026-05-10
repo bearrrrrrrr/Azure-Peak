@@ -681,11 +681,12 @@ Inquisitorial armory down here
 	w_class = WEIGHT_CLASS_SMALL
 	intdamage_factor = 0
 	embedding = null
+	sellprice = 15
 	var/tallow
 	var/remaining
 	var/heatedup
 	var/messageshown = 1
-	sellprice = 15
+	var/tallow_color = "red"
 
 /obj/item/inqarticles/tallowpot/Initialize(mapload)
 	. = ..()
@@ -713,10 +714,11 @@ Inquisitorial armory down here
 	
 /obj/item/inqarticles/tallowpot/attacked_by(obj/item/I, mob/living/user)
 	. = ..()
-	if(istype(I, /obj/item/reagent_containers/food/snacks/tallow/red))
+	if(istype(I, /obj/item/reagent_containers/food/snacks/tallow))
 		if(!tallow)
-			var/obj/item/reagent_containers/food/snacks/tallow/red/Q = I
+			var/obj/item/reagent_containers/food/snacks/tallow/Q = I
 			tallow = Q
+			tallow_color = Q.wax_pigment
 			user.transferItemToLoc(Q, src, TRUE)
 			remaining = 300
 			update_icon()
@@ -733,20 +735,27 @@ Inquisitorial armory down here
 		visible_message(span_info("[user] warms [src] with [I]."))
 		update_icon()
 
+	if(istype(I, /obj/item/clothing/ring/signet))	
+		if(tallow && heatedup)	
+			var/obj/item/clothing/ring/signet/ring = I
+			ring.tallowed = TRUE
+			ring.tallow_color = tallow_color
+			ring.update_icon()
 
 /obj/item/inqarticles/tallowpot/update_icon()
-	. = ..()	
+	. = ..()
 	if(tallow)
-		icon_state = "[initial(icon_state)]_filled"
+		icon_state = "[initial(icon_state)]_[tallow_color]_filled"
 		if(heatedup)
-			icon_state = "[initial(icon_state)]_melted"
+			icon_state = "[initial(icon_state)]_[tallow_color]_melted"
 	else
 		icon_state = "[initial(icon_state)]"
 
 /obj/item/inqarticles/tallowpot/get_mechanics_examine(mob/user)
     . = ..()
-    . += span_info("Left click with a chunk of redtallow to fill it up.")
-    . += span_info("Once filled, left-clicking the tallowpot with a torch, lamptern, candle, or any other handheld source of heat will temporarily melt the redtallow inside.")
+    . += span_info("Left click with a chunk of tallow to fill it up.")
+    . += span_info("Once filled, left-clicking the tallowpot with a torch, lamptern, candle, or any other handheld source of heat will temporarily melt the tallow inside.")
+    . += span_info("Heated tallowpots can be left-clicked with a signet ring to prepare a stamp, which can be used to seal certain foldable letters.")
 
 /obj/item/rope/inqarticles/inquirycord
 	name = "inquiry cordage"
