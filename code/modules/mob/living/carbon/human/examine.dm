@@ -292,9 +292,6 @@
 			if(HAS_TRAIT(user, TRAIT_EMPATH) && HAS_TRAIT(src, TRAIT_PERMAMUTE))
 				. += span_notice("[m1] lacks a voice. [m1] is a mute!")
 
-			if(HAS_TRAIT(user, TRAIT_EMPATH) && HAS_TRAIT(src, TRAIT_NOMOOD))
-				. += span_biginfo("[m1] completely hollow inside, radiating a deep, tragic silence.")
-
 		var/villain_text = get_villain_text(user)
 		if(villain_text)
 			. += villain_text
@@ -809,6 +806,10 @@
 					msg += "[m1] looking like a drunken mess."
 				if(91.01 to INFINITY)
 					msg += "[m1] a shitfaced, slobbering wreck."
+
+			//Deadened
+			if(HAS_TRAIT(user, TRAIT_EMPATH) && HAS_TRAIT(src, TRAIT_NOMOOD))
+				msg += "[m1] completely hollow inside, radiating a deep, tragic silence."
 
 			//Stress
 			var/stress = get_stress_amount()
