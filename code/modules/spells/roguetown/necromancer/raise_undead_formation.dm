@@ -18,6 +18,7 @@
 	var/cabal_affine = FALSE
 	var/is_summoned = FALSE
 	var/to_spawn = 4
+	var/spawn_lifespan
 
 /datum/action/cooldown/spell/raise_undead_formation/cast(atom/cast_on)
 	. = ..()
@@ -53,17 +54,19 @@
 
 		new /obj/effect/temp_visual/bluespace_fissure(T)
 		var/skeleton_roll = rand(1, 100)
+		var/mob/living/skeletonnew
 		switch(skeleton_roll)
 			if(1 to 20)
-				new /mob/living/simple_animal/hostile/rogue/skeleton/axe(T, owner, cabal_affine)
+				skeletonnew = new /mob/living/simple_animal/hostile/rogue/skeleton/axe(T, owner, cabal_affine)
 			if(21 to 40)
-				new /mob/living/simple_animal/hostile/rogue/skeleton/spear(T, owner, cabal_affine)
+				skeletonnew = new /mob/living/simple_animal/hostile/rogue/skeleton/spear(T, owner, cabal_affine)
 			if(41 to 60)
-				new /mob/living/simple_animal/hostile/rogue/skeleton/guard(T, owner, cabal_affine)
+				skeletonnew = new /mob/living/simple_animal/hostile/rogue/skeleton/guard(T, owner, cabal_affine)
 			if(61 to 80)
-				new /mob/living/simple_animal/hostile/rogue/skeleton/bow(T, owner, cabal_affine)
+				skeletonnew = new /mob/living/simple_animal/hostile/rogue/skeleton/bow(T, owner, cabal_affine)
 			if(81 to 100)
-				new /mob/living/simple_animal/hostile/rogue/skeleton(T, owner, cabal_affine)
+				skeletonnew = new /mob/living/simple_animal/hostile/rogue/skeleton(T, owner, cabal_affine)
+		apply_mob_lifespan(skeletonnew, owner, spawn_lifespan)
 	return TRUE
 
 /datum/action/cooldown/spell/raise_undead_formation/necromancer

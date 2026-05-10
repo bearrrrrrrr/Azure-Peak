@@ -57,7 +57,6 @@
 	H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 	if(H.mind)
 		backr = choose_implement(H, "greater")
-		H.mind?.current.faction += "[H.name]_faction"
 		H.set_patron(/datum/patron/inhumen/zizo)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/eyebite)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/bonechill)
@@ -65,7 +64,7 @@
 		H.mind.AddSpell(new /datum/action/cooldown/spell/minion_order)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/gravemark)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/raise_undead_formation/necromancer)
-		H.mind.AddSpell(new /datum/action/cooldown/spell/raise_undead_guard)
+		H.mind.AddSpell(new /datum/action/cooldown/spell/raise_undead_guard/necromancer)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/convert_heretic/free)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/lacrima/free)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/tame_undead)
