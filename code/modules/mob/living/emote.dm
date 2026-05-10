@@ -391,7 +391,6 @@
 	message_muffled = "makes a muffled groan."
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
-	needs_emotion = TRUE
 
 // Attack blip played randomly.
 /datum/emote/living/attack
