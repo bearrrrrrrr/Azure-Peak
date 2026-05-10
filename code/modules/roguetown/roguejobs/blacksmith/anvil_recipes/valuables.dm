@@ -267,19 +267,19 @@
 	name = "Signet Ring, Silver"
 	req_bar = /obj/item/ingot/silver
 	craftdiff = SKILL_LEVEL_EXPERT
-	created_item = /obj/item/clothing/ring/signet/alt
+	created_item = /obj/item/clothing/ring/signet/silver
 
 /datum/anvil_recipe/valuables/signet/silver
 	name = "Signet Ring, Blessed Silver"
 	craftdiff = SKILL_LEVEL_MASTER
 	req_bar = /obj/item/ingot/silverblessed
-	created_item = /obj/item/clothing/ring/signet/silver	
+	created_item = /obj/item/clothing/ring/signet/silver/psy	
 
 /datum/anvil_recipe/valuables/signet/silver/inq
 	name = "Signet Ring, Blessed Silver"
 	craftdiff = SKILL_LEVEL_MASTER
 	req_bar = /obj/item/ingot/silverblessed/bullion
-	created_item = /obj/item/clothing/ring/signet/silver	
+	created_item = /obj/item/clothing/ring/signet/silver/psy	
 
 /datum/anvil_recipe/valuables/duelring
 	name = "Duelist's Rings (x2) (+1 Rosestone Ring)"

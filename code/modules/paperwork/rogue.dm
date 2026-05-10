@@ -402,16 +402,23 @@
 
 /obj/item/paper/inqslip/attacked_by(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/clothing/ring/signet))
+		var/obj/item/clothing/ring/signet/S = I
 		if(waxed)
 			to_chat(user,  span_warning("It's already wax-sealed."))
 			return
-		if(!sealed)
+		if(S.tallowed && sealed)
+			waxed = TRUE
+			update_icon()
+			S.tallowed = FALSE
+			S.update_icon()
+			playsound(src, 'sound/items/inqslip_sealed.ogg', 75, TRUE, 4)
+			marquevalue += 2
+		else if(S.tallowed && sealed && S.tallow_color != "red")
+			to_chat(user,  span_warning("I need to use red tallow to seal this properly."))
+		else if(S.tallowed && !sealed)
 			to_chat(user,  span_warning("I need to fold the [src] first."))
-			return
-		waxed = TRUE
-		update_icon()
-		playsound(src, 'sound/items/inqslip_sealed.ogg', 75, TRUE, 4)
-		marquevalue += 2
+		else
+			to_chat(user,  span_warning("The ring hasn't been waxed."))
 
 	if(sliptype != 1)
 		if(istype(I, /obj/item/inqarticles/indexer))
