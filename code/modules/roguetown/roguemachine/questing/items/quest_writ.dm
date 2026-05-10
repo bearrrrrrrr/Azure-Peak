@@ -97,13 +97,13 @@ GLOBAL_LIST_EMPTY(quest_scrolls)
 		return
 	if(istype(P, /obj/item/clothing/ring/signet))
 		var/obj/item/clothing/ring/signet/S = P
-		if(S.tallow_color != "green")
-			to_chat(user, span_warning("Only a signet ring bearing the green tallow of the Crown can stamp this contract."))
-			return
-		else
+		if(S.tallowed && S.tallow_color == "green")
 			S.tallowed = FALSE
 			S.update_icon()
 			stamp_with_signet(P, user)
+			return
+		else if(S.tallowed && S.tallow_color != "green")
+			to_chat(user, span_warning("Only a signet ring bearing the green tallow of the Crown can stamp this contract."))
 			return
 	..()
 

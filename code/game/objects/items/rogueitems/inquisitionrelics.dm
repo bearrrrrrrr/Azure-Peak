@@ -668,7 +668,7 @@ Inquisitorial armory down here
 
 /obj/item/inqarticles/tallowpot
 	name = "tallowpot"
-	desc = "A small metal pot meant for holding waxes or melted redtallow. Convenient for coating signet rings and making an imprint. The warmth of a torch, lamptern, or candle should be enough to melt the redtallow for stamping writs."
+	desc = "A small metal pot meant for holding waxes or melted tallow. Convenient for coating signet rings and making an imprint. The warmth of a torch, lamptern, or candle should be enough to melt the tallow for stamping writs."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "tallowpot"
 	item_state = "tallowpot"
@@ -707,7 +707,7 @@ Inquisitorial armory down here
 	else
 		if(tallow)
 			if(!messageshown)
-				visible_message(span_info("The redtallow in [src] hardens again."))
+				visible_message(span_info("The tallow in [src] hardens again."))
 				messageshown = 1
 			update_icon()
 	if(remaining == 0)
@@ -726,7 +726,7 @@ Inquisitorial armory down here
 			remaining = 300
 			update_icon()
 		else
-			to_chat(user, span_info("The [src] already has redtallow in it."))
+			to_chat(user, span_info("The [src] already has tallow in it."))
 
 	if(istype(I, /obj/item/flashlight/flare/torch/))		
 		heatedup = 28

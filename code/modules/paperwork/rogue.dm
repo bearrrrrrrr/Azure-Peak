@@ -406,7 +406,7 @@
 		if(waxed)
 			to_chat(user,  span_warning("It's already wax-sealed."))
 			return
-		if(S.tallowed && sealed)
+		if(S.tallowed && sealed && S.tallow_color == "red")
 			waxed = TRUE
 			update_icon()
 			S.tallowed = FALSE
@@ -415,7 +415,7 @@
 			marquevalue += 2
 		else if(S.tallowed && sealed && S.tallow_color != "red")
 			to_chat(user,  span_warning("I need to use red tallow to seal this properly."))
-		else if(S.tallowed && !sealed)
+		else if(S.tallowed && !sealed && S.tallow_color == "red")
 			to_chat(user,  span_warning("I need to fold the [src] first."))
 		else
 			to_chat(user,  span_warning("The ring hasn't been waxed."))

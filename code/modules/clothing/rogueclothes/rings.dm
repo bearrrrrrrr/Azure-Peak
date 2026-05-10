@@ -270,7 +270,7 @@
 	icon_state = "psysignet"
 	desc = "A ring of blessed silver, bearing the Archbishop's symbol. Its face is cut to seal writs of religious importance, a bead of tallow nested in the underside."
 	sellprice = 90
-	is_lesser_silver = FALSE
+	is_lesser_silver = FALSE //Makes sence, since it's blessed by the Archbishop himself.
 
 /obj/item/clothing/ring/signet/silver/psy/get_mechanics_examine(mob/user)
     . = ..()
