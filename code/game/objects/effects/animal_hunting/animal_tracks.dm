@@ -449,7 +449,7 @@
 			var/bonus_type = pickweight(hunt_category.animals)
 			var/mob/living/example_mob = bonus_type
 			var/chosen_rot = initial(example_mob.rot_type) ? /datum/component/rot/simple/hunt : null
-			var/obj/effect/temp_visual/hunting_phantom/P = new(spawn_turf, bonus_type, chosen_rot)
+			new /obj/effect/temp_visual/hunting_phantom(spawn_turf, bonus_type, chosen_rot)
 			spawned_count++
 
 	return spawned_count
