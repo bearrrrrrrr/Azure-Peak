@@ -61,7 +61,7 @@
 
 /obj/item/clothing/cloak/tabard
 	name = "tabard"
-	desc = "A long vest meant for knights."
+	desc = "A long garment meant for knights."
 	color = null
 	icon_state = "tabard"
 	item_state = "tabard"
