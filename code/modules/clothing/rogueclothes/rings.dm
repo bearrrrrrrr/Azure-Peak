@@ -230,6 +230,8 @@
 	smeltresult = /obj/item/roguegem/diamond
 	sellprice = 270
 
+///
+
 /obj/item/clothing/ring/signet
 	name = "golden signet ring"
 	icon_state = "signet"
@@ -265,19 +267,26 @@
 	is_silver = TRUE
 	is_lesser_silver = TRUE
 
-/obj/item/clothing/ring/signet/silver/psy
+/obj/item/clothing/ring/signet/psy
 	name = "psydonian signet ring"
 	icon_state = "psysignet"
 	desc = "A ring of blessed silver, bearing the Archbishop's symbol. Its face is cut to seal writs of religious importance, a bead of tallow nested in the underside."
 	sellprice = 90
-	is_lesser_silver = FALSE //Makes sence, since it's blessed by the Archbishop himself.
+	is_silver = TRUE
 
-/obj/item/clothing/ring/signet/silver/psy/get_mechanics_examine(mob/user)
+/obj/item/clothing/ring/signet/psy/get_mechanics_examine(mob/user)
     . = ..()
     . += span_info("Stamping a folded ACCUSATION or CONFESSION will increase the amount of MARQUES it'll reward, once sent through the HERMES.")
     . += span_info("Packing an INDEXER into an ACCUSATION or CONFESSION before folding-and-stamping it will further amplify this financial bonus.")
 
-//silver rings
+/obj/item/clothing/ring/signet/psy/g
+	name = "naledian signet ring"
+	icon_state = "psysignet_gold"
+	desc = "A ring of opulent gold, embodying the Naledian belief in Psydon's eternity. Its face is cut to seal writs of religious importance, a bead of tallow nested in the underside."
+	is_silver = FALSE
+
+///
+
 /obj/item/clothing/ring/emeralds
 	name = "silver gemerald ring"
 	desc = "A glimmering silver ring with a polished gemerald set into it."

@@ -56,7 +56,7 @@
 	fat_yield = 5 // 5 per animal fat
 	bitesize = 1
 	dropshrink = 0.75
-	var/wax_pigment
+	var/wax_pigment = "white" //Default pigment for tallow, can be changed by mixing with other reagents
 
 /obj/item/reagent_containers/food/snacks/tallow/Initialize()
 	. = ..()
@@ -98,6 +98,15 @@
 	tastes = list("grease" = 1, "oil" = 1, "regret" = 1, "blood"= 1,)
 	wax_pigment = "red"
 
+/obj/item/reagent_containers/food/snacks/tallow/black
+	name = "blacktallow"
+	desc = "Fatty tissue is harvested from slain creachurs and rendered of its membraneous sinew to produce a hard shelf-stable \
+	grease. It has been soaked in ash or something ash adjacent to make for a dark wax substitute. It's the smell of a freshly printed book and the ash."
+	icon_state = "blacktallow"
+	tastes = list("grease" = 1, "oil" = 1, "regret" = 1, "bitterness" = 1,)
+	wax_pigment = "black"
+
+/* //For future use, maybe?
 /obj/item/reagent_containers/food/snacks/tallow/green
 	name = "greentallow"
 	desc = "Fatty tissue is harvested from slain creachurs and rendered of its membraneous sinew to produce a hard shelf-stable \
@@ -106,6 +115,7 @@
 	icon_state = "greentallow"
 	tastes = list("grease" = 1, "oil" = 1, "regret" = 1, "bitterness" = 1,)
 	wax_pigment = "green"
+*/
 
 /obj/item/reagent_containers/food/snacks/tallow/attacked_by(obj/item/I, mob/living/user)
 	. = ..()
@@ -121,9 +131,9 @@
 					return	
 				if(success)
 					changefood(/obj/item/reagent_containers/food/snacks/tallow/red, user)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/tea))
-		if(alert(user, "CRUSH THE TALLOW?", "IT'S JUST TEA", "YES", "NO") != "NO")
-			changefood(/obj/item/reagent_containers/food/snacks/tallow/green, user)
+	if(istype(I, /obj/item/ash))
+		if(alert(user, "STAIN THE TALLOW?", "IT'S JUST ASH", "YES", "NO") != "NO")
+			changefood(/obj/item/reagent_containers/food/snacks/tallow/black, user)
 			qdel(I)
 		else
 			return
