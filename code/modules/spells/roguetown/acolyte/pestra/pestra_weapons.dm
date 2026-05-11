@@ -47,7 +47,7 @@
 				var/intent_can_dodge = initial(I_path:candodge)
 				var/intent_can_parry = initial(I_path:canparry)
 				var/predicted_rot = 5
-				if(intent_cd > CLICK_CD_QUICK)
+				if(intent_cd > CLICK_CD_FAST)
 					predicted_rot += 3
 				if(intent_delay > 5)
 					predicted_rot += 3
@@ -88,7 +88,7 @@
 
 	if(I)
 		// If the intent is slower/heavier than the standard quick stab
-		if(I.clickcd > CLICK_CD_QUICK)
+		if(I.clickcd > CLICK_CD_FAST)
 			rot_to_apply += 3
 
 		// If the swing delay is significant (0.5s or 5 deciseconds)
