@@ -117,6 +117,12 @@ GLOBAL_LIST_INIT(averse_factions, list(
 	for(var/key in cf_list)
 		if(cf_list[key] == type || cf_list[key] == /datum/charflaw/noflaw)
 			cf_list -= key
+		var/datum/charflaw/cf = cf_list[key]
+		if(cf)
+			cf = new cf()
+			var/mob/living/carbon/human/H = user
+			if(length(cf.restricted_species) && (H.dna.species.type in cf.restricted_species))
+				cf_list.Remove(key)
 
 	var/datum/job/mob_job = null
 	if(target.mind?.assigned_role)
