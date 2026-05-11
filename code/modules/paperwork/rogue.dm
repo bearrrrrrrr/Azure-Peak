@@ -420,7 +420,7 @@
 		else
 			to_chat(user,  span_warning("The ring hasn't been waxed."))
 	else if(istype(I, /obj/item/clothing/ring/signet))
-		to_chat(user, span_warning("The scroll can only be stamped with a signet ring bearing the Archbishop's symbol."))
+		to_chat(user, span_warning("The [src] can only be stamped with a signet ring bearing the Archbishop's symbol."))
 		return
 	..()
 

@@ -106,7 +106,7 @@ GLOBAL_LIST_EMPTY(quest_scrolls)
 			stamp_with_signet(P, user)
 			return
 		else if(S.tallowed && S.tallow_color != "black")
-			to_chat(user, span_warning("Only blacktallow fit for the Lord's seal may be used upon this writ."))
+			to_chat(user, span_warning("I need to use blacktallow to seal this properly."))
 			return
 		else
 			to_chat(user, span_warning("The ring hasn't been waxed."))
