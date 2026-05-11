@@ -1,13 +1,13 @@
 /datum/component/dreamwalker_repair/limited
 	/// Total amount of health this component can repair before it expires
-	var/total_repair_budget = 500
+	var/total_repair_budget = 300
 	/// How much we have repaired so far
 	var/total_repaired = 0
 	/// Time limit for the component
 	var/lifetime = 15 MINUTES
 	shard_type = /obj/effect/temp_visual/dream_shard/malum
 
-/datum/component/dreamwalker_repair/limited/Initialize(repair_budget = 500, time_limit = 15 MINUTES)
+/datum/component/dreamwalker_repair/limited/Initialize(repair_budget = 300, time_limit = 15 MINUTES)
 	if(!ishuman(parent))
 		return COMPONENT_INCOMPATIBLE
 	src.total_repair_budget = repair_budget
