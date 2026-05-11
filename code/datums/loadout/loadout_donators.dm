@@ -322,19 +322,19 @@
 /datum/loadout_item/donator/koruu_silver_kukri
 	name = "Donator Kit - Psydonic Leachwhacker"
 	path = /obj/item/enchantingkit/weapon/koruu_kukri_silver
-	ckeywhitelist = list("koruu", "zerantio")
+	ckeywhitelist = list("koruu")
 
 /datum/loadout_item/donator/koruu_longsword
 	name = "Donator Kit - Excaliber"
 	path = /obj/item/enchantingkit/weapon/koruu_longsword
-	ckeywhitelist = list("koruu", "pneumothorax", "zerantio")
+	ckeywhitelist = list("koruu", "pneumothorax")
 
 /datum/loadout_item/donator/koruu_etrusc
 	name = "Donator Kit - Colada"
 	path = /obj/item/enchantingkit/weapon/koruu_etrusc
-	ckeywhitelist = list("koruu", "pneumothorax", "zerantio")
+	ckeywhitelist = list("koruu", "pneumothorax")
 
 /datum/loadout_item/donator/koruu_judgement
 	name = "Donator Kit - A Durthurian Tale"
 	path = /obj/item/enchantingkit/weapon/koruu_judgement
-	ckeywhitelist = list("koruu", "pneumothorax", "zerantio")
+	ckeywhitelist = list("koruu", "pneumothorax")
