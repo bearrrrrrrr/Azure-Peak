@@ -39,8 +39,7 @@
 		var/mob/living/real_mob = new mob_type_to_spawn(T)
 		if(rot_path)
 			real_mob.rot_type = rot_path
-		if(target_factions)
-			real_mob.faction = target_factions
+		real_mob.faction |= "hunting_ambush"
 
 		T.visible_message(span_boldwarning("The [real_mob.name] lunges out from the shadows!"))
 		playsound(T, 'sound/items/seedextract.ogg', 100, TRUE)
