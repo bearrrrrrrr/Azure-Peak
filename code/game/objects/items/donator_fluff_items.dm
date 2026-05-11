@@ -441,9 +441,9 @@
 	name = "psydonic leachwhacker"
 	desc = "Sometimes... I still hear her voice in the darkness, when the lampterns are out. \
 	Verzeih mir, Erika."
-	icon_state = 'wazia_kukri_silver'
+	icon_state = "wazia_kukri_silver"
 	icon = 'icons/obj/items/donor_weapons.dmi'
-	sheathe_icon = 'wazia_kukri_silver'
+	sheathe_icon = "wazia_kukri_silver"
 
 /obj/item/rogueweapon/koruu/longsword
 	name = "Excaliber"
