@@ -44,11 +44,14 @@
 				var/intent_name = initial(I_path:name)
 				var/intent_cd = initial(I_path:clickcd)
 				var/intent_delay = initial(I_path:swingdelay)
+				var/intent_blade_class = initial(I_path:blade_class)
 				var/predicted_rot = 5
 				if(intent_cd > CLICK_CD_QUICK)
 					predicted_rot += 3
 				if(intent_delay > 5)
 					predicted_rot += 3
+				if(intent_blade_class == BCLASS_BLUNT)
+					predicted_rot = 0
 				examine_list += span_info(" - <b>[uppertext(intent_name)]</b>: [predicted_rot] stacks")
 
 /datum/component/ichor_stained/proc/check_dip(obj/item/source, atom/_target, mob/living/attacker, params)
@@ -91,10 +94,14 @@
 		if(I.swingdelay > 5) 
 			rot_to_apply += 3
 
-	apply_black_rot(target, rot_to_apply)
+		if(I.blade_class == BCLASS_BLUNT)
+			rot_to_apply = 0
 
-	charges -= rot_to_apply
-	to_chat(user, span_warning("you apply black ichor to [target]!"))
+	if(rot_to_apply)
+		apply_black_rot(target, rot_to_apply)
+		charges -= rot_to_apply
+		to_chat(user, span_warning("you apply black ichor to [target]!"))
+
 	if(charges <= 0)
 		remove_visuals(user)
 		to_chat(user, span_warning("The last of the ichor rubs off onto [target]!"))
