@@ -64,7 +64,7 @@
 /obj/effect/temp_visual/dream_shard/malum
 	name = "malum shard"
 	desc = "Malum's glory shines through these shards. Hold the line, soldier."
-	icon_state = "malum_shards"
+	icon_state = "malum_gift"
 	dream_check = FALSE
 	effect_color = "#330000"
 
