@@ -44,13 +44,14 @@
 				var/intent_name = initial(I_path:name)
 				var/intent_cd = initial(I_path:clickcd)
 				var/intent_delay = initial(I_path:swingdelay)
-				var/intent_blade_class = initial(I_path:blade_class)
+				var/intent_can_dodge = initial(I_path:candodge)
+				var/intent_can_parry = initial(I_path:canparry)
 				var/predicted_rot = 5
 				if(intent_cd > CLICK_CD_QUICK)
 					predicted_rot += 3
 				if(intent_delay > 5)
 					predicted_rot += 3
-				if(intent_blade_class == BCLASS_BLUNT)
+				if(!intent_can_dodge || !intent_can_parry)
 					predicted_rot = 0
 				examine_list += span_info(" - <b>[uppertext(intent_name)]</b>: [predicted_rot] stacks")
 
@@ -94,7 +95,7 @@
 		if(I.swingdelay > 5) 
 			rot_to_apply += 3
 
-		if(I.blade_class == BCLASS_BLUNT)
+		if(!I.canparry || !I.candodge)
 			rot_to_apply = 0
 
 	if(rot_to_apply)
