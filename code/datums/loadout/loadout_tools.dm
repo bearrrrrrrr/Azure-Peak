@@ -34,11 +34,6 @@
 	path = /obj/item/natural/whetstone
 	sort_category = "Tools"
 
-/datum/loadout_item/scissors
-	name = "Scissors"
-	path = /obj/item/rogueweapon/huntingknife/scissors
-	sort_category = "Tools"
-
 /datum/loadout_item/hammer
 	name = "Wood Mallet"
 	path = /obj/item/rogueweapon/hammer/wood
