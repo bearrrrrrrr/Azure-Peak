@@ -22,6 +22,9 @@
 		"THE OCEAN'S FURY IS ABYSSOR'S WILL!",
 		"I AM DRAWN BY THE PULL OF THE TIDE!",
 	)
+	titles = list(
+		"Dreamer"
+	)
 
 	storyteller = /datum/storyteller/abyssor
 
