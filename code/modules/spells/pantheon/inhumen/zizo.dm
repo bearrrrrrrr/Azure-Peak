@@ -14,6 +14,8 @@
 	cooldown_time = 20 SECONDS
 	primary_resource_type = SPELL_COST_DEVOTION
 	primary_resource_cost = 30
+	secondary_resource_type = SPELL_COST_STAMINA
+	secondary_resource_cost = 10
 	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC
 	zizo_spell = TRUE
 	var/snuff_range = 2
@@ -52,6 +54,8 @@
 	primary_resource_type = SPELL_COST_DEVOTION
 	primary_resource_cost = 15
 	associated_skill = /datum/skill/magic/holy
+	secondary_resource_type = SPELL_COST_STAMINA
+	secondary_resource_cost = 30
 
 /datum/action/cooldown/spell/projectile/profane/fire_projectile(atom/target)
 	var/obj/item/held_item = owner.get_active_held_item()
@@ -156,7 +160,10 @@
 	primary_resource_type = SPELL_COST_DEVOTION
 	primary_resource_cost = 120
 	associated_skill = /datum/skill/magic/holy
+	secondary_resource_type = SPELL_COST_STAMINA
+	secondary_resource_cost = 90
 
+	
 /datum/action/cooldown/spell/rituos/cast(atom/cast_on)
 	. = ..()
 	if(!ishuman(owner))

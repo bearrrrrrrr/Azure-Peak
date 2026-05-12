@@ -1,6 +1,11 @@
 /datum/action/cooldown/spell/minion_order
 	name = "Order Minions"
-	desc = "Cast on turf to head in that direction ignoring all else.\nCast on a minion to set to aggressive, cast on self to passive and follow, cast on target to focus them.\nDoes not work on greater skeletons."
+	desc = "Issues commands to your summoned minions within 12 tiles. \
+	Cast on a turf to send them marching there, ignoring all else along the way. \
+	Cast on yourself to recall them - they will turn passive and follow you. \
+	Cast on an enemy to focus them; minions will pursue and attack that target. \
+	Cast on one of your own minions to toggle its stance: a passive minion becomes hostile and will hunt strangers on its own; a hostile minion calms down and reverts to follow-and-defend. \
+	Does not work on greater skeletons."
 	button_icon = 'icons/mob/actions/roguespells.dmi'
 	button_icon_state = "raiseskele"
 	cast_range = 12
@@ -76,9 +81,11 @@
 						if(minion == target)
 							if("neutral" in minion.faction)
 								minion.faction -= "neutral"
+								minion.pet_passive = FALSE
 								msg = "[minion.name] becomes hostile to nearby strangers."
 							else
 								minion.faction += "neutral"
+								minion.pet_passive = TRUE
 								msg = "[minion.name] calms down."
 	if(count > 0)
 		to_chat(owner, "Ordered [count] minions to [msg]")

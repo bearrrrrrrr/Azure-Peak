@@ -2,23 +2,24 @@
 
 /datum/action/cooldown/spell/lacrima
 	name = "Lacrima"
-	desc = "Requires an aggressive grab on a floored, living victim. Plunge your hand into their chest, shattering their ribs and will alike to forcefully tear the lux from their body.\n \
-	Can also be cast while standing next to a PURE lux to perverse it into IMPURE lux."
+	desc = "Requires an aggressive grab on a floored, living victim. Plunge your hand into their chest, shattering their ribs and will alike to forcefully tear the lux from their body."
 	button_icon = 'icons/mob/actions/zizomiracles.dmi'
 	button_icon_state = "zizograsp"
 	charge_required = FALSE
 	click_to_activate = FALSE
 	primary_resource_type = SPELL_COST_DEVOTION
-	primary_resource_cost = 0
+	primary_resource_cost = 100
 	associated_skill = /datum/skill/magic/holy
 	associated_stat = null
 	invocation_type = INVOCATION_SHOUT
-	invocations = list("Give your lux for the dame!")
+	invocations = list("Give your lux for the Dame!")
 	zizo_spell = TRUE
 	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC
 
 /datum/action/cooldown/spell/lacrima/free
 	primary_resource_type = SPELL_COST_NONE
+	secondary_resource_type = SPELL_COST_STAMINA
+	secondary_resource_cost = 100
 
 /datum/action/cooldown/spell/lacrima/cast(atom/cast_on)
 	. = ..()
@@ -29,18 +30,13 @@
 		lux_rip(owner.pulling, owner)
 		return TRUE
 
-	var/obj/item/reagent_containers/lux/nearby_lux = locate(/obj/item/reagent_containers/lux) in range(1, owner)
-	if(nearby_lux && !istype(nearby_lux, /obj/item/reagent_containers/lux_impure))
-		perverse_lux(nearby_lux, owner)
-		return TRUE
-
-	to_chat(owner, span_warning("I need an aggressive grab on a floored victim, or be next to pure lux, to use Lacrima!"))
+	to_chat(owner, span_warning("I need an aggressive grab on a floored victim to use Lacrima!"))
 	reset_spell_cooldown()
 	return FALSE
 
 /datum/action/cooldown/spell/lacrima/proc/lux_rip(mob/living/carbon/human/target, mob/living/carbon/human/user)
 	var/break_time = 100
-	var/tear_time = 50
+	var/tear_time = 100
 
 	if(target == user)
 		to_chat(user, span_alert("I shouldn't rip out my own lux! I need that."))
@@ -61,7 +57,6 @@
 		to_chat(user, span_notice("This one's lux is already disturbed!"))
 		return
 	else
-		to_chat(user, span_alert("I begin reaching my hand towards [target], preparing to tear their lux from their body..."))
 		user.visible_message(span_alert("[user] reaches towards [target]'s chest, inhumen flames wreathing [user.p_their()] hand..."))
 	var/obj/item/bodypart/chest = target.get_bodypart(BODY_ZONE_CHEST)
 	if(!chest.has_wound(/datum/wound/fracture/chest))
@@ -90,15 +85,3 @@
 	desc = span_boldred("THE ESSENCE OF MY LYFE HAS BEEN DEFILED!!")
 	stressadd = 30
 	timer = 5 MINUTES
-
-/datum/action/cooldown/spell/lacrima/proc/perverse_lux(obj/item/reagent_containers/lux/target, mob/living/carbon/human/user)
-	var/perverse_time = 20
-
-	if(!target.Adjacent(user))
-		to_chat(user, span_info("I need to get closer."))
-		return
-	to_chat(user, span_alert("I begin molding the [target] in my hands, perversing it with inhumen energies..."))
-	if(!do_after(user, perverse_time, target = target))
-		return
-	qdel(target)
-	user.put_in_hands(new /obj/item/reagent_containers/lux_impure, forced = TRUE)
