@@ -50,20 +50,17 @@
 /obj/item/broom/proc/broom_fu(atom/A, mob/living/user)
 	if(!A)
 		return
-	for(var/obj/effect/decal/cleanable/dirt/C in A)
-		qdel(C)
-	for(var/obj/item/paper/crumpled/C in A)
-		qdel(C)
-	for(var/obj/item/ash/C in A)
-		qdel(C)
-	for(var/obj/item/natural/glass_shard/C in A)
-		qdel(C)
-	for(var/obj/effect/decal/cleanable/debris/woody/C in A)
-		qdel(C)
-	for(var/obj/effect/decal/cleanable/debris/stony/C in A)
-		qdel(C)
-	for(var/obj/effect/decal/cleanable/debris/glassy/C in A)
-		qdel(C)
+
+	var/turf/T = get_turf(A)
+	if(!T)
+		return
+
+	if(istype(A, /obj/effect/decal/cleanable/dirt) || istype(A, /obj/item/paper/crumpled) || istype(A, /obj/item/ash) || istype(A, /obj/item/natural/glass_shard) || istype(A, /obj/effect/decal/cleanable/debris) || istype(A, /obj/effect/decal/remains/human))
+		qdel(A)
+
+	for(var/obj/O in T.contents)
+		if(istype(O, /obj/effect/decal/cleanable/dirt) || istype(O, /obj/item/paper/crumpled) || istype(O, /obj/item/ash) || istype(O, /obj/item/natural/glass_shard) || istype(O, /obj/effect/decal/cleanable/debris) || istype(O, /obj/effect/decal/remains/human))
+			qdel(O)
 
 /obj/item/broom/proc/gather_clutter(turf/T, mob/living/user)
 	if(!T)
