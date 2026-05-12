@@ -24,7 +24,8 @@
 	storyteller = /datum/storyteller/necra
 
 	titles = list(
-		"Veiled Lady"
+		"Veiled Lady",
+		"Corpse Mother"
 	)
 
 // Near a grave, cross, or within the church

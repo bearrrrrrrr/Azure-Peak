@@ -23,7 +23,8 @@
 		"I AM DRAWN BY THE PULL OF THE TIDE!",
 	)
 	titles = list(
-		"Dreamer"
+		"Dreamer",
+		"Forgotten One"
 	)
 
 	storyteller = /datum/storyteller/abyssor

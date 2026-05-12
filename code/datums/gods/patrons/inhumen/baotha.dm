@@ -28,7 +28,8 @@
 	crafting_recipes = list(/datum/crafting_recipe/roguetown/structure/baotha_cross_stone, /datum/crafting_recipe/roguetown/structure/baotha_cross_meat)
 
 	titles = list(
-		"Lady of Heartbreak"
+		"Lady of Heartbreak",
+		"Scarlet Lady"
 	)
 
 /datum/patron/inhumen/baotha/can_pray(mob/living/follower)

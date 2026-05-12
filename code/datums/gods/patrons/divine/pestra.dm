@@ -25,7 +25,8 @@
 	storyteller = /datum/storyteller/pestra
 
 	titles = list(
-		"Lady of Pestilence" // yeah, i have no idea. what do people even call Pestra?
+		"Lady of Pestilence", // yeah, i have no idea. what do people even call Pestra?
+		"Rot Mother"
 	)
 
 // Near a well, cross, within the physicians, within the heartbeast's sanctum, or within the church
