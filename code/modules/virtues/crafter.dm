@@ -31,7 +31,7 @@
 		SKILLED_PHYS	= "Grants Expert Physicker and Alchemist. Alchemy and Medicine raised to Apprentice. Grants secular diagnose and a stashed medicine pouch.",
 		SKILLED_FORESTER= "Cooking, Athletics, Farming, Fishing, Lumberjacking raised to Apprentice. Stashed hoe.",
 		SKILLED_ARTIF	= "Grants Expert Forgehand. Carpentry, Masonry, Engineering, Smelting and Ceramics raised to Apprentice. Stashed Hammer, Chisel and Hand Saw.",
-		SKILLED_ENCHANT = "Grants Expert Enchanter and Alchemist. Allows you to do magical rituals. Alchemy, Engineering, Smelting, Blacksmithing and Arcane raised to Apprentice. Stashed Pestle and Mortar."
+		SKILLED_ENCHANT = "Grants Expert Enchanter and Alchemist. Allows you to do magical rituals. Alchemy, Engineering, Smelting, Blacksmithing and Arcane raised to Apprentice. Stashed Chalk, Mortar, and Pestle."
 	)
 
 /datum/virtue/utility/skilled/on_load()
@@ -105,6 +105,7 @@
 				added_traits.Add(TRAIT_ENCHANTING_EXPERT, TRAIT_ALCHEMY_EXPERT, TRAIT_ARCYNE)
 				recipient.mind?.special_items["Pestle"] = /obj/item/pestle
 				recipient.mind?.special_items["Mortar"] = /obj/item/reagent_containers/glass/mortar
+				recipient.mind?.special_items["Chalk"] = /obj/item/chalk
 
 
 #undef SKILLED_BSMITH
