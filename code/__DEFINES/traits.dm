@@ -295,6 +295,7 @@
 #define TRAIT_SELF_SUSTENANCE "Self-Sustenance" // Unlocks all gated crafting skills to Jman. Wretches & Antags only.
 #define TRAIT_MASTERFUL_HUNTER "Masterful Hunter" // Hunting is a specialty skill, this trait should only be granted to select classes.
 #define TRAIT_EXPERT_HUNTER "Expert Hunter" // Ditto, but this one lets you go up to expert instead of legendary
+#define TRAIT_ENCHANTING_EXPERT "Expert Enchanter" //Engineering, Smelting, Blacksmithing, used for enchanting virtue
 
 
 //item and enchantment traits should go under here as new ones get added
