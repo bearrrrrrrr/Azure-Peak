@@ -140,6 +140,24 @@
 	triumph_cost = 5
 	sort_category = "Triumphs"
 
+/datum/loadout_item/triumph_gildedshirt
+	name = "Gilded Dress Shirt"
+	path = /obj/item/clothing/suit/roguetown/shirt/dress/royal/prince
+	triumph_cost = 5
+	sort_category = "Triumphs"
+
+/datum/loadout_item/triumph_pristinedress
+	name = "Pristine Dress"
+	path = /obj/item/clothing/suit/roguetown/shirt/dress/royal/princess
+	triumph_cost = 5
+	sort_category = "Triumphs"
+
+/datum/loadout_item/triumph_royalsleeves
+	name = "Royal Sleeves"
+	path = /obj/item/clothing/wrists/roguetown/royalsleeves
+	triumph_cost = 5
+	sort_category = "Triumphs"
+
 // -7 TRI
 /datum/loadout_item/triumph_buttpack
 	name = "Belted Satchel"
@@ -162,24 +180,6 @@
 /datum/loadout_item/triumph_ladycloak
 	name = "Ladylike Cloak"
 	path = /obj/item/clothing/cloak/lordcloak/ladycloak
-	triumph_cost = 7
-	sort_category = "Triumphs"
-
-/datum/loadout_item/triumph_gildedshirt
-	name = "Gilded Dress Shirt"
-	path = /obj/item/clothing/suit/roguetown/shirt/dress/royal/prince
-	triumph_cost = 7
-	sort_category = "Triumphs"
-
-/datum/loadout_item/triumph_pristinedress
-	name = "Pristine Dress"
-	path = /obj/item/clothing/suit/roguetown/shirt/dress/royal/princess
-	triumph_cost = 7
-	sort_category = "Triumphs"
-
-/datum/loadout_item/triumph_royalsleeves
-	name = "Royal Sleeves"
-	path = /obj/item/clothing/wrists/roguetown/royalsleeves
 	triumph_cost = 7
 	sort_category = "Triumphs"
 
