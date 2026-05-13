@@ -58,3 +58,9 @@
 	name = "Wood Spade"
 	path = /obj/item/rogueweapon/shovel/small
 	sort_category = "Tools"
+
+/datum/loadout_item/mirror 
+	name = "Hand Mirror"
+	path = /obj/item/handmirror
+	sort_category = "Tools"
+
