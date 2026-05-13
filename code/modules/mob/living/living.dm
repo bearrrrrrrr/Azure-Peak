@@ -2268,7 +2268,10 @@
 				for(var/turf/T in z_highlights)
 					if(!T.density)
 						found_ping_someone_above(T, client, z_highlights[T])
-					
+			
+			#undef ZTAG_ONE
+			#undef ZTAG_TWO
+			#undef ZTAG_THREE
 
 /proc/found_ping(atom/A, client/C, state)
 	if(!A || !C || !state)
