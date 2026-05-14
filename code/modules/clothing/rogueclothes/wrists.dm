@@ -478,6 +478,7 @@
 
 /obj/item/clothing/wrists/roguetown/bracers/undivided_ritual/Initialize()
 	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 	add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#79d5ff", "alpha" = 120, "size" = 1)) //Divine Radiance
 
 /obj/item/clothing/wrists/roguetown/bracers/undivided_ritual/dropped(mob/living/carbon/human/user)

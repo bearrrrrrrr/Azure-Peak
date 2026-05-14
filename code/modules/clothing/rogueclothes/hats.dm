@@ -148,6 +148,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
 	bloody_icon = 'icons/effects/blood64.dmi'
 	unenchantable = TRUE
+	smeltresult = null
 
 /obj/item/clothing/head/roguetown/helmet/heavy/undivided_ritual/Initialize()
   ..()
