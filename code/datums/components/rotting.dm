@@ -5,7 +5,7 @@
 #define CORPSE_SKELETONIZE_TIME 12 MINUTES
 #define CORPSE_DUST_TIME 20 MINUTES
 
-#define SIMPLE_CORPSE_ROT_START 8 MINUTES
+#define SIMPLE_CORPSE_ROT_START 12 MINUTES
 #define SIMPLE_CORPSE_DUST_TIME 15 MINUTES
 
 #define HUNT_CORPSE_ROT_START 20 MINUTES
@@ -140,8 +140,10 @@
 	if(shouldupdate)
 		if(findonerotten)
 			if(ishuman(C))
-				var/mob/living/carbon/human/H = C			
-				H.skin_tone = SKIN_COLOR_ROT // "878f79"
+				var/mob/living/carbon/human/H = C
+				if(!H.original_skin_tone) // let's have this here just in case
+					H.original_skin_tone = H.skin_tone
+				H.skin_tone = "878f79" // dont fix what's not broken
 			if(soundloop && soundloop.stopped && !is_zombie)
 				soundloop.start()
 		C.update_body()
