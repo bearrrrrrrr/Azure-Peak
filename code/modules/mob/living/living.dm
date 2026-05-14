@@ -2321,7 +2321,7 @@
 	var/image/I = image(icon = 'icons/effects/effects.dmi', loc = tloc, icon_state = "found_above[tag]", layer = 18)
 	if(!I)
 		return
-	IAtom.alpha = 155
+	I.alpha = 155
 	I.layer = 19
 	I.plane = 19
 	if(!I)
