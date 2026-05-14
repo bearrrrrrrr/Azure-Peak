@@ -9,10 +9,6 @@
 	popup.open(FALSE)
 
 /client/proc/view_actors_manifest()
-	set category = "OOC"
-	set name = "View Actors"
-	if(!holder)
-		return
 	var/list/actors_list = get_sorted_actors_list()
 	var/list/categories_used = list()
 
