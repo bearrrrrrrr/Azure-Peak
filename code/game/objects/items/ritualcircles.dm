@@ -1505,10 +1505,9 @@
 			"pants" = target.get_item_by_slot(SLOT_PANTS),
 			"shoes" = target.get_item_by_slot(SLOT_SHOES),
 			"backl" = target.get_item_by_slot(SLOT_BACK_L),
-			"backr" = target.get_item_by_slot(SLOT_BACK_R),
-		), list("head", "neck", "cloak", "armor", "shirt", "wrists", "gloves", "belt", "beltl", "pants", "shoes", "backl", "backr"))
+		), list("head", "neck", "cloak", "armor", "shirt", "wrists", "gloves", "belt", "beltl", "pants", "shoes", "backl"))
 		to_chat(target, span_boldred("This is my only chance at LYFE."))
-		to_chat(target, span_blue("As the blessed silver encases my body and runs through my veins, protecting me from both vampyrism, deadite bites and lycanthropy."))
+		to_chat(target, span_blue("Blessed silver encases my body and runs through my veins, it protects me from both vampyrism, deadite bites and lycanthropy."))
 		ADD_TRAIT(target, TRAIT_DNR, TRAIT_RITUAL)
 		ADD_TRAIT(target, TRAIT_DUSTABLE, TRAIT_RITUAL) //This IS your only chance at lyfe + die with absolute aura.
 		ADD_TRAIT(target, TRAIT_SILVER_BLESSED, TRAIT_RITUAL) //You're encased in literal silver + makes up for no enchanting the set
@@ -1533,7 +1532,6 @@
 	pants = /obj/item/clothing/under/roguetown/platelegs/holysee/ritual
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/holysee/ritual
 	backl = /obj/item/rogueweapon/sword/long/crusader
-	backr = /obj/item/rogueweapon/shield/tower/holysee
 
 	H.mind.AddSpell(new /datum/action/cooldown/spell/mending/lesser)
 

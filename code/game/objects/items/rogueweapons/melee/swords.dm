@@ -349,6 +349,7 @@
 /obj/item/rogueweapon/sword/long/crusader/Initialize()
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_UNDIVIDED, "SWORD")
+	add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#79d5ff", "alpha" = 120, "size" = 1)) //Divine Radiance.
 
 /obj/item/rogueweapon/sword/long/crusader/ComponentInitialize()
 	AddComponent(\
