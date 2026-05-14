@@ -30,3 +30,14 @@
 			prob2break = 100
 		if(prob(prob2break))
 			qdel(src)
+
+/obj/item/ash/attack_self(mob/living/user)
+	user.visible_message(span_warning("[user] scatters [src]."))
+	if(being_deleted || QDELETED(src))
+		return
+	being_deleted = TRUE
+	qdel(src)
+
+/obj/item/ash/Destroy()
+	being_deleted = TRUE
+	return ..()
