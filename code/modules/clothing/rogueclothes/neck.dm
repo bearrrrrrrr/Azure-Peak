@@ -1041,6 +1041,7 @@
 /obj/item/clothing/neck/roguetown/chaincoif/chainmantle/matthios/Initialize()
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_FREEMAN, "ARMOR")
+	add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#fff385", "alpha" = 120, "size" = 1)) //IS THIS TRVE?
 
 //
 
@@ -1057,6 +1058,11 @@
 /obj/item/clothing/neck/roguetown/bevor/zizo/Initialize()
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "ARMOR")
+	add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#5f1515", "alpha" = 120, "size" = 1)) //Cursed look.
+
+/obj/item/clothing/neck/roguetown/bevor/zizo/heavy
+	name = "fused avantyne bevor"
+	desc = "An avantyne neckguard fused into the flesh of the neck, akin to a second skin, yet impossible to remove. The sacred leyline of sinew and spirit protected from severance."
 
 /obj/item/clothing/neck/roguetown/bevor/zizo/heavy/Initialize()
 	. = ..()
@@ -1080,6 +1086,7 @@
 /obj/item/clothing/neck/roguetown/gorget/steel/graggar/Initialize()
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR", "RENDERED ASUNDER")
+	add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#1a146e", "alpha" = 120, "size" = 1)) //Cursed look.
 
 /obj/item/clothing/neck/roguetown/gorget/steel/graggar/heavy/Initialize()
 	. = ..()
@@ -1091,6 +1098,24 @@
 		return
 	qdel(src)
 
+//
+
+/obj/item/clothing/neck/roguetown/bevor/undivided_ritual
+	name = "crusader bevor"
+	desc = "A bevor of silver for the guardians and the warriors, for the spears and shields of the Ten."
+	color = "#bef2ff"
+	smeltresult = null
+	unenchantable = TRUE
+
+/obj/item/clothing/neck/roguetown/bevor/undivided_ritual/Initialize()
+	. = ..()
+	add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#79d5ff", "alpha" = 120, "size" = 1)) //Divine Radiance
+
+/obj/item/clothing/neck/roguetown/bevor/undivided_ritual/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(QDELETED(src))
+		return
+	qdel(src)
 //
 
 /obj/item/clothing/neck/roguetown/psicross/malum/secret

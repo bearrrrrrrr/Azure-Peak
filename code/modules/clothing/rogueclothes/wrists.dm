@@ -401,6 +401,7 @@
 /obj/item/clothing/wrists/roguetown/bracers/matthios/Initialize()
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_FREEMAN, "ARMOR")
+	add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#fff385", "alpha" = 120, "size" = 1)) //IS THIS TRVE?
 
 //
 
@@ -418,6 +419,11 @@
 /obj/item/clothing/wrists/roguetown/bracers/zizo/Initialize()
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "ARMOR")
+	add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#5f1515", "alpha" = 120, "size" = 1)) //Cursed look.
+
+/obj/item/clothing/wrists/roguetown/bracers/zizo/heavy
+	name = "fused avantyne bracers"
+	desc = "Clasped yet practical, these avantyne wristguards are bound to the wearer forever. Once you have plunged deep into knowledge forbidden, there is no going back.."
 
 /obj/item/clothing/wrists/roguetown/bracers/zizo/heavy/Initialize()
 	. = ..()
@@ -440,6 +446,7 @@
 /obj/item/clothing/wrists/roguetown/bracers/graggar/Initialize()
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR", "RENDERED ASUNDER")
+	add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#1a146e", "alpha" = 120, "size" = 1)) //Cursed look.
 
 /obj/item/clothing/wrists/roguetown/bracers/graggar/heavy
 	name = "vicious wristguards"
@@ -457,6 +464,23 @@
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 
 /obj/item/clothing/wrists/roguetown/bracers/graggar/heavy/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(QDELETED(src))
+		return
+	qdel(src)
+
+/obj/item/clothing/wrists/roguetown/bracers/undivided_ritual
+	name = "crusader bracers"
+	desc = "A set of bracers of silver for the guardians and the warriors, for the spears and shields of the Ten."
+	color = "#bef2ff"
+	smeltresult = null
+	unenchantable = TRUE
+
+/obj/item/clothing/wrists/roguetown/bracers/undivided_ritual/Initialize()
+	. = ..()
+	add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#79d5ff", "alpha" = 120, "size" = 1)) //Divine Radiance
+
+/obj/item/clothing/wrists/roguetown/bracers/undivided_ritual/dropped(mob/living/carbon/human/user)
 	. = ..()
 	if(QDELETED(src))
 		return

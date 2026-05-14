@@ -1494,8 +1494,11 @@
 		target.equipOutfit(/datum/outfit/job/roguetown/decarite)
 		tag_kit_items(target, list(
 			"head" = target.get_item_by_slot(SLOT_HEAD),
+			"neck" = target.get_item_by_slot(SLOT_NECK),
 			"cloak" = target.get_item_by_slot(SLOT_CLOAK),
 			"armor" = target.get_item_by_slot(SLOT_ARMOR),
+			"shirt" = target.get_item_by_slot(SLOT_SHIRT),
+			"wrists" = target.get_item_by_slot(SLOT_WRISTS),
 			"gloves" = target.get_item_by_slot(SLOT_GLOVES),
 			"belt" = target.get_item_by_slot(SLOT_BELT),
 			"beltl" = target.get_item_by_slot(SLOT_BELT_L),
@@ -1503,9 +1506,12 @@
 			"shoes" = target.get_item_by_slot(SLOT_SHOES),
 			"backl" = target.get_item_by_slot(SLOT_BACK_L),
 			"backr" = target.get_item_by_slot(SLOT_BACK_R),
-		), list("head", "cloak", "armor", "gloves", "belt", "beltl", "pants", "shoes", "backl", "backr"))
+		), list("head", "neck", "cloak", "armor", "shirt", "wrists", "gloves", "belt", "beltl", "pants", "shoes", "backl", "backr"))
 		to_chat(target, span_boldred("This is my only chance at LYFE."))
 		ADD_TRAIT(target, TRAIT_DNR, TRAIT_RITUAL)
+		ADD_TRAIT(target, TRAIT_DUSTABLE, TRAIT_RITUAL) //This IS your only chance at lyfe + die with absolute aura.
+		ADD_TRAIT(target, TRAIT_SILVER_BLESSED, TRAIT_RITUAL) //You're encased in literal silver + makes up for no enchanting the set
+		ADD_TRAIT(target, TRAIT_ZOMBIE_IMMUNE, TRAIT_RITUAL)
 
 /datum/outfit/job/roguetown/decarite/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -1515,8 +1521,11 @@
 		H.dropItemToGround(I, TRUE)
 	H.drop_all_held_items()
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/undivided_ritual
+	neck = /obj/item/clothing/neck/roguetown/bevor/undivided_ritual
 	cloak = /obj/item/clothing/cloak/templar/undivided_alt
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/full/holysee/ritual
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/undivided_ritual
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/undivided_ritual
 	gloves = /obj/item/clothing/gloves/roguetown/plate/holysee/ritual
 	belt = /obj/item/storage/belt/rogue/leather/steel/tasset
 	beltl = /obj/item/rogueweapon/scabbard/sword/royal

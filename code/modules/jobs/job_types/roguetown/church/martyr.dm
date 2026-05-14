@@ -1258,6 +1258,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/holysee/ritual
 	name = "crusader silver plate"
+	unenchantable = TRUE
 	armor_class = ARMOR_CLASS_MEDIUM
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/holysee/ritual/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
@@ -1266,6 +1267,7 @@
 /obj/item/clothing/suit/roguetown/armor/plate/full/holysee/ritual/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+ 	add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#79d5ff", "alpha" = 120, "size" = 1)) //Divine Radiance.
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/holysee/ritual/dropped(mob/living/carbon/human/user)
 	. = ..()
@@ -1279,6 +1281,7 @@
 
 /obj/item/clothing/gloves/roguetown/plate/holysee/ritual
 	name = "crusader silver plate gauntlets"
+	unenchantable = TRUE
 
 /obj/item/clothing/gloves/roguetown/plate/holysee/ritual/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
 	return TRUE
@@ -1286,6 +1289,7 @@
 /obj/item/clothing/gloves/roguetown/plate/holysee/ritual/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+	add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#79d5ff", "alpha" = 120, "size" = 1)) //Divine Radiance.
 
 /obj/item/clothing/gloves/roguetown/plate/holysee/ritual/dropped(mob/living/carbon/human/user)
 	. = ..()
@@ -1299,7 +1303,9 @@
 
 /obj/item/clothing/under/roguetown/platelegs/holysee/ritual
 	name = "crusader silver chausses"
+	desc = "Plate leggings of silver for the guardians and the warriors, for the spears and shields of the Ten." //Uniquely not Holy-See tied.
 	armor_class = ARMOR_CLASS_MEDIUM
+	unenchantable = TRUE
 
 /obj/item/clothing/under/roguetown/platelegs/holysee/ritual/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
 	return TRUE
@@ -1307,6 +1313,7 @@
 /obj/item/clothing/under/roguetown/platelegs/holysee/ritual/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+	add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#79d5ff", "alpha" = 120, "size" = 1)) //Divine Radiance.
 
 /obj/item/clothing/under/roguetown/platelegs/holysee/ritual/dropped(mob/living/carbon/human/user)
 	. = ..()
@@ -1320,6 +1327,7 @@
 
 /obj/item/clothing/shoes/roguetown/boots/armor/holysee/ritual
 	name = "crusader silver plated boots"
+	unenchantable = TRUE
 
 /obj/item/clothing/shoes/roguetown/boots/armor/holysee/ritual/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
 	return TRUE
@@ -1327,6 +1335,7 @@
 /obj/item/clothing/shoes/roguetown/boots/armor/holysee/ritual/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+	add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#79d5ff", "alpha" = 120, "size" = 1)) //Divine Radiance.
 
 /obj/item/clothing/shoes/roguetown/boots/armor/holysee/ritual/dropped(mob/living/carbon/human/user)
 	. = ..()
