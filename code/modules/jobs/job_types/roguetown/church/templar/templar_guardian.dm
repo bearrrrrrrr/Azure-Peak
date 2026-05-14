@@ -1,58 +1,22 @@
-//shield flail or longsword, tief can be this with red cross
-
-/datum/job/roguetown/templar
-	title = "Templar"
-	flag = TEMPLAR
-	department_flag = CHURCHMEN
-	faction = "Station"
-	tutorial = "Templars are warriors who have forsaken wealth and title in lieu of service to the church, due to either zealotry or a past shame. They guard the church and its bishop while keeping a watchful eye against heresy and nite-creechers. Within troubled dreams, they wonder if the blood they shed makes them holy or stained."
-	allowed_sexes = list(MALE, FEMALE)
-	forbidden_races = list(RACES_DESPISED)
-	allowed_patrons = ALL_DIVINE_PATRONS
-	outfit = /datum/outfit/job/roguetown/templar
-	min_pq = 3 //Deus vult, but only according to the proper escalation rules
-	max_pq = null
-	round_contrib_points = 2
-	total_positions = 4
-	spawn_positions = 4
-	advclass_cat_rolls = list(CTAG_TEMPLAR = 20)
-	display_order = JDO_TEMPLAR
-
-	give_bank_account = TRUE
-	job_traits = list(TRAIT_RITUALIST, TRAIT_STEELHEARTED, TRAIT_CLERGY)
-
-	//No nobility for you, being a member of the clergy means you gave UP your nobility. It says this in many of the church tutorial texts.
-	virtue_restrictions = list(/datum/virtue/utility/noble)
-	job_subclasses = list(
-		/datum/advclass/templar/monk,
-		/datum/advclass/templar/crusader,
-		/datum/advclass/templar/noc_spellblade,
-		/datum/advclass/templar/guardian
-	)
-
-/datum/outfit/job/roguetown/templar
-	job_bitflag = BITFLAG_HOLY_WARRIOR
-	has_loadout = TRUE
-	allowed_patrons = ALL_DIVINE_PATRONS
-
-/datum/advclass/templar/crusader
-	name = "Templar"
-	tutorial = "You are a templar of the Church, trained in heavy weaponry and zealous warfare. You are the instrument of your God's wrath, clad in steel and faith."
-	outfit = /datum/outfit/job/roguetown/templar/crusader
+/datum/advclass/templar/guardian
+	name = "Guardian"
+	tutorial = "You are heavily armoured temple guardian clad in plate. A holy knight maintaining order wherever he might be."
+	outfit = /datum/outfit/job/roguetown/templar/guardian
 	category_tags = list(CTAG_TEMPLAR)
 	subclass_languages = list(/datum/language/grenzelhoftian)
-	traits_applied = list(TRAIT_MEDIUMARMOR)
+	maximum_possible_slots = 1
+	traits_applied = list(TRAIT_HEAVYARMOR)
 	subclass_stats = list(
-		STATKEY_WIL = 3,
 		STATKEY_STR = 2,
 		STATKEY_CON = 2,
+		STATKEY_WIL = 3,
 	)
 	subclass_skills = list(
 		/datum/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/maces = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/whipsflails = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/axes = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,	//May tone down to 2; seems OK.
+		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/magic/holy = SKILL_LEVEL_JOURNEYMAN,
@@ -67,17 +31,17 @@
 	)
 	extra_context = "This subclass gains Expert skill in their weapon of choice."
 
-/datum/outfit/job/roguetown/templar/crusader/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/templar/guardian/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	cloak = /obj/item/clothing/cloak/tabard/crusader/tief
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/silver
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
-	gloves = /obj/item/clothing/gloves/roguetown/chain
-	belt = /obj/item/storage/belt/rogue/leather/black
-	pants = /obj/item/clothing/under/roguetown/chainlegs
+	gloves = /obj/item/clothing/gloves/roguetown/plate/iron
+	belt = /obj/item/storage/belt/rogue/leather/steel/tasset
+	pants = /obj/item/clothing/under/roguetown/platelegs/iron
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/iron
 	id = /obj/item/clothing/ring/silver
 	backl = /obj/item/storage/backpack/rogue/satchel
@@ -92,7 +56,7 @@
 	switch(H.patron?.type)
 		if(/datum/patron/divine/undivided)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/undivided
-			head = /obj/item/clothing/head/roguetown/helmet/heavy/undivided
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/undivided_alt
 			if(H.mind)
 				var/cloaks = list("Cloak", "Tabard")
 				var/cloakchoice = input(H,"Choose your covering", "TAKE UP FASHION") as anything in cloaks
@@ -100,7 +64,7 @@
 					if("Cloak")
 						cloak = /obj/item/clothing/cloak/undivided
 					if("Tabard")
-						cloak = /obj/item/clothing/cloak/templar/undivided
+						cloak = /obj/item/clothing/cloak/templar/undivided_alt
 		if(/datum/patron/divine/astrata)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/astratan
@@ -153,11 +117,11 @@
 
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
-	C.grant_miracles(H, cleric_tier = CLERIC_T2, passive_gain = CLERIC_REGEN_MINOR, devotion_limit = CLERIC_REQ_2)	//Capped to T2 miracles.
+	C.grant_miracles(H, cleric_tier = CLERIC_T2, passive_gain = CLERIC_REGEN_MINOR, devotion_limit = CLERIC_REQ_1)	//Capped to T2 miracles with paladin devotion.
 	if(H.mind)
 		SStreasury.give_money_account(ECONOMIC_LOWER_MIDDLE_CLASS, H, "Church Funding.")
 
-/datum/outfit/job/roguetown/templar/crusader/choose_loadout(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/templar/guardian/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
 	var/weapons = list("Longsword","Flail","Mace","Battle Axe","Spear")
 	switch(H.patron?.type)
@@ -311,4 +275,3 @@
 		H.adjust_skillrank(/datum/skill/misc/lockpicking, SKILL_LEVEL_NOVICE, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/music, SKILL_LEVEL_NOVICE, TRUE)
 	// -- End of section for god specific bonuses --
-
