@@ -273,6 +273,9 @@
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR", "RENDERED ASUNDER")
 
+/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/graggar/heavy
+	name = "fused vicious hauberk"
+
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/graggar/heavy/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
