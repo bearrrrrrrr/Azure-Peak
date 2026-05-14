@@ -1103,25 +1103,6 @@
 
 //
 
-/obj/item/clothing/neck/roguetown/bevor/undivided_ritual
-	name = "crusader bevor"
-	desc = "A bevor of silver for the guardians and the warriors, for the spears and shields of the Ten."
-	color = "#bef2ff"
-	smeltresult = null
-	unenchantable = TRUE
-
-/obj/item/clothing/neck/roguetown/bevor/undivided_ritual/Initialize()
-	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
-	add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#79d5ff", "alpha" = 120, "size" = 1)) //Divine Radiance
-
-/obj/item/clothing/neck/roguetown/bevor/undivided_ritual/dropped(mob/living/carbon/human/user)
-	. = ..()
-	if(QDELETED(src))
-		return
-	qdel(src)
-//
-
 /obj/item/clothing/neck/roguetown/psicross/malum/secret
 	name = "beriddled amulet"
 	desc = "A familiar necklace, blisteringly hot to the touch. Yet, as warm as it gets, the metal does not sear my flesh. </br>It whispers with divine inspiration; should I dare don it?"

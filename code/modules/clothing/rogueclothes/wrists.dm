@@ -469,24 +469,6 @@
 		return
 	qdel(src)
 
-/obj/item/clothing/wrists/roguetown/bracers/undivided_ritual
-	name = "crusader bracers"
-	desc = "A set of bracers of silver for the guardians and the warriors, for the spears and shields of the Ten."
-	color = "#bef2ff"
-	smeltresult = null
-	unenchantable = TRUE
-
-/obj/item/clothing/wrists/roguetown/bracers/undivided_ritual/Initialize()
-	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
-	add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#79d5ff", "alpha" = 120, "size" = 1)) //Divine Radiance
-
-/obj/item/clothing/wrists/roguetown/bracers/undivided_ritual/dropped(mob/living/carbon/human/user)
-	. = ..()
-	if(QDELETED(src))
-		return
-	qdel(src)
-
 /obj/item/clothing/wrists/roguetown/bracers/hand
 	name = "hand's bracers"
 	desc = "Discretion had always been the better part of valour, and nobody understands that better than the one holding an ace up their sleeve."
