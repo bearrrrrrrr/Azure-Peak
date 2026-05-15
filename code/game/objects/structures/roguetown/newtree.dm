@@ -226,13 +226,20 @@
 				for(var/mob/living/carbon/human/H in goobers)
 					var/worn_ac = H.highest_ac_worn(FALSE, FALSE)
 					if(HAS_TRAIT(H, TRAIT_WOODWALKER) && worn_ac > 0)
-						toss_a_guy(H)
-						to_chat(user, span_nicegreen("The tree stirs! Someone is up there!"))
-						continue
+						var/turf/T = get_turf(H)
+						var/tossed = FALSE
+						for(var/leaf in T.contents)
+							if(istype(leaf, /obj/structure/flora/newleaf))
+								toss_a_guy(H)
+								tossed = TRUE
+								to_chat(user, span_nicegreen("The tree stirs! Someone is up there!"))
+								break
+						if(tossed)
+							continue
 					if(HAS_TRAIT(H, TRAIT_WOODWALKER) && worn_ac < ARMOR_CLASS_MEDIUM)
 						continue
 					if(goobers[H] == ZTAG_TOP)
-						if(worn_ac == ARMOR_CLASS_MEDIUM && prob(30 + (10 * (H.STALUC - 10))))
+						if(worn_ac <= ARMOR_CLASS_MEDIUM && prob(30 + (10 * (H.STALUC - 10))))
 							continue
 						toss_a_guy(H)
 						to_chat(user, span_nicegreen("The tree stirs! Someone is up there!"))
