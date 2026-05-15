@@ -848,12 +848,8 @@
 	icon_state = "dwarpick"
 	possible_item_intents = list(/datum/intent/pick/heavy, /datum/intent/mace/strike)
 	gripped_intents = list(/datum/intent/pick/heavy, /datum/intent/mace/strike, /datum/intent/stab/militia)	
-	force = 27 //10% More damage
-	force_wielded = 33 // 10% More damage
-	max_blade_int = 150
-	max_integrity = 500
-	wdefense = 5
-	wdefense_wbonus = 7
+	max_blade_int = 200 //10% increase over the steel pick
+	max_integrity = 660 
 
 /obj/item/rogueweapon/sword/falchion/militia
 	name = "maciejowski"
