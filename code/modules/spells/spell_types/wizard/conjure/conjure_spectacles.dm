@@ -74,7 +74,7 @@
 /obj/item/clothing/mask/rogue/spectacles/inq_lesser_summoned
 	name = "summoned nocshade lens-pair"
 	icon_state = "bglasses"
-	desc = "An argument between the chosen of Noc and the Otavian See has raged on for years,\n\
+	desc = "An argument between the chosen of Noc and the Otavian Orthodoxy has raged on for years,\n\
 	no one truely knows who the original creator of these glasses truely was.\n\
 	But one thing is absolutely for certain, they are quite fashionable."
 		
