@@ -9,7 +9,6 @@
 	total_positions = 1
 	spawn_positions = 1
 	spells = list()
-	allowed_races = ALL_RACES_TYPES
 	allowed_ages = ALL_AGES_LIST
 
 	outfit = /datum/outfit/job/roguetown/loudmouth
@@ -91,7 +90,7 @@
 	if(H?.mind)
 		H.mind.setup_mage_aspects(list("mastery" = FALSE, "major" = 0, "minor" = 1, "utilities" = 3))
 	if(H.mind)
-		SStreasury.give_money_account(ECONOMIC_UPPER_CLASS, H, "Savings.")
+		SStreasury.grant_savings(ECONOMIC_UPPER_CLASS, H)
 
 /mob/living/carbon/human/proc/crier_announcement()
 	set name = "Announcement"
