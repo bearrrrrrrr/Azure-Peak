@@ -2231,7 +2231,7 @@
 		var/has_sleuth = HAS_TRAIT(src, TRAIT_SLEUTH)
 
 		if(trackskill >= SKILL_LEVEL_EXPERT || has_sleuth)
-			var/search_range = has_sleuth ? (trackskill + 1) : 7 // Up to 7 (full screen) w/ Legendary
+			var/search_range = has_sleuth ? 7 : (trackskill + 1) // Up to 7 (full screen) w/ Legendary
 			var/turf_origin = get_turf(src)
 			var/turf_up_one	= get_step_multiz(turf_origin, UP)
 			var/turf_up_two
