@@ -63,6 +63,7 @@
 						/obj/item/heart_blood_canister/filled = 2,
 						/obj/item/bait/leech = 2,
 						/obj/item/hair_dye_cream = 2,
+						/obj/item/clothing/suit/roguetown/shirt/robe/physician = 1,
 						)
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
