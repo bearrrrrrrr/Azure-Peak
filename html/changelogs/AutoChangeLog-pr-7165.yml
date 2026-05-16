@@ -1,4 +1,0 @@
-author: "radarseas"
-delete-after: True
-changes:
-  - bugfix: "fixed vampires not having trait_zombie_immune"
