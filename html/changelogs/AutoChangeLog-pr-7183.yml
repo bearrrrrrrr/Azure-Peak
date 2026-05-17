@@ -1,0 +1,4 @@
+author: "WeNeedMorePhoron"
+delete-after: True
+changes:
+  - rscadd: "NPC now bleeds out 3x faster after losing sufficient amount of blood."
