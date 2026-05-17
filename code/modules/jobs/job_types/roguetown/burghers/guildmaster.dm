@@ -29,6 +29,7 @@
 		/datum/advclass/guildmaster
 	)
 	spells = list(/obj/effect/proc_holder/spell/invoked/takeapprentice)
+	vice_restrictions = list(/datum/charflaw/hunted)
 
 /datum/advclass/guildmaster
 	name = "Guildmaster"

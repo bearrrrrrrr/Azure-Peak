@@ -27,6 +27,7 @@
 		/datum/advclass/servant/maid,
 		/datum/advclass/servant/manservant
 	)
+	vice_restrictions = list(/datum/charflaw/hunted)
 
 /datum/advclass/servant
 	traits_applied = list(TRAIT_CICERONE, TRAIT_ROYALSERVANT)

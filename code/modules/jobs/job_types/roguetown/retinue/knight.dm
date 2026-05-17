@@ -581,6 +581,8 @@
 		/datum/virtue/utility/riding
 	)
 
+	vice_limits = list(/datum/charflaw/hunted)
+
 /datum/outfit/job/roguetown/knightchampion/pre_equip(mob/living/carbon/human/H)
 	backpack_contents = list(
 		/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1,

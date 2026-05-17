@@ -22,6 +22,8 @@
 	cmode_music = 'sound/music/combat_noble.ogg'
 	job_traits = list(TRAIT_NOBLE)
 
+	vice_restrictions = list(/datum/charflaw/hunted)
+
 /datum/outfit/job/roguetown/suitor
 	job_bitflag = BITFLAG_ROYALTY
 

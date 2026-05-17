@@ -517,6 +517,7 @@
 	job_subclasses = list(
 		/datum/advclass/martyr
 	)
+	vice_restrictions = list(/datum/charflaw/hunted)
 
 /datum/advclass/martyr
 	name = "Martyr"

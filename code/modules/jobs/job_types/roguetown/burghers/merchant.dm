@@ -23,6 +23,7 @@
 
 	job_traits = list(TRAIT_SEEPRICES, TRAIT_CICERONE)
 	virtue_restrictions = list(/datum/virtue/utility/skilled, /datum/virtue/utility/apprentice) //Commerce role, not a craftsman.
+	vice_restrictions = list(/datum/charflaw/hunted)
 
 	advclass_cat_rolls = list(CTAG_MERCH = 2)
 	job_subclasses = list(
