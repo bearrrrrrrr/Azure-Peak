@@ -63,6 +63,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 		D.recompute_market_reference_prices(tg)
 		if(D.automatic_price)
 			D.compute_auto_prices(tg)
+	SStreasury.dirty_market_view()
 
 /datum/economic_event/proc/end_with_relief()
 	if(relief_triggered)

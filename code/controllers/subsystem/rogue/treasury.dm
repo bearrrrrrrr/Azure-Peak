@@ -101,6 +101,15 @@ SUBSYSTEM_DEF(treasury)
 	var/poll_projection_dirty = TRUE
 	/// Steward-settable floor. Stockpile refuses purchases when Crown's Purse would drop below this.
 	var/stockpile_purchase_floor = STOCKPILE_CROWN_PURCHASE_FLOOR_DEFAULT
+	/// Per-tick stewardry UI market view cache. Holds the full market_rows table
+	/// (per-good stock + sorted region price lists), region_rows table, and the
+	/// total_arbitrage_potential scalar. Invalidated by any mutator that affects
+	/// stockpile state, region today-pace, or blockade flag. Initial state is
+	/// dirty so first read builds.
+	var/list/cached_market_rows = null
+	var/list/cached_region_rows = null
+	var/cached_total_arbitrage_potential = 0
+	var/market_view_dirty = TRUE
 	var/rumor_points = RUMOR_POINTS_START
 	var/list/rumor_log = list()
 	var/list/rumor_issued_today = list()
@@ -175,6 +184,11 @@ SUBSYSTEM_DEF(treasury)
 
 /datum/controller/subsystem/treasury/proc/get_rural_tax_amount()
 	return RURAL_TAX
+
+// Mark the cached stewardry market / region / arbitrage 
+// View as needing rebuild on next read.
+/datum/controller/subsystem/treasury/proc/dirty_market_view()
+	market_view_dirty = TRUE
 
 /datum/controller/subsystem/treasury/proc/get_expected_wage_outlay()
 	if(!steward_machine || !steward_machine.daily_payments)
@@ -484,6 +498,7 @@ SUBSYSTEM_DEF(treasury)
 		return FALSE
 	var/amt = D.get_export_price()
 	D.stockpile_amount -= D.importexport_amt
+	dirty_market_view()
 
 	mint(discretionary_fund, amt, "exported [D.name]")
 	SStreasury.total_export += amt
