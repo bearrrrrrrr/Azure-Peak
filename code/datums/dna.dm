@@ -161,13 +161,29 @@
 
 /mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, datum/preferences/pref_load = null)
 	if(mrace && has_dna())
+		var/new_race_type = ispath(mrace) ? mrace : (istype(mrace) ? mrace.type : null)
+		if(!new_race_type)
+			return
+		// Skip same species on species loss / on species gain when the target species match
+		// This reduce the amount of cascading update body call
+		if(dna.species.type == new_race_type)
+			if(GLOB.preview_stress_set_species_shortcircuit_hits != null)
+				GLOB.preview_stress_set_species_shortcircuit_hits++
+			if(pref_load)
+				dna.features = pref_load.features.Copy()
+				dna.body_markings = deepCopyList(pref_load.body_markings)
+				dna.real_name = pref_load.real_name
+				pref_load.apply_customizers_to_character(src)
+				if(ishuman(src))
+					apply_markings_to_body_parts(dna.body_markings, src)
+			return
+		if(GLOB.preview_stress_set_species_fullswap_hits != null)
+			GLOB.preview_stress_set_species_fullswap_hits++
 		var/datum/species/new_race
 		if(ispath(mrace))
 			new_race = new mrace
-		else if(istype(mrace))
-			new_race = mrace
 		else
-			return
+			new_race = mrace
 		deathsound = new_race.deathsound
 		dna.species.on_species_loss(src, new_race, pref_load)
 		var/datum/species/old_species = dna.species
