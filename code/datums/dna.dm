@@ -167,8 +167,6 @@
 		// Skip same species on species loss / on species gain when the target species match
 		// This reduce the amount of cascading update body call
 		if(dna.species.type == new_race_type)
-			if(GLOB.preview_stress_set_species_shortcircuit_hits != null)
-				GLOB.preview_stress_set_species_shortcircuit_hits++
 			if(pref_load)
 				dna.features = pref_load.features.Copy()
 				dna.body_markings = deepCopyList(pref_load.body_markings)
@@ -177,8 +175,6 @@
 				if(ishuman(src))
 					apply_markings_to_body_parts(dna.body_markings, src)
 			return
-		if(GLOB.preview_stress_set_species_fullswap_hits != null)
-			GLOB.preview_stress_set_species_fullswap_hits++
 		var/datum/species/new_race
 		if(ispath(mrace))
 			new_race = new mrace
