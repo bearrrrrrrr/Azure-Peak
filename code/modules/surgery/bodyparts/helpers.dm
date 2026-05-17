@@ -254,13 +254,18 @@
 			qdel(O)
 			needs_new_legs = TRUE
 
-	if(needs_new_legs)
-		var/obj/item/bodypart/N
-		N = new /obj/item/bodypart/l_leg
-		N.attach_limb(src)
+	// Short circuit the check for new legs and
+	// icon regeneration when you are not a taur
+	// Which is the majority of characters
+	if(!needs_new_legs)
+		return
 
-		N = new /obj/item/bodypart/r_leg
-		N.attach_limb(src)
+	var/obj/item/bodypart/N
+	N = new /obj/item/bodypart/l_leg
+	N.attach_limb(src)
+
+	N = new /obj/item/bodypart/r_leg
+	N.attach_limb(src)
 
 	// make sure we unapply our clipmasks
 	regenerate_icons()
