@@ -30,7 +30,6 @@
 		/datum/advclass/knight/irregularknight,
 		/datum/advclass/knight/knightchampion
 		)
-	protected_role = TRUE
 
 /datum/outfit/job/roguetown/knight
 	job_bitflag = BITFLAG_GARRISON

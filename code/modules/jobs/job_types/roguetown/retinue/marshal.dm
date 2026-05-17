@@ -31,7 +31,6 @@
 		/datum/advclass/marshal/classic,
 		/datum/advclass/marshal/kcommander
 	)
-	protected_role = TRUE
 
 /datum/outfit/job/roguetown/marshal
 	job_bitflag = BITFLAG_ROYALTY | BITFLAG_GARRISON	//Same as Captain, you get decent combat stats so might as well be garrison.

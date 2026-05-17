@@ -22,7 +22,6 @@
 	max_pq = null
 	round_contrib_points = 2
 
-	protected_role = TRUE
 
 /datum/outfit/job/roguetown/jester/pre_equip(mob/living/carbon/human/H)
 	..()

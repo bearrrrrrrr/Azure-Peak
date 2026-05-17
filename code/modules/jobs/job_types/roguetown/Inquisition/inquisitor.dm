@@ -24,7 +24,6 @@
 		/datum/advclass/inquisitor/inspector,
 		/datum/advclass/inquisitor/ordinator
 	)
-	protected_role = TRUE
 
 /datum/outfit/job/roguetown/inquisitor
 	name = "Inquisitor"

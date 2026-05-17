@@ -27,7 +27,6 @@
 		/datum/advclass/servant/maid,
 		/datum/advclass/servant/manservant
 	)
-	protected_role = TRUE
 
 /datum/advclass/servant
 	traits_applied = list(TRAIT_CICERONE, TRAIT_ROYALSERVANT)

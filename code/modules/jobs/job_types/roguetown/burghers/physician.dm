@@ -35,7 +35,6 @@
 		/datum/advclass/physician
 	)
 	spells = list(/obj/effect/proc_holder/spell/invoked/takeapprentice)
-	protected_role = TRUE
 
 /datum/advclass/physician
 	name = "Head Physician"

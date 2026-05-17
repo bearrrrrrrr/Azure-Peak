@@ -22,7 +22,6 @@
 	cmode_music = 'sound/music/combat_noble.ogg'
 	job_traits = list(TRAIT_NOBLE)
 
-	protected_role = TRUE
 
 /datum/outfit/job/roguetown/suitor
 	job_bitflag = BITFLAG_ROYALTY

@@ -31,7 +31,6 @@
 		/datum/advclass/councillor/cofferer,
 		/datum/advclass/councillor/castellan
 	)
-	protected_role = TRUE
 
 /datum/advclass/councillor/herald
 	name = "Herald"

@@ -27,7 +27,6 @@
 		/datum/advclass/hand/spymaster,
 		/datum/advclass/hand/advisor
 	)
-	protected_role = TRUE
 
 /datum/outfit/job/roguetown/hand
 	backr = /obj/item/storage/backpack/rogue/satchel/short

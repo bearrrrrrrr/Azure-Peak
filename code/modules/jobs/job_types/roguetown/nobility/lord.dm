@@ -43,7 +43,6 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		/datum/advclass/lord/inbred
 	)
 	
-	protected_role = TRUE
 
 /datum/outfit/job/roguetown/lord
 	job_bitflag = BITFLAG_ROYALTY

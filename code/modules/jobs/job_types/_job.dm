@@ -137,9 +137,6 @@
 	///Jobs that change their advclass examine as the user levels up.
 	var/adaptive_name = FALSE
 
-	/// Jobs that should be targeted by assassins, not gnolls
-	var/protected_role = FALSE
-
 
 /*
 	How this works, its CTAG_DEFINE = amount_to_attempt_to_role

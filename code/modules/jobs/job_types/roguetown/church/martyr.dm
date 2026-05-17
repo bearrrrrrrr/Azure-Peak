@@ -517,7 +517,6 @@
 	job_subclasses = list(
 		/datum/advclass/martyr
 	)
-	protected_role = TRUE
 
 /datum/advclass/martyr
 	name = "Martyr"
