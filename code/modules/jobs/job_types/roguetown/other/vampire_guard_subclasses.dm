@@ -473,4 +473,4 @@
 	color = CLOTHING_RED
 
 /obj/item/clothing/head/roguetown/roguehood/studded/vamp
-	color = CLOTHING_WHITE
+	color = CLOTHING_RED
