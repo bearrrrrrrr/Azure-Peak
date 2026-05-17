@@ -72,7 +72,7 @@
 
 	//allowed sex/race for picking
 	var/list/allowed_sexes = list(MALE, FEMALE)
-	var/list/allowed_races = RACES_ALL_KINDS
+	var/list/forbidden_races
 	var/list/allowed_patrons
 	var/list/allowed_ages = ALL_AGES_LIST
 
@@ -172,8 +172,7 @@
 	var/is_quest_giver = FALSE
 
 	/// How many quests this job can take at once
-	// TEMP: bumped from 2 to 12 for writ-system testing - revert before merge.
-	var/max_active_quests = 12
+	var/max_active_quests = 2
 
 	var/townie_contract_gate_exempt = FALSE
 
