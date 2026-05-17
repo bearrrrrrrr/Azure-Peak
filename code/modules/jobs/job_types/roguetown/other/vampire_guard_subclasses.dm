@@ -241,7 +241,7 @@
 
 	H.verbs |= /mob/proc/haltyell_exhausting //Soldier gets to halt people
 
-	head = /obj/item/clothing/head/roguetown/duelhat //lowest of all guards in head armor in that only their coif really gives them any.
+	head = /obj/item/clothing/head/roguetown/duelhat/vamp //lowest of all guards in head armor in that only their coif really gives them any.
 	mask = /obj/item/clothing/mask/rogue/duelmask //I AM THE NIGHT
 	cloak = /obj/item/clothing/cloak/half/vamp //They get to auramax, as a treat
 	neck = /obj/item/clothing/neck/roguetown/chaincoif/paalloy
@@ -459,14 +459,18 @@
 		)
 
 /obj/item/clothing/cloak/tabard/stabard/vamp
-	desc = "A checkered pattern of white fabrics and red silks, inlined seamlessly with silks befit for one under a lord with true opulance, not any mere dull-blooded or otherwise, donned by those of a forgotten empire."
+	desc = "A checkered pattern of white fabrics and red silks, inlined seamlessly with silks befit for one under a lord with true opulance, not any mere dull-blooded or otherwise, branded with a crest of a forgotten empire."
 	color = CLOTHING_WHITE
 	detail_tag = "_quad"
 	detail_color = CLOTHING_RED
 
-/obj/item/clothing/cloak/half/vamp
-	desc = "An opulant half-cloak of silk for one under service to a lord with true fashion, not for any mere dull-blooded or otherwise, donned by those of a forgotten empire."
+/obj/item/clothing/head/roguetown/duelhat/vamp
 	color = CLOTHING_WHITE
+	detail_color = CLOTHING_RED
+
+/obj/item/clothing/cloak/half/vamp
+	desc = "An opulant half-cloak of silk for one under service to a lord with true fashion, not for any mere dull-blooded or otherwise, branded with a crest of a forgotten empire."
+	color = CLOTHING_RED
 
 /obj/item/clothing/head/roguetown/roguehood/studded/vamp
 	color = CLOTHING_WHITE
