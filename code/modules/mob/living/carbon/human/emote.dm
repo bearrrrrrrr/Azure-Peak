@@ -281,26 +281,70 @@
 		if(!hand_games_check(player1,player2))
 			return
 		player1.visible_message(span_notice("[player1] challenges [player2] to Armwrestling!"))
-		//var/scale1 = player1.dna.features["body_size"] //Commented out, as I'm not too sure if we actually have this.
-		//var/scale2 = player2.dna.features["body_size"] //A funny alternative might be to directly tie it to whatever sprite upscale percentage each side has?
-		var/strength1 = player1.get_stat(STAT_STRENGTH)
-		var/strength2 = player2.get_stat(STAT_STRENGTH)
-		if(!hand_games_check(player1,player2))
+
+	var/p1_str = player1.STASTR
+	var/p2_str = player2.STASTR
+	var/winner = 0
+	var/rounds = 14
+
+	for(var/i = 1 to rounds)
+
+		// Has to remain valid, each round.
+		if(!hand_games_check(player1, player2))
+			return
+		// Channel / Struggle moment.
+		if(!do_after(player1, 1 SECONDS, target = player2))
+			player1.visible_message(span_notice("The Armwrestling match is interrupted!"))
+			return
+		// Range check to make sure.
+		if(get_dist(player1, player2) > 1)
+			player1.visible_message(span_warning("You are too far apart!"))
 			return
 
-		var/score1 = (scale1 * strength1)
-		var/score2 = (scale2 * strength2)
+		var/still_near_table = FALSE
+		// Both players must remain near a table.
+		for(var/obj/structure/table/T in range(player1, 1))
+			if(player2 in range(T, 1))
+				still_near_table = TRUE
+				break
 
-		var/competition = pick(score1;player1, score2;player2)
-		if(!do_after(player1, 5 SECONDS, target = player2))
-			player2.visible_message(span_notice("The players cancelled their competition!"))
-			return 0
-		if(!hand_games_check(player1,player2))
+		if(!still_near_table)
+			player1.visible_message(span_warning("The Armwrestling match breaks apart as they leave the table!"))
 			return
-		if(competition == player1)
-			player1.visible_message(span_notice("[player1] manages to overpower [player2] and pin their arm down!"))
-		else
-			player2.visible_message(span_notice("[player2] manages to overpower [player1] and pin their arm down!"))
+
+		//Strength-based stamina damage.
+		var/damage_to_p2 = 10 + max(1, p1_str - p2_str)
+		var/damage_to_p1 = 10 + max(1, p2_str - p1_str)
+
+		player2.stamina_add(damage_to_p2)
+		player1.stamina_add(damage_to_p1)
+		// If both players have the same amount of STR, then they'll deal around 11 stamina damage per loop.
+
+		var/p1_exhausted = player1.stamina >= player1.max_stamina	//var for when stamina damage goes above max stam
+		var/p2_exhausted = player2.stamina >= player2.max_stamina
+
+		if(p1_exhausted && p2_exhausted)	//Matched exhaustion.
+			winner = 3
+			break
+		else if(p1_exhausted)	//Player 2's triumph.
+			winner = 2
+			break
+		else if(p2_exhausted)	//Player 1's triumph.
+			winner = 1
+			break
+
+	if(winner == 1)
+		player2.Knockdown(20)
+		player1.visible_message(span_notice("[player1] slams [player2]'s arm down in victory!"))
+	else if(winner == 2)
+		player1.Knockdown(20)
+		player1.visible_message(span_notice("[player2] slams [player1]'s arm down in victory!"))
+	else if(winner == 3)
+		player1.Knockdown(20)
+		player2.Knockdown(20)
+		player1.visible_message(span_notice("Both challengers collapse from exhaustion!"))
+	else
+		player1.visible_message(span_notice("The Armwrestling match ends in a stalemate!"))
 
 /////// Slaphands! Each player gets a modifier based on their size and can choose the reaction time of their character, then a weighted roll is made. This one gives the advantage to smaller players.
 
