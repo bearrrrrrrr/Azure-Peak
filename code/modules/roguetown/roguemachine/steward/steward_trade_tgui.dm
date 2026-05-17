@@ -217,6 +217,8 @@
 	var/list/market_rows = list()
 	var/total_arbitrage_potential = 0
 	var/list/market_stockpile_entries = SStreasury.stockpile_by_trade_good
+	var/list/producers = SSeconomy.goods_with_producers
+	var/list/demanders = SSeconomy.goods_with_demand
 	for(var/good_id in market_stockpile_entries)
 		var/datum/trade_good/tg = GLOB.trade_goods[good_id]
 		if(!tg)
@@ -241,8 +243,8 @@
 			"stock" = entry.stockpile_amount,
 			"stock_limit" = entry.stockpile_limit,
 			"event_tag" = event_tag,
-			"import_regions" = tg.importable ? build_market_import_regions(good_id) : list(),
-			"export_regions" = build_market_export_regions(good_id),
+			"import_regions" = (tg.importable && producers[good_id]) ? build_market_import_regions(good_id) : list(),
+			"export_regions" = demanders[good_id] ? build_market_export_regions(good_id) : list(),
 			// Stockpile management state (read by Steward; visible-only to Alderman).
 			"buy_price" = entry.payout_price,
 			"sell_price" = entry.withdraw_price,
@@ -295,12 +297,12 @@
 	data["auto_import"] = build_auto_import_data()
 
 	var/list/petition_state = list()
+	var/petitions_remaining = SSeconomy.petitions_remaining_today()
 	petition_state["pledge_balance"] = SStreasury.burgher_pledge_fund?.balance || 0
-	petition_state["petitions_remaining"] = SSeconomy.petitions_remaining_today()
+	petition_state["petitions_remaining"] = petitions_remaining
 	petition_state["is_steward_role"] = (user.job in GLOB.crown_authority_roles) ? TRUE : FALSE
 	petition_state["is_alderman_acting"] = SScity_assembly?.is_alderman(user) ? TRUE : FALSE
 	var/list/eligibility = list()
-	var/petitions_remaining = SSeconomy.petitions_remaining_today()
 	var/pool_full = (GLOB.standing_order_pool.len >= STANDING_ORDERS_POOL_CAP)
 	var/pledge_balance = SStreasury.burgher_pledge_fund?.balance || 0
 	var/pledge_missing = !SStreasury.burgher_pledge_fund
@@ -368,16 +370,12 @@
 
 	return data
 
-/// Enumerates every region producing good_id, with current next-unit import price and
-/// capacity. Sorted ascending by price so entry 1 is the "best buy." Blockade multiplier
-/// is baked into unit_price (no separate flag needed for ranking), but is_blockaded is
-/// still exposed so the UI can badge it.
 /obj/structure/roguemachine/steward/proc/build_market_import_regions(good_id)
 	var/list/out = list()
 	for(var/rid in GLOB.economic_regions)
 		var/datum/economic_region/r = GLOB.economic_regions[rid]
-		var/pace = r.produces[good_id] || 0
-		if(pace <= 0)
+		var/pace = r.produces[good_id]
+		if(!pace)
 			continue
 		var/today = r.produces_today[good_id] || 0
 		var/starting_index = max(0, pace - today)
@@ -389,7 +387,6 @@
 			"capacity_total" = pace,
 			"is_blockaded" = r.is_region_blockaded ? TRUE : FALSE,
 		))
-	// Insertion sort by unit_price ascending. At most ~9 entries so O(n^2) is negligible.
 	for(var/i in 1 to length(out) - 1)
 		for(var/j in (i + 1) to length(out))
 			if(out[j]["unit_price"] < out[i]["unit_price"])
@@ -398,13 +395,12 @@
 				out[j] = swap
 	return out
 
-/// As above, but for export destinations. Sorted descending by price (best sell first).
 /obj/structure/roguemachine/steward/proc/build_market_export_regions(good_id)
 	var/list/out = list()
 	for(var/rid in GLOB.economic_regions)
 		var/datum/economic_region/r = GLOB.economic_regions[rid]
-		var/pace = r.demands[good_id] || 0
-		if(pace <= 0)
+		var/pace = r.demands[good_id]
+		if(!pace)
 			continue
 		var/today = r.demands_today[good_id] || 0
 		var/starting_index = max(0, pace - today)
@@ -416,7 +412,6 @@
 			"capacity_total" = pace,
 			"is_blockaded" = r.is_region_blockaded ? TRUE : FALSE,
 		))
-	// Descending by unit_price (highest = best sell).
 	for(var/i in 1 to length(out) - 1)
 		for(var/j in (i + 1) to length(out))
 			if(out[j]["unit_price"] > out[i]["unit_price"])

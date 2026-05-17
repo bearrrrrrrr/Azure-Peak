@@ -1030,12 +1030,11 @@
 			contents += "--------------<BR>"
 			contents += "Treasury: [SStreasury.discretionary_fund.balance]m<BR>"
 			var/list/headcount_by_job = list()
-			for(var/key in SStreasury.bank_accounts)
-				var/datum/fund/acct = SStreasury.bank_accounts[key]
-				if(!acct || acct.wages_suspended)
-					continue
-				var/mob/living/o = acct.get_owner()
+			for(var/mob/living/o as anything in SStreasury.bank_accounts)
 				if(!o || !daily_payments[o.job])
+					continue
+				var/datum/fund/acct = SStreasury.bank_accounts[o]
+				if(!acct || acct.wages_suspended)
 					continue
 				headcount_by_job[o.job] = (headcount_by_job[o.job] || 0) + 1
 			var/total_payroll = 0

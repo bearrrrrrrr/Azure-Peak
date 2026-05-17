@@ -68,29 +68,26 @@
 	if(!steward_machine || !steward_machine.daily_payments)
 		return
 	var/list/payments = steward_machine.daily_payments
-	for(var/key in bank_accounts)
-		var/datum/fund/account = bank_accounts[key]
-		if(!account || account.wages_suspended)
-			continue
-		var/mob/living/owner = account.get_owner()
+	for(var/mob/living/owner as anything in bank_accounts)
 		if(!owner || !(payments[owner.job] > 0))
+			continue
+		var/datum/fund/account = bank_accounts[owner]
+		if(!account || account.wages_suspended)
 			continue
 		account.wages_suspended = TRUE
 		to_chat(owner, span_danger("My wages have been suspended after the Crown's sequestration. They will resume when the realm recovers."))
 
 /datum/controller/subsystem/treasury/proc/resume_wages_after_bankruptcy()
 	var/list/payments = steward_machine?.daily_payments
-	for(var/key in bank_accounts)
-		var/datum/fund/account = bank_accounts[key]
+	for(var/mob/living/owner as anything in bank_accounts)
+		if(!owner)
+			continue
+		var/datum/fund/account = bank_accounts[owner]
 		if(!account || !account.wages_suspended)
 			continue
 		account.wages_suspended = FALSE
-		if(!payments)
-			continue
-		var/mob/living/owner = account.get_owner()
-		if(!owner || !(payments[owner.job] > 0))
-			continue
-		to_chat(owner, span_notice("My wages have been reinstated as the Crown's sequestration lifts."))
+		if(payments && payments[owner.job] > 0)
+			to_chat(owner, span_notice("My wages have been reinstated as the Crown's sequestration lifts."))
 
 /datum/controller/subsystem/treasury/proc/clear_treasury_debt_state()
 	switch(treasury_state)

@@ -139,12 +139,11 @@ GLOBAL_DATUM_INIT(economic_panel, /datum/economic_panel, new)
 		var/list/payments = SStreasury.steward_machine.daily_payments
 		var/list/head_by_job = list()
 		var/list/suspended_by_job = list()
-		for(var/key in SStreasury.bank_accounts)
-			var/datum/fund/acct = SStreasury.bank_accounts[key]
-			if(!acct)
-				continue
-			var/mob/living/o = acct.get_owner()
+		for(var/mob/living/o as anything in SStreasury.bank_accounts)
 			if(!o || !payments[o.job])
+				continue
+			var/datum/fund/acct = SStreasury.bank_accounts[o]
+			if(!acct)
 				continue
 			head_by_job[o.job] = (head_by_job[o.job] || 0) + 1
 			if(acct.wages_suspended)

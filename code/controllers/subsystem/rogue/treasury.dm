@@ -181,15 +181,14 @@ SUBSYSTEM_DEF(treasury)
 		return 0
 	var/list/payments = steward_machine.daily_payments
 	var/total = 0
-	for(var/key in bank_accounts)
-		var/datum/fund/account = bank_accounts[key]
-		if(!account || account.wages_suspended)
-			continue
-		var/mob/living/owner = account.get_owner()
+	for(var/mob/living/owner as anything in bank_accounts)
 		if(!owner)
 			continue
 		var/payment_amount = payments[owner.job]
 		if(!payment_amount)
+			continue
+		var/datum/fund/account = bank_accounts[owner]
+		if(!account || account.wages_suspended)
 			continue
 		total += payment_amount
 	return total
@@ -432,15 +431,14 @@ SUBSYSTEM_DEF(treasury)
 			return
 
 	var/list/payments = steward_machine.daily_payments
-	for(var/key in bank_accounts)
-		var/datum/fund/account = bank_accounts[key]
-		if(!account || account.wages_suspended)
-			continue
-		var/mob/living/owner = account.get_owner()
+	for(var/mob/living/owner as anything in bank_accounts)
 		if(!owner)
 			continue
 		var/payment_amount = payments[owner.job]
 		if(!payment_amount)
+			continue
+		var/datum/fund/account = bank_accounts[owner]
+		if(!account || account.wages_suspended)
 			continue
 		if(give_money_account(payment_amount, owner, "Daily Wage"))
 			record_round_statistic(STATS_WAGES_PAID, payment_amount)
