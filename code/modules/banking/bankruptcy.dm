@@ -167,6 +167,8 @@
 		var/datum/trade_good/tg = GLOB.trade_goods[good_id]
 		if(tg && tg.importable)
 			auto_import_standing[good_id] = TRUE
+	dirty_auto_import_view()
+	dirty_market_view()
 
 /// Cooldown-free restore of a bankruptcy-suspended charter. Returns TRUE on success.
 /datum/controller/subsystem/treasury/proc/restore_charter_via_concession(decree_id)

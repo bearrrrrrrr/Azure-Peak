@@ -110,6 +110,8 @@ SUBSYSTEM_DEF(treasury)
 	var/list/cached_region_rows = null
 	var/cached_total_arbitrage_potential = 0
 	var/market_view_dirty = TRUE
+	var/list/cached_auto_import_data = null
+	var/auto_import_view_dirty = TRUE
 	var/rumor_points = RUMOR_POINTS_START
 	var/list/rumor_log = list()
 	var/list/rumor_issued_today = list()
@@ -185,10 +187,14 @@ SUBSYSTEM_DEF(treasury)
 /datum/controller/subsystem/treasury/proc/get_rural_tax_amount()
 	return RURAL_TAX
 
-// Mark the cached stewardry market / region / arbitrage 
+// Mark the cached stewardry market / region / arbitrage
 // View as needing rebuild on next read.
 /datum/controller/subsystem/treasury/proc/dirty_market_view()
 	market_view_dirty = TRUE
+	auto_import_view_dirty = TRUE
+
+/datum/controller/subsystem/treasury/proc/dirty_auto_import_view()
+	auto_import_view_dirty = TRUE
 
 /datum/controller/subsystem/treasury/proc/get_expected_wage_outlay()
 	if(!steward_machine || !steward_machine.daily_payments)

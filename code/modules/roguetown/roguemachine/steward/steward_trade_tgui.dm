@@ -429,6 +429,8 @@
 	return out
 
 /obj/structure/roguemachine/steward/proc/build_auto_import_data()
+	if(!SStreasury.auto_import_view_dirty && !isnull(SStreasury.cached_auto_import_data))
+		return SStreasury.cached_auto_import_data
 	var/list/essentials = list()
 	for(var/good_id in AUTO_IMPORT_ESSENTIALS)
 		var/datum/trade_good/tg = GLOB.trade_goods[good_id]
@@ -469,7 +471,7 @@
 			"lines" = lines || list(),
 		))
 
-	return list(
+	SStreasury.cached_auto_import_data = list(
 		"today_spent" = SStreasury.auto_import_daily_spent,
 		"purse_floor" = SStreasury.auto_import_purse_floor,
 		"floor_target" = AUTO_IMPORT_FLOOR,
@@ -479,6 +481,8 @@
 		"others" = others,
 		"history" = history,
 	)
+	SStreasury.auto_import_view_dirty = FALSE
+	return SStreasury.cached_auto_import_data
 
 /// Trade-control actions blocked during sequestration. Petitions, order fulfillment,
 /// and read-only quote actions are deliberately excluded so the Steward can still
