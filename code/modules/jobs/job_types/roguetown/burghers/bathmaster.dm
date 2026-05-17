@@ -29,7 +29,6 @@
 		/datum/advclass/bathmaster
 	)
 
-	vice_restrictions = list(/datum/charflaw/hunted)
 
 /datum/advclass/bathmaster
 	name = "Bathmaster"

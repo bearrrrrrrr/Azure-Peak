@@ -30,7 +30,7 @@
 		/datum/advclass/heir/scamp
 	)
 
-	vice_restrictions = list(/datum/charflaw/hunted)
+	protected_role = TRUE
 
 /datum/outfit/job/roguetown/heir/pre_equip(mob/living/carbon/human/H)
 	..()

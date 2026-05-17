@@ -30,6 +30,7 @@
 		/datum/advclass/knight/irregularknight,
 		/datum/advclass/knight/knightchampion
 		)
+	protected_role = TRUE
 
 /datum/outfit/job/roguetown/knight
 	job_bitflag = BITFLAG_GARRISON
@@ -580,8 +581,6 @@
 	subclass_virtues = list(
 		/datum/virtue/utility/riding
 	)
-
-	vice_limits = list(/datum/charflaw/hunted)
 
 /datum/outfit/job/roguetown/knightchampion/pre_equip(mob/living/carbon/human/H)
 	backpack_contents = list(

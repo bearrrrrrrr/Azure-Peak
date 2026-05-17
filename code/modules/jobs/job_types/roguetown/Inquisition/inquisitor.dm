@@ -24,7 +24,7 @@
 		/datum/advclass/inquisitor/inspector,
 		/datum/advclass/inquisitor/ordinator
 	)
-	vice_restrictions = list(/datum/charflaw/hunted)
+	protected_role = TRUE
 
 /datum/outfit/job/roguetown/inquisitor
 	name = "Inquisitor"

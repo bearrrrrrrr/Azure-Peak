@@ -34,7 +34,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	cmode_music = 'sound/music/combat_noble.ogg'
 
 	// Can't use the Throat when you can't talk properly or.. at all for that matter.
-	vice_restrictions = list(/datum/charflaw/mute, /datum/charflaw/unintelligible, /datum/charflaw/hunted)
+	vice_restrictions = list(/datum/charflaw/mute, /datum/charflaw/unintelligible)
 
 	job_subclasses = list(
 		/datum/advclass/lord/warrior,
@@ -42,6 +42,8 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		/datum/advclass/lord/mage,
 		/datum/advclass/lord/inbred
 	)
+	
+	protected_role = TRUE
 
 /datum/outfit/job/roguetown/lord
 	job_bitflag = BITFLAG_ROYALTY

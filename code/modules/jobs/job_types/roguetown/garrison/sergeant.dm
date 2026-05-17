@@ -27,7 +27,7 @@
 	job_subclasses = list(
 		/datum/advclass/sergeant/sergeant
 	)
-	vice_restrictions = list(/datum/charflaw/hunted)
+	protected_role = TRUE
 
 /datum/outfit/job/roguetown/sergeant
 	job_bitflag = BITFLAG_GARRISON

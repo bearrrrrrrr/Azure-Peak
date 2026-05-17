@@ -35,7 +35,7 @@
 		/datum/advclass/physician
 	)
 	spells = list(/obj/effect/proc_holder/spell/invoked/takeapprentice)
-	vice_restrictions = list(/datum/charflaw/hunted)
+	protected_role = TRUE
 
 /datum/advclass/physician
 	name = "Head Physician"
