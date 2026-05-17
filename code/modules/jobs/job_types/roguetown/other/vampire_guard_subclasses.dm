@@ -81,7 +81,7 @@
 
 	H.verbs |= /mob/proc/haltyell_exhausting //Soldier gets to halt people
 
-	cloak = /obj/item/clothing/cloak/tabard/stabard/dungeon
+	cloak = /obj/item/clothing/cloak/tabard/stabard/vampguard
 	mask = /obj/item/clothing/mask/rogue/facemask/steel //so they don't get sundered in the face
 	head = /obj/item/clothing/head/roguetown/helmet/sallet
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/paalloy
@@ -140,8 +140,8 @@
 	..()
 	to_chat(H, span_warning("You are a professional soldier, light in footwork, yet with years of experience in warfare and archery, far more than most mortals could claim. Your lord's will be done."))
 
-	cloak = /obj/item/clothing/cloak/tabard/stabard/dungeon
-	head = /obj/item/clothing/head/roguetown/roguehood/studded //Minimal face protection, maximal auramaxxing.
+	cloak = /obj/item/clothing/cloak/tabard/stabard/vampguard
+	head = /obj/item/clothing/head/roguetown/roguehood/studded/vampguard //Minimal face protection, maximal auramaxxing.
 	mask = /obj/item/clothing/mask/rogue/ragmask/black //less face protection, go guardsman if you want that. Also ominious for aura.
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson //Less protection, due to archery's potental
@@ -243,7 +243,7 @@
 
 	head = /obj/item/clothing/head/roguetown/duelhat //lowest of all guards in head armor in that only their coif really gives them any.
 	mask = /obj/item/clothing/mask/rogue/duelmask //I AM THE NIGHT
-	cloak = /obj/item/clothing/cloak/half //They get to auramax, as a treat
+	cloak = /obj/item/clothing/cloak/half/vampduelist //They get to auramax, as a treat
 	neck = /obj/item/clothing/neck/roguetown/chaincoif/paalloy
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
@@ -304,7 +304,7 @@
 	H.verbs |= /mob/proc/haltyell_exhausting //Halting the charred corpse is too funny, we're keeping it. sovl.
 
 	mask = /obj/item/clothing/mask/rogue/ragmask/black
-	cloak = /obj/item/clothing/cloak/tabard/stabard/dungeon
+	cloak = /obj/item/clothing/cloak/tabard/stabard/vampguard
 	head = /obj/item/clothing/head/roguetown/helmet/kettle/minershelm //I can see it getting ditched but sovlful
 	neck = /obj/item/clothing/neck/roguetown/chaincoif/paalloy
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/paalloy
@@ -439,7 +439,7 @@
 	H.dna.species.soundpack_m = new /datum/voicepack/male/wizard() //Every wizzard gotta have the evyl laugh, I don't make the rules, sire.
 	H.verbs |= /mob/proc/haltyell_exhausting //Halting the charred corpse is too funny, we're keeping it. sovl.
 
-	cloak = /obj/item/clothing/cloak/tabard/stabard/dungeon
+	cloak = /obj/item/clothing/cloak/tabard/stabard/vampguard
 	head = /obj/item/clothing/head/roguetown/witchhat //EVERY PALLY IN THE KINGDOM ON MA TAIL
 	mask = /obj/item/clothing/mask/rogue/facemask/
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson //Less protection, due to casting ability
@@ -457,3 +457,16 @@
 		/obj/item/storage/belt/rogue/pouch/coins/poor = 1,
 		/obj/item/rope/chain = 1
 		)
+
+/obj/item/clothing/cloak/tabard/stabard/vampguard
+	desc = "A checkered pattern of white fabrics and red silks, inlined seamlessly with silks befit for one under a lord with true opulance, not any mere dull-blooded or otherwise, donned by those of a forgotten empire."
+	color = CLOTHING_WHITE
+	detail_tag = "_quad"
+	detail_color = CLOTHING_RED
+
+/obj/item/clothing/cloak/half/vampduelist
+	desc = "An opulant half-cloak of silk for one under service to a lord with true fashion, not for any mere dull-blooded or otherwise, donned by those of a forgotten empire."
+	color = CLOTHING_WHITE
+
+/obj/item/clothing/head/roguetown/roguehood/studded/vampguard
+	color = CLOTHING_WHITE
