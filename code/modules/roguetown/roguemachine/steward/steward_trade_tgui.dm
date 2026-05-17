@@ -226,7 +226,6 @@
 		var/datum/roguestock/entry = market_stockpile_entries[good_id]
 		if(!entry)
 			continue
-		entry.refresh_auto_price()
 
 		var/event_tag = ""
 		if(event_tag_by_good[good_id] == ECON_EVENT_SHORTAGE)
@@ -248,8 +247,8 @@
 			// Stockpile management state (read by Steward; visible-only to Alderman).
 			"buy_price" = entry.payout_price,
 			"sell_price" = entry.withdraw_price,
-			"market_buy_price" = entry.get_market_deposit_price(),
-			"market_sell_price" = entry.get_market_withdraw_price(),
+			"market_buy_price" = entry.cached_market_deposit_price || entry.payout_price,
+			"market_sell_price" = entry.cached_market_withdraw_price || entry.withdraw_price,
 			"automatic_price" = entry.automatic_price ? TRUE : FALSE,
 			"automatic_limit" = entry.automatic_limit ? TRUE : FALSE,
 			"accepting" = entry.accept_toggle_enabled ? TRUE : FALSE,

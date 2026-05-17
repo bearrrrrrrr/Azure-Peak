@@ -41,9 +41,9 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/open_bounty_menu,
 	/client/proc/remove_bounty,
 	/client/proc/agevet_player,
-	// RATWOOD MODULAR START
 	/client/proc/bunker_bypass,
-	// RATWOOD MODULAR END
+	/client/proc/stewardry_stress_test,
+	/client/proc/stewardry_stress_cleanup,
 	)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 GLOBAL_PROTECT(admin_verbs_admin)
