@@ -567,15 +567,6 @@
 	icon_state = "brownkey"
 	lockid = "stablemaster"
 
-////////////////////////
-// CUSTOM PEDDLER KEY //
-///////////////////////
-
-/obj/item/roguekey/peddlerkey
-	name = "peddler key"
-	icon_state = "brownkey"
-	lockid = "peddler"
-
 //////////////////////////
 // INN / TAVERN / BATHS //
 //////////////////////////
