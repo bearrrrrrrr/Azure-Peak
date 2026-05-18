@@ -59,10 +59,6 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/stairs/Destroy(mob/user)
-	log_craft("[user.real_name], ([user.ckey]) has destroyed stairs at [get_turf(src)], [AREACOORD(src)]")
-	log_admin("[user.real_name], ([user.ckey]) has destroyed stairs at [get_turf(src)], [AREACOORD(src)]") //In case intentional stair grief happens.
-
 /obj/structure/stairs/stone
 	name = "stone stairs"
 	icon = 'icons/obj/stairs.dmi'
