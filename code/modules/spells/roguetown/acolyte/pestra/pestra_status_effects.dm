@@ -148,7 +148,7 @@
 /atom/movable/screen/alert/status_effect/buff/pestra_care
 	name = "Pestra's embrace"
 	desc = "It's like something is wriggling around inside of me, but it's making me feel better..."
-	icon_state = "divine_heal"
+	icon_state = "buff"
 
 #define PLAGUE_GLOW_FILTER "plague_glow_filter"
 
