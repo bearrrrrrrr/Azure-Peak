@@ -286,10 +286,8 @@
 				if(charflaws.len)
 					var/list/vice_desc = list()
 					for(var/datum/charflaw/cf in charflaws)
-						if(istype(cf, /datum/charflaw/addiction))
-							var/datum/charflaw/addiction/cfa = cf
-							if(!cfa.sated)
-								vice_desc.Add(cf.voyeur_descriptor)
+						if(cf.voyeur_descriptor)
+							vice_desc.Add(cf.voyeur_descriptor)
 					if(length(vice_desc))
 						. += span_voyeurvice("[m1] [english_list(vice_desc)]...")
 
