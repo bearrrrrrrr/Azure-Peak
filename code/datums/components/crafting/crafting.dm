@@ -320,10 +320,10 @@
 								if(R.loud)
 									X.loud_message("Construction sounds can be heard")
 									if(R.adminlog)
-										log_craft("[user.real_name], ([user.ckey]) has built [X] at [AREACOORD(src)]") //We log this too
+										log_craft("[user.real_name], ([user.ckey]) has built [X] at [AREACOORD(X)]") //We log this too
 									continue
 								if(R.adminlog)
-									log_craft("[user.real_name], ([user.ckey]) has built [X] at [AREACOORD(src)]")
+									log_craft("[user.real_name], ([user.ckey]) has built [X] at [AREACOORD(X)]")
 						else
 							var/atom/movable/I = new R.result (T)
 							I.CheckParts(parts, R)
