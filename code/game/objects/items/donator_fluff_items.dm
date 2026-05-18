@@ -468,6 +468,7 @@ As Excaliber."
 	icon_state = "waziajudgement"
 	icon = 'icons/obj/items/donor_weapons_64.dmi'
 	sheathe_icon = "waziajudgement"
+	bigboy = TRUE
 
 //DAKKEN12
 /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull/dakken
