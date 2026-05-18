@@ -286,8 +286,12 @@
 				if(charflaws.len)
 					var/list/vice_desc = list()
 					for(var/datum/charflaw/cf in charflaws)
-						vice_desc.Add(cf.voyeur_descriptor)
-					. += span_voyeurvice("[m1][english_list(vice_desc)]...")
+						if(istype(cf, /datum/charflaw/addiction))
+							var/datum/charflaw/addiction/cfa = cf
+							if(!cfa.sated)
+								vice_desc.Add(cf.voyeur_descriptor)
+					if(length(vice_desc))
+						. += span_voyeurvice("[m1] [english_list(vice_desc)]...")
 
 			if(HAS_TRAIT(user, TRAIT_EMPATH) && HAS_TRAIT(src, TRAIT_PERMAMUTE))
 				. += span_notice("[m1] lacks a voice. [m1] is a mute!")
