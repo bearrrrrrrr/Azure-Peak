@@ -238,7 +238,7 @@
 					var/bonus_spawned = spawn_group_bonus_animals(T, target_animal_type)
 					if(bonus_spawned)
 						visible_message(span_boldwarning("There seems to be a herd in the distance!"))
-					distribute_party_exp(35 + (10 * bonus_spawned))
+					distribute_party_exp(35 + (15 * bonus_spawned))
 					return TRUE
 
 				//Spawn the NEXT hidden mound
