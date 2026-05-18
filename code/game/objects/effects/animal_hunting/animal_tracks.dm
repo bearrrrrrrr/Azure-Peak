@@ -164,7 +164,7 @@
 
 	if(uncover_trail(user))
 		to_chat(user, span_nicegreen("The trail continues further ahead!"))
-		distribute_party_exp(3)
+		distribute_party_exp(6)
 		track_revealed = TRUE
 		fade_and_die(user)
 		//qdel(src)
