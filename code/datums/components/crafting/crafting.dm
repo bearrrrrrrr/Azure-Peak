@@ -321,7 +321,6 @@
 									X.loud_message("Construction sounds can be heard")
 									if(R.adminlog)
 										log_craft("[user.real_name], ([user.ckey]) has built [X] at [AREACOORD(X)]") //We log this too
-									continue
 								if(R.adminlog)
 									log_craft("[user.real_name], ([user.ckey]) has built [X] at [AREACOORD(X)]")
 						else
