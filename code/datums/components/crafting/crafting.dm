@@ -319,6 +319,8 @@
 								X.add_fingerprint(user)
 								if(R.loud)
 									X.loud_message("Construction sounds can be heard")
+								if(R.adminlog)
+									log_game("[user.real_name], ([user.ckey]) has built [X]")
 						else
 							var/atom/movable/I = new R.result (T)
 							I.CheckParts(parts, R)
