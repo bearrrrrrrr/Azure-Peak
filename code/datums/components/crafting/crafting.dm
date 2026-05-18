@@ -319,8 +319,11 @@
 								X.add_fingerprint(user)
 								if(R.loud)
 									X.loud_message("Construction sounds can be heard")
+									if(R.adminlog)
+										log_craft("[user.real_name], ([user.ckey]) has built [X] at [AREACOORD(src)]") //We log this too
+									continue
 								if(R.adminlog)
-									log_game("[user.real_name], ([user.ckey]) has built [X]")
+									log_craft("[user.real_name], ([user.ckey]) has built [X] at [AREACOORD(src)]")
 						else
 							var/atom/movable/I = new R.result (T)
 							I.CheckParts(parts, R)

@@ -59,6 +59,10 @@
 		return TRUE
 	return FALSE
 
+/obj/structure/stairs/destroy(mob/user)
+	log_craft("[user.real_name], ([user.ckey]) has built stairs at [get_turf(src)], [AREACOORD(src)]")
+	log_admin("[user.real_name], ([user.ckey]) has built stairs at [get_turf(src)], [AREACOORD(src)]") //In case intentional stair grief happens.
+
 /obj/structure/stairs/stone
 	name = "stone stairs"
 	icon = 'icons/obj/stairs.dmi'
@@ -108,7 +112,7 @@
 /obj/structure/stairs/d/OnCrafted(dirin, mob/user)
 	dir = turn(dirin, 180)
 	var/turf/partner = get_step_multiz(get_turf(src), DOWN)
-	log_game("[user.real_name], ([user.ckey]) has built stairs [get_turf(src)]")
+	log_craft("[user.real_name], ([user.ckey]) has built stairs at [get_turf(src)], [AREACOORD(src)]")
 	partner = get_step(partner, dirin)
 	if(isopenturf(partner))
 		var/obj/stairs = new /obj/structure/stairs(partner)
@@ -120,7 +124,7 @@
 /obj/structure/stairs/stone/d/OnCrafted(dirin, mob/user)
 	dir = turn(dirin, 180)
 	var/turf/partner = get_step_multiz(get_turf(src), DOWN)
-	log_game("[user.real_name], ([user.ckey]) has built stairs [get_turf(src)]")
+	log_craft("[user.real_name], ([user.ckey]) has built stairs at [get_turf(src)], [AREACOORD(src)]")
 	partner = get_step(partner, dirin)
 	if(isopenturf(partner))
 		var/obj/stairs = new /obj/structure/stairs/stone(partner)
