@@ -297,7 +297,7 @@
 			player1.visible_message(span_notice("The Armwrestling match is interrupted!"))
 			return
 		// Range check to make sure.
-		if(get_dist(player1, player2) > 1)
+		if(get_dist(player1, player2) > 2)
 			player1.visible_message(span_warning("You are too far apart!"))
 			return
 
