@@ -414,5 +414,9 @@
 	else if (istype(victim, /obj/item/reagent_containers/powder/mineral))
 		var/obj/item/reagent_containers/powder/mineral/the_mineral = victim
 		the_mineral.wet(src, caster)
+		return
+	else if (istype(victim, /obj/structure/soil))
+		caster.visible_message(span_info("[caster] conjures water over the soil."), span_notice("I utter forth a plea to [caster.patron.name] for succour, and will moisture into the soil."))
+		return
 	else
 		to_chat(caster, span_info("I'll need to find a container that can hold water."))
