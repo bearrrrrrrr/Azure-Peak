@@ -61,7 +61,7 @@
 
 
 /datum/sprite_accessory/ears/big/bunny_floppy
-	name = "Bunny Ears (Floppy)"
+	name = "Bunny Ears (Droopy)"
 	icon_state = "bunny_floppy"
 	color_keys = 3
 	color_key_names = list("Ears", "Inner", "Tips")
