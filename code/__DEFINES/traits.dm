@@ -175,6 +175,7 @@
 #define TRAIT_HORDE "Anointed" //Graggarites also recognize each other
 #define TRAIT_DEPRAVED "Fallen" //Baothans also recognize each other
 #define TRAIT_MATTHIOS_EYES	"Eyes of Matthios" //Examine to see the most expensive item someone has (Replaces shitty-appraisal)
+#define TRAIT_DUSTRUNNER "Dust Runner" //Dust runners recognize each other, and are known to bathhouse workers and matthiosites
 
 //ASCENDANT GOD CURSES
 
@@ -561,6 +562,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_ROOT_WALKER = span_info("After offering lux, I can now travel along heartroot trees."),
 	TRAIT_WHITE_STAG = span_info("The power of the white stag lives on inside of me!"),
 	TRAIT_EDIT_DESCRIPTORS = span_info("I can change my appearance at a magic mirror in a thorough manner."),
+	TRAIT_DUSTRUNNER = span_info("I run dust for the Thieves' Guild. Those in the trade know how to spot one of their own."),
 ))
 
 // trait accessor defines
