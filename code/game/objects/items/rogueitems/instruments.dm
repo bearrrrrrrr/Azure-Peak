@@ -322,7 +322,6 @@
 	"Bard Dance" = 'sound/music/instruments/viola (7).ogg', // BG3 Song
 	"Old Time Battles" = 'sound/music/instruments/viola (8).ogg') // BG3 Song
 
-
 /obj/item/rogue/instrument/vocals
 	name = "vocalist's talisman"
 	desc = "This talisman emanates a soft shimmer of light. When held, it can amplify and even change a bard's voice."
@@ -369,8 +368,6 @@
 	"Season" = 'sound/music/instruments/shamisen (6).ogg',
 	"Parade" = 'sound/music/instruments/shamisen (7).ogg',
 	"Koshiro" = 'sound/music/instruments/shamisen (8).ogg')
-
-
 
 /obj/item/rogue/instrument/psyaltery
 	name = "psyaltery"
