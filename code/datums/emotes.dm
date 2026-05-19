@@ -153,6 +153,7 @@
 			pre_color_msg = trim(replacetext(pre_color_msg, "$n", "[emotelocation]"))
 		else
 			msg = "[styled_name] [msg]"
+		msg = span_emote(msg)
 		for(var/mob/M in GLOB.dead_mob_list)
 			if(!M.client || isnewplayer(M))
 				continue
