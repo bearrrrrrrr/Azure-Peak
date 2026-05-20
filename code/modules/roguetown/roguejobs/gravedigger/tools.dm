@@ -262,10 +262,11 @@
 								new /obj/item/natural/worms(TD)
 					playsound(T,'sound/items/empty_shovel.ogg', 100, TRUE)
 
-
-
-
 	return ..()
+
+#undef MODE_HOLE
+#undef MODE_SOLIDS
+#undef MODE_BAIT
 
 /obj/item/rogueweapon/shovel/getonmobprop(tag)
 	. = ..()
