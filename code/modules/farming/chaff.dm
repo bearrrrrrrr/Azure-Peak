@@ -34,7 +34,6 @@
 	var/turf/drop_location = get_turf(src)
 	if(drop_location)
 		new foodextracted(drop_location)
-	to_chat(user, span_notice("You successfully shuck [src]."))
 	if(src in user.contents)
 		user.transferItemToLoc(src, drop_location)
 	var/obj/item/natural/chaff/next_target = find_adjacent_chaff(user)
