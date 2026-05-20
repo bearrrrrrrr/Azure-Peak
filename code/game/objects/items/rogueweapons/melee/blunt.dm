@@ -1001,8 +1001,12 @@
 		to_chat(user, span_warning("Too hard!"))
 		return
 	var/bonus_damage = round(O.obj_integrity * 0.15)
+	if(prob(50))
+		bonus_damage += rand(1,10)
+	else
+		bonus_damage -= rand(1,10)
 	O.take_damage(bonus_damage, BRUTE, src.d_type, FALSE)
-	to_chat(user, span_warning("Your blow crushes [O]! (+[bonus_damage])"))
+	to_chat(user, span_warning("Your blow expertly crushes [O]! (+[bonus_damage])"))
 
 /obj/item/rogueweapon/mace/maul/grand/psy/attack_turf(turf/T, mob/living/user, multiplier)
 	. = ..()
@@ -1018,8 +1022,12 @@
 		to_chat(user, span_warning("Too hard!"))
 		return
 	var/bonus_damage = round(T.max_integrity * 0.15)
+	if(prob(50))
+		bonus_damage += rand(1,20)
+	else
+		bonus_damage -= rand(1,20)
 	T.take_damage(bonus_damage, BRUTE, src.d_type, 1)
-	to_chat(user, span_warning("Your blow caves into [T]! (+[bonus_damage])"))
+	to_chat(user, span_warning("Your blow expertly caves into [T]! (+[bonus_damage])"))
 
 /datum/intent/mace/sweep
 	name = "sweeping strike"
