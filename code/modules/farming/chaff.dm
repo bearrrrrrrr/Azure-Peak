@@ -8,6 +8,13 @@
 	desc = "A farmer's chaff." //english is not my native language, upon searching "chaff" i didn't even get what this is.
 	var/canthresh = TRUE
 
+/obj/item/natural/chaff/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("Right click chaff with an empty hand to shuck chaff into grains by hand.")
+	. += span_info("Use a thresher on the chaff's tile to thresh all the grains on that tile at once.")
+	. += span_info("Use a club on chaff to thresh several grains, easier for stronger individuals and skilled farmers.")
+	. += span_info("Use a pitchfork to move a lot of chaff around at once.")
+
 /obj/item/natural/chaff/attack_right(mob/user)
 	if(!isliving(user))
 		return ..()
