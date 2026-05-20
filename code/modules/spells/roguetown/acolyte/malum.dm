@@ -380,6 +380,10 @@ var/global/list/anvil_recipe_prices[][]
 		global.anvil_recipe_prices += list(list(itemtosend, total_sellprice))
 
 /proc/initialize_anvil_recipe_prices()
+/* Commented out for now, pending a rework, due to rampant issues of being able to make literally every-fucking-item-in-the-game-with-a-smelting-recipe
+// This will likely be made into a manual list, but this miracle needs love anyway, you've no idea what you can actually make to begin with.
+// Sorry folks, I didn't want to but genuinely this has so many issues on so many fucking levels like printing superweapons for a shitload of statues.
+// Or just y'know, ascendant weaponry that's designed to be craftable from un-implimented systems, not tennites.
 	for (var/datum/anvil_recipe/armor/recipe)
 	{
 		add_recipe_to_global(recipe)
@@ -392,6 +396,8 @@ var/global/list/anvil_recipe_prices[][]
 	{
 		add_recipe_to_global(recipe)
 	}
+*/
+	// This is where we'll be manually putting recipes for now. I highly recommend a re-factor from this hotfix to its own file, this shit's gonna get huge otherwise.
 	global.anvil_recipe_prices += list(list(new /obj/item/rogue/instrument/flute, 10))
 	global.anvil_recipe_prices += list(list(new /obj/item/rogue/instrument/drum, 10))
 	global.anvil_recipe_prices += list(list(new /obj/item/rogue/instrument/harp, 20))
