@@ -36,7 +36,7 @@
 		/datum/skill/craft/weaponsmithing = SKILL_LEVEL_EXPERT,
 		/datum/skill/labor/mining = SKILL_LEVEL_EXPERT,
 		/datum/skill/craft/smelting = SKILL_LEVEL_EXPERT,
-		/datum/skill/magic/holy = SKILL_LEVEL_MASTER, //Literal Priest of Malum, gets high miracle level.
+		/datum/skill/magic/holy = SKILL_LEVEL_JOURNEYMAN, //Literal Priest of Malum, but we don't want to step on the toes of heretics.
 		/datum/skill/craft/engineering = SKILL_LEVEL_JOURNEYMAN
 	)
 	subclass_stashed_items = list(
