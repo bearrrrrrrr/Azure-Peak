@@ -228,12 +228,12 @@
 						if(TD.muddy)
 							if(prob(80))
 								new /obj/item/natural/clay(TD)
-							else if(prob(20))
+							else
 								new /obj/item/natural/stone(TD)
 						else
 							if(prob(80))
 								new /obj/item/natural/stone(TD)
-							else if(prob(20))
+							else
 								new /obj/item/natural/clay(TD)
 					playsound(T,'sound/items/empty_shovel.ogg', 100, TRUE)
 
@@ -255,7 +255,7 @@
 								new /obj/item/natural/worms/grubs(TD)
 							else if(prob(20))
 								new /obj/item/natural/worms/leech(TD)
-							else if(prob(80))
+							else
 								new /obj/item/natural/worms(TD)
 						else
 							if(prob(50))
