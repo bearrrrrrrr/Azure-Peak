@@ -404,8 +404,8 @@ var/global/list/anvil_recipe_prices[][]
 	global.anvil_recipe_prices += list(list(new /obj/item/rogue/instrument/lute, 20))
 	global.anvil_recipe_prices += list(list(new /obj/item/rogue/instrument/guitar, 30))
 	global.anvil_recipe_prices += list(list(new /obj/item/rogue/instrument/accord, 30))
-	global.anvil_recipe_prices += list(list(new /obj/item/riddleofsteel, 400))
-	global.anvil_recipe_prices += list(list(new /obj/item/dmusicbox, 500))
+	global.anvil_recipe_prices += list(list(new /obj/item/riddleofsteel, 250)) // 400 Orig, jakked because of temp solution re-raise once fixed.
+	global.anvil_recipe_prices += list(list(new /obj/item/dmusicbox, 300)) // 500 orig, jakked because of temp solution, re-raise once fixed.
 	// Add any other recipe types if needed
 
 /world/New()
