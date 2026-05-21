@@ -364,6 +364,8 @@
 	swingsound = BLUNTWOOSH_LARGE
 	minstr = 7
 	wdefense = 3
+	special = /datum/special_intent/ground_smash
+
 	smeltresult = /obj/item/ingot/steel
 	icon_state = "flangedmace"
 
@@ -426,6 +428,7 @@
 	swingsound = BLUNTWOOSH_LARGE
 	icon_state = "psyflangedmace"
 	is_silver = TRUE
+	special = /datum/special_intent/ground_smash
 	smeltresult = /obj/item/ingot/silverblessed
 
 /obj/item/rogueweapon/mace/cudgel/psy/ComponentInitialize()
@@ -642,7 +645,7 @@
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 2
 	wdefense_wbonus = 5
-	special = null
+	special = /datum/special_intent/ground_smash
 	max_integrity = 300
 
 /obj/item/rogueweapon/mace/goden/steel/paalloy
