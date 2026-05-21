@@ -1288,6 +1288,7 @@
 #include "code\game\objects\items\rogueitems\mimery_book.dm"
 #include "code\game\objects\items\rogueitems\nails.dm"
 #include "code\game\objects\items\rogueitems\natural.dm"
+#include "code\game\objects\items\rogueitems\natural\zizobane.dm"
 #include "code\game\objects\items\rogueitems\necro_relics.dm"
 #include "code\game\objects\items\rogueitems\needle.dm"
 #include "code\game\objects\items\rogueitems\painting.dm"
