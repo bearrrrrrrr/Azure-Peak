@@ -44,10 +44,11 @@
 			if(B)
 				B = new B(user.loc)
 				user.put_in_hands(B)
-				if(HAS_TRAIT(user, TRAIT_WOODWALKER))
+				var/double_output = (HAS_TRAIT(user, TRAIT_ALCHEMY_EXPERT) && user.get_skill_level(/datum/skill/craft/alchemy) >= SKILL_LEVEL_JOURNEYMAN)
+				if(double_output)
 					var/obj/item/C = new B.type(user.loc)
 					user.put_in_hands(C)
-				user.visible_message(span_notice("[user] harvests [HAS_TRAIT(user, TRAIT_WOODWALKER) ? "two " : ""][B.name] from [src] bush."))
+				user.visible_message(span_notice("[user] harvests [double_output ? "two " : ""][B.name] from [src] bush."))
 				harvested = TRUE
 				timerid = addtimer(CALLBACK(src, PROC_REF(loot_replenish)), 5 MINUTES, flags = TIMER_STOPPABLE)
 				//add_filter("picked", 1, alpha_mask_filter(icon = icon('icons/effects/picked_overlay.dmi', "picked_overlay_[rand(1,3)]"), flags = MASK_INVERSE))

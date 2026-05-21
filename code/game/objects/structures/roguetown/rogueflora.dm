@@ -421,9 +421,13 @@
 					res_replenish = world.time + 8 MINUTES
 				var/obj/item/B = pick_n_take(looty)
 				if(B)
+					var/double_output = (HAS_TRAIT(user, TRAIT_ALCHEMY_EXPERT) && user.get_skill_level(/datum/skill/craft/alchemy) >= SKILL_LEVEL_JOURNEYMAN)
+					if(double_output)
+						var/obj/item/C = new B.type(user.loc)
+						user.put_in_hands(C)
 					B = new B(user.loc)
 					user.put_in_hands(B)
-					user.visible_message(span_notice("[user] finds [B] in [src]."))
+					user.visible_message("<span class='notice'>[user] finds [double_output ? "two of " : ""][B] in [src].</span>")
 					return
 			user.visible_message(span_warning("[user] searches through [src]."))
 			if(looty.len)
@@ -762,10 +766,11 @@
 				if(B)
 					B = new B(user.loc)
 					user.put_in_hands(B)
-					if(HAS_TRAIT(user, TRAIT_WOODWALKER))
+					var/double_output = (HAS_TRAIT(user, TRAIT_ALCHEMY_EXPERT) && user.get_skill_level(/datum/skill/craft/alchemy) >= SKILL_LEVEL_JOURNEYMAN)
+					if(double_output)
 						var/obj/item/C = new B.type(user.loc)
 						user.put_in_hands(C)
-					user.visible_message("<span class='notice'>[user] finds [HAS_TRAIT(user, TRAIT_WOODWALKER) ? "two of " : ""][B] in [src].</span>")
+					user.visible_message("<span class='notice'>[user] finds [double_output ? "two of " : ""][B] in [src].</span>")
 					return
 			user.visible_message("<span class='warning'>[user] searches through [src].</span>")
 			if(looty.len)
