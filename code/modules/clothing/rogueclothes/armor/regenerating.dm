@@ -253,3 +253,9 @@
 	desc = "Are you not entertained?!"
 	max_integrity = 200
 	repair_time = 25 SECONDS
+
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/monk
+	name = "monk's skin"
+	desc = "Do you forsake protection for enlightenment, or in repentance for past transgressions?"
+	max_integrity = 200
+	repair_time = 25 SECONDS
