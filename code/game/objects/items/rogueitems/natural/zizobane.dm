@@ -33,7 +33,6 @@
 			animate(src, pixel_x = oldx + 1, time = 0.5)
 			animate(src, pixel_x = oldx - 1, time = 0.5)
 			animate(src, pixel_x = oldx, time = 0.5)
-			playsound(loc, 'sound/magic/zizo_snuff.ogg', 100, FALSE, -1)
 			make_gas()
 			time_delay = world.time + 20 SECONDS
 
