@@ -752,3 +752,37 @@ As Excaliber."
 	icon = 'icons/clothing/donor_clothes.dmi'
 	mob_overlay_icon = 'icons/clothing/onmob/donor_clothes.dmi'
 	sleeved = 'icons/clothing/onmob/donor_sleeves_armor.dmi'
+
+// NEROCAVALIER
+
+/obj/item/rogueweapon/example/nero_sylvanlsword
+	name = "sylvan longsword"
+	desc = "The blades of Men are broad, heavy, and simple in countenance. This is no such blade.\
+			It is slender as a riverland reed, yet with an edge keen as winter lightning.\
+			Its golden hilt, wrought in softened hue and swaddled in leather dark as the heart of a cedar grove,\
+			flows into curved quillons fashioned in the likeness of reaching branches.\
+			It is said these blades seek to paint the battlefield a sunset’s shade that has not been witnessed since the time of the father's father.\
+			Its song is a metallic ode of rebellious mem’ry."
+	icon = 'icons/obj/items/donor_weapons_64.dmi'
+	icon_state = "sylvan_longsword" 
+	sheathe_icon = "sylvan_longsword"
+	bigboy = TRUE
+
+/obj/item/rogueweapon/example/nero_sylvansabre
+	name = "sylvan sabre"
+	desc = "An elegant fusion of auld and new. This is a single-edged sabre hewn from both steel and the bark of an Azurian elk tree. \
+			Traditionally, these blades would be forged from faeiron or silver, but necessity triumphed over tradition. \
+			Today, examples such as these are sometimes seen in the hands of those who have reached an accord with the duchy of Azuria. For now..."
+	icon = 'icons/obj/items/donor_weapons.dmi'
+	icon_state = "sylvan_sabre" 
+	sheathe_icon = "sylvan_sabre"
+
+
+/obj/item/rogueweapon/example/nero_sylvandagger
+	name = "sylvan dagger"
+	desc = "The classic elvish dagger is a design of elegance and beauty. With a blade of silver reminiscent of water crashing upon the shore. \
+			This is not that dagger. Honored elk wood and gold gilding remain, but the metal has been supplanted by steel. \
+			The blade is now long, and slim, tapering off at the tip. A knight killer."
+	icon = 'icons/obj/items/donor_weapons.dmi'
+	icon_state = "sylvan_dagger" 
+	sheathe_icon = "sylvan_dagger"
