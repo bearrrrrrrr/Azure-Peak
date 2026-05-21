@@ -29,11 +29,16 @@
 				return
 			if(L.m_intent == MOVE_INTENT_SNEAK)
 				return
+			var/oldx = pixel_x
+			animate(src, pixel_x = oldx + 1, time = 0.5)
+			animate(src, pixel_x = oldx - 1, time = 0.5)
+			animate(src, pixel_x = oldx, time = 0.5)
+			playsound(loc, 'sound/magic/zizo_snuff.ogg', 100, FALSE, -1)
 			make_gas()
 			time_delay = world.time + 20 SECONDS
 
 /obj/structure/zizo_bane/proc/make_gas()
-	visible_message(span_warn("A cloud of spores burst up from \the [src]!"))
+	visible_message(span_warningbig("A cloud of spores burst up from \the [src]!"))
 	var/datum/effect_system/smoke_spread/zizosleep/S = new
 	playsound(get_turf(src), "sound/items/mushroom_step.ogg", 100)
 	S.set_up(2, loc)
