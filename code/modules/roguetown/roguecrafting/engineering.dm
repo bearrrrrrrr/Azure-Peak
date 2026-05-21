@@ -236,6 +236,19 @@
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 3
 
+/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow
+	name = "slurbow"
+	category = "Weapons"
+	result = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+	reqs = list(
+		/obj/item/ingot/steel = 1,
+		/obj/item/natural/fibers = 1,
+		/obj/item/natural/wood/plank = 2,
+	)
+	structurecraft = /obj/machinery/artificer_table
+	skillcraft = /datum/skill/craft/engineering
+	craftdiff = 3
+
 /datum/crafting_recipe/roguetown/engineering/twentybolts
 	name = "crossbow bolt (x20)"
 	category = "Ammo"
