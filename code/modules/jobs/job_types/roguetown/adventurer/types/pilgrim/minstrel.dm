@@ -34,16 +34,12 @@
 	cloak = /obj/item/clothing/cloak/half
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	armor = /obj/item/clothing/suit/roguetown/shirt/tunic/white
-	r_hand = /obj/item/rogue/instrument/accord
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	belt = /obj/item/storage/belt/rogue/leather/cloth
 	beltr = /obj/item/rogueweapon/huntingknife/idagger
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(
-						/obj/item/rogue/instrument/lute = 1,
-						/obj/item/rogue/instrument/flute = 1,
-						/obj/item/rogue/instrument/drum = 1,
 						/obj/item/flashlight/flare/torch = 1,
 						/obj/item/rogueweapon/scabbard/sheath = 1
 						)
@@ -52,3 +48,29 @@
 	if(H.mind)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/vicious_mockery)
 		SStreasury.grant_savings(ECONOMIC_LOWER_MIDDLE_CLASS, H)
+		var/instruments = list("Harp","Lute","Accordion","Guitar","Hurdy-Gurdy","Viola","Vocal Talisman", "Psyaltery", "Flute", "Drum", "Shamisen")
+		var/instrument_choice = tgui_input_list(H, "Choose your instrument.", "TAKE UP ARMS", instruments)
+		H.set_blindness(0)
+		switch(instrument_choice)
+			if("Harp")
+				backr = /obj/item/rogue/instrument/harp
+			if("Lute")
+				backr = /obj/item/rogue/instrument/lute
+			if("Accordion")
+				backr = /obj/item/rogue/instrument/accord
+			if("Guitar")
+				backr = /obj/item/rogue/instrument/guitar
+			if("Hurdy-Gurdy")
+				backr = /obj/item/rogue/instrument/hurdygurdy
+			if("Viola")
+				backr = /obj/item/rogue/instrument/viola
+			if("Vocal Talisman")
+				backr = /obj/item/rogue/instrument/vocals
+			if("Psyaltery")
+				backr = /obj/item/rogue/instrument/psyaltery
+			if("Flute")
+				backr = /obj/item/rogue/instrument/flute
+			if("Drum")
+				backr = /obj/item/rogue/instrument/drum
+			if("Shamisen")
+				backr = /obj/item/rogue/instrument/shamisen
