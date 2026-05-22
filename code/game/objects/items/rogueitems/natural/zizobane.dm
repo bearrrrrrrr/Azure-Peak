@@ -13,7 +13,7 @@
 	light_outer_range = 2
 	light_inner_range = 1
 	light_power = 1.5
-	light_color = "#BF40BF"
+	light_color = "#be3ebe"
 
 /obj/structure/zizo_bane/Initialize(mapload)
 	. = ..()
