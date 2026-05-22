@@ -36,11 +36,12 @@
 	armor = /obj/item/clothing/suit/roguetown/shirt/tunic/white
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
-	belt = /obj/item/storage/belt/rogue/leather/cloth
+	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/rogueweapon/huntingknife/idagger
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(
 						/obj/item/flashlight/flare/torch = 1,
+						/obj/item/reagent_containers/glass/bottle/waterskin = 1,
 						/obj/item/rogueweapon/scabbard/sheath = 1
 						)
 	var/datum/inspiration/I = new /datum/inspiration(H)
