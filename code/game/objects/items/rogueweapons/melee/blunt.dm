@@ -364,6 +364,7 @@
 	swingsound = BLUNTWOOSH_LARGE
 	minstr = 7
 	wdefense = 3
+
 	smeltresult = /obj/item/ingot/steel
 	icon_state = "flangedmace"
 
@@ -642,7 +643,6 @@
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 2
 	wdefense_wbonus = 5
-	special = null
 	max_integrity = 300
 
 /obj/item/rogueweapon/mace/goden/steel/paalloy
