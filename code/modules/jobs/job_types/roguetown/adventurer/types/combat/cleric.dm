@@ -69,9 +69,8 @@
 		var/weapons = list("Penance - Unarmored","Discipline - Unarmed","Katar","Knuckledusters","Quarterstaff")
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		switch(weapon_choice)
-			if("Penance - Unarmored") // Loses Dodge Expert, gains Enduring + Slow Bleed, and a weaker Skin Armor. This might need more, but for now let's keep it safe.
+			if("Penance - Unarmored") // Loses Dodge Expert, gains Enduring and a weaker Skin Armor.
 				ADD_TRAIT(H, TRAIT_NOPAINSTUN, JOB_TRAIT)
-				ADD_TRAIT(H, TRAIT_BLOOD_RESISTANCE, JOB_TRAIT)
 				armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/monk // same as gladiator's own
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, SKILL_LEVEL_EXPERT, TRUE)
@@ -95,7 +94,7 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/staves, 3, TRUE) //On par with the new Quarterstaff-centric virtue. A monk can take said-virtue if they want the best of both worlds.
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 2, TRUE) //Balance idea's pretty simple. A dedicated staff user can use polearms too - as both weapon types are fundamentally similar, but it'd always be a skill level lower than the staff.
 				H.change_stat(STATKEY_PER, 1) //Compliments the quarterstaff's precision-based mechanics.
-//				REMOVE_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC) -- apparently this does not remove the trait lmao???
+//				REMOVE_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC) -- Note for future references: The traits from traits_applied are added after pre_equip() is already finished, it won't remove. Keeping this here for others to take a ref.
 				r_hand = /obj/item/rogueweapon/woodstaff/quarterstaff/iron
 				l_hand = /obj/item/rogueweapon/scabbard/gwstrap
 				wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/heavy
