@@ -99,7 +99,7 @@
 // -------------- SPIDER PIE --------------
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat/spider
 	name = "de-scallax pie"
-	desc = "A delicious, homemade pie made with the inside of a spider. Still needs to be sliced."
+	desc = "A delicious, homemade pie made with the inside of a spider. It was often used as a gesture of reconciliation between drow clans. Still needs to be sliced."
 	icon_state = "spiderpie"
 	tastes = list("spider innards and crispy butterdough" = 1)
 	filling_color = "#6a9153"
