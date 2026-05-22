@@ -178,7 +178,7 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 /datum/special_intent/proc/check_reqs(mob/living/carbon/human/user, obj/item/I)
 	if(requires_wielding)
 		if(!length(I.gripped_intents) || !I.gripped_intents)	// We have no gripped intents at all
-			to_chat(user, span_warning("I need to be wielding the weapon in both hands!"))
+			to_chat(user, span_warning("This weapon cannot use this Special at all. I should probably tell the Gods (coders)"))
 			return FALSE
 		if(I.wielded)
 			return TRUE
