@@ -14,7 +14,7 @@
 		STATKEY_LCK = 1
 	)
 	subclass_skills = list(
-		/datum/skill/misc/music = SKILL_LEVEL_EXPERT,
+		/datum/skill/misc/music = SKILL_LEVEL_MASTER,
 		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/knives = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/sneaking = SKILL_LEVEL_APPRENTICE,
