@@ -83,7 +83,6 @@
 
 
 	var/list/mobs = list()
-	var/muted = prefs.muted
 	for(var/mob/M in GLOB.player_list)
 		var/added_text
 		var/is_admin = FALSE
