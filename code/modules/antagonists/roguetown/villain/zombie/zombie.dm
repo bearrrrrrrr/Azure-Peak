@@ -281,9 +281,8 @@
 	to_chat(zombie, span_red("Hungry... so hungry... I CRAVE FLESH!"))
 	zombie.cmode_music = 'sound/music/combat_weird.ogg'
 
-	var/mob/living/carbon/human/H = owner
-	if(!(H.status_flags && GODMODE))
-		zombie.apply_status_effect(/datum/status_effect/debuff/deadite_grace)
+	// lets not be fucking fancy here ugh
+	zombie.apply_status_effect(/datum/status_effect/debuff/deadite_grace)
 
 	// This is the original first commit values for it, aka 5-7
 	zombie.STASPD = rand(5,7)
@@ -431,7 +430,7 @@
 /datum/status_effect/debuff/deadite_grace
 	id = "deadite_grace_period"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/deadite_grace
-	duration = 1 MINUTES
+	duration = 2 MINUTES // 2 mins so you can at least type something before lunging on someone
 
 /datum/status_effect/debuff/deadite_grace/on_apply()
 	. = ..()
