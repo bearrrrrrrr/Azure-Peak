@@ -1,7 +1,7 @@
 // Rogue Mage, a pure mage adventurer sidegrade to Necromancer without the Necromancer free spells and forced patron.
 /datum/advclass/wretch/roguemage
 	name = "Rogue Mage"
-	tutorial = "They reject your genius, they cast you out, they call you unethical. They do not understand the SACRIFICES you must make. But it does not matter anymore, your power eclipse any of those fools, save for the Court Magos themselves. Show them true magic."
+	tutorial = "They reject your genius, they cast you out, they call you unethical. They do not understand the SACRIFICES you must make. But it does not matter anymore, your power eclipse any of those fools, save for the Court Magos themselves. Show them true magic. Why do I have an eyepatch?"
 	allowed_sexes = list(MALE, FEMALE)
 	
 	outfit = /datum/outfit/job/roguetown/wretch/roguemage
@@ -40,6 +40,7 @@
     )
 
 /datum/outfit/job/roguetown/wretch/roguemage/pre_equip(mob/living/carbon/human/H)
+	mask = /obj/item/clothing/mask/rogue/eyepatch // Chuunibyou up to 11.
 	head = /obj/item/clothing/head/roguetown/roguehood/black
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
