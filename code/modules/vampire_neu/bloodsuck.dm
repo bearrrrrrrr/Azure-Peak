@@ -165,7 +165,7 @@
 
 	var/vampire_choice = tgui_alert(
 		src,
-		"Would you like to rise as a vampire spawn? Warning: refusal may or may not mortally wound you.",
+		"Would you like to rise as a lycker spawn? Warning: refusal may or may not mortally wound you.",
 		"THE CURSE OF ASTRATA",
 		list("MAKE IT SO", "I RESCIND"),
 		VAMP_CONVERT_TIMEOUT
