@@ -10,7 +10,7 @@
 	confess_lines = list(
 		"I AM ANCIENT!",
 		"I AM THE LAND!",
-		"I AM THE FIRSTBORNE!",
+		"I AM THE ETERNAL!",
 		"I AM THE INHERITOR!",
 		"I WILL NOT BE FORGOTTEN!",
 	)
