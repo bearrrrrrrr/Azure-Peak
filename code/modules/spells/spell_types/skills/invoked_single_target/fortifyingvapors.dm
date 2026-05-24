@@ -34,7 +34,7 @@
 		return FALSE
 
 	to_chat(target, span_warning("A heady scent fills my nostrils. My pulse quickens; I feel clear and sharp."))
-	var/healing = 2.5 //not exactly sure where this appears in the healing code
+	var/healing = 2.5 //not exactly sure where this appears in the healing code, but i tested and it definitely scales healing
 	user.Beam(target, icon_state="lichbeam", time=1 SECONDS)
 	target.apply_status_effect(/datum/status_effect/buff/fortifyingvapors, healing)
 	target.playsound_local(target, 'sound/magic/heartbeat.ogg', 100)

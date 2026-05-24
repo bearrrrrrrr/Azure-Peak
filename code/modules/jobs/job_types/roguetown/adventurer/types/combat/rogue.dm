@@ -250,7 +250,7 @@
 	tutorial = "Your scholarship and connections allow you to find wealth where others do not care to look. You're unpracticed in direct combat, but knowledge and prepation leaves a few tricks up your sleeve."
 	outfit = /datum/outfit/job/roguetown/adventurer/antiquarian
 	cmode_music = 'sound/music/cmode/adventurer/combat_outlander3.ogg'
-	traits_applied = list(TRAIT_SEEPRICES, TRAIT_GRAVEROBBER, TRAIT_INTELLECTUAL)
+	traits_applied = list(TRAIT_SEEPRICES, TRAIT_GRAVEROBBER, TRAIT_INTELLECTUAL, TRAIT_ALCHEMY_EXPERT)
 	subclass_stats = list(
 		STATKEY_STR = -1,
 		STATKEY_INT = 2,
@@ -304,6 +304,7 @@
 			if("Parrying Dagger")
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_APPRENTICE, TRUE)
 				r_hand = /obj/item/rogueweapon/huntingknife/idagger/virtue
+				backr = /obj/item/rogueweapon/scabbard/sheath
 			if("Whip")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_APPRENTICE, TRUE)
 				r_hand = /obj/item/rogueweapon/whip
@@ -324,7 +325,18 @@
 					if("Swiftness")
 						id = /obj/item/clothing/ring/statgemerald/antiquarian
 					if("Vitality")
-						id = /obj/item/clothing/ring/statonyx/antiquarian
+						switch(H.patron?.type)
+							if(/datum/patron/inhumen/baotha)
+								var/baotharing = list("Ring of Vitality","Rosa Ring") 
+								var/baotharing_choice = input(H, "A discrete ring, or one of your faith?", "A RARE GIFT") as anything in baotharing
+								H.set_blindness(0)
+								switch(baotharing_choice)
+									if("Ring of Vitality")
+										id = /obj/item/clothing/ring/statonyx/antiquarian
+									if("Rosa Ring")
+										id = /obj/item/clothing/ring/griefflower
+							else
+								id = /obj/item/clothing/ring/statonyx/antiquarian
 					if("Wisdom")
 						id = /obj/item/clothing/ring/statamythortz/antiquarian //same effect but nearly worthless instead of 222 mammons
 			if("Sling")
@@ -339,7 +351,7 @@
 					H.mind.setup_mage_aspects(list("mastery" = FALSE, "major" = 0, "minor" = 0, "utilities" = 4))
 				H.mind.check_learnspell()
 	
-		H.AddSpell(new /obj/effect/proc_holder/spell/invoked/barter/secular)
+		H.AddSpell(new /obj/effect/proc_holder/spell/invoked/secularbarter)
 		H.AddSpell(new /obj/effect/proc_holder/spell/invoked/fortifyingvapors)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/flashpowder)
 		
