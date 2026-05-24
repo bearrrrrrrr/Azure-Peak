@@ -22,7 +22,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	confess_lines = list(
 		"I WANT YOUR BLOOD!",
 		"DRINK THE BLOOD!",
-		"CHILD OF KAIN!",
+		"DEATH DID LITTLE THE FIRST TIME!",
 	)
 	rogue_enabled = TRUE
 	show_in_roundend = FALSE
