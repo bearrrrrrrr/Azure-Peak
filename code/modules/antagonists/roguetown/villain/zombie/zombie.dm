@@ -430,7 +430,7 @@
 /datum/status_effect/debuff/deadite_grace
 	id = "deadite_grace_period"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/deadite_grace
-	duration = 2 MINUTES // 2 mins so you can at least type something before lunging on someone
+	duration = 3 MINUTES // this buff is cancelled early if you attack a mob with mind. Mind your targets, sire.
 
 /datum/status_effect/debuff/deadite_grace/on_apply()
 	. = ..()
