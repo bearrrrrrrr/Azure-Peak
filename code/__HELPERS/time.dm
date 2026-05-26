@@ -124,9 +124,6 @@ GLOBAL_VAR_INIT(date_override_offset, 0)
 	if(!mind)
 		return
 	if(GLOB.tod == "dawn")
-		if(hud_used)
-			for(var/atom/movable/screen/calendar_date/cd in hud_used.static_inventory)
-				cd.refresh_text()
 		var/weekday_line
 		var/day_number = get_current_day_of_week()
 		switch(day_number)
