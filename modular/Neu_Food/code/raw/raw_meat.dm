@@ -78,6 +78,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/meat/pork_belly
 	name = "pork belly"
 	icon_state = "pork_belly"
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY)
 	slices_num = 4
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/bacon
 	slice_sound = TRUE
