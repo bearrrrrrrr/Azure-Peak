@@ -16,7 +16,7 @@ import {
 } from './common/parchment';
 
 const WRAP_NOTES = [
-  'Huh. Could have sowrn this was the same yil.',
+  'Huh. Could have sworn this was the same yil.',
   'The pages turn, and the yil does not.',
   'Surely the wheel must move, and yet the yil remains still.',
   'In the yil 1514 AP. There is a Grand Duchy built on-',
