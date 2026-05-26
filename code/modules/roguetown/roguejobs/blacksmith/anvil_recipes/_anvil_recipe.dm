@@ -273,7 +273,7 @@
 				if(WLENGTH_GREAT)
 					html += "Great<br>"
 
-		if(bookweapon.has_altgrip_modes())
+		if(!ispath(bookweapon) && bookweapon.has_altgrip_modes())
 			var/alt_grip_names = bookweapon.get_altgrip_names()
 			html += "\n<b>GRIP: ALT-GRIP (Inhand RMB / Hotkey)"
 			if(alt_grip_names)
@@ -337,3 +337,4 @@
 	</html>
 	"}
 	return html
+
