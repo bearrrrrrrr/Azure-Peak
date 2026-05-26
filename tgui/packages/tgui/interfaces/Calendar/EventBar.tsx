@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react';
 
-import { RIBBON_TEXT, SERIF } from '../common/parchment';
+import { SERIF } from '../common/parchment';
+import { RIBBON_TEXT } from './parchment_calendar';
 
 type EventBarProps = {
   color: string;

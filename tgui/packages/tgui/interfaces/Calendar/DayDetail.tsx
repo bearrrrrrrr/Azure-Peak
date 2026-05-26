@@ -1,13 +1,11 @@
 import type { CSSProperties } from 'react';
 
+import { INK, INK_FAINT, SERIF } from '../common/parchment';
 import {
   dashedHeaderStyle,
   detailPanelStyle,
   emptyHintStyle,
-  INK,
-  INK_FAINT,
-  SERIF,
-} from '../common/parchment';
+} from './parchment_calendar';
 import type { CalendarEvent } from './shared';
 
 const eventTitleStyle = (color: string): CSSProperties => ({

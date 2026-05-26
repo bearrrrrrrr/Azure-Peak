@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react';
 
-import { AMBER_TINT_SOFT, INK_SOFT } from '../common/parchment';
+import { INK_SOFT } from '../common/parchment';
+import { AMBER_TINT_SOFT } from './parchment_calendar';
 import { DayCell } from './DayCell';
 import {
   assignBarSlots,
