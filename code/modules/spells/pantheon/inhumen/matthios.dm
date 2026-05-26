@@ -771,7 +771,7 @@
 		revert_cast()
 		to_chat(user, span_warning("This thing is worthless."))
 		return FALSE
-	if(I.toggle_state)	//-some- reskinned triumph kit weapons / -some- donor weapons, active martyr weapon
+	if(I.override_state)	//-some- reskinned triumph kit weapons / -some- donor weapons, active martyr weapon
 		revert_cast()
 		to_chat(user, span_warning("This thing has been glamoured or changed -- its value is too unclear."))
 		return FALSE
