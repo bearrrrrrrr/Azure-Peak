@@ -215,7 +215,7 @@
 ///
 
 /obj/item/clothing/ring/signet
-	name = "golden signet ring"
+	name = "signet ring"
 	icon_state = "signet"
 	desc = "A ring of opulent gold, bearing the Lord's symbol. Its face is cut to seal writs of ducal importance, and a fresh bead of tallow rests in the underside."
 	sellprice = 135

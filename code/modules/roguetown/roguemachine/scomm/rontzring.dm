@@ -1,7 +1,7 @@
 // MATTHIOSIAN SCOMCOIN
 
 /obj/item/mattcoin
-	name = "rontz ring"
+	name = "gilded ring"
 	icon_state = "mattcoin"
 	desc = "A faded coin with a ruby laid into its center."
 	gripped_intents = null
@@ -20,6 +20,7 @@
 	sellprice = 0
 	grid_width = 32
 	grid_height = 32
+	var/fakename
 
 /obj/item/mattcoin/examine(mob/user)
 	. = ..()
@@ -34,11 +35,11 @@
 	become_hearing_sensitive()
 	update_icon()
 	SSroguemachine.scomm_machines += src
-	name = pick("rontz ring", "gold ring")
+	fakename = pick("gold ring", "rontz ring")
 
 /obj/item/mattcoin/pickup(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_FREEMAN))
-		to_chat(user, "The coin turns to ash in my hands!")
+		to_chat(user, "[src] turns to ash in my hands!")
 		playsound(loc, 'sound/items/firesnuff.ogg', 100, FALSE, -1)
 		qdel(src)
 	..()
@@ -71,7 +72,7 @@
 	playsound(loc, 'sound/misc/coindispense.ogg', 100, FALSE, -1)
 	listening = !listening
 	speaking = !speaking
-	to_chat(user, span_info("I [speaking ? "unmute" : "mute"] the Matthiosian-SCOMstone"))
+	to_chat(user, span_info("I [speaking ? "unmute" : "mute"] the [src]."))
 	update_icon()
 
 /obj/item/mattcoin/Destroy()
@@ -85,7 +86,8 @@
 	if(tcolor)
 		voicecolor_override = tcolor
 	if(speaking && message)
-		playsound(loc, 'sound/foley/coins1.ogg', 20, TRUE, -1)
+		var/mob/living/carbon/human/wearer = loc
+		wearer.playsound_local(wearer, 'sound/foley/coins1.ogg', 50, TRUE)
 		say(message, language = message_language)
 	voicecolor_override = null
 
@@ -103,3 +105,10 @@
 		I.send_speech(message, 0, I, , spans, message_language=language)
 	else
 		send_speech(message, 0, src, , spans, message_language=language)
+
+/obj/item/mattcoin/equipped(mob/user, slot)
+	. = ..()
+	switch(slot)
+		if(SLOT_RING)
+			name = fakename
+	return TRUE
