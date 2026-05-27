@@ -1,4 +1,0 @@
-author: "Ketrai"
-delete-after: True
-changes:
-  - bugfix: "stops players from getting rings x people on the server from royal puzzleboxes"
