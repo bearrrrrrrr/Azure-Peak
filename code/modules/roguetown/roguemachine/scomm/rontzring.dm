@@ -22,13 +22,10 @@
 	grid_height = 32
 	var/fakename
 
-/obj/item/mattcoin/examine(mob/user)
-	. = ..()
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(H.patron.type == /datum/patron/inhumen/matthios)
-			. += span_rose("It's said that these coins are born whenever the CROWNSTONEs of royalty are stolen and subjected to the Hoardmaster's flames. I can use it to communicate with my fellow freedmen on a specially-hijacked SCOMline.")
-			. += span_rose("A special hex has been cast on this ring by an Iconoclast, making it appear as nothing more than a mere 'gold ring' to those still shackled to tyranny. I should remain wary of eyes that pry for too long, however.")
+/obj/item/mattcoin/get_mechanics_examine(mob/user)
+    . = ..()
+    . += span_info("Right-click the coin in your active hand to access a specially-hijacked SCOMline, allowing you to securely communicate with fellow freedmen.")
+    . += span_info("A special hex conceals this object from loyalist eyes. To anyone still shackled to tyranny, it will appear in examinations and inventory as a mere 'gold ring' or 'rontz ring'.")
 
 /obj/item/mattcoin/Initialize()
 	. = ..()
