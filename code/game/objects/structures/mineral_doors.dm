@@ -622,7 +622,7 @@
 					to_chat(user, "<span class='deadsay'>The locking mechanism gives.</span>")
 					if(ishuman(user))
 						var/mob/living/carbon/human/H = user
-						message_admins("[H.real_name]([key_name(user)]) successfully lockpicked [src.name] & [locked ? "unlocked" : "locked"] it. [ADMIN_JMP(src)]")
+						message_admins("[H.real_name]([key_name(user)]) successfully lockpicked [src.name] & [locked ? "unlocked" : "locked"] it at X:[src.x] Y:[src.y] Z:[src.z] in area: [get_area(src)] [ADMIN_JMP(src)]")
 						log_admin("[H.real_name]([key_name(user)]) successfully lockpicked [src.name] at X:[src.x] Y:[src.y] Z:[src.z] in area: [get_area(src)]")
 						record_featured_stat(FEATURED_STATS_CRIMINALS, user)
 						record_round_statistic(STATS_LOCKS_PICKED)
