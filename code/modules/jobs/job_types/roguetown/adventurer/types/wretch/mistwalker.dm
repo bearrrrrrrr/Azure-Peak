@@ -61,19 +61,19 @@
 		)
 
 	if(H.mind)
-		var/armor = list("Ceremonial Robes", "Enchanted Inks")
+		var/armor_options = list("Ceremonial Robes", "Enchanted Inks")
 		var/armor_choice = input(H, "Choose your armor.", "TAKE UP ARMOR") as anything in armor
 		var/weapons = list("Ssangsudo +2 CON", "Kanabo +1 STR", "Naginata +2 PER", "Hwando +2 INT", "Longbow +1 SPD")
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		H.set_blindness(0)
-		switch(armor_choice)
+		switch(armor_options)
 			if("Ceremonial Robes")
 				neck = /obj/item/clothing/neck/roguetown/gorget/steel/kazengun
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/black
 				wrists = /obj/item/clothing/wrists/roguetown/bracers/black
 				if(H.dna.species.type in NON_DWARVEN_RACE_TYPES)
 					armor = /obj/item/clothing/suit/roguetown/armor/basiceast/mentorsuit
-					pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/eastpants1
+					pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
 				else
 					armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/jacket/black
 					pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/kazengun/black
@@ -104,9 +104,9 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/sabre/mulyeog
 				beltr = /obj/item/rogueweapon/scabbard/sword/kazengun
-				H.change_stat(STATKEY_WIL, 2)
+				H.change_stat(STATKEY_INT, 2)
 			if("Longbow +1 SPD") //they still have the expert knives for melee
-				H.adjust_skillrank_up_to(/datum/skill/combat/bows, SKILL_LEVEL_MASTER, TRUE) //no dexpert, armor, or innately high SPD-PER - let them have this bone
+				H.adjust_skillrank_up_to(/datum/skill/combat/bows, SKILL_LEVEL_EXPERT, TRUE) //no dexpert, armor, or innately high SPD-PER - let them have this bone
 				r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
 				beltr = /obj/item/quiver/arrows
 				H.change_stat(STATKEY_SPD, 1)
