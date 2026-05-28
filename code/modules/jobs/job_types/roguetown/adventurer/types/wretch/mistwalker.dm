@@ -46,9 +46,7 @@
 	to_chat(H, span_warning("Failed in your duty, outcast from whence you came you wander. Only the steel in your hand can be trusted."))
 
 	head = /obj/item/clothing/head/roguetown/mentorhat
-	gloves = /obj/item/clothing/gloves/roguetown/eastgloves1 //eh could be a regular one too
 	mask = /obj/item/clothing/mask/rogue/facemask/steel/kazengun //let them have this
-	shoes = /obj/item/clothing/shoes/roguetown/armor/rumaclan
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backl = /obj/item/storage/backpack/rogue/satchel
@@ -73,17 +71,28 @@
 				wrists = /obj/item/clothing/wrists/roguetown/bracers/black
 				if(H.dna.species.type in NON_DWARVEN_RACE_TYPES)
 					armor = /obj/item/clothing/suit/roguetown/armor/basiceast/mentorsuit
-					pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
+					pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/kazengun/black
+					gloves = /obj/item/clothing/gloves/roguetown/eastgloves1
+					shoes = /obj/item/clothing/shoes/roguetown/armor/rumaclan
 				else
 					armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/jacket/black
-					pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/kazengun/black
+					pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
+					gloves = /obj/item/clothing/gloves/roguetown/angle
+					shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced //dwarves like to blow up my patience
 			if("Enchanted Inks")
 				neck = /obj/item/clothing/neck/roguetown/coif/heavypadding/black
 				armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/easttats/mistwalker //they don't get stronger swords like ruma, let them have the +50 integ
 				shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/eastshirt1
 				wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/heavy
-				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/eastpants1
 				ADD_TRAIT(H, TRAIT_HONORBOUND, TRAIT_GENERIC)
+				if(H.dna.species.type in NON_DWARVEN_RACE_TYPES)
+					pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/kazengun/black
+					gloves = /obj/item/clothing/gloves/roguetown/eastgloves1
+					shoes = /obj/item/clothing/shoes/roguetown/armor/rumaclan
+				else
+					pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
+					gloves = /obj/item/clothing/gloves/roguetown/angle
+					shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
 		switch(weapon_choice)
 			if("Ssangsudo +2 CON")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
