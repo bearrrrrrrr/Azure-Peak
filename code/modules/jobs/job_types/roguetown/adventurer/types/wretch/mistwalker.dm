@@ -60,11 +60,11 @@
 
 	if(H.mind)
 		var/armor_options = list("Ceremonial Robes", "Enchanted Inks")
-		var/armor_choice = input(H, "Choose your armor.", "TAKE UP ARMOR") as anything in armor
+		var/armor_choice = input(H, "Choose your armor.", "TAKE UP ARMOR") as anything in armor_options
 		var/weapons = list("Ssangsudo +2 CON", "Kanabo +1 STR", "Naginata +2 PER", "Hwando +2 INT", "Longbow +1 SPD")
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		H.set_blindness(0)
-		switch(armor_options)
+		switch(armor_choice)
 			if("Ceremonial Robes")
 				neck = /obj/item/clothing/neck/roguetown/gorget/steel/kazengun
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/black
