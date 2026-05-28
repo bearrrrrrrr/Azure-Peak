@@ -266,7 +266,8 @@
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/easttats/mistwalker
 	name = "seon-mul tattoos"
 	desc = "The flowing clouds of the Ruma are but fleeting shadow across the plains, pale imitation of Xinyi's spiritual alchemy. Imperfect, impotent. Their legend is one writ in avarice and hate.</br></br>Recount yours in love."
-	max_integrity = 400
+	armor = ARMOR_LEATHER
+	max_integrity = 450
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/gladiator
 	name = "gladiator's skin"
