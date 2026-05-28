@@ -112,6 +112,10 @@
 	duration = 30 SECONDS
 	status_type = STATUS_EFFECT_REFRESH
 
+/datum/status_effect/stealth_revealed/on_apply()
+	. = ..()
+	owner.update_sneak_invis(reset = TRUE)
+
 /atom/movable/screen/alert/status_effect/stealth_revealed
 	name = "Revealed!"
 	desc = "I'm revealed. It will take me a while to regain my sense of surroundings."
