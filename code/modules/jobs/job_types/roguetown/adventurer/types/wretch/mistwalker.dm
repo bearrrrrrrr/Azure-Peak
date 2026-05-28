@@ -119,6 +119,11 @@
 				r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
 				beltr = /obj/item/quiver/arrows
 				H.change_stat(STATKEY_SPD, 1)
+			if("Kodachi +1 SPD")
+				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
+				r_hand = /obj/item/rogueweapon/sword/short/kazengun
+				beltr = /obj/item/rogueweapon/scabbard/sword/kazengun/kodachi
+				H.change_stat(STATKEY_SPD, 1)
 
 		wretch_select_bounty(H)
 
