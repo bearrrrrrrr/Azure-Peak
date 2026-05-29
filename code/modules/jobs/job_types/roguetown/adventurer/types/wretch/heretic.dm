@@ -348,11 +348,9 @@
 					l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/zizo
 				else
 					l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/rondel
-				r_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/corroded
-				mouth = /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
+				r_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
 				beltl = /obj/item/rogueweapon/scabbard/sheath
 				beltr = /obj/item/rogueweapon/scabbard/sheath
-				backr = /obj/item/rogueweapon/scabbard/sheath
 			if("Rapier")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
