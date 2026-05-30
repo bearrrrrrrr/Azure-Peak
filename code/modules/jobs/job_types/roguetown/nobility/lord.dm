@@ -495,9 +495,9 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	else
 		to_chat(user, span_warning("Recruitment cancelled."))
 
-/obj/effect/proc_holder/spell/self/convertrole/proc/can_convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)
+/obj/effect/proc_holder/spell/self/convertrole/proc/can_convert(mob/living/carbon/human/recruit)
 	//wtf
-	if(QDELETED(recruit) || QDELETED(recruiter))
+	if(QDELETED(recruit))
 		return FALSE
 	//need a mind
 	if(!recruit.mind)
@@ -506,8 +506,10 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	if(!(recruit.job in GLOB.peasant_positions) && \
 		!(recruit.job in GLOB.burgher_positions) && \
 		!(recruit.job in GLOB.wanderer_positions) && \
-		//unique case to re-allow exclusively deserters to recruit fellow antagonists into the brotherhood
-		!(recruiter.job in GLOB.antagonist_positions && recruit.job in GLOB.antagonist_positions))
+		//unique case to re-allow deserters to recruit wretches but technically applies to all-antags + convert verbs.
+		//Its actually kinda lowkey cool and lets antagonists actually pull some genuine espionage.
+		//Think vlord maid getting hired into the keep, bandit somehow convincing nobles to make them a watchman, etc.
+		!(recruit.job in GLOB.antagonist_positions))
 		return FALSE
 	if(recruit.cmode) //We probably don't want to accidentally flashbang this mid-fight.
 		return FALSE
