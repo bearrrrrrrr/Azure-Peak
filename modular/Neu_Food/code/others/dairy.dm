@@ -172,7 +172,7 @@
 						desc = "You'll need two more servings of fresh cheese to finish it."
 					if(3)
 						icon_state = "cheesewheel_3"
-						desc = "You'll need only one more servings of fresh cheese to finish it."
+						desc = "You'll need only one more serving of fresh cheese to finish it."
 					if(4)
 						name = "maturing cheese wheel"
 						icon_state = "cheesewheel_end"
