@@ -273,7 +273,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddarslice
 	name = "slice of cheese"
-	desc = "A sliver of savoriness." 
+	desc = "A sliver of savoriness."
 	icon = 'modular/Neu_Food/icons/others/dairy.dmi'
 	icon_state = "cheese_slice"
 	bitesize = 1
