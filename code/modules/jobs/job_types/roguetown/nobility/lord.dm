@@ -495,7 +495,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	else
 		to_chat(user, span_warning("Recruitment cancelled."))
 
-/obj/effect/proc_holder/spell/self/convertrole/proc/can_convert(mob/living/carbon/human/recruit)
+/obj/effect/proc_holder/spell/self/convertrole/proc/can_convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)
 	//wtf
 	if(QDELETED(recruit))
 		return FALSE
@@ -505,8 +505,11 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	//only migrants and peasants
 	if(!(recruit.job in GLOB.peasant_positions) && \
 		!(recruit.job in GLOB.burgher_positions) && \
-		!(recruit.job in GLOB.atc_positions) && \
-		!(recruit.job in GLOB.wanderer_positions))
+		!(recruit.job in GLOB.wanderer_positions) && \
+		//unique case to re-allow exclusively deserters to recruit fellow wretches into the brotherhood
+		!(recruiter.job == "Wretch" && recruit.job == "Wretch"))
+		return FALSE
+	if(recruit.cmode) //We probably don't want to accidentally flashbang this mid-fight.
 		return FALSE
 	//need to see their damn face
 	if(!recruit.get_face_name(null))
@@ -520,15 +523,17 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	var/prompt = alert(recruit, "Do you wish to become a [new_role]?", "[recruitment_faction] Recruitment", "Yes", "No")
 	if(QDELETED(recruit) || QDELETED(recruiter) || !(recruiter in get_hearers_in_view(recruitment_range, recruit)))
 		return FALSE
-	if(prompt != "Yes")
+	if(prompt != "Yes") //If they deny, we forcesay here.
 		if(refuse_message)
 			recruit.say(refuse_message, forced = "[name]")
 		return FALSE
-	if(accept_message)
+	if(accept_message) //If they accept, we forcesay here.
 		recruit.say(accept_message, forced = "[name]")
-	if(new_role)
+	if(new_role) //We assign our role here. + log it.
 		recruit.job = new_role
 		SEND_SIGNAL(SSdcs, COMSIG_GLOB_ROLE_CONVERTED, recruiter, recruit, new_role)
+		message_admins("ROLE RECRUITMENT: [recruiter.real_name] ([recruiter.ckey]) has converted [recruit.real_name] ([recruit.ckey]) to [new_role]")
+		log_game("ROLE RECRUITMENT: [recruiter.real_name] ([recruiter.ckey]) has converted [recruit.real_name] ([recruit.ckey]) to [new_role]")
 	return TRUE
 
 /obj/effect/proc_holder/spell/self/convertrole/guard
