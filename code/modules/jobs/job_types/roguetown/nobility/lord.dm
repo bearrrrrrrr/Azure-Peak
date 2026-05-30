@@ -497,7 +497,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 
 /obj/effect/proc_holder/spell/self/convertrole/proc/can_convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)
 	//wtf
-	if(QDELETED(recruit))
+	if(QDELETED(recruit) || QDELETED(recruiter))
 		return FALSE
 	//need a mind
 	if(!recruit.mind)
@@ -506,8 +506,8 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	if(!(recruit.job in GLOB.peasant_positions) && \
 		!(recruit.job in GLOB.burgher_positions) && \
 		!(recruit.job in GLOB.wanderer_positions) && \
-		//unique case to re-allow exclusively deserters to recruit fellow wretches into the brotherhood
-		!(recruiter.job == "Wretch" && recruit.job == "Wretch"))
+		//unique case to re-allow exclusively deserters to recruit fellow antagonists into the brotherhood
+		!(recruiter.job in GLOB.antagonist_positions && recruit.job in GLOB.antagonist_positions))
 		return FALSE
 	if(recruit.cmode) //We probably don't want to accidentally flashbang this mid-fight.
 		return FALSE
