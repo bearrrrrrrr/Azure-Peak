@@ -703,8 +703,7 @@
 			user.vis_contents += new /obj/effect/temp_visual/stress_event/invisible(null, M, 'icons/mob/overhead_effects.dmi', "wavefriendly", offset_list, 20, icon_plane)
 			user.changeNext_move(CLICK_CD_FAST)	// Mostly to prevent spamming the animation too heavily.
 		if(M.client)
-			if(M.can_see_cone(user))
-				to_chat(M, span_green("[user] gives me a friendly wave."))
+			to_chat(M, span_green("[user] gives me a friendly wave."))
 	return
 
 /datum/intent/simple/headbutt
