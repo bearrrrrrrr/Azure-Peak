@@ -1,0 +1,7 @@
+author: "radarseas"
+delete-after: True
+changes:
+  - bugfix: "wretch deserters can recruit fellow wretches again."
+  - bugfix: "recruitment verbs have a cmode check now."
+  - balance: "recruit verbs aren't job-shielded from antagonists, letting antagonists now claim role recruitment to blend in."
+  - admin: "job recruitment verbs now log to admins."
