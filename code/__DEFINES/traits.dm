@@ -252,6 +252,7 @@
 #define TRAIT_TOXIMMUNE	"Poison Immune"
 #define TRAIT_GRABIMMUNE "Unstoppable"
 #define TRAIT_ROTMAN "Rotman"
+#define TRAIT_IRONMAN "Construct" // basically rotman but not really, used for diff flavor of some things
 #define TRAIT_DEADITE "Deadite"
 #define TRAIT_ZOMBIE_IMMUNE "Deadite Immunity" //immune to deadite infection
 #define TRAIT_FACELESS_KNOWN "Faceless but Known" //recognizable despite having no face (skeletonized head - for skeleton) — does NOT bypass TRAIT_DISFIGURED
@@ -475,6 +476,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_CICERONE = span_info("I am well-versed in the differences of brews and spirits, and can tell them apart at a glance."),
 	TRAIT_BETTER_SLEEP = span_info("I recover more energy when sleeping."),
 	TRAIT_ROTMAN = span_info("I am partially undead. My heart does not beat."),
+	TRAIT_IRONMAN = span_info("I am an artificial being with a physiology unlike that of organics and react very little to physical trauma. Minerals, gems and ingots restore my structure, but electrocution is especially fatal to me. When critically damaged, I can be stabilized through sticks or rocks, but I will rapidly decay otherwise if not repaired in time. I can process certain materials on the go, and with empty hands, Combat Mode active, and a STRONG stance, I can mine mineral walls and topple trees by bumping into them."),
 	TRAIT_DEADITE = span_info("I am a feral deadite."),
 	TRAIT_EASYDISMEMBER = span_info("My limbs are frail and fragile. They can be dismembered with greater ease, including my neck."),
 	TRAIT_HARDDISMEMBER = span_info("My body is strong and endurant. My limbs are not easily dismembered."),
@@ -687,7 +689,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_CONFESSED "confessed" // Used in Indexer-mailing to prevent false-flags. God, this is snowflakey.
 #define TRAIT_BAGGED "bagged" // Black-bagged. More snowflaking.
 #define TRAIT_IGNORESLOWDOWN	"Ignore Slow"
-#define TRAIT_IGNOREDAMAGESLOWDOWN "Ignore Damage Slowdown"
+#define TRAIT_IGNOREDAMAGESLOWDOWN "Relentless"
 #define TRAIT_RIGIDMOVEMENT		"Ignore Natural Health Slowdown"
 #define TRAIT_DEATHCOMA			"Death Coma" //Causes death-like unconsciousness
 #define TRAIT_FRESHSPAWN "freshspawn"
