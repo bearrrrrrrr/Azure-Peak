@@ -90,3 +90,8 @@
 	name = "Bronze-Tipped Whip"
 	cost = 42 // 1 Bronze Ingot + 1 Leather Whip (16% discount)
 	contains = list(/obj/item/rogueweapon/whip/bronze)
+
+/datum/supply_pack/rogue/bronze_weapons/javelin
+	name = "Bronze Javelins (x2)"
+	cost = 35 // 1 Bronze Ingot + 1 Small Log
+	contains = list(/obj/item/ammo_casing/caseless/rogue/javelin/bronze, /obj/item/ammo_casing/caseless/rogue/javelin/bronze)
