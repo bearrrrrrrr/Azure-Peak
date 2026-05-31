@@ -378,4 +378,3 @@
 	armor = ARMOR_LEATHER
 	detail_color = CLOTHING_DARK_GREY
 	slot_flags = ITEM_SLOT_ARMOR
-	armor = ARMOR_PADDED
