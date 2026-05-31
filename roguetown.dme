@@ -1709,6 +1709,7 @@
 #include "code\modules\cargo\packsrogue\merchant\foreign\cultural_raneshen.dm"
 #include "code\modules\cargo\packsrogue\merchant\foreign\cultural_rosawood.dm"
 #include "code\modules\cargo\packsrogue\merchant\foreign\cultural_underdark.dm"
+#include "code\modules\cargo\packsrogue\merchant\weapons\merch_weapons_bronze.dm"
 #include "code\modules\cargo\packsrogue\merchant\weapons\merch_weapons_foreign.dm"
 #include "code\modules\cargo\packsrogue\merchant\weapons\merch_weapons_melee_iron.dm"
 #include "code\modules\cargo\packsrogue\merchant\weapons\merch_weapons_melee_steel.dm"
