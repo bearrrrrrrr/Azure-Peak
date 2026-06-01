@@ -375,11 +375,12 @@
 /// Proc mostly for admins to use that omits probabilities. We could use an arg in the proc above, but navigating proccall is simpler without them.
 /obj/item/clothing/proc/get_flung_off_forced()
 	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
 		var/max_range = rand(2, 3)
 		perform_fling(H, max_range)
 
 /// Actual proc for flinging the item off. This shouldn't really 'fail' if it is getting called.
-/obj/item/clothing/proc/perform_fling(mob/living/carbon/human/H. max_range)
+/obj/item/clothing/proc/perform_fling(mob/living/carbon/human/H, max_range)
 	if(H.dropItemToGround(src, silent = TRUE))
 		H.update_fov_angles()
 		if(material_category == ARMOR_MAT_PLATE || material_category == ARMOR_MAT_CHAINMAIL)
