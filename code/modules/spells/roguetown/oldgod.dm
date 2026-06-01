@@ -160,6 +160,16 @@
 		var/pp = 0
 		var/damtotal = brute + burn
 		var/zcross_trigger = FALSE
+
+		if(H.cmode)
+			if(H != target)
+				H.visible_message(span_blue("[H] fervently recites an orison, invoking the warmth of a dying light."))
+				H.say(pick("ENDURE!!","ENDURE!!","ENDURE!!","ENDURE!!","ENDURE!!","COME ON!!","COME ON!!","HANG ON!!","GRIT!!","STAND TALL!!")) // because I miss this! :(
+			else
+				H.visible_message(span_blue("[H] grits their teeth and recites an orison, invoking the warmth of a dying light."))
+		else
+			H.visible_message(span_blue("[H] quietly recites an orison, invoking the warmth of a dying light."))
+
 		if(H.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD)) // YOU ARE NO LONGER MORTAL. NO LONGER OF HIM. PSYDON WEEPS.
 			// We do nothing to avoid meta checking for undead
 			target.visible_message(span_info("A strange stirring feeling pours from [target]!"), span_info("Sentimental thoughts drive away my pain..."))		
