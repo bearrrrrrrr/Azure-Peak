@@ -508,6 +508,7 @@
 				ADD_TRAIT(user, TRAIT_STEELHEARTED, "[type]") // so you can commit atrocities with a smile
 				ADD_TRAIT(user, TRAIT_JACKOFALLTRADES, "[type]") // the progress palooza to let you grind more efficiently
 				ADD_TRAIT(user, TRAIT_SELF_SUSTENANCE, "[type]") // also fitting for the progress vibe, way more balanced than the specialist traits IMO
+				ADD_TRAIT(user, TRAIT_UNLYCKERABLE, "[type]") // zizo curse
 				grant_poke_spell(user)
 			user.visible_message(span_boldwarning("Arcyne runes sear themselves across [user]'s skin, glowing with a sickly light before fading beneath the flesh!"), span_notice("THE LESSER WORK IS DONE! Arcyne knowledge floods my mind - I can see the threads of magic itself!"))
 
@@ -522,6 +523,7 @@
 			ADD_TRAIT(user, TRAIT_LIMBATTACHMENT, "[type]") // cause old Rituos let you recreate your skeleton limbs, but since this one deletes the spell after use, this is the best way to make it level
 			ADD_TRAIT(user, TRAIT_ZOMBIE_IMMUNE, "[type]") // cause it makes no sense
 			ADD_TRAIT(user, TRAIT_SILVER_WEAK, "[type]") // must have
+			ADD_TRAIT(user, TRAIT_UNLYCKERABLE, "[type]") // zizo curse
 			for(var/obj/item/bodypart/part as anything in user.bodyparts)
 				if(istype(part, /obj/item/bodypart/head))
 					continue
