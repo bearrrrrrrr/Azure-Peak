@@ -95,7 +95,7 @@
 	max_choices = 5
 	choice_costs = list(0, 0, 0, 2, 4, 4)
 	extra_choices = list(
-		"Shield Skill (JMAN)" = /datum/skill/combat/shields,
+		"Sword Skill (JMAN)" = /datum/skill/combat/swords,
 		"Dagger Skill (JMAN)" = /datum/skill/combat/knives,
 		"Unarmed Skill (JMAN)" = /datum/skill/combat/unarmed,
 		"Sling Skill (JMAN)" = /datum/skill/combat/slings,
