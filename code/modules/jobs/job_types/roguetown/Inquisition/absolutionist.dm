@@ -26,6 +26,7 @@
 		TRAIT_SILVER_BLESSED,
 		TRAIT_STEELHEARTED,
 		TRAIT_INQUISITION,
+		TRAIT_SELF_SUSTENANCE, // cause being pacifist leaves a lot of free time in round
 	)
 
 	advclass_cat_rolls = list(CTAG_ABSOLVER = 2)
@@ -49,7 +50,8 @@
 		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
 		/datum/skill/craft/sewing = SKILL_LEVEL_JOURNEYMAN, // A hobbyist.
 		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_NOVICE, // Parry things.
+		/datum/skill/combat/unarmed = SKILL_LEVEL_EXPERT, // rank was never updated due to unarmed changes, now it is (no pugilist = crappy rates = need expert)
+		/datum/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN, // weird they didn't have this, now they do, should make arresting towners/restraining deadites easier
 		/datum/skill/misc/medicine = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/craft/cooking = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/labor/fishing = SKILL_LEVEL_JOURNEYMAN,
@@ -146,6 +148,9 @@
 	if(target.devotion) //Remove all granted miracles and does NOT replace them, since Psydonic "miracles" don't work the same way and your old skills don't help with it
 
 		for(var/obj/effect/proc_holder/spell/S in target.devotion.granted_spells)
+			target.mind.RemoveSpell(S)
+
+		for(var/datum/action/cooldown/S in target.devotion.granted_spells)
 			target.mind.RemoveSpell(S)
 
 		target.devotion.Destroy()
