@@ -71,7 +71,7 @@
 		switch(weapon_choice)
 			if("Penance - Unarmored") // Loses Dodge Expert, gains Enduring and a weaker Skin Armor.
 				ADD_TRAIT(H, TRAIT_NOPAINSTUN, JOB_TRAIT)
-				H.change_stat(STATKEY_CON, 1) // pity buff
+				H.change_stat(STATKEY_LUC, 1) // better pity bonus
 				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
 					armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/monke // ape out, brothers. +25 durability over other monks.
 				else
