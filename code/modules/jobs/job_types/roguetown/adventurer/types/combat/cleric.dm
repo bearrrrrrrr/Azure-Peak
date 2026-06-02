@@ -333,7 +333,7 @@
 			if("Axe")
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/stoneaxe/woodcut
-		var/oaths = list("Cleric - Medicine Training + Supplies","Crusader - Blessed Longsword + Surcoat","None")
+		var/oaths = list("Cleric - Medicine Training + Supplies","Crusader - Unique Longsword + Surcoat","None")
 		var/oath_choice = input(H, "Choose your OATH.", "PROFESS YOUR BLESSINGS.") as anything in oaths
 		switch(oath_choice)
 			if("Cleric - Medicine Training + Supplies")
