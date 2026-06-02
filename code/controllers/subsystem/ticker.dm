@@ -793,7 +793,6 @@ SUBSYSTEM_DEF(ticker)
 /// Wrapper for sunsteal proc
 /datum/controller/subsystem/ticker/proc/sunsteal(mob/living/sunstealer)
 	ASSERT(sunstealer)
-	sunstolen = TRUE
 	RegisterSignal(sunstealer, list(COMSIG_QDELETING, COMSIG_MOB_DEATH), PROC_REF(on_sunstealer_death))
 	INVOKE_ASYNC(src, PROC_REF(on_sunsteal)) // Invoke async since on_sunsteal() sleeps in CHECK_TICK
 
@@ -862,7 +861,7 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/on_sunscorch()
 	GLOB.todoverride = "day"
 	settod()
-	priority_announce("ASTRATA BLOTS AS A NOOSPHERIC GLOME RADIATES BURNING FEAR-HEAT. SCORCHING RAY OF NOTHING; THE WORM SCREAMS DOWN UPON YOU IN MALICE. THE WORD EXPLODES INTO FLAME.", "THE WORM AWAKENS, THE WORLD BURNS // EKPYROSIS", 'sound/villain/ascendant_intro.ogg')
+	priority_announce("ASTRATA BLOTS AS A NOOSPHERIC GLOME RADIATES BURNING FEAR-HEAT. SCORCHING RAY OF NOTHING; THE WORM SCREAMS DOWN UPON ME IN MALICE. DEADLY HEAT CREEPS INTO THE AIR..", "THE WORM AWAKENS, THE WORLD BURNS // EKPYROSIS - GOD O GOD WHERE'RT THOU?", 'sound/villain/ascendant_intro.ogg')
 	addomen(OMEN_SUNSCORCH)
 	for(var/mob/living/carbon/human/nocite as anything in GLOB.human_list)
 		if(!istype(nocite.patron, /datum/patron/divine/noc))
@@ -905,7 +904,7 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/on_sunscorcher_death()
 	GLOB.todoverride = null
 	sunscorched = FALSE
-	priority_announce("ASTRATA's now-weary light slowly seeps back into existence. The WORM recedes; the sky is safe. God is here. God is here. God is here and all is well once more.", "THIS DAMNED SUN /// EKPYROSIS ENDS", 'sound/misc/otavanlament.ogg')
+	priority_announce("ASTRATA's now-weary light slowly seeps back into existence. The WORM recedes; the sky is safe. God is here. God is here and all is well once more.", "THIS DAMNED SUN /// EKPYROSIS ENDS", 'sound/misc/otavanlament.ogg')
 	settod()
 	SSParticleWeather.run_weather(/datum/particle_weather/rain_gentle, TRUE)
 
