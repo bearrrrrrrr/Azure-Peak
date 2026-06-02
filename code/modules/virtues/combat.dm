@@ -111,7 +111,7 @@
 		"Stashed Sling" = list(/obj/item/gun/ballistic/revolver/grenadelauncher/sling, /obj/item/quiver/sling/iron),
 		"Stashed Spear (& Strap)" = list(/obj/item/rogueweapon/spear, /obj/item/rogueweapon/scabbard/gwstrap),
 		"Stashed Mace" = list(/obj/item/rogueweapon/mace),
-		"Stashed Katar" = list(/obj/item/rogueweapon/katar/bronze, /obj/item/clothing/gloves/roguetown/knuckles/bronze),
+		"Stashed Katar" = list(/obj/item/rogueweapon/katar/bronze),
 		"Stashed Knuckles" = list(/obj/item/clothing/gloves/roguetown/knuckles/bronze),
 		"Stashed Axe" = list(/obj/item/rogueweapon/stoneaxe/woodcut),
 		"Stashed Whip" = list(/obj/item/rogueweapon/whip)
