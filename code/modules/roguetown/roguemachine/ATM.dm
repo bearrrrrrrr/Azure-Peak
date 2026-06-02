@@ -36,7 +36,7 @@
 				loc.visible_message(span_warning("The meister snaps onto [H]'s arm!"))
 				H.Stun(80)
 				H.apply_damage(50, BRUTE, def_zone)
-				H.emote("agony")
+				H.emote("superagony")
 				spawn(5)
 				say("Blueblood for the Freefolk!")
 				playsound(src, 'sound/vo/mobs/ghost/laugh (5).ogg', 100, TRUE)

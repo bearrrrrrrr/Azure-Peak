@@ -493,12 +493,32 @@
 		else
 			user.emote(pick("painscream", "agony", "paincrit", "choke"))
 		if(i > 1)
-			shake_camera(user, i * 2, i)
+			var/shakecap = min(i * 2, 3)
+			shake_camera(user, shakecap, i)
 		if(!do_after(user, 3 SECONDS, target = user))
 			to_chat(user, span_warning("The ritual collapses. Zizo's gaze turns away."))
 			return FALSE
 
 	ADD_TRAIT(user, TRAIT_ARCYNE, "[type]")
+
+	if(user.mind?.has_antag_datum(/datum/antagonist/vampire))
+		user.visible_message(span_userdanger("[user]'s body suddenly convulses as the Lesser Work reaches completion!<br>"),span_userdanger("The Work rejects my cursed blood!<br>"))
+		to_chat(user, span_artery("YOU ARE HILARIOUS! TRULY, TRULY HILARIOUS! DID YOU THINK YOURSELF THE FIRST TO ATTEMPT THIS?<br>"))
+		sleep(25)
+		to_chat(user, span_artery("SERIOUSLY?<br>"))
+		sleep(25)
+		to_chat(user, span_artery("UNDEATH UPON UNDEATH. A PARASITE FEASTING UPON A CORPSE. WHAT A MAGNIFICENT WASTE OF MY ATTENTION!<br>"))
+		sleep(25)
+		to_chat(user, span_artery("BEGONE."))
+		playsound(get_turf(user), 'sound/misc/zizo.ogg', 200)
+		ADD_TRAIT(user, TRAIT_DNR, "[type]")
+		playsound(get_turf(user), 'sound/magic/churn.ogg', 200)
+		sleep(5)
+		user.emote("superagony")
+		var/obj/item/bodypart/head = user.get_bodypart(BODY_ZONE_HEAD)
+		head?.skeletonize(TRUE)
+		to_chat(user, span_userdanger("[user] SCREAMS in UNBELIEVABLE AGONY as their FLESH unravels like RIBBONS. Their face PEELS away in BLOODY GASHES, followed by their EYES, EARS, NOSE and every remnant of identity, until nothing remains but a grinning, lifeless skull, weeping blackened blood."))		
+		return FALSE
 
 	switch(path_choice)
 		if("Progress") // support path, your mind is twisted in Her design
@@ -508,7 +528,7 @@
 				ADD_TRAIT(user, TRAIT_STEELHEARTED, "[type]") // so you can commit atrocities with a smile
 				ADD_TRAIT(user, TRAIT_JACKOFALLTRADES, "[type]") // the progress palooza to let you grind more efficiently
 				ADD_TRAIT(user, TRAIT_SELF_SUSTENANCE, "[type]") // also fitting for the progress vibe, way more balanced than the specialist traits IMO
-				ADD_TRAIT(user, TRAIT_UNLYCKERABLE, "[type]") // zizo curse
+				ADD_TRAIT(user, TRAIT_UNLYCKERABLE, "[type]") // zizo is watching you now :)
 				grant_poke_spell(user)
 			user.visible_message(span_boldwarning("Arcyne runes sear themselves across [user]'s skin, glowing with a sickly light before fading beneath the flesh!"), span_notice("THE LESSER WORK IS DONE! Arcyne knowledge floods my mind - I can see the threads of magic itself!"))
 
@@ -523,7 +543,7 @@
 			ADD_TRAIT(user, TRAIT_LIMBATTACHMENT, "[type]") // cause old Rituos let you recreate your skeleton limbs, but since this one deletes the spell after use, this is the best way to make it level
 			ADD_TRAIT(user, TRAIT_ZOMBIE_IMMUNE, "[type]") // cause it makes no sense
 			ADD_TRAIT(user, TRAIT_SILVER_WEAK, "[type]") // must have
-			ADD_TRAIT(user, TRAIT_UNLYCKERABLE, "[type]") // zizo curse
+			ADD_TRAIT(user, TRAIT_UNLYCKERABLE, "[type]") // zizo is watching you now :)
 			for(var/obj/item/bodypart/part as anything in user.bodyparts)
 				if(istype(part, /obj/item/bodypart/head))
 					continue
