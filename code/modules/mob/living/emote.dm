@@ -875,7 +875,7 @@
 
 /datum/emote/living/scream/superagony
 	key = "superagony"
-	message = "screams in agony!"
+	message = "screams in ungodly agony!"
 	emote_type = EMOTE_AUDIBLE
 	only_forced_audio = TRUE
 	show_runechat = FALSE

@@ -313,7 +313,7 @@
 			head.add_wound(/datum/wound/fracture)
 			head.update_disabled()
 			H.apply_damage(50, BRUTE, head)
-			H.emote("agony")
+			H.emote("superagony")
 		if("agony")
 			H.apply_damage(10, BRUTE, head)
 			H.emote("agony")
