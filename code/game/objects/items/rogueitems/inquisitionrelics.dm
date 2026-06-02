@@ -335,7 +335,6 @@ Inquisitorial armory down here
 		. += span_info("When opened, the 'BLESS' intent can be used to anoint Psydonic silver weaponry. Blessing a Psydonic silver weapon greatly enhances the power of its critical hits and debuffs against sunderable opponents.")
 		. += span_info("Blessing someone else, who happens to be a worshipper of Psydon, will temporarily buff them with increased Willpower and Constitution.")
 		. += span_warning("If the 'SMASH' intent is used while it's opened, the residing shard will violently explode with unimaginable force.")
-		. += span_warning("<font color='#00e1ff'>While active, Golgatha burns and weakens anyone who attacks its bearer. The effect persists only while the attacker remains within the relic's light. This feature requires the bearer to be Silverblessed. This deals extra damage to NPCs.</font>")
 	if(fuel <= 0)
 		. += span_info("It is gone.")
 
@@ -379,6 +378,27 @@ Inquisitorial armory down here
 		new /obj/effect/temp_visual/censer_dust(get_turf(src))
 		next_smoke = world.time + smoke_interval
 
+		var/mob/living/user = loc
+
+		if(!istype(user))
+			return
+
+		// Golgotha PvE buff goes here
+		if(HAS_TRAIT(user, TRAIT_SILVER_BLESSED))
+			for(var/mob/living/L in range(4, src))
+				if(L.stat == DEAD || L.mind)
+					continue
+
+				// Mindless humanoid monsters
+				if(istype(L, /mob/living/carbon/human/species/goblin/npc) || istype(L, /mob/living/carbon/human/species/orc/npc) || istype(L, /mob/living/carbon/human/species/skeleton/npc))
+					L.adjustFireLoss(25)
+
+				// Silver-vulnerable creatures
+				if(HAS_TRAIT(L, TRAIT_SILVER_WEAK))
+					L.Paralyze(10)
+					L.adjustFireLoss(25)
+					L.adjust_fire_stacks(3, /datum/status_effect/fire_handler/fire_stacks/sunder)
+
 /obj/item/flashlight/flare/torch/lantern/psycenser/turn_off()
 	playsound(src.loc, 'sound/items/censer_off.ogg', 100)
 	if(soundloop)
@@ -391,6 +411,7 @@ Inquisitorial armory down here
 		M.update_inv_belt()
 	damtype = BRUTE
 
+
 /obj/item/flashlight/flare/torch/lantern/psycenser/fire_act(added, maxstacks)
 	return
 
@@ -398,7 +419,6 @@ Inquisitorial armory down here
 	. = ..()	//We smashed a guy with it turned on. Bad idea!
 	if(ismob(A) && on && (user.used_intent.type == /datum/intent/flail/smash/golgotha) && user.cmode)
 		user.visible_message(span_warningbig("[user] smashes the exposed [src], shattering the shard of SYON!"))
-		user.visible_message(span_blue("OH SHI--!!"))
 		explosion(get_turf(A),devastation_range = 3, heavy_impact_range = 5, light_impact_range = 6, flame_range = 3, flash_range = 6, smoke = FALSE)
 		fuel = 0
 		turn_off()
@@ -406,7 +426,7 @@ Inquisitorial armory down here
 		possible_item_intents = list(/datum/intent/weep)
 		user.update_a_intents()
 		for(var/mob/living/carbon/human/H in view(get_turf(src)))
-			if(H.patron?.type == /datum/patron/old_god)	//Psydonites get VERY depressed seeing an artifact get turned into an ullapool caber.
+			if(H.patron?.type == /datum/patron/old_god)	//Psydonites get VERY depressed seeing an artifact get turned into an ulapool caber.
 				H.add_stress(/datum/stressevent/syoncalamity)
 		for(var/mob/living/carbon/human/H in range(1, get_turf(src)))
 			H.gib()
@@ -442,107 +462,6 @@ Inquisitorial armory down here
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "extinguish"
 	duration = 8
-
-/mob/living/carbon/human/proc/has_active_golgatha()
-	for(var/obj/item/flashlight/flare/torch/lantern/psycenser/G in contents)
-		if(G.on)
-			return TRUE
-	return FALSE
-
-/mob/living/carbon/human/proc/process_golgatha_rebuke(mob/living/carbon/human/attacker)
-	if(!has_active_golgatha())
-		return
-	if(!HAS_TRAIT(src, TRAIT_SILVER_BLESSED)) // only people who is silverblessed can use golgatha's hidden feature
-		return
-	if(HAS_TRAIT(attacker, TRAIT_INQUISITION)) // wife abuse
-		return
-	new /obj/effect/temp_visual/censer_dust(get_turf(attacker))
-	new /obj/effect/temp_visual/censer_dust(get_turf(attacker))
-	attacker.apply_status_effect(/datum/status_effect/syonchurn, src)
-	if(isnull(attacker.mind))
-		attacker.apply_status_effect(/datum/status_effect/debuff/clickcd, 2 SECONDS)
-		attacker.apply_status_effect(/datum/status_effect/debuff/exposed)
-	else
-		attacker.apply_status_effect(/datum/status_effect/debuff/clickcd, 1 SECONDS)
-	if(attacker.mob_biotypes & MOB_UNDEAD)
-		attacker.adjust_fire_stacks(3, /datum/status_effect/fire_handler/fire_stacks/sunder/blessed)
-		attacker.ignite_mob()
-
-#define SYONCHURN_FILTER "syonchurn glow"
-
-/atom/movable/screen/alert/status_effect/syonchurn
-	name = "Syon's Rebuke"
-	desc = "The shard of Syon rejects my hostility against Psydon's anointed. Luminous fragments scour my body and spirit."
-	icon_state = "stressvb"
-
-/datum/status_effect/syonchurn
-	id = "syon_churned"
-	alert_type = /atom/movable/screen/alert/status_effect/syonchurn
-	duration = -1
-	tick_interval = 1 SECONDS
-	examine_text = "<font color='#00fff2'><b>SUBJECTPRONOUN is seared in body and soul by motes of lingering comet dust!</b></font>"
-	effectedstats = list(STATKEY_STR = -2, STATKEY_CON = -2, STATKEY_WIL = -2, STATKEY_SPD = -2)
-	status_type = STATUS_EFFECT_REFRESH
-	var/datum/weakref/debuffer
-	var/outline_colour = "#70d1e2"
-	var/intensity = 1
-	var/range = 6
-	var/damage_per_tick = 0.5
-	var/agony = 0
-
-/datum/status_effect/syonchurn/on_creation(mob/living/new_owner, mob/living/caster, potency)
-	if(potency)
-		intensity = potency
-	if(caster)
-		debuffer = WEAKREF(caster)
-	return ..()
-
-/datum/status_effect/syonchurn/on_apply()
-	var/filter = owner.get_filter(SYONCHURN_FILTER)
-	if(!filter)
-		owner.add_filter(SYONCHURN_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 200, "size" = 1))
-	to_chat(owner, span_warning("Brilliant fragments of comet-light burst around me, repelling my violent intent!"))
-	return TRUE
-
-/datum/status_effect/syonchurn/refresh()
-	. = ..()
-	intensity++
-	to_chat(owner, span_boldwarning("The shard's radiance intensifies, scourging me for my aggression!"))
-
-/datum/status_effect/syonchurn/process()
-	. = ..()
-	if(!owner)
-		qdel(src)
-		return
-	var/mob/living/carbon/human/source = debuffer?.resolve()
-	if(!source)
-		qdel(src)
-		return
-	if(!source.has_active_golgatha())
-		to_chat(owner, span_blue("As the Golgatha is sealed, the searing dust fades into nothing."))
-		qdel(src)
-		return
-	if(get_dist(source, owner) > range)
-		to_chat(owner, span_blue("Away from the Golgatha's radiance, the searing dust fades into nothing."))
-		qdel(src)
-		return
-
-	if(!owner.mind)
-		owner.adjustFireLoss((damage_per_tick * intensity) * 2)
-
-	owner.adjustFireLoss(damage_per_tick * intensity)
-
-	if(world.time >= agony)
-		agony = world.time + rand(5,15) SECONDS
-		to_chat(owner, span_blue("Blue motes of a dying light burn through my flesh and soul!"))
-		new /obj/effect/particle_effect/thick_steam(get_turf(owner))
-		if(prob(50) && !HAS_TRAIT(owner, TRAIT_NOPAIN))
-			owner.emote("pain")
-
-/datum/status_effect/syonchurn/on_remove()
-	owner.remove_filter(SYONCHURN_FILTER)
-
-#undef SYONCHURN_FILTER
 
 /obj/item/inqarticles/indexer
 	name = "\improper INDEXER"
