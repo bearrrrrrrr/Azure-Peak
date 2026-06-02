@@ -333,16 +333,16 @@
 			if("Axe")
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/stoneaxe/woodcut
-		var/oaths = list("Cleric - Medicine Training + Supplies","Crusader - Silver Longsword + Surcoat","None")
+		var/oaths = list("Cleric - Medicine Training + Supplies","Crusader - Blessed Longsword + Surcoat","None")
 		var/oath_choice = input(H, "Choose your OATH.", "PROFESS YOUR BLESSINGS.") as anything in oaths
 		switch(oath_choice)
 			if("Cleric - Medicine Training + Supplies")
 				H.adjust_skillrank_up_to(/datum/skill/misc/medicine, SKILL_LEVEL_APPRENTICE, TRUE)
 				l_hand = /obj/item/needle/thorn/cleric //Unique to the Cleric. Far worse than a traditional iron needle, but better than a regular thorn needle - with 10 uses, instead of 5 (or 20, in the former's case).
 				beltl = /obj/item/reagent_containers/glass/bottle/rogue/healthpot //No cloth, but a basic potion of lifeblood - similar to the Sorcerer's manna potion. Take the 'Physician's Apprentice' virtue for that, uncapped skills, and more.
-			if("Crusader - Silver Longsword + Surcoat")
-				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE) //Essentially turns it into the old Monster Hunter, in terms of balance.
-				beltl = /obj/item/rogueweapon/sword/long/silver //Functionally, inflicts silverbane at the cost of -5 damage. Likely won't be a balancing issue, unless we start seeing +5-10 Clerics overnight.
+			if("Crusader - Unique Longsword + Surcoat")
+				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE) 
+				beltl = /obj/item/rogueweapon/sword/long/cleric //Essentially, a silver longsword without the ability to sunder antagonists. Should it deal lesser sunder to mindless unholy foes, later? Perhaps.
 				switch(H.patron?.type)
 					if(/datum/patron/old_god)
 						l_hand = /obj/item/clothing/cloak/tabard/stabard/crusader/t
