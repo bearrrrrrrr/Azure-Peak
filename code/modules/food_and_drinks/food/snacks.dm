@@ -373,6 +373,9 @@ All foods are distributed among various categories. Use common sense.
 /obj/item/reagent_containers/food/snacks/attack(mob/living/M, mob/living/user, def_zone)
 	if(user.used_intent.type == INTENT_HARM || user.cmode)
 		return ..()
+	if(istype(src, /obj/item/reagent_containers/food/snacks/organ) && M.lying)
+		to_chat(user, span_warning("[M] can't eat this while lying down. What even?"))
+		return FALSE
 	if(!eatverb)
 		eatverb = pick("bite","chew","nibble","gnaw","gobble","chomp")
 	if(iscarbon(M))
