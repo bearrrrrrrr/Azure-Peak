@@ -9,7 +9,6 @@
 #define REALM_LINGYUE "lingyue"
 #define REALM_NALEDI "naledi"
 #define REALM_RANESHEN "raneshen"
-// Home realms - not foreign trade realms (no ships), but used for cultural catalog kinship.
 #define REALM_AZURIA "azuria"
 #define REALM_UNDERDARK "underdark"
 

@@ -4,7 +4,6 @@
 	var/desc
 	var/favor_cost = 750
 	var/home_origin_name
-	/// Realm id this catalog's home maps to (see REALM_* in trading.dm). Drives kinship-backed access.
 	var/home_realm_id
 	var/home_label
 	var/list/stock = list()
@@ -98,22 +97,17 @@
 		return FALSE
 	return O.origin_name == C.home_origin_name
 
-/// TRUE when the Company's claimed kinship realm matches this catalog's home realm.
-/// Persistent and operator-independent: anyone at the goldface gets access + discount.
 /datum/controller/subsystem/merchant_trade/proc/catalog_company_kinship(datum/merchant_catalog/C)
 	if(!istype(C) || !C.home_realm_id || !current_kinship_realm)
 		return FALSE
 	return C.home_realm_id == current_kinship_realm
 
-/// TRUE when the operating agent personally recognizes this catalog's home realm as kin.
 /datum/controller/subsystem/merchant_trade/proc/catalog_agent_kinship(datum/merchant_catalog/C, mob/living/carbon/human/H)
 	if(!istype(C) || !C.home_realm_id)
 		return FALSE
 	var/agent_realm = get_agent_personal_kinship_realm(H)
 	return agent_realm && (agent_realm == C.home_realm_id)
 
-/// How (if at all) the viewer gets discounted access to a catalog: "kinship", "agent", "origin", or null.
-/// Kinship outranks agent, which outranks the plain prefs-side origin match.
 /datum/controller/subsystem/merchant_trade/proc/catalog_access_basis(datum/merchant_catalog/C, mob/living/carbon/human/H)
 	if(catalog_company_kinship(C))
 		return "kinship"
