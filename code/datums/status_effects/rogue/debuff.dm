@@ -367,7 +367,6 @@
 /atom/movable/screen/alert/status_effect/debuff/armamentrites
 	name = "Armament Rites Complete"
 	desc = "It will take time before I can next perform a rite."
-	duration = 2 HOURS
 
 /atom/movable/screen/alert/status_effect/debuff/lux_exhausted
 	name = "Lux Exhausted"
