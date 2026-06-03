@@ -15,7 +15,7 @@
 	outfit = /datum/outfit/job/roguetown/npc/goblin
 	show_in_credits = FALSE
 	give_bank_account = FALSE
-/datum/job/roguetown/goblin/equip(mob/living/carbon/human/H, visualsOnly, announce, latejoin, datum/outfit/outfit_override, client/preference_source)
+/datum/job/roguetown/goblin/siege/equip(mob/living/carbon/human/H, visualsOnly, announce, latejoin, datum/outfit/outfit_override, client/preference_source)
 	. = ..()
 	return  H.change_mob_type(/mob/living/carbon/human/species/goblin/cave, delete_old_mob = TRUE)
 
@@ -62,6 +62,8 @@
 		ADD_TRAIT(H, TRAIT_NOMOOD, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOHUNGER, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
+		H.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
+		H.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 
 		if(H.mind)
 			H.mind.add_antag_datum(new /datum/antagonist/goblin()) //Ensures we are in fact, a goblin (so friend/foe examines + admin antag tracking)
