@@ -41,9 +41,10 @@
 		log_admin("can't trigger the vheslyn sun because BAD STUFF ALREADY HAPPENING!!")
 		return
 	if(!isliving(user))
-		message_admins("can't trigger the vheslyn sun because you are DEAD bro!!")
+		message_admins("can't trigger the vheslyn sun because you are DEAD bro!! how are u eve")
 		log_admin("can't trigger the vheslyn sun because you are DEAD bro!!")
 		return
+	var/mob/living/sunscorcher = user
 	message_admins("vheslyn sun, won't u come..")
 	log_admin("and wash away  the rain...")
 	SSticker.sunscorch(sunscorcher)
