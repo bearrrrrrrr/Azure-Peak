@@ -23,3 +23,27 @@
 	..()
 	var/choice = input("Select a species", "Human Spawner", null) in GLOB.species_list
 	selected_species = GLOB.species_list[choice]
+
+
+//is anybody actually using this file? anyway
+/obj/item/debug/vheslynevent
+	name = "devil trigger"
+	desc = "Frustration is getting bigger, bang, bang, bang..."
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "scrying"
+	item_state = "scrying"
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/debug/vheslynevent/attack_self(mob/user)
+	. = ..()
+	if(SSticker.sunscorched == 1)
+		message_admins("can't trigger the vheslyn sun because BAD STUFF ALREADY HAPPENING!!")
+		log_admin("can't trigger the vheslyn sun because BAD STUFF ALREADY HAPPENING!!")
+		return
+	if(!isliving(user))
+		message_admins("can't trigger the vheslyn sun because you are DEAD bro!!")
+		log_admin("can't trigger the vheslyn sun because you are DEAD bro!!")
+		return
+	message_admins("vheslyn sun, won't u come..")
+	log_admin("and wash away  the rain...")
+	SSticker.sunscorch(sunscorcher)
