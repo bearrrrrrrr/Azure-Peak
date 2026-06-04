@@ -2353,7 +2353,10 @@
 	else
 		to_chat(src, span_info("[src] looks up."))
 
-	if(!ceiling)
+	var/turf/ceiling = get_step_multiz(src, UP)
+	var/turf/T = get_turf(src)
+
+	if(!ceiling)  //We are at the highest z-level.
 		if(T.can_see_sky())
 			switch(GLOB.forecast)
 				if("prerain")
