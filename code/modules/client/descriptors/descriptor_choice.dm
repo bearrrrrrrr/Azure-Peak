@@ -198,6 +198,10 @@
 		/datum/mob_descriptor/stature/reprobate,
 		/datum/mob_descriptor/stature/spendthrift,
 		/datum/mob_descriptor/stature/liability,
+		/datum/mob_descriptor/stature/idiot,
+		/datum/mob_descriptor/stature/lamb,
+		/datum/mob_descriptor/stature/assailant,
+		/datum/mob_descriptor/stature/survivor,
 	)
 
 /datum/descriptor_choice/voice
