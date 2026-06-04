@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { NumberInput } from 'tgui-core/components';
 
 import {
-  cardStyle,
   fieldRowStyle,
   INK,
   INK_FAINT,
@@ -152,50 +151,8 @@ export const ConfigPanel = (props: {
   act: ActFn;
 }) => {
   const { data, act } = props;
-  const locked = !!data.locked;
   return (
     <>
-      <div
-        style={{
-          ...cardStyle,
-          marginBottom: '12px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '12px',
-        }}
-      >
-        <div style={{ flex: 1 }}>
-          <div
-            style={{
-              fontFamily: SERIF,
-              fontVariant: 'small-caps',
-              color: SEAL_AMBER,
-              fontStyle: 'italic',
-              fontSize: '12px',
-            }}
-          >
-            Machine State
-          </div>
-          <div
-            style={{
-              fontFamily: SERIF,
-              color: locked ? INK : INK_FAINT,
-              fontWeight: 'bold',
-              fontSize: '13px',
-            }}
-          >
-            {locked ? 'Open for business' : 'Closed (no commissions accepted)'}
-          </div>
-        </div>
-        <button
-          type="button"
-          style={inkButtonStyle()}
-          onClick={() => act('toggle_lock')}
-        >
-          {locked ? 'Close Machine' : 'Open Machine'}
-        </button>
-      </div>
-
       <div style={sectionHeaderStyle}>Commission Limits</div>
       <MarginRow
         label="Items per Order"
