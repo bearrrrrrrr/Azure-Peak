@@ -67,7 +67,7 @@
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy)
 
 /datum/supply_pack/rogue/light_armor/leather_gorget
-	name = "Leather Gorget"
+	name = "Hardened Leather Gorget"
 	cost = 30 // Base sellprice of 10
 	contains = list(/obj/item/clothing/neck/roguetown/leather)
 
@@ -75,6 +75,11 @@
 	name = "Hardened Leather Bracers"
 	cost = 30 // Base sellprice of 10
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather/heavy)
+
+/datum/supply_pack/rogue/light_armor/leather_helmet
+	name = "Hardened Leather Helmet"
+	cost = 35 // Base sellprice of 15
+	contains = list(/obj/item/clothing/head/roguetown/helmet/leather/advanced)
 
 /datum/supply_pack/rogue/light_armor/heavy_leather_pants
 	name = "Hardened Leather Pants"
@@ -128,7 +133,7 @@
 
 /datum/supply_pack/rogue/light_armor/lightgambeson
 	name = "Light Gambeson"
-	cost = 24 // these are actually really easy to make
+	cost = 22 // these are actually really easy to make, and have far worse protection and integ than other gambersons.
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/light)
 
 /datum/supply_pack/rogue/light_armor/paddedcoif
@@ -143,7 +148,7 @@
 
 /datum/supply_pack/rogue/light_armor/arming_jacket
 	name = "Arming Jacket"
-	cost = 40 // superior gambeson. idk if its on par w/ the actual padded one or not
+	cost = 40 // gamberson equiv that trades leg protection and a third more price for 50 more integ (300 vs 250). Or padded gamberson that trades leg protection for being a third cheaper, to look at it another way.
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/lord)
 
 /datum/supply_pack/rogue/light_armor/heavy_leather_boots
@@ -153,7 +158,7 @@
 
 /datum/supply_pack/rogue/light_armor/arming_jacket
 	name = "Padded Arming Jacket"
-	cost = 58 // padded gambeson equiv. but it lacks leg prot?
+	cost = 60 // padded gambeson equiv. that trades leg protection for 50 more integ (350 vs 300)
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/lord/heavy)
 
 /datum/supply_pack/rogue/light_armor/grenzel_hat
