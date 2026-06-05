@@ -37,14 +37,14 @@
 /obj/item/debug/vheslynevent/attack_self(mob/user)
 	. = ..()
 	if(SSticker.sunscorched == 1)
-		message_admins("can't trigger the vheslyn sun because BAD STUFF ALREADY HAPPENING!!")
-		log_admin("can't trigger the vheslyn sun because BAD STUFF ALREADY HAPPENING!!")
+		message_admins("[user] tried to trigger Vheslynblot, but can't, because it already started. How did this happen?! Tell Tea!")
+		log_admin("[user] tried to trigger Vheslynblot, but can't, because it already started. How did this happen?! Tell Tea!")
 		return
 	if(!isliving(user))
-		message_admins("can't trigger the vheslyn sun because you are DEAD bro!! how are u eve")
-		log_admin("can't trigger the vheslyn sun because you are DEAD bro!!")
+		message_admins("[user] tried to trigger Vheslynblot, but can't, because they are dead. How did this happen?! Tell Tea!")
+		log_admin("[user] tried to trigger Vheslynblot, but can't, because they are dead. How did this happen?! Tell Tea!")
 		return
 	var/mob/living/sunscorcher = user
-	message_admins("vheslyn sun, won't u come..")
-	log_admin("and wash away  the rain...")
+	message_admins("Vheslynblot triggered by [user]!")
+	log_admin("Vheslynblot triggered by [user]!")
 	SSticker.sunscorch(sunscorcher)
