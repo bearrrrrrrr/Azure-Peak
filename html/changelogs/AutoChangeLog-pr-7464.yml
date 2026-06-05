@@ -1,0 +1,5 @@
+author: "WeNeedMorePhoron"
+delete-after: True
+changes:
+  - bugfix: "THIS IS A BUG FIX: Arcyne Ward no longer stack on top of armor, this is defined by any piece having real armor rating. When you put on armor, it will remove the coverage again. Coverage does not restore until the cast of regen / full cast happens. It will only ever **LOSE** coverage from you putting on, or having had armor on during the initial cast"
+  - balance: "For balance purpose due to multiple complaints about mid combat regeneration, the conjure time for regen / conjuring ward has been changed from 6 seconds to 10 seconds"
