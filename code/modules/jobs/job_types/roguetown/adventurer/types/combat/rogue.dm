@@ -268,16 +268,16 @@
 		/datum/skill/combat/unarmed = SKILL_LEVEL_NOVICE,
 		/datum/skill/combat/knives = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/athletics = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/climbing = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/swimming = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/reading = SKILL_LEVEL_EXPERT,
 		/datum/skill/misc/lockpicking = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/craft/traps = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/craft/traps = SKILL_LEVEL_EXPERT,
 		/datum/skill/craft/alchemy = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/craft/crafting = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/craft/sewing = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/sneaking = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/misc/sneaking = SKILL_LEVEL_JOURNEYMAN,
 	)
 
 /datum/outfit/job/roguetown/adventurer/antiquarian/pre_equip(mob/living/carbon/human/H)
@@ -294,10 +294,11 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	neck = /obj/item/clothing/neck/roguetown/leather
 	backpack_contents = list(
-		/obj/item/lockpick = 1, 
+		/obj/item/lockpickring/mundane = 1, 
 		/obj/item/recipe_book/survival = 1,
 		/obj/item/storage/belt/rogue/pouch/coins/poor = 1,
-		/obj/item/skillbook/unfinished = 1
+		/obj/item/skillbook/unfinished = 1,
+		/obj/item/grapplinghook
 		)
 		
 	if(H.mind)
@@ -307,7 +308,7 @@
 		switch(weapon_choice)
 			if("Parrying Dagger")
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_APPRENTICE, TRUE)
-				r_hand = /obj/item/rogueweapon/huntingknife/idagger/virtue
+				r_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
 				backr = /obj/item/rogueweapon/scabbard/sheath
 			if("Whip")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_APPRENTICE, TRUE)
