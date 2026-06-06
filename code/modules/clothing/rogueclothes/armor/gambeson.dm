@@ -62,7 +62,7 @@
 	desc = "A collared jacket, intended to be worn underneath plate armor. The thicker padding ensures that any gaps left within its alloyed shell are thoroughly protected - lest an unforseen bowstrike, landing true, ruptures the vulnerable flesh beneath."
 	icon_state = "dgamb"
 	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
-	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER + 50 //50 more integ than a padded gamberson, at the cost of leg protection
+	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER + 75 //75 more integ than a padded gamberson, at the cost of leg protection
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/lord/heavy/silkjacket
 	name = "besilked jacket"
