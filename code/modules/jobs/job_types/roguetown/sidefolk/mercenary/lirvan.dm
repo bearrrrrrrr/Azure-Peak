@@ -60,6 +60,7 @@
 		switch(weapon_choice)
 			if("MAW AND CLAW, FOR THY POWER ART MIGHTY")
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
+				H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/sabre/shamshir
 				backl = /obj/item/quiver/javelin/iron
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/lirvan_goldfists)
