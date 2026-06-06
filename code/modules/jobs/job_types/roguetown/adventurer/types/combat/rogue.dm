@@ -268,7 +268,7 @@
 		/datum/skill/combat/unarmed = SKILL_LEVEL_NOVICE,
 		/datum/skill/combat/knives = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/athletics = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/climbing = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/swimming = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/reading = SKILL_LEVEL_EXPERT,
 		/datum/skill/misc/lockpicking = SKILL_LEVEL_JOURNEYMAN,
@@ -307,7 +307,7 @@
 		switch(weapon_choice)
 			if("Parrying Dagger")
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_APPRENTICE, TRUE)
-				r_hand = /obj/item/rogueweapon/huntingknife/idagger/virtue
+				r_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
 				backr = /obj/item/rogueweapon/scabbard/sheath
 			if("Whip")
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_APPRENTICE, TRUE)
@@ -317,7 +317,7 @@
 				r_hand = /obj/item/rogueweapon/spear/short
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 
-		var/utility = list("Enchanted Ring","Sling","Arcyne Affinity")
+		var/utility = list("Enchanted Ring","Sling","Arcyne Affinity", "Grappling Hook")
 		var/utility_choice = input(H, "Choose your utility.", "A RARE GIFT") as anything in utility
 		H.set_blindness(0)
 		switch(utility_choice)
@@ -354,6 +354,8 @@
 				if(!LAZYLEN(H.mind.mage_aspect_config)) //ripped from arcyne potential virtue, not sure what it does
 					H.mind.setup_mage_aspects(list("mastery" = FALSE, "major" = 0, "minor" = 0, "utilities" = 4))
 				H.mind.check_learnspell()
+			if("Grappling Hook")
+				l_hand = /obj/item/grapplinghook
 	
 		H.AddSpell(new /obj/effect/proc_holder/spell/invoked/secularbarter)
 		H.AddSpell(new /obj/effect/proc_holder/spell/invoked/fortifyingvapors)
