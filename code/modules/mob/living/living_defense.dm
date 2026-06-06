@@ -506,6 +506,9 @@
 		if(M.incapacitated())
 			return FALSE
 
+		if(checkguard(M))
+			return FALSE
+
 		if(checkmiss(M))
 			return FALSE
 
@@ -519,6 +522,13 @@
 
 	return TRUE
 
+/mob/living/proc/checkguard(mob/living/simple_animal/attacker)
+	var/mob/living/carbon/human/target = src
+	if(!(ishuman(target) && target.has_status_effect(/datum/status_effect/buff/clash)))
+		return FALSE
+	var/obj/item/IM = target.get_active_held_item()
+	target.simple_clash(attacker, IM)
+	return TRUE
 
 /mob/living/attack_paw(mob/living/carbon/monkey/M)
 	if(isturf(loc) && istype(loc.loc, /area/start))
