@@ -61,15 +61,15 @@
 			if("MAW AND CLAW, FOR THY POWER ART MIGHTY")
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, SKILL_LEVEL_EXPERT, TRUE)
-				r_hand = /obj/item/rogueweapon/sword/sabre/shamshir
-				backl = /obj/item/quiver/javelin/iron
+				H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/lirvan_tithe)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/lirvan_goldfists)
-			if("STAFF AND SWORD, FOR THY POWER'S REACH ART INESCAPABLE")
+			if("STAFF AND SWORD, FOR THY REACH ART LONG")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/staves, SKILL_LEVEL_EXPERT, TRUE)
 				l_hand = /obj/item/rogueweapon/woodstaff/quarterstaff/gold
 				beltr = /obj/item/rogueweapon/sword/sabre
 				beltl = /obj/item/rogueweapon/scabbard/sword/noble
+				H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/lirvan_tithe)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/saxtonhale)
 
 	r_hand = /obj/item/storage/belt/rogue/pouch/coins/mid
@@ -79,7 +79,6 @@
 		)
 
 	H.merctype = 16 //literally no idea what this does
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/lirvan_tithe)
 
 	if(H.mind)
 		var/list/patron_choices = list("The ORDER and MONARCHY of Astrata", "The WEALTH and POWER of Matthios")
