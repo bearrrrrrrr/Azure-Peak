@@ -248,15 +248,14 @@ third; SUNSET, little neat ability. it may be buggy. don't quote me on that. it 
 
 /obj/effect/proc_holder/spell/self/lirvan_goldfists
 	name = "DRAKKYRMAW"
-	desc = "BIND THY WEALTH TO EARTH; BIND HOLY MAW TO SCALE."
+	desc = "BIND THY WEALTH TO EARTH; BIND MAW TO THY SCALE."
 	antimagic_allowed = TRUE
 	clothes_req = FALSE
 	recharge_time = 1 SECONDS
 	ignore_armor_penalty = TRUE
-	invocations = list("'s fists shine with covetous gold!")
+	invocations = list("'s fist shines with covetous gold!")
 	invocation_type = "emote"
-	var/obj/item/melee/touch_attack/rogueweapon/lirvan_goldfist/left_fist
-	var/obj/item/melee/touch_attack/rogueweapon/lirvan_goldfist/right_fist
+	var/obj/item/melee/touch_attack/rogueweapon/lirvan_goldfist/gold_fist
 
 /obj/effect/proc_holder/spell/self/lirvan_goldfists/Destroy()
 	remove_fists()
@@ -266,56 +265,48 @@ third; SUNSET, little neat ability. it may be buggy. don't quote me on that. it 
 	if(!ishuman(user))
 		return FALSE
 
-	if((left_fist && !QDELETED(left_fist)) || (right_fist && !QDELETED(right_fist)))
+	if(gold_fist && !QDELETED(gold_fist))
 		remove_fists()
 		to_chat(user, span_notice("EXPENDED."))
 		return TRUE
 
 	var/mob/living/carbon/human/H = user
-	if(H.get_num_arms() < 2)
-		to_chat(H, span_warning("It really sucks to try to summon two dragon maws with only one arm. Really sucks bad."))
-		return FALSE
-
 	var/wealth_value = get_moni_value(H)
 	var/scaled_force = 24 + (wealth_value / 100)
-	left_fist = new(H)
-	right_fist = new(H)
-	left_fist.set_wealth_power(wealth_value, scaled_force)
-	right_fist.set_wealth_power(wealth_value, scaled_force)
-	RegisterSignal(left_fist, COMSIG_PARENT_QDELETING, PROC_REF(on_fist_destroyed))
-	RegisterSignal(right_fist, COMSIG_PARENT_QDELETING, PROC_REF(on_fist_destroyed))
-	if(!H.put_in_hands(left_fist) || !H.put_in_hands(right_fist))
+	gold_fist = new(H)
+	gold_fist.set_wealth_power(wealth_value, scaled_force)
+	RegisterSignal(gold_fist, COMSIG_PARENT_QDELETING, PROC_REF(on_fist_destroyed))
+	if(!H.put_in_hands(gold_fist))
 		remove_fists()
-		to_chat(H, span_warning("Need both hands free."))
+		if(H.get_num_arms() <= 0)
+			to_chat(H, span_userdanger("WITH WHAT FUCKING ARMS???"))
+			owner.emote("cry", forced = TRUE)
+		else
+			to_chat(H, span_warning("Need a hand free."))
 		return FALSE
 
-	to_chat(H, span_notice("WEALTH answers my call. [wealth_value] mammon hardens around my fists."))
+	to_chat(H, span_notice("WEALTH answers my call. [wealth_value] mammon hardens around my fist."))
 	playsound(H, 'sound/combat/hits/burn (2).ogg', 80, TRUE)
 	return TRUE
 
 /obj/effect/proc_holder/spell/self/lirvan_goldfists/proc/remove_fists()
-	if(left_fist && !QDELETED(left_fist))
-		UnregisterSignal(left_fist, COMSIG_PARENT_QDELETING)
-		QDEL_NULL(left_fist)
-	if(right_fist && !QDELETED(right_fist))
-		UnregisterSignal(right_fist, COMSIG_PARENT_QDELETING)
-		QDEL_NULL(right_fist)
+	if(gold_fist && !QDELETED(gold_fist))
+		UnregisterSignal(gold_fist, COMSIG_PARENT_QDELETING)
+		QDEL_NULL(gold_fist)
 
 /obj/effect/proc_holder/spell/self/lirvan_goldfists/proc/on_fist_destroyed(datum/source)
 	SIGNAL_HANDLER
-	if(source == left_fist)
-		left_fist = null
-	if(source == right_fist)
-		right_fist = null
+	if(source == gold_fist)
+		gold_fist = null
 
 /obj/item/melee/touch_attack/rogueweapon/lirvan_goldfist
-	name = "golden fist"
-	desc = "A hard shell of tithed radiance, clenched into a weapon around the hand. Its weight waxes with carried wealth."
-	catchphrase = null
+	name = "GOLDMAW"
+	desc = "WEALTH GIVEN EDGE AND FURY; POWER MADE MANIFEST."
 	icon = 'icons/roguetown/weapons/unarmed32.dmi'
+	catchphrase = null
 	icon_state = "drakkyrfist"
 	charges = 999
-	force = 22
+	force = 20
 	possible_item_intents = list(/datum/intent/mace/strike/dislocate, /datum/intent/mace/smash, /datum/intent/dagger/sucker_punch)
 	gripsprite = FALSE
 	wlength = WLENGTH_SHORT
