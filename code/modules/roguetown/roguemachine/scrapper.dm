@@ -20,6 +20,7 @@
 	var/list/bark_candidates = list()
 	var/bark_dirty = TRUE
 	var/next_bark = 0
+	var/recycle_sound = 'sound/misc/smelter_fin.ogg'
 
 /obj/structure/roguemachine/scrapper/Initialize()
 	. = ..()
@@ -105,6 +106,9 @@
 	try_recycle(P, user)
 
 /obj/structure/roguemachine/scrapper/proc/try_recycle(obj/item/I, mob/user)
+	if(I.is_important)
+		to_chat(user, span_warning("[src] sees no worth in [I]."))
+		return
 	var/path = identify_material(I)
 	if(!path)
 		to_chat(user, span_warning("[src] sees no worth in [I]."))
@@ -133,8 +137,11 @@
 	material_held[path] = held + units
 	budget -= total_price
 	bark_dirty = TRUE
-	I.forceMove(src)
+	qdel(I)
+	for(var/i in 1 to units)
+		new path(src)
 	budget2change(total_price, user)
+	playsound(loc, recycle_sound, 100, FALSE, -1)
 	playsound(loc, 'sound/misc/coindispense.ogg', 100, FALSE, -1)
 	var/cap_text = cap > 0 ? "[max(0, cap - material_held[path])] / [cap] left" : "no cap"
 	var/units_text = units > 1 ? " ([units] units)" : ""
@@ -336,6 +343,7 @@
 	name = "rag-picker"
 	desc = "A brass-trimmed contraption with a hopper above and an iron strongbox beneath. Takes whatever a tailor can rework into fabrics."
 	seed_budget = 50
+	recycle_sound = 'sound/foley/cloth_rip.ogg'
 
 /obj/structure/roguemachine/scrapper/tailor/populate_defaults()
 	material_prices = list(
