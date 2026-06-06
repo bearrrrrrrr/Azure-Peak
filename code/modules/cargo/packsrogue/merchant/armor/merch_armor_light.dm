@@ -136,7 +136,7 @@
 	cost = 20 // these are actually really easy to make, and have far worse protection and integ than other gambersons.
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/light)
 
-/datum/supply_pack/rogue/light_armor/arming_jacket
+/datum/supply_pack/rogue/light_armor/light_arming_jacket
 	name = "Light Arming Jacket"
 	cost = 28 // gamberson equiv that trades leg protection to be cheaper.
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/lord/light)
@@ -156,7 +156,7 @@
 	cost = 60 // Base sellprice of 25
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy)
 
-/datum/supply_pack/rogue/light_armor/arming_jacket
+/datum/supply_pack/rogue/light_armor/padded_arming_jacket
 	name = "Padded Arming Jacket"
 	cost = 75 // padded gambeson equiv. that trades leg protection for 75 more integ (375 vs 300), touch pricier.
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/lord/heavy)
