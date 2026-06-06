@@ -280,7 +280,7 @@ third; SUNSET, little neat ability. it may be buggy. don't quote me on that. it 
 		remove_fists()
 		if(H.get_num_arms() <= 0)
 			to_chat(H, span_userdanger("WITH WHAT FUCKING ARMS???"))
-			owner.emote("cry", forced = TRUE)
+			H.emote("cry", forced = TRUE)
 		else
 			to_chat(H, span_warning("Need a hand free."))
 		return FALSE
