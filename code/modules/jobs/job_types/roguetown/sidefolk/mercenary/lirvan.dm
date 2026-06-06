@@ -29,8 +29,8 @@
 		/datum/skill/craft/carpentry = SKILL_LEVEL_NOVICE, //pity. your staff is incredibly fragile
 		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/polearms = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/swords = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/staves = SKILL_LEVEL_EXPERT //awww yeah
+		/datum/skill/combat/swords = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/combat/staves = SKILL_LEVEL_APPRENTICE //awww yeah
 	)
 	extra_context = "This subclass is race-limited to: Drakian, Zardman, and Kobold. This subclass locks you to Matthios or Astrata-worship."
 
@@ -46,15 +46,31 @@
 	cloak = /obj/item/clothing/cloak/ordinatorcape/lirvas
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/lirvas
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
-	beltr = /obj/item/rogueweapon/sword/sabre
-	beltl = /obj/item/rogueweapon/scabbard/sword/noble
 	neck = /obj/item/clothing/neck/roguetown/gorget/steel/gold
 	armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/lirvas
 	pants = /obj/item/clothing/under/roguetown/chainlegs/kilt/gold
 	shoes = /obj/item/clothing/shoes/roguetown/sandals
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-	l_hand = /obj/item/rogueweapon/woodstaff/quarterstaff/gold
+
+	var/weapons = list("MAW AND CLAW, FOR THY POWER ART MIGHTY","STAFF AND SWORD, FOR THY POWER'S REACH ART INESCAPABLE")
+	if(H.mind)
+		var/weapon_choice = input(H, "THY PROFESSION: HOW DOTH THOU WIELD THY WEALTH?", "TAKE UP ARMS") as anything in weapons
+		H.set_blindness(0)
+		switch(weapon_choice)
+			if("MAW AND CLAW, FOR THY POWER ART MIGHTY")
+				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
+				r_hand = /obj/item/rogueweapon/sword/sabre/shamshir
+				backl = /obj/item/quiver/javelin/iron
+				H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/lirvan_goldfists)
+			if("STAFF AND SWORD, FOR THY POWER'S REACH ART INESCAPABLE")
+				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
+				H.adjust_skillrank_up_to(/datum/skill/combat/staves, SKILL_LEVEL_EXPERT, TRUE)
+				l_hand = /obj/item/rogueweapon/woodstaff/quarterstaff/gold
+				beltr = /obj/item/rogueweapon/sword/sabre
+				beltl = /obj/item/rogueweapon/scabbard/sword/noble
+				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/saxtonhale)
+
 	r_hand = /obj/item/storage/belt/rogue/pouch/coins/mid
 	backpack_contents = list(
 		/obj/item/roguekey/mercenary = 1,
@@ -63,7 +79,6 @@
 
 	H.merctype = 16 //literally no idea what this does
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/lirvan_tithe)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/saxtonhale)
 
 	if(H.mind)
 		var/list/patron_choices = list("The ORDER and MONARCHY of Astrata", "The WEALTH and POWER of Matthios")
@@ -229,6 +244,100 @@ third; SUNSET, little neat ability. it may be buggy. don't quote me on that. it 
 	else
 		effectedstats = list(STATKEY_STR = 3, STATKEY_CON = 4, STATKEY_LCK = 2, STATKEY_SPD = 2) //I'm hoping this doesn't happen often.
 
+
+/obj/effect/proc_holder/spell/self/lirvan_goldfists
+	name = "DRAKKYRMAW"
+	desc = "BIND THY WEALTH TO EARTH; BIND HOLY MAW TO SCALE."
+	antimagic_allowed = TRUE
+	clothes_req = FALSE
+	recharge_time = 1 SECONDS
+	ignore_armor_penalty = TRUE
+	invocations = list("'s fists shine with covetous gold!")
+	invocation_type = "emote"
+	var/obj/item/melee/touch_attack/rogueweapon/lirvan_goldfist/left_fist
+	var/obj/item/melee/touch_attack/rogueweapon/lirvan_goldfist/right_fist
+
+/obj/effect/proc_holder/spell/self/lirvan_goldfists/Destroy()
+	remove_fists()
+	return ..()
+
+/obj/effect/proc_holder/spell/self/lirvan_goldfists/cast(mob/living/user)
+	if(!ishuman(user))
+		return FALSE
+
+	if((left_fist && !QDELETED(left_fist)) || (right_fist && !QDELETED(right_fist)))
+		remove_fists()
+		to_chat(user, span_notice("EXPENDED."))
+		return TRUE
+
+	var/mob/living/carbon/human/H = user
+	if(H.get_num_arms() < 2)
+		to_chat(H, span_warning("It really sucks to try to summon two dragon maws with only one arm. Really sucks bad."))
+		return FALSE
+
+	var/wealth_value = get_moni_value(H)
+	var/scaled_force = 24 + (wealth_value / 100)
+	left_fist = new(H)
+	right_fist = new(H)
+	left_fist.set_wealth_power(wealth_value, scaled_force)
+	right_fist.set_wealth_power(wealth_value, scaled_force)
+	RegisterSignal(left_fist, COMSIG_PARENT_QDELETING, PROC_REF(on_fist_destroyed))
+	RegisterSignal(right_fist, COMSIG_PARENT_QDELETING, PROC_REF(on_fist_destroyed))
+	if(!H.put_in_hands(left_fist) || !H.put_in_hands(right_fist))
+		remove_fists()
+		to_chat(H, span_warning("Need both hands free."))
+		return FALSE
+
+	to_chat(H, span_notice("WEALTH answers my call. [wealth_value] mammon hardens around my fists."))
+	playsound(H, 'sound/combat/hits/burn (2).ogg', 80, TRUE)
+	return TRUE
+
+/obj/effect/proc_holder/spell/self/lirvan_goldfists/proc/remove_fists()
+	if(left_fist && !QDELETED(left_fist))
+		UnregisterSignal(left_fist, COMSIG_PARENT_QDELETING)
+		QDEL_NULL(left_fist)
+	if(right_fist && !QDELETED(right_fist))
+		UnregisterSignal(right_fist, COMSIG_PARENT_QDELETING)
+		QDEL_NULL(right_fist)
+
+/obj/effect/proc_holder/spell/self/lirvan_goldfists/proc/on_fist_destroyed(datum/source)
+	SIGNAL_HANDLER
+	if(source == left_fist)
+		left_fist = null
+	if(source == right_fist)
+		right_fist = null
+
+/obj/item/melee/touch_attack/rogueweapon/lirvan_goldfist
+	name = "golden fist"
+	desc = "A hard shell of tithed radiance, clenched into a weapon around the hand. Its weight waxes with carried wealth."
+	catchphrase = null
+	icon = 'icons/roguetown/weapons/unarmed32.dmi'
+	icon_state = "drakkyrfist"
+	charges = 999
+	force = 22
+	possible_item_intents = list(/datum/intent/mace/strike/dislocate, /datum/intent/mace/smash, /datum/intent/dagger/sucker_punch)
+	gripsprite = FALSE
+	wlength = WLENGTH_SHORT
+	w_class = WEIGHT_CLASS_HUGE
+	parrysound = list('sound/combat/parry/pugilism/unarmparry (1).ogg','sound/combat/parry/pugilism/unarmparry (2).ogg','sound/combat/parry/pugilism/unarmparry (3).ogg')
+	sharpness = IS_BLUNT
+	max_integrity = 999
+	swingsound = list('sound/combat/wooshes/punch/punchwoosh (1).ogg','sound/combat/wooshes/punch/punchwoosh (2).ogg','sound/combat/wooshes/punch/punchwoosh (3).ogg')
+	associated_skill = /datum/skill/combat/unarmed
+	pickup_sound = 'sound/foley/equip/swordsmall2.ogg'
+	throwforce = 0
+	wdefense = 0
+	wbalance = WBALANCE_SWIFT
+	can_parry = TRUE
+	var/wealth_value = 0
+
+/obj/item/melee/touch_attack/rogueweapon/lirvan_goldfist/proc/set_wealth_power(new_wealth_value, new_force)
+	wealth_value = new_wealth_value
+	force = new_force
+	name = "golden fist ([round(force, 0.1)] brute)"
+
+/obj/item/melee/touch_attack/rogueweapon/lirvan_goldfist/attack_self()
+	qdel(src)
 
 /obj/effect/proc_holder/spell/invoked/saxtonhale
 	name = "SUNSET"
