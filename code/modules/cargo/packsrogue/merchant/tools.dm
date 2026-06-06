@@ -263,3 +263,4 @@
 	name = "Iron Pot"
 	cost = 12
 	contains = list(/obj/item/reagent_containers/glass/bucket/pot)
+
