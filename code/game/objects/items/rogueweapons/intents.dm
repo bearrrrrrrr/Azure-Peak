@@ -600,10 +600,10 @@
 		if(M.mind)
 			var/mob/living/L = user
 			var/taunticon = "taunt" // Regular fist
-			var/custom_offset = 20
+			var/custom_offset = 21
 			if(istype(L.patron, /datum/patron/inhumen/graggar) || L.get_stress_amount() > 10 || L.get_flaw(/datum/charflaw/addiction/paranoid))
 				taunticon = "midfinger"
-				custom_offset = 22
+				custom_offset = 23
 
 			var/datum/charflaw/averse/AV = L.get_flaw(/datum/charflaw/averse)
 			if(AV)
