@@ -595,11 +595,28 @@
 	if(ismob(target))
 		var/mob/M = target
 		var/list/targetl = list(target)
-		user.visible_message(span_warning("[user] taunts [M]!"), span_warning("I taunt [M]!"), ignored_mobs = targetl)
+		user.visible_message(span_taunt("[user] taunts [M]!"), span_taunt("I taunt [M]!"), ignored_mobs = targetl)
 		user.emote("taunt")
-		if(M.client)
-			if(M.can_see_cone(user))
-				to_chat(M, span_danger("[user] taunts me!"))
+		if(M.mind)
+			var/mob/living/L = user
+			var/taunticon = "taunt" // Regular fist
+			var/custom_offset = 20
+			if(istype(L.patron, /datum/patron/inhumen/graggar) || L.get_stress_amount() > 10 || L.get_flaw(/datum/charflaw/addiction/paranoid))
+				taunticon = "midfinger"
+				custom_offset = 22
+
+			var/datum/charflaw/averse/AV = L.get_flaw(/datum/charflaw/averse)
+			if(AV)
+				if(AV.check_aversion(L, M))
+					taunticon = "midfinger"
+
+			if(istype(L.patron, /datum/patron/divine/eora))
+				taunticon = "thumbsdown"
+				custom_offset = 24
+
+			L.play_overhead_private_rclickemote(targetl, taunticon, custom_offset)
+			user.changeNext_move(CLICK_CD_FAST)	// Mostly to prevent spamming the animation too heavily.
+			to_chat(M, span_taunt("[user] taunts me!"))
 		else
 			M.taunted(user)
 	return
