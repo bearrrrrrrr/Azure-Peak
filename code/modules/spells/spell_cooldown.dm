@@ -564,6 +564,9 @@
 	if(weapon_penalty_active)
 		newcd += base * WEAPON_CAST_PENALTY
 
+	if(HAS_TRAIT(living_owner, TRAIT_LEYLINE_HASTE)) // Hastens CD by 25%.
+		newcd *= 0.75
+
 	return newcd
 
 /// Returns the armor cooldown penalty multiplier for this spell and caster.
@@ -1315,13 +1318,19 @@
 	else
 		stats += span_info("Range: Self")
 
+	var/display_charge = charge_time
+	if(user && HAS_TRAIT(user, TRAIT_SWIFTCAST))
+		display_charge = 0
+
 	// Charge time
-	if(charge_time > 0)
-		stats += span_info("Charge time: [DisplayTimeText(charge_time)]")
-		if(spell_requirements & SPELL_REQUIRES_NO_MOVE)
-			stats += span_warning("Channeling is interrupted by movement.")
+	if(display_charge > 0)
+		stats += span_info("Charge time: [DisplayTimeText(display_charge)]")
+		if(HAS_TRAIT(user, TRAIT_LEYLINE_HASTE))
+			stats += span_info(" <font color='#00e1ff'>Ley Lines (-25%)</font>")
 	else
 		stats += span_info("Charge time: Instant")
+		if(HAS_TRAIT(user, TRAIT_SWIFTCAST))
+			stats += span_info(" <font color='#8c00ff'>(Swiftcast)</font>")
 
 	// Cooldown
 	var/base_cd = initial(cooldown_time)
@@ -1407,6 +1416,8 @@
 		var/armor_mod = base * armor_mult
 		var/armor_label = user.check_armor_skill() ? "Armor weight" : "Untrained armor"
 		breakdown += span_smallred("  [armor_label]: +[DisplayTimeText(armor_mod)]")
+	if(HAS_TRAIT(user, TRAIT_LEYLINE_HASTE))
+		breakdown += span_smallgreen("  <font color='#00e1ff'>Ley Lines (-25%)</font>")
 	return breakdown
 
 /// Breakdown of resource cost modifiers for examine.
@@ -1487,6 +1498,13 @@
 	on_start_charge()
 	charge_started_at = world.time
 	charge_target_time = charge_time
+
+	if(HAS_TRAIT(owner, TRAIT_SWIFTCAST)) // Makes your next spell be instant.
+		charge_target_time = 0
+	else if(HAS_TRAIT(owner, TRAIT_LEYLINE_HASTE)) // Leyline cast reduction by 25%.
+		charge_target_time = charge_time * 0.75
+	else
+		charge_target_time = charge_time
 
 	return COMPONENT_CLIENT_MOUSEDOWN_INTERCEPT
 
