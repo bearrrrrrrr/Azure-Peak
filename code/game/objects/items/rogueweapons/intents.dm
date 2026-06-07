@@ -603,15 +603,15 @@
 			var/taunticon = "taunt" // Regular fist
 			var/custom_offset = 21
 			if(istype(L.patron, /datum/patron/inhumen/graggar) || L.get_stress_amount() > 10 || L.get_flaw(/datum/charflaw/addiction/paranoid))
-				taunticon = "midfinger"
+				taunticon = "midfinger" // Very rude, but we're also a Rude Person (or stressed)
 				custom_offset = 23
 
 			var/datum/charflaw/averse/AV = L.get_flaw(/datum/charflaw/averse)
 			if(AV)
 				if(AV.check_aversion(L, M))
-					taunticon = "midfinger"
+					taunticon = "midfinger"	// We hate this person in particular
 
-			if(istype(L.patron, /datum/patron/divine/eora))
+			if(istype(L.patron, /datum/patron/divine/eora) || HAS_TRAIT(L, TRAIT_PACIFISM))
 				taunticon = "thumbsdown"
 				custom_offset = 24
 
