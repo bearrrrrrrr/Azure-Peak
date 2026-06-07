@@ -309,10 +309,11 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		return
 
 /turf/open/transparent/openspace/bullet_act(obj/projectile/P)
+	if(!P.arcshot)
+		return ..()
 	if(P.original && (P.x == P.original.x && P.y == P.original.y))
 		var/turf/target = get_step_multiz(src, DOWN)
 		if(target)
-			testing("canztrav")
 			P.forceMove(target)
 			P.original = target
 			P.process_hit(target, P.select_target(target))
