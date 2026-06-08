@@ -23,7 +23,7 @@ GLOBAL_LIST_INIT(vampire_clan_selection_i18n, build_vampire_clan_selection_i18n(
 	. = ..()
 	antag = source_antag
 	vampdude = source_user
-	selected_clan_type = /datum/clan/nosferatu
+	selected_clan_type = /datum/clan/crimson_fang
 
 /datum/vampire_clan_selection_menu/Destroy()
 	antag = null
