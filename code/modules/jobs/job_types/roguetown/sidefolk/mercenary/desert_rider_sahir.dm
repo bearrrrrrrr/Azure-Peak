@@ -16,7 +16,7 @@
 		STATKEY_PER = 2
 	)
 	subclass_mage_aspects = list("mastery" = FALSE, "major" = 1, "minor" = 2, "utilities" = 6, "ward" = TRUE)
-	extra_context = "This subclass chooses between twin shamshirs with Journeyman Swords or a greater staff with Journeyman Staves."
+	extra_context = "This subclass chooses between twin shamshirs or a more traditional staff."
 	subclass_skills = list(
 		/datum/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/unarmed = SKILL_LEVEL_APPRENTICE,
@@ -47,6 +47,17 @@
 	shoes = /obj/item/clothing/shoes/roguetown/shalal
 	belt = /obj/item/storage/belt/rogue/leather/shalal
 	backr = /obj/item/storage/backpack/rogue/satchel/black
+
+	backpack_contents = list(
+		/obj/item/roguekey/mercenary,
+		/obj/item/rogueweapon/huntingknife/idagger/navaja,
+		/obj/item/rogueweapon/scabbard/sheath,
+		/obj/item/clothing/neck/roguetown/shalal,
+		/obj/item/book/spellbook,
+		/obj/item/flashlight/flare/torch,
+		/obj/item/storage/belt/rogue/pouch/coins/poor
+		)
+
 	if(H.mind)
 		var/weapons = list("Twin Shamshirs", "Greater Staff")
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
@@ -61,18 +72,5 @@
 			if("Greater Staff")
 				H.adjust_skillrank_up_to(/datum/skill/combat/staves, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/woodstaff/implement/greater
-	else
-		beltl = /obj/item/rogueweapon/scabbard/sword
-		beltr = /obj/item/rogueweapon/scabbard/sword
-		r_hand = /obj/item/rogueweapon/sword/sabre/shamshir
-		l_hand = /obj/item/rogueweapon/sword/sabre/shamshir
-	backpack_contents = list(
-		/obj/item/roguekey/mercenary,
-		/obj/item/rogueweapon/huntingknife/idagger/navaja,
-		/obj/item/rogueweapon/scabbard/sheath,
-		/obj/item/clothing/neck/roguetown/shalal,
-		/obj/item/book/spellbook,
-		/obj/item/flashlight/flare/torch,
-		/obj/item/storage/belt/rogue/pouch/coins/poor
-		)
+
 	H.merctype = 4
