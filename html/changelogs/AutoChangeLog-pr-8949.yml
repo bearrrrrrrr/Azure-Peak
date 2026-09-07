@@ -1,4 +1,0 @@
-author: "bearrrrrrrr"
-delete-after: True
-changes:
-  - bugfix: "Notorious contract mobs are no longer ai-piloted when taken by a player."
