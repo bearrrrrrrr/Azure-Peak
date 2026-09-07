@@ -53,6 +53,9 @@
 	. += span_info("Right click to adjust the hood's coverage. Most fully-drawn hoods will hide the wearer's identity.")
 	. += span_info("Alt Right click to move hood layer under or above hair.")
 
+/obj/item/clothing/head/roguetown/roguehood/white
+	color = CLOTHING_WHITE
+
 /obj/item/clothing/head/roguetown/roguehood/red
 	color = CLOTHING_RED
 
