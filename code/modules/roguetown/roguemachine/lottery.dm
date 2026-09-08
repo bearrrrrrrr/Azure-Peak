@@ -37,7 +37,7 @@
 		return
 	if(istype(P, /obj/item/roguecoin/aalloy))
 		return
-	if(istype(P, /obj/item/roguecoin/inqcoin))	
+	if(istype(P, /obj/item/roguecoin/inqcoin))
 		return
 	if(istype(P, /obj/item/roguecoin))
 		if(src.gamblingprice + (P.sellprice * P.quantity) > src.maxtithing)
@@ -147,7 +147,8 @@
 			mod = 10
 		if(selection == "SILVER")
 			mod = 5
-		var/coin_amt = input(user, "Sayyid, you have [src.gamblingprice] mammon in tithes. You may withdraw [floor(gamblingprice/mod)] [selection] COINS.", src) as null|num
+		var/maxwithdraw = min(floor(gamblingprice/mod), 20)
+		var/coin_amt = input(user, "Sayyid, you have [src.gamblingprice] mammon in tithes. You may withdraw [maxwithdraw] [selection] COINS.", src) as null|num
 		coin_amt = round(coin_amt)
 		if(coin_amt < 1)
 			return
@@ -155,7 +156,7 @@
 			return
 		if(src.stopgambling == 1) // double check because it's possible to have input field open before starting gambling
 			return
-		if((coin_amt*mod) > gamblingprice)
+		if((coin_amt*mod) > min(gamblingprice, 200))
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			return
 		else
