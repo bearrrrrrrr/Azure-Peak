@@ -1,4 +1,0 @@
-author: "Fi"
-delete-after: True
-changes:
-  - bugfix: "Restores and improves the Wretch Licker's title obfuscation when they take the \"Well Off -> Residency\" virtue."
