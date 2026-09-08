@@ -101265,6 +101265,13 @@
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/exposed/town/keep)
+"sLG" = (
+/obj/structure/fluff/railing/wood/east{
+	pixel_x = 8
+	},
+/obj/structure/fluff/railing/wood/north,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/outdoors/beach/forest/north)
 "sLI" = (
 /obj/effect/decal/edge{
 	color = "#3f3f3f"
@@ -545745,8 +545752,8 @@ cxA
 cxA
 "}
 (154,1,4) = {"
-ymb
-ymb
+mRp
+sLG
 gES
 gES
 gES
@@ -546197,8 +546204,8 @@ cxA
 cxA
 "}
 (155,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -546649,8 +546656,8 @@ cxA
 cxA
 "}
 (156,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -547101,8 +547108,8 @@ cxA
 cxA
 "}
 (157,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -547553,8 +547560,8 @@ cxA
 cxA
 "}
 (158,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -548005,8 +548012,8 @@ cxA
 cxA
 "}
 (159,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -548457,8 +548464,8 @@ cxA
 cxA
 "}
 (160,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -548909,8 +548916,8 @@ cxA
 cxA
 "}
 (161,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -549361,8 +549368,8 @@ cxA
 cxA
 "}
 (162,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -549813,8 +549820,8 @@ cxA
 cxA
 "}
 (163,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -550265,8 +550272,8 @@ cxA
 cxA
 "}
 (164,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -550717,8 +550724,8 @@ cxA
 cxA
 "}
 (165,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -551169,8 +551176,8 @@ cxA
 cxA
 "}
 (166,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -551621,8 +551628,8 @@ cxA
 cxA
 "}
 (167,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -552073,8 +552080,8 @@ cxA
 cxA
 "}
 (168,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -552525,8 +552532,8 @@ cxA
 cxA
 "}
 (169,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -552977,8 +552984,8 @@ cxA
 cxA
 "}
 (170,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -553429,8 +553436,8 @@ cxA
 cxA
 "}
 (171,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -553881,8 +553888,8 @@ cxA
 cxA
 "}
 (172,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -554333,8 +554340,8 @@ cxA
 cxA
 "}
 (173,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -554785,8 +554792,8 @@ cxA
 cxA
 "}
 (174,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -555237,8 +555244,8 @@ cxA
 cxA
 "}
 (175,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -555689,8 +555696,8 @@ cxA
 cxA
 "}
 (176,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -556141,8 +556148,8 @@ cxA
 cxA
 "}
 (177,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -556593,8 +556600,8 @@ cxA
 cxA
 "}
 (178,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -557045,8 +557052,8 @@ cxA
 cxA
 "}
 (179,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -557497,8 +557504,8 @@ cxA
 cxA
 "}
 (180,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -557949,8 +557956,8 @@ cxA
 cxA
 "}
 (181,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -558401,8 +558408,8 @@ cxA
 cxA
 "}
 (182,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -558853,8 +558860,8 @@ cxA
 cxA
 "}
 (183,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -559305,8 +559312,8 @@ cxA
 cxA
 "}
 (184,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -559757,8 +559764,8 @@ cxA
 cxA
 "}
 (185,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -560209,8 +560216,8 @@ cxA
 cxA
 "}
 (186,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -560661,8 +560668,8 @@ cxA
 cxA
 "}
 (187,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -561113,8 +561120,8 @@ cxA
 cxA
 "}
 (188,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -561565,8 +561572,8 @@ cxA
 cxA
 "}
 (189,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -562017,8 +562024,8 @@ cxA
 cxA
 "}
 (190,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -562469,8 +562476,8 @@ cxA
 cxA
 "}
 (191,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -562921,8 +562928,8 @@ cxA
 cxA
 "}
 (192,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -563373,8 +563380,8 @@ cxA
 cxA
 "}
 (193,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -563825,8 +563832,8 @@ cxA
 cxA
 "}
 (194,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -564277,8 +564284,8 @@ cxA
 cxA
 "}
 (195,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -564729,8 +564736,8 @@ cxA
 cxA
 "}
 (196,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -565181,8 +565188,8 @@ cxA
 cxA
 "}
 (197,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -565633,8 +565640,8 @@ cxA
 cxA
 "}
 (198,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -566085,8 +566092,8 @@ aBB
 aBB
 "}
 (199,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -566537,8 +566544,8 @@ aBB
 aBB
 "}
 (200,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -566989,8 +566996,8 @@ aBB
 aBB
 "}
 (201,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -567441,8 +567448,8 @@ aBB
 aBB
 "}
 (202,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -567893,8 +567900,8 @@ aBB
 aBB
 "}
 (203,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -568345,8 +568352,8 @@ aBB
 aBB
 "}
 (204,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -568797,8 +568804,8 @@ aBB
 aBB
 "}
 (205,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -569249,8 +569256,8 @@ aBB
 aBB
 "}
 (206,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -569701,8 +569708,8 @@ aBB
 aBB
 "}
 (207,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -570153,8 +570160,8 @@ aBB
 aBB
 "}
 (208,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -570605,8 +570612,8 @@ aBB
 aBB
 "}
 (209,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -571057,8 +571064,8 @@ aBB
 aBB
 "}
 (210,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -571509,8 +571516,8 @@ aBB
 aBB
 "}
 (211,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -571961,8 +571968,8 @@ aBB
 aBB
 "}
 (212,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -572413,8 +572420,8 @@ aBB
 aBB
 "}
 (213,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -572865,8 +572872,8 @@ aBB
 aBB
 "}
 (214,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -573317,8 +573324,8 @@ aBB
 aBB
 "}
 (215,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -573769,8 +573776,8 @@ aBB
 aBB
 "}
 (216,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -574221,8 +574228,8 @@ aBB
 aBB
 "}
 (217,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -574673,8 +574680,8 @@ aBB
 aBB
 "}
 (218,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -575125,8 +575132,8 @@ aBB
 aBB
 "}
 (219,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -575577,8 +575584,8 @@ aBB
 aBB
 "}
 (220,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -576029,8 +576036,8 @@ aBB
 aBB
 "}
 (221,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -576481,8 +576488,8 @@ aBB
 aBB
 "}
 (222,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -576933,8 +576940,8 @@ aBB
 aBB
 "}
 (223,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -577385,8 +577392,8 @@ aBB
 aBB
 "}
 (224,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -577837,8 +577844,8 @@ aBB
 aBB
 "}
 (225,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -578289,8 +578296,8 @@ aBB
 aBB
 "}
 (226,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -578741,8 +578748,8 @@ aBB
 aBB
 "}
 (227,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -579193,8 +579200,8 @@ aBB
 aBB
 "}
 (228,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -579645,8 +579652,8 @@ aBB
 aBB
 "}
 (229,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -580097,8 +580104,8 @@ aBB
 aBB
 "}
 (230,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -580549,8 +580556,8 @@ aBB
 aBB
 "}
 (231,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -581001,8 +581008,8 @@ aBB
 aBB
 "}
 (232,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -581453,8 +581460,8 @@ aBB
 aBB
 "}
 (233,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -581905,8 +581912,8 @@ aBB
 aBB
 "}
 (234,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -582357,8 +582364,8 @@ aBB
 aBB
 "}
 (235,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -582809,8 +582816,8 @@ aBB
 aBB
 "}
 (236,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -583261,8 +583268,8 @@ aBB
 aBB
 "}
 (237,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -583713,8 +583720,8 @@ aBB
 aBB
 "}
 (238,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -584165,8 +584172,8 @@ aBB
 aBB
 "}
 (239,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -584617,8 +584624,8 @@ aBB
 aBB
 "}
 (240,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -585069,8 +585076,8 @@ aBB
 aBB
 "}
 (241,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -585521,8 +585528,8 @@ aBB
 aBB
 "}
 (242,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -585973,8 +585980,8 @@ aBB
 aBB
 "}
 (243,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -586425,8 +586432,8 @@ aBB
 aBB
 "}
 (244,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -586877,8 +586884,8 @@ aBB
 aBB
 "}
 (245,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -587329,8 +587336,8 @@ aBB
 aBB
 "}
 (246,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -587781,8 +587788,8 @@ aBB
 aBB
 "}
 (247,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -588233,8 +588240,8 @@ aBB
 aBB
 "}
 (248,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -588685,8 +588692,8 @@ aBB
 aBB
 "}
 (249,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -589137,8 +589144,8 @@ aBB
 aBB
 "}
 (250,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -589589,8 +589596,8 @@ aBB
 aBB
 "}
 (251,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -590041,8 +590048,8 @@ aBB
 aBB
 "}
 (252,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -590493,8 +590500,8 @@ aBB
 aBB
 "}
 (253,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -590945,8 +590952,8 @@ aBB
 aBB
 "}
 (254,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
@@ -591397,8 +591404,8 @@ aBB
 aBB
 "}
 (255,1,4) = {"
-ymb
-ymb
+mRp
+mRp
 mRp
 mRp
 mRp
