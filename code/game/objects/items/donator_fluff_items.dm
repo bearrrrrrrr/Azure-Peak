@@ -3751,3 +3751,15 @@ As Excaliber."
 	color = "#660fcc"
 	detail_color = CLOTHING_GOLD
 	altdetail_color = CLOTHING_GOLD
+
+// Donator Items done by Koruu
+/obj/item/clothing/cloak/templar/ravoxcleric/koruu
+	name = "Sefirot's Cloak"
+	desc = "A tattered red tabard dyed in the bold colors of Ravox. Its striking crimson fabric stands out on the frontlines, signaling unyielding judgment. For a thousand yils, our ancestors have defied the darkness. May their descendents defy the darkness for a thousand more."
+	armor = ARMOR_CLOTHING
+
+/obj/item/clothing/head/roguetown/helmet/heavy/ravoxhelm/cleric/koruu
+	name = "Gebura"
+	desc = "Adorned with powerful ox horns and a seamless blindfold, this helm embodies the steadfast resolve of Ravox. Blind, is our justice. Ever-defying, is our tenacity."
+	icon_state = "ravoxclerichelmet"
+	item_state = "ravoxclerichelmet"
