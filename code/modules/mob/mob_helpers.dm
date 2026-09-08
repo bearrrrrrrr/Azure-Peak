@@ -783,6 +783,8 @@
 			hud_used.cmode_button.update_icon()
 	on_cmode()
 
+#undef CMODE_SHAKE_ANIMATION
+
 /mob/proc/on_cmode()
 	return
 
