@@ -780,6 +780,8 @@
 		on_examine_face(user)
 		var/used_name = name
 		var/used_title = get_role_title()
+		if(HAS_TRAIT(src, TRAIT_RESIDENT) && used_title == "Licker" && licker_subclass)
+			used_title = licker_subclass.name
 		if(SSticker.regentmob == src)
 			used_title = "[used_title]" + " Regent"
 		var/display_as_wanderer = FALSE
