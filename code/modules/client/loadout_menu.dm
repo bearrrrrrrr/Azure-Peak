@@ -96,7 +96,7 @@
 			meta["custom_name_parsed"] = sanitize(meta["custom_name"])
 			gear_list[item_name] = meta
 		if(meta["custom_desc"] && !meta["custom_desc_parsed"]) // handling for older savefiles
-			meta["custom_desc_parsed"] = sanitize(meta["custom_desc"])
+			meta["custom_desc_parsed"] = html_encode(meta["custom_desc"])
 			gear_list[item_name] = meta
 		selected += list(list(
 			"name" = item_name,
