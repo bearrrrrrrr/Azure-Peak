@@ -734,6 +734,8 @@
 	update_inv_hands()
 
 
+#define CMODE_SHAKE_ANIMATION "cmode_shake"
+
 /mob/verb/toggle_cmode()
 	set name = "cmode-change"
 	set hidden = 1
@@ -750,6 +752,8 @@
 			playsound_local(src, 'sound/misc/comboff.ogg', 100)
 			SSdroning.play_area_sound(get_area(src), client)
 			cmode = FALSE
+			if(client)
+				animate(client, tag = CMODE_SHAKE_ANIMATION)
 		if(hud_used)
 			if(hud_used.cmode_button)
 				hud_used.cmode_button.update_icon()
@@ -758,8 +762,8 @@
 		playsound_local(src, 'sound/misc/comboff.ogg', 100)
 		SSdroning.play_area_sound(get_area(src), client)
 		cmode = FALSE
-		if(client && HAS_TRAIT(src, TRAIT_SCREENSHAKE))
-			animate(client, pixel_y)
+		if(client)
+			animate(client, tag = CMODE_SHAKE_ANIMATION)
 	else
 		cmode = TRUE
 		playsound_local(src, 'sound/misc/combon.ogg', 100)
@@ -768,7 +772,7 @@
 		else if(L.cmode_music)
 			SSdroning.play_combat_music(L.cmode_music, client)
 		if(client && HAS_TRAIT(src, TRAIT_PSYCHOSIS))
-			animate(client, pixel_y = 1, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+			animate(client, pixel_y = 1, time = 1, loop = -1, flags = ANIMATION_RELATIVE, tag = CMODE_SHAKE_ANIMATION)
 			animate(pixel_y = -1, time = 1, flags = ANIMATION_RELATIVE)
 	if(hud_used)
 		if(hud_used.cmode_button)
