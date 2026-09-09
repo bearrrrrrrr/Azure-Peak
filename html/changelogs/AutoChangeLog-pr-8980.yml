@@ -1,0 +1,4 @@
+author: "EmptyLullaby"
+delete-after: True
+changes:
+  - bugfix: "Turning to the side will no longer make your prosthetics magically turn into wood. Woe.."
