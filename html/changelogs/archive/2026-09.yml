@@ -317,3 +317,41 @@
       may come later.
   zRainbowcat:
   - bugfix: aavnic bow sprite returned
+2026-09-09:
+  Acrepe:
+  - refactor: Reverted wretches to previous Second Chance availability
+  EmptyLullaby:
+  - bugfix: Turning to the side will no longer make your prosthetics magically turn
+      into wood. Woe..
+  KatTheFox:
+  - rscadd: Loadout item names/descs can now use markdown. Use this tastefully.
+  - bugfix: Wanderers will now show up as such in the known menu, instead of showing
+      up as "Malpractitioner" or "Hag"
+  - bugfix: Marriage is now properly functional. Again. But like actually this time.
+  - bugfix: Revenants now hear from their head, not their body, consistently. Previously,
+      this was only true if the head was near the body and on the same zlevel.
+  - bugfix: Fixed a duplication exploit allowing for infinite coal. You can already
+      get that from the azure peak playerbase, you don't need an exploit for it.
+  - bugfix: You can no longer crash the server via excessive gambling.
+  Lamasmaster:
+  - balance: Rituos (zizo rituals) now last 20 instead of 25 minutes to be in line
+      with everything else.
+  - bugfix: Eoran ritual being half the duration of the other rituals.
+  SaundMinah:
+  - rscadd: Added Morphing Enchant Bottle for Cadwyn Order Helmet to one Ckey
+  - rscadd: Added Cadwyn Order Cloak to one Ckey
+  SomeDeviant:
+  - bugfix: Lesser Augmentation Guidance runtime
+  - bugfix: fixed runtime on Conjurer's Mark
+  borneblood:
+  - balance: Several changes to Divine Blast and Profane Blast. Read the PR for more
+      details.
+  - rscadd: span_divine, span_profane and span_silver for tgchat.
+  - bugfix: Psychosis should no longer shake your screen forever. It goes away after
+      some time and if you turn off combat mode.
+  - refactor: Refactored Kindled Exchange's conditionals and debt code, fixing a couple
+      of problems it currently had.
+  mumblemancer:
+  - rscadd: more gameplay tips in timechangers
+  radarseas:
+  - rscadd: Added heretic daggers to heretic spies of other inhumen patrons.
