@@ -4105,6 +4105,7 @@ As Excaliber."
 	icon_state = "shibariropes"
 	covers_breasts = TRUE
 	sprite_acc = /datum/sprite_accessory/underwear/bikini/shibari
+	icon = 'icons/mob/sprite_accessory/underwear.dmi'
 
 /datum/sprite_accessory/underwear/bikini/shibari
 	name = "shibari ropes"
