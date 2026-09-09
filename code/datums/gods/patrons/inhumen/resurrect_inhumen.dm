@@ -1,9 +1,9 @@
 /mob/living/proc/revive_check(mob/user)
 	if(!mind)
-		to_chat(user, span_warning("[src] has nothing to return to."))
+		to_chat(user, span_warning("[src]'s mind cannot be found."))
 		return FALSE
 	if(HAS_TRAIT(src, TRAIT_DNR))
-		to_chat(user, span_warning("[src]'s soul refuses to return."))
+		to_chat(user, span_warning("[src] can't be brought back."))
 		return FALSE
 	if(!key && !get_ghost(FALSE, TRUE))
 		to_chat(user, span_warning("[src]'s soul has departed."))
