@@ -2073,6 +2073,10 @@
 	item_state = "dupatta"
 	detail_tag = "_detail"
 	detail_color = CLOTHING_WHITE
+	altdetail_color = CLOTHING_WHITE
+	altdetail_tag = "_detailalt"//has more details for more colours
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_cloaks.dmi'
+	sleevetype = "shirt"
 
 /obj/item/clothing/cloak/sash/dupatta/Initialize(mapload)
 	. = ..()
@@ -2086,3 +2090,9 @@
 		if(get_detail_color())
 			pic.color = get_detail_color()
 		add_overlay(pic)
+	if(get_altdetail_tag())
+		var/mutable_appearance/pic2 = mutable_appearance(icon(icon, "[icon_state][altdetail_tag]"))
+		pic2.appearance_flags = RESET_COLOR
+		if(get_altdetail_color())
+			pic2.color = get_altdetail_color()
+		add_overlay(pic2)
