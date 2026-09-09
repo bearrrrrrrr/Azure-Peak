@@ -192,7 +192,7 @@
 /obj/item/clothing/under/roguetown/tights/shalwar
 	name = "shalwar pants"
 	icon_state = "shalwar"
-	desc = "A pair of cloth shalwar pants, with a baggy fit and a tapered ankle. Originating from the Ranesheni region, these pants are known for their comfort and ease of movement."
+	desc = "A pair of cloth shalwar pants, with a baggy fit and a tapered ankle. Originating from Ranesheni, these pants are known for their comfort and ease of movement."
 	armor = ARMOR_PADDED
 	max_integrity = ARMOR_INT_LEG_LEATHER
 	blocksound = SOFTUNDERHIT
