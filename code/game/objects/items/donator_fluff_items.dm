@@ -4171,3 +4171,14 @@ As Excaliber."
 	desc = "Adorned with powerful ox horns and a seamless blindfold, this helm embodies the steadfast resolve of Ravox. Blind, is our justice. Ever-defying, is our tenacity."
 	icon_state = "ravoxclerichelmet"
 	item_state = "ravoxclerichelmet"
+
+/obj/item/clothing/cloak/templar/astratancleric/koruu
+	name = "Cloak of the Order of the Sun"
+	desc = "A golden-colored cloak with frayed edges, bearing the radiant hues of Astrata. It marks the wearer as a beacon of light amidst the chaos of battle."
+	armor = ARMOR_CLOTHING
+
+/obj/item/clothing/head/roguetown/helmet/heavy/astratahelm/cleric/koruu
+	name = "Lux In Tenebris"
+	desc = "Topped with a magnificent plume, this helmet turns the wearer into a walking beacon of Astrata's wrath. Designed to cut a striking silhouette, it strikes terror into the hearts of nonbelievers from afar."
+	icon_state = "astrataclerichelm"
+	item_state = "astrataclerichelm"

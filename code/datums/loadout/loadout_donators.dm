@@ -591,12 +591,12 @@
 /datum/loadout_item/donator/koruu/kukri
 	name = "Donator Kit - Leachwhacker"
 	path = /obj/item/enchantingkit/weapon/koruu_kukri
-	ckeywhitelist = list("koruu", "pneumothorax", "ryan180602", "vakiova", "maesune")
+	ckeywhitelist = list("koruu", "pneumothorax", "ryan180602", "vakiova", "maesune", "nooriginality")
 
 /datum/loadout_item/donator/koruu/kukri/warden
 	name = "Donator Kit - Warden Leachwhacker"
 	path = /obj/item/enchantingkit/weapon/koruu_kukri/warden
-	ckeywhitelist = list("koruu", "pneumothorax", "ryan180602", "vakiova", "maesune", "dakken12")
+	ckeywhitelist = list("koruu", "pneumothorax", "ryan180602", "vakiova", "maesune", "dakken12", "nooriginality")
 
 /datum/loadout_item/donator/dakken
 	name = "Donator Kit - Armoured Avantyne Barbute"
@@ -725,7 +725,7 @@
 /datum/loadout_item/donator/koruu_silver_kukri
 	name = "Donator Kit - Psydonic Leachwhacker"
 	path = /obj/item/enchantingkit/weapon/koruu_kukri_silver
-	ckeywhitelist = list("koruu", "pepperoniplayboy")
+	ckeywhitelist = list("koruu", "pepperoniplayboy", "nooriginality")
 
 /datum/loadout_item/donator/koruu_longsword
 	name = "Donator Kit - Excaliber"
@@ -1127,12 +1127,22 @@
 	path = /obj/item/clothing/head/roguetown/wizhat/bighat
 	ckeywhitelist = list("glassfeddockterr")
 
-/datum/loadout_item/donator/koruu_cadwyncloak
+/datum/loadout_item/donator/koruu_cadwyncloak_ravox
 	name = "Donator Item - Sefirot's Cloak"
 	path = /obj/item/clothing/cloak/templar/ravoxcleric/koruu
-	ckeywhitelist = list("koruu")
+	ckeywhitelist = list("koruu", "oddbomber3768", "nooriginality", "vakiova", "maesune")
 
-/datum/loadout_item/donator/koruu_cadwynhelm
+/datum/loadout_item/donator/koruu_cadwynhelm_ravox
 	name = "Donator Item - Gebura"
 	path = /obj/item/enchantingkit/donator_koruu_ravoxclerichelm
-	ckeywhitelist = list("koruu")
+	ckeywhitelist = list("koruu", "oddbomber3768", "nooriginality", "vakiova", "maesune")
+
+/datum/loadout_item/donator/koruu_cadwyncloak_astrata
+	name = "Donator Item - Cloak of the Order of the Sun"
+	path = /obj/item/clothing/cloak/templar/astratancleric/koruu
+	ckeywhitelist = list("koruu", "oddbomber3768", "nooriginality", "vakiova", "maesune")
+
+/datum/loadout_item/donator/koruu_cadwynhelm_astrata
+	name = "Donator Item - Lux In Tenebris"
+	path = /obj/item/enchantingkit/donator_koruu_astrataclerichelm
+	ckeywhitelist = list("koruu", "oddbomber3768", "nooriginality", "vakiova", "maesune")

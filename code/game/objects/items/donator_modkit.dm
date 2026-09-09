@@ -1535,3 +1535,12 @@
 	)
 	result_item = null
 	exact_type = TRUE
+
+/obj/item/enchantingkit/donator_koruu_astrataclerichelm
+	name = "'Lux In Tenebris' morphing elixir"
+	desc = "A small container of special morphing dust, perfect to make a specific item. It can be used to alter the appearance of an Astratan Helmet."
+	target_items = list(
+		/obj/item/clothing/head/roguetown/helmet/heavy/astratahelm		= /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm/cleric/koruu,
+	)
+	result_item = null
+	exact_type = TRUE
