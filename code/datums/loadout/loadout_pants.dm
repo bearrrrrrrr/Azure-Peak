@@ -74,3 +74,7 @@
 	path = /obj/item/clothing/under/roguetown/skirt/formal
 	sort_category = "Pants"
 
+datum/loadout_item/shalwar
+	name = "Shalwar Pants"
+	path = /obj/item/clothing/under/roguetown/tights/shalwar
+	sort_category = "Pants"
