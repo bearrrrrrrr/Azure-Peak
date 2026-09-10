@@ -4112,6 +4112,7 @@ As Excaliber."
 /obj/item/undies/bikini/shibari
 	name = "shibari ropes"
 	desc = "Strange smallclothes from stranger lands, consisting of a thin silk ropes that's decoratively wound across the body's more immodest points."
+	icon = 'icons/mob/sprite_accessory/underwear.dmi'
 	icon_state = "shibariropes"
 	covers_breasts = TRUE
 	sprite_acc = /datum/sprite_accessory/underwear/bikini/shibari
