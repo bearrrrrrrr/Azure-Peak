@@ -1,4 +1,0 @@
-author: "borneblood"
-delete-after: True
-changes:
-  - bugfix: "Rekindled Exchange now checks if you're dead before doing its thing, oops."
