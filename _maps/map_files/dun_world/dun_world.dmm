@@ -13920,6 +13920,10 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
+"cEU" = (
+/obj/structure/flora/ausbushes/lavendergrass,
+/turf/open/floor/rogue/AzureSand,
+/area/rogue/outdoors/beach/north)
 "cEX" = (
 /obj/effect/decal/cobbleedge{
 	dir = 10;
@@ -19846,6 +19850,7 @@
 /obj/machinery/light/rogue/torchholder/l,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/blood/old,
+/obj/item/reagent_containers/food/snacks/smallrat,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/shelter)
 "dKA" = (
@@ -34154,6 +34159,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/woods)
+"grt" = (
+/obj/structure/roguemachine/hag_ward,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors/cave/east)
 "gry" = (
 /obj/structure/fluff/railing/corner/south_east,
 /obj/structure/fluff/walldeco/mageguild2{
@@ -40333,6 +40342,10 @@
 /obj/structure/fluff/railing/corner/north_east,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/beach)
+"hBG" = (
+/obj/structure/flora/ausbushes/ywflowers,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors/cave/east)
 "hBJ" = (
 /obj/effect/decal/cobbleedge{
 	icon_state = "cobbleedge-sread"
@@ -45869,6 +45882,10 @@
 "izG" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/exposed/town/keep/unbuildable)
+"izT" = (
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors/cave/east)
 "izV" = (
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cave/skeletoncrypt)
@@ -69009,6 +69026,10 @@
 /obj/structure/fluff/walldeco/church/line,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/town)
+"mFU" = (
+/obj/structure/flora/ausbushes/lavendergrass,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors/cave/east)
 "mFV" = (
 /obj/structure/hotspring/border/ten,
 /turf/open/floor/rogue/snow,
@@ -76444,12 +76465,10 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "ocu" = (
-/obj/item/clothing/cloak/matron{
-	pixel_y = -12;
-	pixel_x = 7
-	},
-/turf/open/transparent/openspace,
-/area/rogue/outdoors/beach/central)
+/obj/effect/decal/remains/human,
+/obj/effect/spawner/lootdrop/roguetown/sewers,
+/turf/open/floor/rogue/dirt,
+/area/rogue/indoors/cave/east)
 "ocy" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "floor6-old"
@@ -217716,7 +217735,7 @@ ipw
 eNM
 cSe
 cSe
-dqQ
+cSe
 dqQ
 dqQ
 qkR
@@ -218168,9 +218187,9 @@ eNM
 eNM
 cSe
 cSe
-dqQ
 cSe
-dqQ
+cSe
+cSe
 qkR
 qkR
 dqQ
@@ -218620,11 +218639,11 @@ eNM
 eNM
 cSe
 cSe
-dqQ
-dqQ
-qkR
-qkR
-qkR
+cSe
+cSe
+cSe
+cSe
+cSe
 dqQ
 cSe
 cSe
@@ -219072,12 +219091,12 @@ eNM
 eNM
 cSe
 dqQ
-dqQ
-dqQ
-qkR
-qkR
-qkR
-dqQ
+lNG
+cSe
+cSe
+cSe
+cSe
+cSe
 dqQ
 cSe
 cSe
@@ -219523,13 +219542,13 @@ kJR
 kJR
 kJR
 cSe
-dqQ
-dqQ
-dqQ
-qkR
-qkR
-qkR
-qkR
+eiD
+shU
+hBG
+eiD
+lNG
+cSe
+cSe
 dqQ
 dqQ
 cSe
@@ -219974,15 +219993,15 @@ kJR
 cSe
 cSe
 cSe
-dqQ
-dqQ
-dqQ
-qkR
-qkR
-qkR
-qkR
-qkR
-qkR
+mFU
+shU
+grt
+eiD
+eiD
+cSe
+cSe
+cSe
+cSe
 dqQ
 cSe
 cSe
@@ -220425,16 +220444,16 @@ xGl
 xGl
 dqQ
 dqQ
-dqQ
-dqQ
-dqQ
-qkR
-qkR
-qkR
-qkR
-qkR
-qkR
-qkR
+cSe
+cSe
+shU
+eiD
+shU
+eiD
+cSe
+cSe
+cSe
+cSe
 dqQ
 dqQ
 cSe
@@ -220877,16 +220896,16 @@ dqQ
 dqQ
 dqQ
 dqQ
-dqQ
-dqQ
-dqQ
-qkR
-qkR
-qkR
-qkR
-qkR
-qkR
-qkR
+cSe
+cSe
+izT
+eiD
+eiD
+cSe
+cSe
+cSe
+cSe
+cSe
 dqQ
 dqQ
 cSe
@@ -221329,16 +221348,16 @@ dqQ
 dqQ
 dqQ
 dqQ
-dqQ
-dqQ
-dqQ
-qkR
-qkR
-qkR
-qkR
-qkR
-qkR
-qkR
+cSe
+cSe
+cSe
+cSe
+eiD
+eiD
+shU
+cSe
+cSe
+cSe
 dqQ
 dqQ
 cSe
@@ -221781,14 +221800,14 @@ dqQ
 dqQ
 dqQ
 dqQ
-dqQ
-dqQ
-dqQ
-dqQ
-dqQ
-qkR
-qkR
-qkR
+cSe
+cSe
+cSe
+cSe
+eiD
+shU
+lNG
+cSe
 dqQ
 dqQ
 dqQ
@@ -222232,12 +222251,12 @@ dqQ
 dqQ
 dqQ
 qkR
-qkR
-qkR
-qkR
-dqQ
-dqQ
-dqQ
+cSe
+cSe
+ocu
+eiD
+eiD
+eiD
 dqQ
 dqQ
 dqQ
@@ -222678,16 +222697,16 @@ cSe
 cSe
 dqQ
 dqQ
+dhU
 rVF
-rVF
 dqQ
 dqQ
 dqQ
-qkR
-qkR
-qkR
-qkR
-qkR
+cSe
+cSe
+rBq
+dhU
+eiD
 dqQ
 dqQ
 dqQ
@@ -223132,14 +223151,14 @@ dqQ
 rVF
 rVF
 czc
-dqQ
-dqQ
-qkR
-qkR
-qkR
-qkR
-qkR
-qkR
+dhU
+rVF
+cSe
+cSe
+rVF
+dhU
+rVF
+rBq
 qkR
 qkR
 dqQ
@@ -223585,12 +223604,12 @@ rVF
 tjq
 dqQ
 qkR
-qkR
-qkR
-qkR
-qkR
-qkR
-qkR
+dhU
+rVF
+rVF
+rBq
+rBq
+rVF
 qkR
 qkR
 qkR
@@ -229467,7 +229486,7 @@ aTj
 kJR
 kJR
 kJR
-aTj
+cEU
 aTj
 aTj
 aTj
@@ -350151,7 +350170,7 @@ rQa
 rQa
 rQa
 rQa
-ocu
+rQa
 rQa
 rQa
 rQa
